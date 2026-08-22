@@ -124,22 +124,23 @@ body, th, td, input, select, textarea, button { font-family:"pretendard", "Malgu
 #footer .footer-company ul li a { color:#000; font-size:14px; font-style:normal; line-height:1.4; }
 
 /* 회사 정보 */
-#footer .shop-info { display:inline-block; vertical-align:top; margin:14px 0 0; color:#757575; font-size:13px; font-style:normal; font-weight:300; line-height:1; }
-#footer .shop-info dl { display:flex; margin:0 0 9px; }
-#footer .shop-info dl dd { margin:0 0 0 3px; color:#757575; }
+#footer .shop-info { display:inline-block; vertical-align:top; margin:14px 0 0; color:#757575; font-size:13px; font-style:normal; font-weight:300; line-height:1.5; word-break:keep-all; }
+#footer .shop-info dl { display:flex; flex-wrap:wrap; margin:0 0 9px; line-height:1.4; }
+#footer .shop-info dl dd { margin:0 0 0 3px; color:#757575; white-space:nowrap; }
 #footer .shop-info dl dd span a { border-bottom:solid 1px #757575; }
-#footer .shop-info dl dt { position:relative; padding:0 0 0 10px; margin:0 0 0 10px; }
-#footer .shop-info dl dt::before { content:""; position:absolute; top:3px; left:0; height:8px; border-left:solid 1px #BDBDBD; }
+#footer .shop-info dl dt { position:relative; padding:0 0 0 10px; margin:0 0 0 10px; white-space:nowrap; }
+#footer .shop-info dl dt::before { content:""; position:absolute; top:4px; left:0; height:8px; border-left:solid 1px #BDBDBD; }
 #footer .shop-info dl dt:first-child { padding-left:0; margin-left:0; }
 #footer .shop-info dl dt:first-of-type::before { border-left:0; }
 #footer .shop-info dl dd .btn_licensee_info { color:#757575; font-size:13px; font-style:normal; font-weight:300; line-height:1; }
+#footer .shop-info dl.address_dl dd { white-space:normal; }
 
 /* copyright */
 #footer .copyright { margin:15px 0 0; }
 #footer .copyright strong { display:inline-block; color:#9E9E9E; line-height:160%; }
 
 /* SNS */
-#footer .footer-info { width:43%; }
+#footer .footer-info { width:58%; }
 #footer .footer-info .footer-sns ul { display:flex; gap:2px; align-items:center; margin:18px 0 0; }
 #footer .footer-info .footer-sns ul li:last-child { padding-right:0; }
 #footer .footer-info .footer-sns ul li a { display:flex; justify-content:center; align-items:center; }
