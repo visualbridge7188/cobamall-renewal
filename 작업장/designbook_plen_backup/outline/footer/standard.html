@@ -20,7 +20,7 @@
 						<dt>{=__('대표자')} :</dt><dd>{=gMall.ceoNm}</dd>
 						<dt>{=__('EMAIL')} :</dt><dd><a href="mailto:{=gMall.email}" class="btn_email">{=gMall.email}</a></dd>
 						<dt>{=__('대표번호')} :</dt><dd>{=gMall.phone}</dd>
-						
+						<!--{ ? gMall.fax }--><dt>{=__('팩스')} :</dt><dd>{=gMall.fax}</dd><!--{ / }-->
 					</dl>
 					<dl>
 						<dt>{=__('통신판매업신고번호')} :</dt><dd>{=gMall.onlineOrderSerial}</dd>
@@ -29,6 +29,7 @@
 					<dl>
 						<dt>{=__('개인정보관리자')} :</dt><dd>{=gMall.privateNm}</dd>
 						<dt>{=__('주소')} :</dt><dd>{=gMall.address} {=gMall.addressSub}</dd>
+						<dt>호스팅제공 :</dt><dd>엔에이치엔고도(주)</dd>
 					</dl>
 				</div>
 				<p class="copyright">copyright &copy; <strong>{=gMall.mallDomain}</strong>. all rights reserved.</p>
@@ -46,9 +47,8 @@
 			<!-- 은행 정보 -->
 			<div class="cont-box column1">
 				<h3>입금 계좌번호</h3>
-				<p>신한 100-029-953578</p>
-				<p>농협 302-1016-3087-11</p>
-				<span>{=__('예금주')} : 디자인교과서(서수정)</span>
+				<p>우리은행 1005-780-004488</p>
+				<span>{=__('예금주')} : (주)코바식품</span>
 			</div>
 			<!--{/}-->
 			<!-- 고객센터 -->
@@ -56,7 +56,7 @@
 				<h3>고객센터</h3>
 				<strong>{gMall.centerPhone}</strong>
 				<span>
-					평일 09:00~18:00 점심시간 12:00~13:00<br/>토,일,공휴일 휴무
+					평일 09:00~18:00 (택배발송 마감 15:00)<br/>토요일, 일요일, 공휴일 휴무
 				</span>
 			</div>
 		</div>
