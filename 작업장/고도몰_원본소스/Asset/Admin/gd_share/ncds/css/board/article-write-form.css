@@ -1,0 +1,31 @@
+.ncua-content.article-write-form {
+    .ncua-product-select-layout {
+        align-items: flex-start;
+
+        > div {
+            width: 100%;
+        }
+
+        .ncua-button-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    }
+
+    .article-detail-title img{
+        margin-right: 4px;
+    }
+
+    .file-input-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .article-detail-content {
+        display: block;
+    }
+}
+
+

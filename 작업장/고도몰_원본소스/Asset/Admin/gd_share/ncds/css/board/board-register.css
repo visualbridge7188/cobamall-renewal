@@ -1,0 +1,179 @@
+/* 말머리 사용 레이아웃 */
+
+/**
+    공통 레이아웃
+*/
+/* css 상속 레벨이 낮아 페이지에서 구현 */
+.board-register-wrapper div.ncua-align-items-flex-start {
+    align-items: flex-start;
+}
+.board-register-wrapper .board-register-select-box-width-240,
+.board-register-wrapper .ncua-combobox .ncua-combobox__content {
+    width: 240px;
+}
+
+/* 기본설정 */
+
+/* 게시판 스킨 테이블 스타일링 */
+.board-register-wrapper .board-skin-table {
+    .ncua-table {
+        tr:last-child {
+            td {
+                border-bottom: 0;
+            }
+        }
+        th {
+            &:not(:first-child) {
+                border-left: 1px solid var(--gray-100) !important;
+            }
+            &:last-child {
+                border-top-right-radius: 8px !important;
+                border-top-left-radius: 0 !important;
+                border-bottom: 0;
+            }
+            
+            &:not(:first-child):not(:last-child) {
+                border-top-left-radius: 0 !important;
+            }
+        }
+        td:last-child {
+            border-right: 0px !important;
+        }
+    }
+
+    
+    .th-border {
+        border-top-left-radius: 8px !important;
+        background-color: var(--gray-100);
+        border-bottom: 1px solid var(--gray-200) !important;
+        
+        &.right-border {
+            border-right: 1px solid var(--gray-200) !important;
+        }
+
+        div {
+            min-height: 40px;
+        }
+        
+    }
+}
+
+.board-register-wrapper .write-permission-setting {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.board-register-wrapper .write-permission-setting-add-option {
+    padding-left: 20px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* display-none class 속성이 변해도 상속문제로 적용되지 않아 important 추가 */
+.board-register-wrapper .reply-function.display-none {
+    display: none !important;
+}
+
+.board-register-wrapper .board-register-member-select-group-tag {
+    color: var(--gray-300);
+}
+
+.board-register-wrapper .member-group-display-none {
+    display: none;
+}
+
+.board-register-wrapper .member-group-display-none.active {
+    display: flex;
+}
+
+.board-register-wrapper .save-location-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.board-register-wrapper .save-location-text {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* 기능설정 */
+.board-register-wrapper .category-write {
+    width: 100% !important;
+}
+
+.board-register-wrapper .category-write-info {
+    padding: 15.5px 8px;
+}
+
+.board-register-wrapper .heading-function-th {
+    width: 130px !important;
+}
+
+.board-register-wrapper .except-goods-table {
+    width: 80%
+}
+
+.board-register-wrapper .heading-function-category-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+
+    .add-category-button {
+        margin-top: 8px;
+    }
+}
+
+.board-register-wrapper .heading-function-category-input-color-red {
+    color: var(--primary-red-600);
+}
+
+.board-register-wrapper #presentFlExcept_goods_tbl {
+    td > div {
+        margin-top: 0px;
+    }
+}
+
+/* 작성자 화면 설정 */
+.board-register-wrapper {
+    .writer-setting-table {
+        tr[data-table-top-shape] {
+            /* th + td 문법이 되지않아 따로 작성 */
+            > th {
+                border-top-left-radius: 8px;
+                border-block-start: none;
+            }
+            > td {
+                border-block-start: none;
+            }
+        }
+    }
+
+    .list-setting-table {
+        tr[data-table-bottom-shape] {
+            > th {
+                border-bottom-left-radius: 8px;
+            }
+        }
+    }
+
+    .js-tooltip-trigger .ncua-tooltip {
+        margin: 0px !important;
+    }
+}
+
+/* 게시판 개별 SEO 태그 설정 */
+.board-register-wrapper .replacement-code-view {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+
+    .js-tooltip-trigger .ncua-tooltip__icon {
+        color: var(--gray-300);
+    }
+}

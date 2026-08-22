@@ -1,0 +1,49 @@
+<!--{ ? count(giftInfo) }-->
+<h2 class="order_tit">{=__('사은품 선택')}</h2>
+<div class="gift_choice">
+    <!--{ @ giftInfo }-->
+    <!--{ @ .gift }-->
+    <!--{ ? ..total > 0 }-->
+    <p>{giftInfo.title} (<span><!--{ ? ..selectCnt == 0 }-->{.total}<!--{ : }-->0<!--{ / }--></span>/<!--{ ? ..selectCnt == 0 }-->{.total}<!--{ : }-->{..selectCnt}<!--{ / }-->)</p>
+    <ul>
+        <!--{ @ ..multiGiftNo }-->
+        <li>
+            <div class="inp_chk">
+                <label for="line{.key_}_gift{...index_}" <!--{ ? ..selectCnt == 0 }-->class="on"<!--{ / }-->>
+                {...imageUrl}
+                <span class="txt">{...giftNm} <small>({=__('%s개', ..giveCnt)})</small></span>
+                </label>
+                <input type="hidden" name="gift[{.key_}][{...index_}][scmNo]" value="{...scmNo}" />
+                <input type="hidden" name="gift[{.key_}][{...index_}][selectCnt]" value="{..selectCnt}" class="gift_select_cnt" />
+                <input type="hidden" name="gift[{.key_}][{...index_}][giveCnt]" value="{..giveCnt}" />
+                <input type="hidden" name="gift[{.key_}][{...index_}][minusStockFl]" value="{...stockFl}" />
+                <input type="checkbox" name="gift[{.key_}][{...index_}][giftNo]" value="{...giftNo}" class="sp " id="line{.key_}_gift{...index_}"<!--{ ? ..selectCnt == 0 }--> checked="checked" readonly="readonly" onclick="return false"<!--{ / }--> />
+            </div>
+        </li>
+        <!--{ / }-->
+    </ul>
+    <!--{ / }-->
+    <!--{ / }-->
+    <!--{ / }-->
+</div>
+<!--{ / }-->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('input[name="giftSelectCnt"]').val($('.gift_choice input[type=checkbox]').closest('li').find('.gift_select_cnt').val());
+        // 사은품 체크 및 체크된 수량 출력
+        $('.gift_choice input[type=checkbox]').click(function(e){
+            if($(this).prop('readonly') == false) {
+                var selectCnt = $(this).closest('li').find('.gift_select_cnt').val();
+                var checkedCnt = $(this).closest('ul').find('input[type=checkbox]:checked').length;
+                if (checkedCnt > selectCnt) {
+                    alert(__('사은품은 최대 %s개만 선택하실 수 있습니다.', selectCnt));
+                    $(this).prop('checked', false).next('label').removeClass('on');
+
+                    return false;
+                }
+                $('input[name="giftCheckCnt"]').val(checkedCnt);
+                $(this).closest('ul').prev('p').find('span').text(checkedCnt);
+            }
+        });
+    });
+</script>

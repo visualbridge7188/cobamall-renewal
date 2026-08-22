@@ -1,0 +1,599 @@
+/* ============================================== */
+/* reset */
+/* ============================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 12px;
+    color: #333;
+    line-height: 1.5;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+
+/* util */
+/* ============================================== */
+.text-hidden {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    clip: rect(0 0 0 0);
+}
+
+/* layout */
+/* ============================================== */
+
+
+.present-confirm {
+    --bg-color: #f7f7f7;
+    --content-width: 667px;
+
+    font-family: "Pretendard Variable", Pretendard, sans-serif;
+    background-color: var(--bg-color);
+}
+
+.present-confirm ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.present-confirm li {
+    margin: 0;
+}
+
+.present-confirm-section {
+    background-color: #fff;
+}
+
+.present-confirm-section + .present-confirm-section {
+    margin-block-start: 20px;
+}
+
+.present-confirm-content {
+    margin-inline: auto;
+    padding-block: 20px;
+    width: var(--content-width);
+}
+
+
+/* button */
+/* ============================================== */
+.present-confirm-button {
+    font: inherit;
+    padding: 4px 15px;
+    border: 1px solid #dbdbdb;
+    background-color: #fff;
+    color: #333;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.present-confirm-notice {
+    color: #777;
+    text-align: start;
+}
+
+.present-confirm-notice li + li {
+    margin-block-start: 5px;
+}
+
+.present-confirm-notice li::before {
+    content: '·';
+    margin-inline-end: 8px;
+    color: #000;
+}
+
+/* title */
+/* ============================================== */
+.present-confirm-title {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 선물 메시지 */
+/* ============================================== */
+.gift-message {
+    position: relative;
+    padding-block: 80px 40px;
+    isolation: isolate;
+}
+
+.gift-message-deco {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+    height: 260px;
+    width: 100%;
+}
+
+.gift-message-deco::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+}
+
+.gift-message-deco img {
+    width: 100%;
+}
+
+.gift-message-from {
+    margin: 0 0 20px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.present-card {
+    margin-inline: auto;
+    width: 340px;
+}
+
+.present-card img {
+    width: 100%;
+    height: 170px;
+}
+
+.present-card-message {
+    margin: 0;
+    height: 106px;
+    padding: 10px 16px 14px;
+    border: solid #ccc;
+    border-width: 0 1px 1px;
+    background-color: #fff;
+}
+
+.present-card-message-inner {
+    overflow-y: auto;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.present-card-send-date {
+    margin: 20px 0 0;
+    text-align: center;
+    color: #777;
+    font-weight: 400;
+}
+
+/* 상품 정보 */
+/* ============================================== */
+.present-confirm-gift-info-content {
+    border-block-start: 1px solid #999;
+}
+
+.present-confirm-gift-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    padding-block: 15px;
+    border-block-end: 1px solid #dbdbdb;
+}
+
+.present-confirm-gift-item figure {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    width: 100px;
+    height: 100px;
+}
+
+.present-confirm-gift-item-title {
+    display: block;
+    margin-block-end: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.present-confirm-gift-item-option {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    color: #777;
+}
+
+.present-confirm-added-gift-section {
+    padding-block: 10px 15px;
+    border-block-end: 1px solid #dbdbdb;
+}
+
+.present-confirm-added-gift-section .present-confirm-gift-item + .present-confirm-gift-item {
+    margin-block-start: 10px;
+}
+
+.present-confirm-added-gift-title {
+    display: block;
+    margin-block-end: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.present-confirm-added-gift-section .present-confirm-gift-item {
+    padding-block: 0;
+    border-width: 0;
+}
+
+.present-confirm-added-gift-section figure {
+    width: 80px;
+    height: 80px;
+}
+
+.present-confirm-section.is-rejection .present-confirm-gift-item figure {
+    position: relative;
+}
+
+.present-confirm-section.is-rejection .present-confirm-gift-item figure::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0 0 0 / .6);
+}
+
+.present-confirm-added-gift-section .present-confirm-gift-item-title {
+  color: #5e5e5e;
+}
+
+/* 선물 수락 기한 */
+/* ============================================== */
+.present-confirm-limit {
+    padding-block: 20px;
+    text-align: center;
+}
+
+.present-confirm-limit em {
+    display: block;
+    margin-block-end: 5px;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 18px;
+    color: #3e3d3c;
+}
+
+.present-confirm-limit p {
+    margin: 0;
+}
+
+/* 로그인 */
+/* ============================================== */
+.present-confirm-login {
+    padding-block: 20px;
+    text-align: center;
+}
+
+.present-confirm-login p {
+    margin: 0 0 10px;
+}
+
+.present-confirm-login .present-confirm-button {
+    text-decoration: none;
+}
+
+/* 배송정보, 개인정보 동의에 사용되는 버튼들 */
+.present-confirm-button-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0 0;
+}
+
+.present-confirm-button-group:not(:has(*)) {
+    display: none;
+}
+
+.present-confirm-button-group button {
+    flex: 1;
+    padding-block: 14px;
+    font-family: inherit;
+    font-size: 16px;
+    border: 1px solid;
+}
+
+.present-confirm-button-group button:first-child {
+    background-color: #fff;
+    color: #333;
+    border-color: #3e3d3c;
+}
+
+.present-confirm-button-group button:last-child {
+    background-color: #3e3d3c;
+    color: #fff;
+}
+
+.present-confirm-button-group [type="submit"]:only-child {
+    max-width: 300px;
+}
+
+
+/* 배송 정보 */
+/* ============================================== */
+.present-confirm-delivery-info {
+    margin-block-start: 20px;
+}
+
+.present-confirm-delivery-info-header {
+    margin: 0 0 10px;
+}
+
+.present-confirm-delivery-info-header .present-confirm-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+.present-confirm-delivery-info-header .delivery-edit-button {
+    margin-inline-start: auto;
+    font-size: 12px;
+    padding: 4px 15px;
+}
+
+.present-confirm-delivery-info fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.present-confirm-delivery-info table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid #999;
+}
+.present-confirm-delivery-info th {
+    padding-inline-start: 20px;
+    width: 150px;
+    height: 60px;
+    background-color: #f5f5f5;
+    font-size: 12px;
+}
+
+.present-confirm-delivery-info th,
+.present-confirm-delivery-info td {
+    text-align: start;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.present-confirm-delivery-info td {
+    padding: 15px 0 15px 16px;
+}
+
+.present-confirm-delivery-info label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.present-confirm-delivery-info label::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background-color: var(--nde-button-background-color);
+}
+
+
+.present-confirm-delivery-info input,
+.present-confirm-delivery-info select {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #ccc;
+    padding: 6px 8px;
+    font-size: 12px;
+    color: #333;
+}
+
+/* disabled 속성 또는 disabled 클래스가 있는 필드에 비활성화 스타일 적용 */
+.present-confirm-delivery-info :is(input, select, button):is(:disabled, .disabled, [readonly].disabled) {
+    background-color: #EFEFEF;
+    border: 1px solid #CCCCCC;
+    color: #777777;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+#address-search:disabled {
+    background-color: #D3D3D3;
+    color: #FFFFFF;
+}
+
+#address-search.editing:not(:disabled) {
+    background-color: #3E3D3C;
+    color: #FFFFFF;
+}
+
+.present-confirm-delivery-info-address {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas: 'zipcode button' 'address address' 'address-sub address-sub';
+    gap: 10px 8px;
+}
+
+.present-confirm-delivery-zipcode {
+    grid-area: zipcode;
+}
+
+.present-confirm-delivery-button {
+    grid-area: button;
+    border-color: #333;
+    color: #333;
+    font-size: 12px;
+}
+
+.present-confirm-delivery-address {
+    grid-area: address;
+}
+
+.present-confirm-delivery-address-sub {
+    grid-area: address-sub;
+}
+
+.present-confirm-delivery-info-message {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 개인정보 수집 이용 동의 */
+.present-confirm-personal-info {
+    padding-block-end: 80px;
+}
+
+.present-confirm-personal-content {
+    margin-block-end: 10px;
+    padding: 10px 16px 14px;
+    overflow-y: auto;
+    height: 144px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    color: #333;
+    line-height: 18px;
+}
+
+.present-confirm-personal-check-area label {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    font-size: 12px;
+}
+
+.present-confirm-personal-check-area label::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 1px solid #c5c5c5;
+}
+
+.present-confirm-personal-check-area label:has(:checked)::before {
+    background: url('../../img/common/input/check_on_small.png') no-repeat center center;
+}
+
+.present-confirm-personal-check-area [type="checkbox"] {
+    position: absolute;
+    z-index: -1;
+    width: 1px;
+    height: 1px;
+    
+} 
+
+.present-confirm-personal-check-area em {
+    color: #f7444e;
+    font-weight: 500;
+}
+
+
+.present-confirm-personal-info .present-confirm-notice {
+    margin-inline: auto;
+    padding: 15px;
+    width: var(--content-width);
+    background-color: var(--bg-color);
+}
+
+/* ===================== */
+/* 반응형 (768px 이하) */
+/* ===================== */
+@media (max-width: 768px) {
+    .present-confirm { --content-width: 100%; --pd-inline: 15px; }
+    .present-confirm-content { padding-inline: var(--pd-inline); padding-block: 0; width: 100%; box-sizing: border-box; }
+    .present-confirm-section { border-block-end: 1px solid #ccc; }
+    .present-confirm-section + .present-confirm-section { margin-block-start: 0; }
+    .present-confirm-title { margin: 0; padding: 10px var(--pd-inline); font-size: 14px; font-weight: bold; background-color: #f2f3f3; }
+
+    /* 선물 메시지 */
+    .gift-message { padding-block: 40px 20px; padding-inline: var(--pd-inline); }
+    .gift-message-deco { height: 188px; }
+    .gift-message-deco::before { backdrop-filter: blur(20px); }
+    .gift-message-deco img { width: 100%; height: 100%; }
+    .gift-message-from { font-size: 16px; }
+    .gift-message .present-card { max-width: 340px; width: 100%; }
+    .gift-message .present-card-image { margin-block-end: 0; height: 170px; }
+    .present-card-message { height: 106px; padding: 10px 16px 20px; border: solid #ccc; border-width: 0 1px 1px; }
+    .present-card-message-inner { font-size: 13px; }
+    .present-card-send-date { margin: 15px 0 0; }
+
+    /* 상품 정보 */
+    .present-confirm-content.present-confirm-gift-info { padding-inline: 0; }
+    .present-confirm-gift-info-content { padding-inline: var(--pd-inline); padding-block: 15px; }
+    .present-confirm-gift-item figure { width: 90px; height: 90px; }
+    .present-confirm-gift-item-title { font-size: 12px; }
+    .present-confirm-gift-item { border-width: 0; }
+    .present-confirm-gift-item-option { flex-direction: column; align-items: flex-start; }
+
+    /* 선물 수락 기한 */
+    .present-confirm-limit { padding: 20px var(--pd-inline); background-color: #f7f7f7; border-block-end-width: 0; }
+    .present-confirm-limit em { font-size: 14px; }
+    .present-confirm-limit p { font-size: 13px; color: #777; }
+    .present-confirm-limit time { display: block; margin-block-start: 5px; }
+
+    /* 로그인 */
+    .present-confirm-login { margin-block-start: 15px; padding: 20px var(--pd-inline); border-block-start: 1px solid #ccc; border-block-end-width: 0; background-color: #f7f7f7; }
+    .present-confirm-login p { font-size: 13px; }
+
+    /* 배송 정보 */
+    .present-confirm-delivery-info { border-block-start: 1px solid #ccc; padding-block-end: 20px; }
+    .present-confirm-delivery-info .present-confirm-title { width: 100%; }
+    /* 배송정보: 콘텐츠 패딩 제거 → 회색 타이틀바·테이블이 화면 풀폭. 인셋은 요소별로(모먼트 방식) */
+    .present-confirm-delivery-info .present-confirm-content { padding-inline: 0; }
+    /* 회색 타이틀바: 풀폭 배경 + 텍스트/버튼 좌우·상하 인셋 */
+    .present-confirm-delivery-info-header { margin-block-end: 0; }
+    .present-confirm-delivery-info-header .present-confirm-title { padding: 12px var(--pd-inline); }
+    /* 하단 액션 버튼: 좌우 여백 + 상단 간격 (마크업 인라인 margin-top:0 덮어쓰기) */
+    #delivery-action-buttons { padding-inline: var(--pd-inline); margin-block-start: 24px !important; }
+    .present-confirm-delivery-info table { border: solid #e8e8e8; border-width: 1px 0; }
+    .present-confirm-delivery-info th { width: 116px; height: 49px; padding-inline-start: 14px; font-size: 13px; font-weight: normal; background-color: #f8f8f8; }
+    .present-confirm-delivery-info td { padding: 9px 10px 9px 14px; }
+    .present-confirm-delivery-info tr:nth-child(n + 2) th,
+    .present-confirm-delivery-info tr:nth-child(n + 2) td { border-block-start: 1px solid #e8e8e8; }
+    .present-confirm-delivery-info-address { grid-template-columns: 1fr 60px; }
+    .present-confirm-delivery-info-address .present-confirm-button { height: 30px; padding: 7px 8px; background-color: #3e3d3c; color: #fff; font-size: 12px; font-weight: bold; }
+    .present-confirm-delivery-info-message { gap: 5px; }
+    .present-confirm-delivery-info label::before { background-color: var(--nde-button-background-color, #aa3d55); }
+
+    /* 버튼 그룹 */
+    .present-confirm-button-group { flex-direction: column; gap: 10px; padding-inline: 0; margin: 20px 0 0; }
+    .present-confirm-button-group button { flex: none; width: 100%; height: 43px; padding-block: 11px; font-size: 16px; border: 1px solid #3e3d3c; }
+    .present-confirm-button-group #reject-btn { background-color: #fff; color: #333; order: 2; }
+    .present-confirm-button-group [type="submit"] { background-color: #3e3d3c; color: #fff; order: 1; }
+    .present-confirm-button-group [type="submit"]:only-child { max-width: 100%; }
+
+    /* 개인정보 동의 */
+    .present-confirm-personal-info { padding-block-end: 60px; }
+    .present-confirm-personal-info .present-confirm-content { padding: 15px 15px 50px; }
+    .present-confirm-personal-content { height: 150px; padding: 10px 16px 20px; }
+    .present-confirm-personal-check-area { margin-block-end: 0; }
+    .present-confirm-personal-check-area label { display: flex; align-items: flex-start; gap: 6px; line-height: 19px; font-size: 12px; }
+    .present-confirm-personal-check-area label::before { flex: none; width: 20px; height: 20px; }
+    .present-confirm-personal-check-area em { font-weight: 400; font-style: normal; min-width: 30px; }
+    .present-confirm-personal-info .present-confirm-notice { width: 100%; box-sizing: border-box; }
+
+    /* 공지 */
+    .present-confirm-notice li { position: relative; padding-inline-start: 8px; }
+    .present-confirm-notice li::before { position: absolute; left: 0; }
+}

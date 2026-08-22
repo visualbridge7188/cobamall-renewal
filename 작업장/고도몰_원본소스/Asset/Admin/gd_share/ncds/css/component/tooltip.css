@@ -1,0 +1,119 @@
+/**
+ * NCDS 커스텀 툴팁 컴포넌트 공통 스타일
+ */
+.ncua-custom-tooltip {
+    [data-tooltip-type] {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    [data-tooltip-type]:has(:is(input, select, button):disabled)::before {
+        position: absolute;
+        bottom: 33px;
+        left: 50%;
+        transform: translateX(-50%) translateY(5px);
+        transition: opacity .18s ease;
+        color: var(--gray-400);
+        line-height: var(--line-height-xxs);
+        font-size: var(--font-size-xxs);
+        padding: 8px 12px;
+        background-color: var(--base-white);
+        border-radius: 6px;
+        box-shadow: 0 0 1px 0 #00000080,0 12px 16px -4px #10182814,0 4px 6px -2px #10182808;
+        display: inline-block;
+        width: max-content;
+        white-space: pre-wrap;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    [data-tooltip-type]:has(:is(input, select, button):disabled)::after {
+        content: "";
+        position: absolute;
+        bottom: 36px;
+        left: 50%;
+        transform: translateX(-50%) translateY(13px);
+        border-width: 5px 5px 0 5px;
+        border-style: solid;
+        border-color: var(--base-white) transparent transparent transparent;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    [data-tooltip-type]:has(:is(input, select, button):disabled):hover::before,
+    [data-tooltip-type]:has(:is(input, select, button):disabled):hover::after {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    [data-tooltip-type]:has(:is(input, select, button):disabled) {
+        cursor: not-allowed;
+    }
+
+    /* 커스텀 툴팁 컨텐츠를 가지고 있을 때만 relative 적용 */
+    &:has(&__content) {
+        position: relative;
+    }
+
+    /* 커스텀 툴팁 컨텐츠 */
+    .ncua-custom-tooltip__content {
+        position: absolute;
+        top: calc(100% + 16px);
+        left: 50%;
+        transform: translateX(-50%) translateY(-5px);
+        transition: opacity .18s ease, transform .18s ease;
+        color: var(--gray-400);
+        line-height: var(--line-height-xxs);
+        font-size: var(--font-size-xxs);
+        padding: 8px 12px;
+        background-color: var(--base-white);
+        border-radius: 6px;
+        box-shadow: 0 0 1px 0 #00000080, 0 12px 16px -4px #10182814, 0 4px 6px -2px #10182808;
+        width: max-content;
+        white-space: nowrap;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        text-align: left;
+    }
+
+    /* 아래쪽 노출: 툴팁 화살표 테두리 */
+    .ncua-custom-tooltip__content::before {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top: 0;
+        border-bottom-color: rgba(0, 0, 0, 0.1);
+        z-index: -1;
+    }
+
+    /* 아래쪽 노출: 툴팁 화살표  */
+    .ncua-custom-tooltip__content::after {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(1px);
+        border: 5px solid transparent;
+        border-top: 0;
+        border-bottom-color: var(--base-white);
+    }
+
+    /* hover 시 툴팁 표시 */
+    [data-tooltip-type]:hover .ncua-custom-tooltip__content,
+    [data-tooltip-type] .ncua-custom-tooltip__content:hover {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+}

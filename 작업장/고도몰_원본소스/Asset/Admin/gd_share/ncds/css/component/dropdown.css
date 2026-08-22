@@ -1,0 +1,11 @@
+/* ncua css 1.8로 업데이트 되면서 마크업 구조 변경, 기존 마크업 구조로 design_skin_list.php에서 사용되고 있어서 삭제된 css코드 추가 */
+.ncua-dropdown__item-clickable-layer {
+    background: #0000;
+    border-radius: 6px;
+    bottom: 2px;
+    left: 6px;
+    position: absolute;
+    right: 6px;
+    top: 2px;
+    z-index: 1
+}

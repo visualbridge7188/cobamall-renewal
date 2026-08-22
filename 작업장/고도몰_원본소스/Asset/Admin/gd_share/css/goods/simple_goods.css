@@ -1,0 +1,1071 @@
+/* 간편상품등록 */
+.simple-goods-register .page-header.ncua-page-header {
+    border-bottom: none;
+}
+
+.sgr-notification-banner {
+    position: relative;
+    z-index: 1;
+    margin: -21px -30px 24px -30px;
+}
+
+.sgr-notification-banner .ncua-full-width-notification.ncua-full-width-notification--info {
+    border-color: #C3B5FD !important;
+}
+
+.sgr-notification-banner .ncua-full-width-notification__content {
+    gap: 12px !important;
+}
+
+.sgr-notification-banner .ncua-full-width-notification {
+    margin: 0 !important;
+}
+
+.sgr-notification-banner .ncua-full-width-notification__container {
+    height: auto !important;
+    max-width: none !important;
+}
+
+.sgr-inline-link {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: #1570EF;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.sgr-inline-link:hover {
+    color: #175CD3;
+}
+
+.simple-goods-register .ncua-accordion--blue {
+    gap: 8px;
+    align-items: normal;
+}
+
+.simple-goods-register .ncua-table--vertical td>.ncua-accordion--blue {
+    margin-inline: 16px;
+}
+
+.simple-goods-register .ncua-notice-info--red {
+    color: var(--primary-red-500, #EC1D31);
+}
+
+/* ── 간편상품등록 전용 유틸리티 ── */
+.simple-goods-register .sgr-readonly-text {
+    color: var(--gray-500, #464748);
+    font-size: var(--font-size-xs, 13px);
+}
+
+.simple-goods-register .sgr-input-field {
+    display: inline-block;
+}
+
+/* Content Area */
+.sgr-option-info-section {
+    display: flex;
+    min-height: 48px;
+    overflow: visible;
+    border-top: 1px solid #EAECF0;
+}
+
+.sgr-option-info-section__label {
+    width: 240px;
+    min-width: 240px;
+    background: #F6F7F9;
+    padding: 10px 16px;
+    font-family: 'Commerce Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 18px;
+    color: #464748;
+    border-right: 1px solid #EAECF0;
+    display: flex;
+    align-items: center;
+}
+
+.sgr-option-info-section__content {
+    flex: 1;
+    min-width: 0;
+    overflow: visible;
+    padding: 16px;
+    display: block;
+}
+
+/* 공급사구분 */
+.sgr-scm-area {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.sgr-scm-area__radio {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    min-height: 28px;
+}
+
+.sgr-scm-area__main {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 280px;
+}
+
+.sgr-scm-area__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.ncua-table .sgr-scm-area__tags {
+    min-height: 0;
+    padding-block: 0;
+}
+
+.ncua-table .is-tall-row>td {
+    vertical-align: top;
+}
+
+.ncua-table .is-tall-row>td>div {
+    padding: 16px;
+}
+
+/* Category Wrap */
+.ncua-table .sgr-cate-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+}
+
+/* Category Toolbar */
+.sgr-cate-toolbar {
+    display: flex;
+    gap: 8px;
+}
+
+/* Category Container */
+.sgr-cate-container {
+    border: 1px solid #D3D4D8;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+    background: #FFFFFF;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%;
+    min-width: 0;
+}
+
+/* Breadcrumb */
+.sgr-cate-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 24px;
+    background: #F6F7F9;
+    border-bottom: 1px solid #D3D4D8;
+    box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+    font-size: 13px;
+    color: var(--gray-700);
+    font-weight: 400;
+    line-height: 18px;
+    flex-shrink: 0;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.sgr-cate-breadcrumb>span:not(.sgr-cate-breadcrumb__sep) {
+    flex: 0 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sgr-cate-breadcrumb__sep {
+    color: var(--gray-300);
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.sgr-cate-breadcrumb__sep svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* Column Browser */
+.sgr-cate-browser {
+    display: flex;
+    flex-direction: row;
+    background: #FFFFFF;
+    height: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.sgr-cate-column {
+    flex: 0 0 22%;
+    width: 22%;
+    border-right: 1px solid #EAECF0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 16px 8px 8px;
+    overflow-y: auto;
+    min-width: 0;
+}
+
+.sgr-cate-column:last-of-type {
+    border-right: none;
+}
+
+/* Category Node */
+.sgr-cate-node {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--gray-400);
+    font-weight: 400;
+    line-height: 18px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    text-align: left;
+    width: 100%;
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+.sgr-cate-node:hover {
+    background: #F6F7F9;
+}
+
+.sgr-cate-node.is-selected {
+    background: #D3D4D8;
+    color: var(--gray-700);
+    font-weight: 500;
+}
+
+.sgr-cate-node__text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
+}
+
+.sgr-cate-node__arrow {
+    color: var(--gray-300);
+    display: inline-flex;
+    flex-shrink: 0;
+}
+
+.sgr-cate-node.is-selected .sgr-cate-node__arrow {
+    color: var(--gray-500);
+}
+
+.sgr-cate-node__arrow svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Select Button Area */
+.sgr-cate-select-btn {
+    flex: 0 0 12%;
+    width: 12%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border-left: 1px solid #EAECF0;
+}
+
+/* Loading / Error */
+.sgr-cate-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.sgr-cate-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    color: #A4A5A8;
+    font-size: 12px;
+}
+
+/* Selected Category Table */
+.sgr-cate-wrap .ncua-table--horizontal th>div,
+.sgr-cate-wrap .ncua-table--horizontal td>div {
+    justify-content: center;
+    text-align: center;
+}
+
+.sgr-cate-wrap .ncua-table--horizontal .sgr-cate-path {
+    justify-content: flex-start;
+    text-align: left;
+    overflow: hidden;
+}
+
+.sgr-cate-wrap .ncua-table--horizontal .sgr-cate-path>span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sgr-cate-wrap .ncua-table--horizontal td .flag+.flag {
+    margin-left: 4px;
+}
+
+
+/* Block 2: 노출/판매 설정 Switch 레이아웃 */
+.ncua-table .sgr-display-sale-switches {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+}
+
+.sgr-display-sale-switches__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sgr-display-sale-switches__label {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--gray-700, #171818);
+    white-space: nowrap;
+    min-width: 88px;
+}
+
+/* Block 4: 판매정보 */
+.sgr-price-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sgr-unit-text {
+    font-size: 13px;
+    font-weight: 400;
+    color: #475467;
+    white-space: nowrap;
+}
+
+.ncua-table .sgr-stock-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    justify-content: center;
+}
+
+.sgr-stock-radio-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+.sgr-stock-input-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sgr-stock-input-area .ncua-input.is-disabled {
+    background-color: var(--gray-50, #F9FAFB);
+    border-color: var(--gray-200, #EAECF0);
+}
+
+.sgr-stock-input-area .ncua-input.is-disabled input {
+    color: var(--gray-300, #D0D5DD);
+    cursor: not-allowed;
+}
+
+.sgr-stock-detail__label {
+    font-size: 13px;
+    font-weight: 400;
+    color: #475467;
+    white-space: nowrap;
+}
+
+/* Block 3: 추가정보 */
+.sgr-brand-field {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Block 6: 상품이미지 */
+.ncua-table .sgr-image-upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+}
+
+.ncua-table .sgr-auto-resize-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 12px;
+}
+
+/* Block 7: 상세정보 */
+.sgr-search-keyword-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
+.sgr-search-keyword-input {
+    flex: 1;
+    min-width: 0;
+}
+
+.ncua-table .sgr-detail-desc {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+}
+
+.sgr-detail-desc__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.sgr-editor-wrap {
+    position: relative;
+    min-height: 300px;
+}
+
+.sgr-editor-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.sgr-editor-same-notice {
+    position: relative;
+    z-index: 11;
+    padding: 8px 0;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+    color: var(--gray-400);
+}
+
+/* file input은 JS DataTransfer로만 .files 설정되므로 화면 노출 차단 — display:none 이어도 POST 시 .files 가 함께 전송됨 */
+#sgrOriginalImageInput {
+    display: none !important;
+}
+
+/* Block 5: 옵션/재고 */
+.sgr-option-switch-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.sgr-option-helper-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sgr-option-radio-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+.sgr-option-checkbox-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+/* 옵션 등록 컨테이너 */
+#sgr-option-register-area {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.sgr-opt-register {
+    border: 1px solid #EAECF0;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+    background: #fff;
+    overflow: hidden;
+    width: 100%;
+    min-width: 840px;
+}
+
+.sgr-opt-register__header {
+    display: flex;
+    align-items: center;
+    background: var(--gray-100);
+    border-bottom: 1px solid #D3D4D8;
+    height: 40px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray-500);
+}
+
+.sgr-opt-register__header .sgr-opt-register__col-name {
+    padding: 0 16px;
+    text-align: center;
+}
+
+.sgr-opt-register__header .sgr-opt-register__col-val {
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sgr-opt-register__header .sgr-opt-register__col-del {
+    padding: 0 16px;
+    text-align: center;
+}
+
+.sgr-opt-register__col-name {
+    width: 220px;
+    min-width: 220px;
+    flex-shrink: 0;
+    border-right: 1px solid #D3D4D8;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+}
+
+.sgr-opt-register__col-val {
+    flex: 1;
+    min-width: 0;
+    border-right: 1px solid #D3D4D8;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+}
+
+.sgr-opt-register__col-del {
+    width: 80px;
+    min-width: 80px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sgr-opt-register__row {
+    display: flex;
+    border-bottom: 1px solid #EAECF0;
+}
+
+.sgr-opt-register__row:has(+ .sgr-opt-register__footer) {
+    border-bottom: none;
+}
+
+.sgr-opt-register__row .sgr-opt-register__col-name {
+    padding: 12px 16px;
+    border-right-color: #EAECF0;
+    display: block;
+}
+
+.sgr-opt-register__row .sgr-opt-register__col-val {
+    padding: 12px 16px;
+    border-right-color: #EAECF0;
+    display: block;
+}
+
+.sgr-opt-register__row .sgr-opt-register__col-del {
+    border-right: none;
+    padding: 12px 16px;
+}
+
+.sgr-opt-register__footer {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 24px;
+    background: #F6F7F9;
+    border-top: 1px solid #D3D4D8;
+}
+
+/* 옵션값 카드 */
+.sgr-opt-vname-card {
+    border: 1px solid #D3D4D8;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sgr-opt-vname-card>.ncua-btn {
+    align-self: flex-start;
+}
+
+.sgr-opt-vname {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+}
+
+.sgr-opt-vname-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-right: 40px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #475467;
+}
+
+.sgr-opt-vname-header__col--fill {
+    flex: 1;
+    min-width: 120px;
+    text-align: left;
+}
+
+.sgr-opt-vname-header__col--price {
+    width: 90px;
+    flex: none;
+    text-align: left;
+}
+
+.sgr-opt-vname-header__col--image {
+    width: 100px;
+    flex: none;
+    text-align: left;
+}
+
+.sgr-opt-vname-header__col--url {
+    flex: 1;
+    min-width: 120px;
+    display: none;
+    text-align: left;
+}
+
+.sgr-opt-vname-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+}
+
+.sgr-opt-vname-row__val {
+    flex: 1;
+    min-width: 120px;
+}
+
+.sgr-opt-vname-row__val .ncua-input,
+.sgr-opt-vname-row__val .ncua-input__content-wrap,
+.sgr-opt-vname-row__val .ncua-input__content,
+.sgr-opt-vname-row__val .ncua-input__field,
+.sgr-opt-vname-row__val .ncua-input__field input {
+    width: 100%;
+}
+
+.sgr-opt-vname-row__price {
+    width: 90px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sgr-opt-vname-row__image {
+    width: 100px;
+    flex: none;
+}
+
+.sgr-opt-vname-row__url {
+    flex: 1;
+    min-width: 120px;
+    display: none;
+}
+
+.sgr-opt-vname-row__del {
+    width: 28px;
+    flex-shrink: 0;
+}
+
+.sgr-opt-vname-card.is-url-active .sgr-opt-vname-row__url,
+.sgr-opt-vname-card.is-url-active .sgr-opt-vname-header__col--url {
+    display: block;
+}
+
+.sgr-opt-vname-card.is-url-active .sgr-opt-vname-row__url {
+    display: flex;
+}
+
+.sgr-opt-vname-card.is-image-hidden .sgr-opt-vname-header__col--image,
+.sgr-opt-vname-card.is-image-hidden .sgr-opt-vname-header__col--url,
+.sgr-opt-vname-card.is-image-hidden .sgr-opt-vname-row__image,
+.sgr-opt-vname-card.is-image-hidden .sgr-opt-vname-row__url {
+    display: none !important;
+}
+
+/* text count input — 동적 row에도 delegation으로 동작 */
+.sgr-text-count-input {
+    box-sizing: border-box;
+}
+
+.simple-goods-register .ncua-input--full-width-with-count .ncua-input__field-text-count {
+    min-width: auto;
+}
+
+/* ── Option DataGrid — NCDS(ncua-data-grid / ncua-table) 기반 ─── */
+/* NCDS 가 outer 박스(border/radius/shadow)·헤더 배경·셀/행 보더를 제공한다.
+   아래는 정적 HTML 환경에서 NCDS 기본값과 충돌하는 부분만 override 한다. */
+/* NCDS DataGrid 와 동일하게 table-layout:fixed + 컬럼별 명시 폭 사용.
+   auto 로 두면 남는 폭이 체크박스 등 좁은 컬럼까지 분배돼 넓어진다.
+   width:100% + min-width:1140px(디자인 기준폭) → 컨테이너가 1140px 미만이면 가로 스크롤, 이상이면 채움. */
+.sgr-option-grid .sgr-option-table.ncua-table__table {
+    table-layout: fixed;
+    width: 100%;
+    min-width: 1140px;
+}
+
+/* NCDS .ncua-data-grid__table / .ncua-table 는 overflow:hidden → 넓은 테이블 가로 스크롤 노출 */
+.sgr-option-grid .ncua-data-grid__table {
+    overflow: visible;
+}
+
+.sgr-option-grid .sgr-option-table-container {
+    overflow-x: auto;
+}
+
+/* 단일 카드: outer(.ncua-data-grid)에 border/radius/shadow, inner(.ncua-table) 박스는 중화.
+   (NCDS 정식은 .ncua-table-wrapper 가 inner 박스를 reset 하지만 React 전용 DOM이라 직접 처리) */
+.sgr-option-grid {
+    border: 1px solid var(--gray-100);
+    border-radius: 8px;
+    box-shadow: var(--shadow-xs);
+    overflow: hidden;
+}
+
+.sgr-option-grid .ncua-table.sgr-option-table-container {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.sgr-option-grid .ncua-table__header-cell,
+.ncua-data-grid .ncua-table__header-cell,
+.simple-goods-register .ncua-table--vertical .ncua-table .ncua-table__header > .ncua-table__row th:first-child,
+.simple-goods-register .ncua-table--vertical .ncua-table .ncua-table__body > .ncua-table__row td:first-child {
+    border-right: 0;
+    padding: 0;
+}
+.simple-goods-register .ncua-table--vertical .ncua-table .ncua-table__body > .ncua-table__row td:last-child {
+    padding: 0;
+}
+
+/* NCDS table.css 가 .ncua-table--horizontal 헤더 양끝 셀에 border-radius 5px 을 줌 →
+   바깥 .sgr-option-grid 프레임 radius 와 어긋나 이중 박스처럼 보이므로 중화 */
+.sgr-option-grid .sgr-option-table thead>tr>th:first-child {
+    border-top-left-radius: 0;
+}
+
+.sgr-option-grid .sgr-option-table thead>tr>th:last-child {
+    border-top-right-radius: 0;
+}
+
+.sgr-option-table select {
+    height: 28px;
+    font-size: 12px;
+    border: 1px solid var(--gray-200, #D3D4D8);
+    border-radius: 6px;
+    padding: 0 24px 0 8px;
+    background: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%23344054' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 4px center;
+    background-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    color: var(--gray-700);
+}
+
+/* 와이어프레임 기준: 옵션 테이블의 모든 입력박스·셀렉트박스 너비를 85px 로 통일.
+   특정 컬럼을 하드코딩하지 않고 첫 컬럼(체크박스/드래그)만 제외한 전체 셀에 일반 적용 →
+   조회항목설정으로 어떤 컬럼이 노출되든 폭이 동일하고, 셀의 가운데 정렬(td>div justify-content:center)로 모두 중앙에 온다. */
+.sgr-option-grid .sgr-option-table td:not(.sgr-opt-col-dragcheck) .ncua-input,
+.sgr-option-grid .sgr-option-table td:not(.sgr-opt-col-dragcheck) select {
+    width: 85px !important;
+    max-width: 85px !important;
+    min-width: 0 !important;
+}
+
+/* 드래그 핸들 + 체크박스 병합 셀 — NCDS 체크박스 셀 표준폭(74px)으로 좁게.
+   내부 여백을 줄이고 좌측 정렬하여 두 요소가 끼지 않게 한다. */
+/* width 에 !important 필수 — table-layout:fixed 잉여 폭 분배 + NCDS 셀 폭 선언과 맞물려
+   일반 선언으로는 체크박스 컬럼이 슬랙을 흡수해 넓어진다. !important 라야 74px 로 고정됨(검증 완료). */
+.sgr-option-table th.sgr-opt-col-dragcheck,
+.sgr-option-table td.sgr-opt-col-dragcheck {
+    width: 74px !important;
+    min-width: 74px;
+    max-width: 74px;
+    white-space: nowrap;
+    padding-inline: 4px;
+}
+
+/* 첫 컬럼(체크박스+드래그) 제외 모든 열은 동일 너비.
+   table-layout:fixed 에서 width:auto 로 두면 잉여 공간이 열에 균등 분배되어 폭이 모두 같아진다.
+   (개별 width 지정 시 CDN/잉여분배와 맞물려 어긋나므로 auto !important 로 통일) */
+.sgr-option-grid .sgr-option-table th:not(.sgr-opt-col-dragcheck),
+.sgr-option-grid .sgr-option-table td:not(.sgr-opt-col-dragcheck) {
+    width: auto !important;
+    min-width: 0 !important;
+    white-space: nowrap;
+}
+
+.sgr-option-table td.sgr-opt-col-name {
+    text-align: center;
+}
+
+.sgr-option-grid .sgr-option-table .ncua-table__row > td,
+.sgr-option-grid .sgr-option-table .ncua-table__row > th {
+    padding: 0;
+}
+
+/* 셀 내부 여백/행 높이(min 48px)는 NCDS 공통 .ncua-table__cell(height:48px; padding:10px 8px) 정의를 따른다.
+   여기서는 정렬만 담당하고 padding 은 덧붙이지 않는다. */
+.sgr-option-table td>div,
+.sgr-option-table th>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding-block: 10px; */
+    min-height: 48px;
+    /* flex-wrap: wrap; */
+}
+
+/* 셀 inner div 좌우 패딩 통일 — NCDS CDN 이 헤더(8px)/본문(16px) 비대칭 패딩을 주어
+   상단 일괄적용 행과 하위 행의 select 너비가 달라진다. 8px 로 통일해 모든 행 select 폭을 동일하게.
+   justify-content:center 도 !important 로 강제 — 입력+단위(원/개) 인라인 flex 래퍼가
+   일반 선언을 무시하고 좌측 정렬되므로, 모든 셀 내용을 가운데로 통일한다. */
+.sgr-option-grid .sgr-option-table td>div,
+.sgr-option-grid .sgr-option-table th>div {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    justify-content: center !important;
+    /* 인라인 flex 래퍼가 flex-wrap 을 지정하지 않아 NCDS CDN 기본 wrap 을 따른다.
+       컬럼이 좁아지면 단위(원/개)가 아랫줄로 떨어지므로 한 줄로 고정. */
+    flex-wrap: nowrap !important;
+}
+/* 일괄적용 행의 자체옵션코드·메모 셀은 .ncua-input 가 td 직속(래퍼 div 없음)이라
+   위 td>div 가운데 규칙으로 자신이 안 옮겨진다 → margin auto 로 셀 가운데 정렬. */
+.sgr-option-grid .sgr-option-table td>.ncua-input {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.sgr-option-table thead>tr:first-child>th>div {
+    min-height: 40px;
+}
+
+.sgr-option-table__row>td.sgr-opt-col-dragcheck>div {
+    gap: 4px;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.simple-goods-register .sgr-option-grid .ncua-table .ncua-table__body > .sgr-option-table__row:hover > td {
+    background: rgba(246, 247, 249, 0.4);
+}
+
+.simple-goods-register .sgr-option-grid .ncua-table .ncua-table__body > .sgr-option-table__row.is-selected > td {
+    background: #F6F7F9;
+}
+
+.sgr-option-table__row.is-dragging {
+    opacity: 0.4;
+    background: #EAECF0;
+}
+
+/* 드롭 인디케이터 — NCDS .ncua-table__row--drag-over-top 스타일.
+   NCDS 원본은 th:first-child:after 대상이나 본 그리드의 첫 셀은 td 이므로 td:first-child 로 미러 */
+.sgr-option-grid .ncua-table__row--drag-over-top>td:first-child {
+    position: relative;
+}
+
+.sgr-option-grid .ncua-table__row--drag-over-top>td:first-child:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10000px;
+    height: 1px;
+    background-color: var(--gray-600);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.sgr-option-table__bulk-row {
+    background: var(--gray-50, #F6F7F9);
+}
+
+.sgr-option-grid .sgr-option-table__bulk-row>td {
+    border-top: 0;
+    border-bottom: 1px solid var(--gray-100, #EAECF0);
+    padding: 8px;
+    vertical-align: middle;
+}
+
+.sgr-option-table__bulk-row select {
+    height: 28px;
+    font-size: 12px;
+    border: 1px solid var(--gray-200, #D3D4D8);
+    border-radius: 6px;
+    padding: 0 24px 0 8px;
+    background: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%23344054' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 4px center;
+    background-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    color: var(--gray-700);
+}
+
+.sgr-option-table .js-sgr-bulk-first-cell {
+    white-space: nowrap;
+}
+
+.sgr-option-table__bulk-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: max-content;
+}
+
+.sgr-option-table__bulk-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #344054;
+}
+
+.sgr-option-table__empty td {
+    padding: 24px 16px;
+    text-align: center;
+    font-size: 13px;
+    color: #98A2B3;
+}
+
+.sgr-option-drag-handle {
+    width: 14px;
+    height: 14px;
+    color: #A4A5A8;
+    cursor: grab;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* 액션바 배경/보더/라운드/flex/패딩은 NCDS .ncua-data-grid__action-bar 가 제공 */
+.sgr-option-action-bar__left,
+.sgr-option-action-bar__right {
+    display: flex;
+    align-items: center;
+}
+
+.sgr-option-sort-btns.ncua-button-group {
+    display: inline-flex;
+    align-items: center;
+}
+
+.sgr-option-sort-btns .ncua-button-group__item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: #FFFFFF;
+    border: 1px solid #D0D5DD;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+}
+
+.sgr-option-sort-btns .ncua-button-group__item+.ncua-button-group__item {
+    border-left: none;
+}
+
+.sgr-option-sort-btns .ncua-button-group__item:first-child {
+    border-radius: 6px 0 0 6px;
+}
+
+.sgr-option-sort-btns .ncua-button-group__item:last-child {
+    border-radius: 0 6px 6px 0;
+}
+
+.sgr-option-sort-btns .ncua-button-group__item:hover:not([disabled]) {
+    background: #F9FAFB;
+}
+
+.sgr-option-sort-btns .ncua-button-group__item[disabled],
+.sgr-option-sort-btns .ncua-button-group__item:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* 자주쓰는 옵션으로 등록하기 버튼 disabled 시 */
+[data-modal-open="optSaveFreqModal"]:disabled,
+[data-modal-open="optSaveFreqModal"][disabled] {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.ncua-input.sgr-count-over .ncua-input__field-text-count-current,
+.ncua-input.sgr-count-over .ncua-input__field-text-count span {
+    color: var(--primary-red-600, #dc0a2b);
+}

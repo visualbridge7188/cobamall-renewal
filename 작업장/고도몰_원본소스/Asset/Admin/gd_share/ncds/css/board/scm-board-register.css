@@ -1,0 +1,19 @@
+.ncua-content.scm-board-register{
+    .ncua-input-full-width {
+        flex: 1;
+    }
+
+    .radio-btn-group {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+    }
+
+    .file-input-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+}

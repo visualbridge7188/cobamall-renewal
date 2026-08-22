@@ -1,0 +1,171 @@
+/* ncds 랑 같이 사용하는 css 입니다. */
+/* 고도몰 따라하기 기능 css */
+
+.shopping-tutorial a {
+    text-decoration: none;
+}
+
+.shopping-tutorial {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: var(--base-white);
+    border: 1px solid var(--gray-100);
+    box-shadow: var(--shadow-xl);
+}
+
+.shopping-tutorial-header {
+    position: relative;
+    padding: 32px 24px 12px;
+}
+
+.shopping-tutorial-header .title {
+    color: var(--gray-700);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+}
+
+.shopping-tutorial-header .ncua-horizontal-tab {
+    display: flex;
+    height: 36px;
+    align-items: center;
+    padding: 0 4px;
+}
+
+.shopping-tutorial-header .description {
+    color: var(--gray-400);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    margin-block: 4px 24px;
+}
+
+.shopping-tutorial-header .close-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.shopping-tutorial-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 24px 48px;
+}
+
+.shopping-tutorial-content::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    border: 3px solid #fff;
+}
+
+.shopping-tutorial-content::-webkit-scrollbar-thumb {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.shopping-tutorial-content::-webkit-scrollbar-track {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+}
+
+.shopping-tutorial-check-container + .shopping-tutorial-check-container {
+    margin-top: 24px;
+}
+
+.shopping-tutorial-check-container .title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--gray-700);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-bottom: 11px;
+}
+
+.shopping-tutorial-check-item {
+    position: relative;
+    display: block;
+    padding: 12px 16px;
+    outline: 1px solid var(--gray-200);
+    border-radius: 12px;
+    background-color: var(--base-white);
+    cursor: pointer;
+    transition: outline 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.1s ease-in-out;
+}
+
+.shopping-tutorial-check-item .ncua-tooltip {
+    position: static;
+}
+
+.shopping-tutorial-check-item.active,
+.shopping-tutorial-check-item:hover {
+    outline: 1px solid var(--gray-400);
+    box-shadow: var(--shadow-xs);
+}
+
+.shopping-tutorial-check-item:hover .ncua-tooltip .ncua-tooltip__bg {
+    display: block;
+}
+
+.shopping-tutorial-check-item:hover .ncua-tooltip .ncua-tooltip__bg--top {
+    bottom: calc(100% - 8px);
+}
+
+.shopping-tutorial-check-item + .shopping-tutorial-check-item {
+    margin-top: 8px;
+}
+
+.shopping-tutorial-check-item.disabled {
+    background-color: var(--gray-50);
+}
+
+.shopping-tutorial-check-item .check-item-title {
+    color: var(--gray-700);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+.shopping-tutorial-check-item.disabled .check-item-title {
+    color: var(--gray-400);
+}
+
+.shopping-tutorial-check-item .check-item-description {
+    color: var(--gray-400);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.shopping-tutorial-link-container {
+    margin-block: 24px;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.shopping-tutorial-link-item .text {
+    color: var(--gray-400);
+    font-weight: 400;
+}
+
+.shopping-tutorial-link-item .link {
+    font-weight: 500;
+    color: var(--blue-500);
+    text-decoration: underline;
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+.shopping-tutorial-link-item + .shopping-tutorial-link-item {
+    margin-top: 4px;
+}
+
+.shopping-tutorial .dismiss-footer {
+    border-top: 1px solid var(--gray-100);
+    padding-top: 24px;
+}

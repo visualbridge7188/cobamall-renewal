@@ -1,0 +1,41 @@
+.ncua-content.mobile-send-preview {
+    .message-preview-container {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        overflow-y: auto;
+        max-height: 440px;
+        padding: 24px 24px 0;
+        margin-block-start: 16px;
+        background-color: var(--gray-100);
+
+        .message-preview-title {
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weights-commerce-sans-1);
+            color: var(--gray-700);
+        }
+        .message-preview-content {
+            margin-top: 8px;
+            font-size: var(--font-size-xs);
+            color: var(--gray-400);
+        }
+    }
+    
+    .mobile-preview {
+        width: 420px;
+    }
+
+    .message-auth-code-container {
+        margin-block-start: 20px;
+    }
+    
+    .message-auth-code-container .ncua-table,
+    .ncua-table + ul {
+        margin-block-start: 8px;
+    }
+
+    .caution-ad-message {
+        margin-block-start: 8px;
+        color: var(--primary-red-600);
+    }
+}

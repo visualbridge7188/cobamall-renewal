@@ -1,0 +1,108 @@
+/* =============================== */
+/* panel card */
+/* =============================== */
+.ncua-card {
+    background-color: var(--base-white, #fff);
+    box-shadow: var(--shadow-sm, 0px 1px 3px 0px #1018281a, 0px 1px 2px 0px #1018280f);
+    border: 1px solid var(--gray-100, #eaecf0);
+    border-radius: 12px;
+}
+
+.ncua-card + .ncua-card {
+    margin-block-start: 16px;
+}
+
+.ncua-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    border-block-end: 1px solid var(--gray-100, #eaecf0);
+    font-size: var(--font-size-md, 16px);
+    font-weight: var(--font-weights-commerce-sans-2, 700);
+    line-height: var(--line-heights-md, 24px);
+
+    &:has(.ncua-card__toggle):not(.opened) {
+        border-block-end: none;
+    }
+}
+
+.ncua-card__toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    background-color: transparent;
+
+    &::before {
+        position: absolute;
+        left: 3px;
+        bottom: 0;
+        content: '';
+        width: calc(100% - 20px);
+        height: 1px;
+    }
+
+    &::after {
+        content: '';
+        width: 24px;
+        height: 24px;
+        background: url('../../image/chevron-up-gray-300.svg') no-repeat center center / contain;
+        transform: rotate(180deg);
+    }
+
+    &.opened::after {
+        transform: rotate(0deg);
+    }
+
+}
+
+.ncua-card__sub-info {
+    font-size: var(--font-size-xs, 13px);
+    font-weight: var(--font-weights-commerce-sans-0, 400);
+    color: var(--gray-700);
+}
+
+.ncua-card__sub-info strong {
+    color: var(--primary-red-500);
+    font-weight: var(--font-weights-commerce-sans-0, 400);
+}
+
+.ncua-card__title {
+    font: inherit;
+    margin: 0;
+}
+
+.ncua-card__body {
+    padding: 16px 24px;
+}
+
+.ncua-card--no-border .ncua-card__header {
+    padding-bottom: 0;
+    border-block-end: none;
+}
+
+.ncua-card--no-border .ncua-card__body {
+    padding-top: 8px;
+}
+
+.ncua-card__body-title--sm,
+.ncua-card__body-title--xs {
+    color: var(--gray-700);
+    font-weight: var(--font-weights-commerce-sans-2);
+}
+
+.ncua-card__body-title--sm {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-heights-sm);
+}
+
+.ncua-card__body-title--xs {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-heights-xs);
+}
+
+.ncua-card__body-title--required::before {
+    content: '*';
+    color: var(--primary-red-500);
+    margin-right: 4px;
+}

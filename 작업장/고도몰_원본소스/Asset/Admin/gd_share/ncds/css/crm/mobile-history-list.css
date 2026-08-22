@@ -1,0 +1,90 @@
+/* 성공, 실패, 회차 공통 */
+.mobile-history-list .ncua-count {
+    color: var(--gray-400);
+}
+
+.mobile-history-list .ncua-horizontal-tab {
+    margin-block-end: 24px;
+}
+
+.mobile-history-list .ncua-horizontal-tab .ncua-horizontal-tab__item + .ncua-horizontal-tab__item {
+    margin-inline-start: 8px;
+}
+
+.mobile-history-list .ncua-btn-group {
+    position: relative;
+    z-index: 1;
+    justify-content: space-between;
+}
+
+.mobile-history-list .mobile-history-list-info {
+    color: var(--gray-400);
+}
+
+.mobile-history-list .mobile-history-list-info li::before {
+    content: '\2022';
+    margin-inline-end: 4px;
+}
+
+.mobile-history-list-search-btns {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.mobile-history-list .ncua-search-result__actions-select {
+    margin-inline-end: 0;
+}
+
+.mobile-history-list .ncua-search-result__actions {
+    justify-content: flex-end;
+}
+
+.mobile-history-list .ncua-table--horizontal {
+    text-align: center;
+}
+
+.mobile-history-list .ncua-table--horizontal .ncua-align-items-start {
+    justify-content: flex-start;
+}
+
+.mobile-history-list .ncua-table--horizontal .ncua-flex-column {
+    gap: 8px;
+}
+
+.mobile-history-list-message-content-btn {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    background-color: transparent;
+    cursor: pointer;
+    text-decoration: underline;
+    text-overflow: ellipsis;
+    text-align: start;
+}
+
+.ncds.mobile-history-list .ncua-search-result__summary ~ .ncua-search-result__content .ncua-table--horizontal {
+    border-radius: 0;
+}
+
+/* crm > 모바일 메시지 내역 마이앱에서 툴팁 화살표 제거 */
+.ncds.mobile-history-list:has(.mobile-history-list-hidden-arrow) .ncua-tooltip__bg::after {
+    content: none;
+}
+
+/* 반응형 */
+@media (width <= 1673px) {
+    .ncds.mobile-history-list .ncua-search-result .ncua-table {
+        overflow-x: auto;
+    }
+
+    .ncds.mobile-history-list .ncua-search-result .ncua-table col:not([width])  {
+        width: 150px;
+    }
+}
+
+.mobile-history-list .myapp-layout-shift [data-tooltip-icon-type] {
+  width: 22px;
+}

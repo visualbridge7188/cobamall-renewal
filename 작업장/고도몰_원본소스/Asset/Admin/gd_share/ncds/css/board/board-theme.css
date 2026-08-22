@@ -1,0 +1,24 @@
+.board-theme {
+
+    .board-theme-search-keyword {
+        gap: 4px;
+    }
+
+    .ncua-page-header__actions .ncua-btn:hover {
+        text-decoration: none;
+    }
+
+    .board-theme-table th > div,
+    .board-theme-table td > div {
+        justify-content: center;
+    }
+
+    .board-theme-table .ncua-btn:hover {
+        text-decoration: none;
+    }
+
+    .board-theme-table a:not(.ncua-btn) {
+        color: var(--blue-500);
+        text-decoration: underline;
+    }
+}

@@ -1,0 +1,23 @@
+/* =============================== */
+/* 관리자 동시 접속 감지 페이지 (NCDS) */
+/* =============================== */
+
+.duplicate-login-ncds-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 20px;
+}
+
+.duplicate-login-ncds-desc {
+    font-size: var(--font-size-sm);
+    color: var(--gray-500);
+    line-height: var(--line-heights-sm);
+    margin: 0;
+}
+
+.duplicate-login-ncds-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

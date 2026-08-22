@@ -1,0 +1,184 @@
+@charset "UTF-8";
+/*========================================================================
+
+RESET : 수정 및 삭제 주의 : 쇼핑몰 화면이 정상적으로 보이지 않을 수 있습니다.
+
+========================================================================*/
+/* Common */
+a, a:hover { text-decoration:none; }
+a { color:inherit; }
+em, address { font-style:normal; }
+input:focus, button:focus, select:focus { outline:none; }
+textarea { resize:vertical; }
+img { vertical-align:top; }
+
+.w100 { width:100%; }
+.mot3 { -khtml-transition:all 0.3s ease; -moz-transition:all 0.3s ease; -ms-transition:all 0.3s ease; -o-transition:all 0.3s ease; transition:all 0.3s ease; }
+
+/* RESET LAYOUT */
+#header_wrap { padding:0 !important; }
+#header_wrap header.h_on { position:static; }
+
+/* SLIDE MENU RESET */
+.nav_tabmenu_box .nav_tabmenu li.on span { background:#404040; }
+.category_side > li > a.on,
+.category_side > li > ul > li > a.on { color:#404040; }
+.category_side > li ul { border-top:1px solid #404040; }
+.nav_banner { min-height:20px; margin:8px auto 10px; border-bottom:1px solid #404040; }
+.nav_banner .left_logo { display:none; }
+.nav_banner .nav_login { position:relative; top:0; left:0; text-align:left; }
+.nav_banner .nav_login ul li:first-child { padding-left:0; }
+.nav_banner .login_txt { position:static; padding:10px 0; line-height:1.4; }
+.nav_banner .login_txt p.name strong { color:#404040; }
+
+/* 해외몰 아이콘 */
+.nav_language .language_box { vertical-align:top; }
+
+/* TOP SEARCH - 팝업형 */
+.search-layer-box { display:none; }
+.search-layer-box .h_search_btn { right:15px; background:#404040; border-color:#404040; }
+.search-layer-box .h_search_close_btn { display:none; }
+.search-layer-box ._header_search .layer_search_box dl { padding:10px 70px 10px 15px; }
+.search-layer-box ._header_search .layer_search_content { overflow-y:visible; }
+.search-layer-box ._header_search .layer_search_content .search_bx_area { display:block; border-bottom:0; line-height:1.2; }
+.search-layer-box ._header_search .layer_search_content .search_bx_area .latest_search_tab { display:block; border-color:#404040; border-top:1px solid #e5e5e5; }
+.search-layer-box ._header_search .layer_search_content .search_bx_area .latest_search_tab.on { border-bottom-width:1px; border-color:#b4b4b4; }
+.search-layer-box ._header_search .layer_search_content .search_bx_area .latest_search_tab h3 { padding:2px 0 2px 2px; text-align:left; }
+.search-layer-box ._header_search .layer_search_content .search_bx_area .latest_search_list_box { position:static; }
+.search-layer-box ._header_search .layer_search_content .search_bx_area .latest_search_list_box .latest_search_list li:last-child { border-bottom:0; }
+.search-layer-box ._header_search .layer_search_content .search_bx_area .latest_search_list_box .latest_search_list li div.link { width:70%; }
+.search-layer-box ._header_search .layer_search_content .search_bx_area .latest_search_list_box .latest_search_list li a { width:100%; padding:6px 20px 5px 0; }
+.search-layer-box ._header_search .layer_search_content .search_bx_area .latest_search_list_box .latest_search_list li div.date { line-height:21px; }
+.search-layer-box ._header_search .layer_search_content .search_bx_area .latest_search_list_box .latest_search_list li div.keyword_delete button { height:21px; }
+.search-layer-box ._header_search .layer_search_content .search_bx_area .latest_search_list_box .latest_search_del { border-top:1px solid #e5e5e5; }
+
+/* TOP SEARCH - 고정형 */
+.search-box { position:absolute; top:25px; right:15px; width:auto; margin:0; padding:0; background:none; border:1px solid #604f26; }
+.search-box ._header_search { float:left; }
+.search-box ._header_search .layer_search_box { background:none; }
+.search-box ._header_search .layer_search_box dl { padding:0 30px 0 0; }
+.search-box ._header_search .layer_search_box dl dd .keyword_box input[type="search"] { width:117px; height:34px; padding:0; border:0; background:none; }
+.search-box ._header_search .layer_search_box dl dd .keyword_box button { display:none !important; }
+.search-box .h_search_btn { width:34px; height:100%; top:0; right:0; font-size:0; background:url("../../_dbook/img/common/top_search_btn.gif") no-repeat 50%; background-size:auto 60%; border:0; }
+.search-box .h_search_close_btn { display:none; }
+.search-box ._header_search .layer_search_content { display:none; }
+
+/*  GOODS VIEW INFO */
+.goods_view .detail_tab_info { display:none; }
+.goods_view .detail_info h3 { width:100%; white-space:normal; }
+.openblock_content dl dd { word-break:break-all; }
+
+/* 품절 아이콘 */
+.goods_prd_img .img_box .soldout_img { background-size:40% auto; background-color:rgba(255,255,255,0.3); }
+
+/* 회원가입 필수 아이콘 위치 */
+.join .input_title.required { background-position:0 14px; }
+
+/* 메인 상품진열 타이틀 - 더보기 */
+._goods_display_main { position:relative; }
+._goods_display_main h3 { position:absolute; top:0; right:0; height:26px; margin:5px 0; padding:0; font-size:0; border-bottom:0; text-indent:-9999px;}
+._goods_display_main h3 .more_btn_box { top:-30px; right:15px; font-size:12px; white-space:nowrap; text-indent:0; }
+.main_more_btn2,
+.recommend_more_btn { padding:2px 6px; }
+
+
+/*========================================================================
+COLOR RESET
+========================================================================*/
+/* IMG COLOR */
+.join .input_title.required,
+.table_style4 th.required,
+.add_cart_layer p,
+.add_wish_layer p,
+.goods_list .goods_list_content .goods_top_box .goods_arr_box .goods_view_type ul li:nth-child(1) button.on,
+.goods_list .goods_list_content .goods_top_box .goods_arr_box .goods_view_type ul li:nth-child(2) button.on,
+.goods_list .goods_list_content .goods_top_box .goods_arr_box .goods_view_type ul li:nth-child(3) button.on,
+.goods_search .goods_search_content .goods_top_box .goods_arr_box .goods_view_type ul li:nth-child(1) button.on,
+.goods_search .goods_search_content .goods_top_box .goods_arr_box .goods_view_type ul li:nth-child(2) button.on,
+.goods_search .goods_search_content .goods_top_box .goods_arr_box .goods_view_type ul li:nth-child(3) button.on { filter: grayscale(1); }
+
+/* FONT COLOR */
+.d_comment_recommend_btn strong,
+.cart .cart_content_box .my_goods li .mid_box .right_box .info .itembody .prc,
+.cart .my_buy dl.total dd, 
+.goods_view .detail_btm_tab_menu_box .detail_btm_tab_menu ul li a span,
+.c_red, 
+.c-red, 
+.c_point,
+.order .pay .my_goods li .info .itembody .prc,
+.deposit .my_money p.money,
+.mileage .my_money p.money,
+.member_summary .member_grade .grade_text span strong,
+.brand_initial_box .tab_initial li.on,
+.goods_search .tit .prd_num span,
+.order .order_box .table_box .tx,
+.order .order_box .table_box .point_view p span,
+.goods_board_view .reply_box .item_list_summary .writer { color:#000; }
+
+/* BORDER COLOR */
+.cart .cart_content_box .supplier_total,
+.goods_view .detail_btm_tab_menu_box .detail_btm_tab_menu ul li.selected,
+.add_cart_layer .wrap, 
+.add_wish_layer .wrap { border-color:#404040; }
+
+/* BUTTON COLOR */
+.board_btn, 
+.board_search_btn, 
+.detail_order_btn, 
+.select_prd_today_del_btn, 
+.today_cart_add_btn,
+.member_login_order_btn, 
+.cart_coupon_apply, 
+.cart_all_order_btn,
+.join_next_btn, 
+.zipcode_btn, 
+.join_ok_btn, 
+.join_login_btn,
+.select_prd_del_btn, 
+.wish_cart_add_btn,
+.pw_confirm_btn,
+.modify_pw_btn,
+.detail_apply_btn,
+.ly_coupon_apply_btn1,
+.zipcode_btn1,
+.dellvery_add_btn,
+.coupon_search_apply_btn,
+.order_payment_btn,
+.ly_coupon_apply_btn,
+.coupon_ok_btn,
+.coupon .tab_menu ul li.active,
+.write_save_btn,
+.btn_box .write_save_btn,
+.add_address_btn,
+.address_save_btn,
+.add_cart_layer .btn_cart, 
+.add_wish_layer .btn_wish,
+.faq_search_btn,
+.prd_select_btn,
+.item_select_btn_box .prd_select_btn,
+.view_comment_btn,
+.view_modify_btn,
+.view_del_btn { color:#ffffff; background:#404040; border-color:#404040; }
+
+/* BUTTON COLOR 2 */
+.goods_view_image_slider .slick-dots li.slick-active button, 
+.detail_more_btn { color:#ffffff; background:#404040; }
+
+/* BUTTON COLOR 3 */
+.detail_write_btn, 
+.detail_cart_btn,
+.add_cart_layer .btn_close, 
+.add_wish_layer .btn_close { color:#404040; border-color:#404040; }
+
+/* ACTIVE COLOR */
+.order .order_box .delivery_box .tab_menu ul li.active,
+.brand_initial_box .initial_cate li.on span,
+.coupon_apply_btn,
+.pw_find_confirm_btn,
+.pw_find_next_btn,
+.find_password_btn,
+.find_id_btn,
+.ly_select_search_btn,
+.prd_select_btn,
+.goods_board_qa_list li .item_list_summary .board_left .author_box .ico_ans3,
+.d_pw_confirm_btn { background:#404040; border-color:#404040; }

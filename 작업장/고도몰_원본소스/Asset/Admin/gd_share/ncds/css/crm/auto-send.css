@@ -1,0 +1,89 @@
+.auto_send {
+    .auto-recommend-layout {
+        background-color: var(--gray-100);
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .auto-recommend-item {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 8px;
+        background: var(--base-white);
+        box-shadow: var(--shadow-xs);
+        padding: 20px;
+        flex: 0 1 auto;
+        flex-basis: calc((100% - 16px) / 2);
+        min-width: 0;
+
+        .auto-recommend-item-title {
+            font-weight: var(--font-weights-commerce-sans-2);
+            font-size: var(--font-size-sm);
+            color: var(--gray-700);
+            margin-bottom: 4px;
+        }
+
+        .auto-recommend-item-description {
+            font-weight: var(--font-weights-commerce-sans-0);
+            font-size: var(--font-size-xs);
+            color: var(--gray-400);
+            margin-bottom: 24px;
+        }
+
+        .auto-recommend-item-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    .ncua-search-result__actions {
+        justify-content: flex-end;
+    }
+
+    .auto-list-item-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+
+        .auto-list-item-title {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .auto-list-item-description {
+            color: var(--gray-400);
+        }
+    }
+
+    .ncua-table.ncua-table--horizontal {
+        overflow-x: auto;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+
+        colgroup col.col-auto-width{
+            min-width: 396px;
+        }
+    }
+}
+
+
+/* #container-wrap 해상도에 따른 auto-recommend-item width 조정 */
+/* 1600px 이상: 가로 3개 */
+@media (min-width: 1600px) {
+    .auto_send .auto-recommend-item {
+        flex-basis: calc((100% - 32px) / 3);
+    }
+}
+
+/* 1920px 이상: 384px 고정 (가로 개수 무관) */
+@media (min-width: 1920px) {
+    .auto_send .auto-recommend-item {
+        flex: none;
+        flex-basis: auto;
+        max-width: 384px;
+    }
+}

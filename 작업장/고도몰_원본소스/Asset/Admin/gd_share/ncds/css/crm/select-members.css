@@ -1,0 +1,117 @@
+.popup-select-members.layout-blank #content .col-xs-12 {
+    padding: 0;
+}
+
+.ncua-content.ncua-select-members {
+    min-width: 1905px;
+    padding: 24px 24px 12px;
+
+    .ncua-select-members__content {
+        display: flex;
+        gap: 40px;
+    }
+
+    .js-search-detail.opened {
+        border-top: 1px solid var(--gray-100);
+    }
+
+    .ncua-select-members__select-actions {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+
+        .ncua-btn {
+            overflow: hidden;
+            width: 56px;
+            background: var(--base-white) url('../../image/chevron-right.png') no-repeat center center / 20px 20px;
+            text-indent: -9999em;
+        }
+
+        .ncua-btn.active {
+            background: var(--base-white) url('../../image/chevron-right-fill.png') no-repeat center center / 20px 20px;
+        }
+
+        .ncua-btn:hover {
+            background: var(--gray-50) url('../../image/chevron-right-fill.png') no-repeat center center / 20px 20px;
+        }
+
+        li:last-child .ncua-btn {
+            transform: rotate(180deg);
+        }
+    }
+
+    .ncua-select-members__article .ncua-pagination:has(.pagination:not(:empty)) {
+        margin-bottom: 56px;
+    }
+
+    .ncua-select-members__title {
+        margin-block: 0 8px;
+        font-weight: var(--font-weights-commerce-sans-1);
+        font-size: var(--font-size-md);
+        line-height: var(--line-heights-md);
+    }
+
+    .ncua-btn-group {
+        position: relative;
+    }
+
+    .ncua-btn-group .ncua-btn--toggle {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .ncua-search-result__actions .ncua-search-result__summary {
+        margin-block-end: 0;
+        padding-inline-start: 0;
+    }
+
+    .ncua-search-result .ncua-table--horizontal td > div {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .ncua-add-members form {
+        height: calc(100% - 32px);
+    }
+
+    .ncua-add-members .ncua-search-result {
+        margin-block-start: 0;
+    }
+
+    .ncua-add-members .ncua-table {
+        box-shadow: none;
+    }
+
+    .id-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .color-primary {
+        color: var(--primary-red-450);
+    }
+    
+    .member-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .member-icon img {
+        width: 100%;
+    }
+
+    .ncua-select-members__footer {
+        position: fixed;
+        z-index: 5;
+        inset: auto 0 0;
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+        padding: 16px 20px;
+        border-block-start: 1px solid var(--gray-100);
+        background-color: var(--base-white);
+    }
+}

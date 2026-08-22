@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+/* reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button {margin:0;padding:0}
+fieldset,img {border:0 none;vertical-align:top;}
+dl,ul,ol,li {list-style:none}
+blockquote, q {quotes: none}
+blockquote:before, blockquote:after,q:before, q:after {content:'';content:none}
+input,select,textarea,button {vertical-align:middle}
+* {-webkit-appearance:none;-webkit-border-radius:0}
+button {border:0 none;background-color:transparent;cursor:pointer}
+body {background:#fff}
+body,th,td,input,select,textarea,button {
+    font-size: 12px;
+    line-height: 1.5;
+    font-family: var(--nde-font-family-body), "pretendard", "Malgun Gothic", "맑은 고딕", Verdana, AppleGothic, Dotum, "돋움", sans-serif;
+    color: #333;
+}
+a {color:#333;text-decoration:none}
+a:active, a:hover {text-decoration:none;}
+address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}

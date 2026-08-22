@@ -1,0 +1,799 @@
+.ncua-content.mobile-send {
+    .section-container .ncua-card:not(:first-child) {
+        margin-top: 40px;
+    }
+
+    .mobile-preview__slider {
+        margin-block-start: 48px;
+    }
+
+    .mobile-preview__slider .slick-dots {
+        bottom: 10px;
+    }
+
+    .mobile-preview__slider .slick-list {
+        padding-inline-start: 74px;
+    }
+
+    .preview-content-wrap .mobile-preview {
+        min-height: 390px;
+    }
+
+    .preview-content-wrap + .ncua-notice-info {
+        margin-top: 16px;
+    }
+
+    .display-none {
+        display: none !important;
+    }
+
+    .tooltip-align {
+        display: flex;
+        align-items: center;
+    }
+
+    .ncua-accordion {
+        margin-top: 32px;
+    }
+
+    .ncua-input-width-320 {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .ncua-input-width-520 {
+        width: 100%;
+        max-width: 520px;
+    }
+
+    .ncua-table .ncua-flex-column {
+        align-items: flex-start;
+    }
+
+    .ncua-panel .ncua-horizontal-tab {
+        margin: 0;
+    }
+
+    .recipient-count-box {
+        display: flex;
+        align-items: center;
+        padding: 24px 0 0 16px;
+    }
+
+    .member-select,
+    .crm-group-select {
+        display: inline-block;
+        margin-right: 16px;
+    }
+
+    .member-select {
+        display: inline-flex;
+        gap: 4px;
+    }
+
+    .recipient-count-text {
+        color: var(--gray-700);
+    }
+
+    .recipient-count-text > strong {
+        margin: 0 4px;
+        font-weight: var(--font-weights-commerce-sans-2);
+    }
+
+    .recipient-count-text .point-text {
+        margin-left: 8px;
+        color: var(--primary-red-600);
+    }
+
+    .recipient-count-text span strong {
+        font-weight: var(--font-weights-commerce-sans-0);
+    }
+
+    .recipient-info {
+        margin-top: 40px;
+    }
+
+    .recipient-info-list,
+    .crm-group-notice {
+        margin-top: 16px;
+    }
+
+    .crm-group-notice {
+        padding: 12px 16px;
+        background-color: var(--blue-50);
+        border: 1px solid var(--blue-200);
+        border-radius: 8px;
+    }
+
+    .crm-group-notice p {
+        color: var(--gray-500);
+        font-weight: var(--font-weights-commerce-sans-2);
+    }
+
+    .crm-group-notice ul {
+        margin-top: 8px;
+    }
+
+    .crm-group-notice button {
+        margin-top: 8px;
+    }
+
+    .crm-group-extraction-text {
+        color: var(--gray-400);
+        font-weight: var(--font-weights-commerce-sans-0);
+    }
+
+    .refresh-crm-group {
+        margin-left: 8px;
+    }
+
+    .refresh-crm-group img {
+        width: 14px;
+    }
+
+    .member-tag {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        margin: 16px 16px 0;
+        padding: 12px 8px;
+        background-color: var(--gray-50);
+    }
+
+    .excel-upload-area, 
+    .direct-input-area {
+        margin: 16px 16px 0;
+    }
+
+    .excel-upload-area .ncua-file-input__hint-list {
+        padding-left: 0;
+    }
+
+    .excel-upload-area .ncua-file-tag {
+        margin-top: 6px;
+        padding: 12px 8px;
+        background-color: var(--gray-50);
+    }
+
+    .excel-upload-area .ncua-file-tag:empty {
+        display: none;
+    }
+
+    .excel-download-btn {
+        margin-top: 16px;
+    }
+
+    .direct-input-area {
+        width: 400px;
+        
+    }
+
+    .direct-member-search {
+        display: flex;
+        gap: 4px;
+    }
+
+    .direct-member-search .ncua-input {
+        width: 324px;
+    }
+
+    .direct-member-count-wrap {
+        margin-top: 8px;
+        border: 1px solid var(--gray-200);
+        border-radius: 8px;
+        box-shadow: var(--shadow-xs);
+    }
+
+    .direct-member-count {
+        padding: 8px 16px;
+        background-color: var(--gray-50);
+        border-radius: 8px 8px 0 0;
+        border-bottom: 1px solid var(--gray-200);
+        color: var(--gray-500);
+        font-weight: var(--font-weights-commerce-sans-0);
+    }
+
+    .direct-member-count span {
+        color: var(--primary-red-450);
+        font-weight: var(--font-weights-commerce-sans-2);
+    }
+
+    .direct-member-list {
+        overflow-y: auto;
+        max-height: 126px;
+        padding: 4px 6px;
+        box-shadow: var(--shadow-xs);
+    }
+
+    .direct-member-list li {
+        padding: 2px 0;
+    }
+
+    .direct-member-list li.no-data {
+        padding: 45px 0;
+        line-height: 1.5;
+    }
+
+    .direct-member-list:has(.no-data) {
+        max-height: none;
+    }
+
+    .direct-member-list li label {
+        display: block;
+        padding: 10px 8px;
+        cursor: pointer;
+    }
+
+    .direct-member-list li label:hover,
+    .direct-member-list li label:has(input:checked) {
+        background-color: var(--gray-50);
+        border-radius: 6px;
+    }
+
+    .direct-member-list li label:has(input:checked) {
+        background: var(--gray-50) url('../../image/check-fill.svg') no-repeat right 8px center / 16px 16px;
+    }
+
+    .direct-member-list li span {
+        color: var(--gray-600);
+        font-weight: var(--font-weights-commerce-sans-1);
+    }
+
+    .direct-member-button-wrap {
+        display: flex;
+        gap: 4px;
+        justify-content: flex-end;
+        padding: 8px 16px;
+    }
+
+    .ncua-border-group-box + .ncua-horizontal-tab {
+        margin-top: 16px;
+    }
+
+    .message-content .ncua-input--textarea {
+        margin-top: 8px;
+    }
+
+    .message-content .ncua-input--textarea .ncua-hint-text {
+        color: var(--primary-red-600);
+    }
+
+    .message-content .ncua-input__text-count {
+        margin-left: auto;
+    }
+
+    .variable-selector-wrap {
+        margin-top: 16px;
+    }   
+
+    .variable-selector-wrap .ncua-card__body-title--xs + ul,
+    .variable-selector-wrap .ncua-card__body-title--xs + .chip-selector {
+        margin-top: 8px;
+    }
+
+    .variable-selector-wrap ul + .chip-selector {
+        margin-top: 16px;
+    }
+
+    .message-performance-analysis {
+        margin-top: 16px;
+    }
+
+    .add-link-wrap {
+        display: flex;
+        gap: 4px;
+        margin-top: 8px;
+    }
+
+    .add-link-wrap .ncua-input {
+        flex: 1;
+    }
+
+    .message-performance-analysis .chip-button-wrap:not(:empty) {
+        margin-top: 8px;
+    }
+
+    .template-control-wrap {
+        display: flex;
+        gap: 4px;
+        margin-top: 40px;
+        padding-top: 16px;
+        border-top: 1px solid var(--gray-100);
+    }
+
+    .sms-lms-notice {
+        margin-top: 40px;
+    }
+
+    .ad-phrase-add {
+        margin-top: 32px;
+    }
+
+    .ad-phrase-add .ncua-checkbox-field {
+        margin-top: 8px;
+    }
+
+    .campaign-name-input-wrap {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .campaign-name-input-wrap .ncua-input {
+        flex: 1;
+    }
+
+    .campaign-message-radio-wrap {
+        display: flex;
+        gap: 16px;
+        margin: 24px 0;
+    }
+
+    .campaign-message-radio-wrap:has(+ .campaign-wide-item-carousel-notice) {
+        margin: 24px 0 0;
+    }
+
+    .campaign-message-radio-wrap + .campaign-wide-item-carousel-notice {
+        margin-top: 8px;
+    }
+
+    .message-content.campaign-type-component {
+        margin-top: 16px;
+    }
+
+    .campaign-title {
+        margin-top: 24px;
+    }
+
+    .campaign-title .ncua-input {
+        margin-top: 8px;
+    }
+
+    .campaign-title .ncua-input__content {
+        flex: 1;
+    }
+
+    .ncua-btn.refresh-btn {
+        padding-left: 18px;
+        background: url('../../image/refresh-cw-02.svg') no-repeat left 0px center / 14px 14px;
+    }
+
+    .ncua-btn.minus-btn {
+        padding-left: 26px;
+        background: url('../../image/minus.svg') no-repeat left 10px center / 12px 12px;
+    }
+
+    .kakao-action-buttons {
+        margin-top: 16px;
+    }
+
+    .kakao-action-buttons .ncua-card__body-title-wrap {
+        align-items: flex-end;
+    }
+
+    .kakao-action-buttons .ncua-card__body-title-wrap + .ncua-table {
+        margin-top: 8px;
+    }
+
+    .kakao-action-buttons .ncua-table + .ncua-table {
+        margin-top: 16px;
+    }
+
+    .kakao-action-buttons .button-name-input .ncua-input__content {
+        flex: 1;
+    }
+
+    .kakao-action-buttons .button-wrap {
+        display: flex;
+        gap: 8px;
+    }
+
+    .coupon-detail-container {
+        width: 100%;
+    }
+
+    .coupon-detail-container:empty {
+        display: none;
+    }
+
+    .coupon-detail-wrap {
+        position: relative;
+        width: 100%;
+        padding: 16px;
+        background-color: var(--gray-50);
+        border-radius: 8px;
+        border: 1px solid var(--gray-200);
+    }
+
+    .coupon-detail-title {
+        color: var(--gray-700);
+        font-size: var(--font-size-xs);
+        line-height: var(--line-heights-xs);
+        font-weight: var(--font-weights-commerce-sans-1);
+    }
+
+    .coupon-detail-info {
+        display: grid;
+        grid-template-columns: 54px 1fr;
+        row-gap: 8px;
+        margin: 8px 0 0;
+    }
+
+    .coupon-detail-info dt {
+        color: var(--gray-400);
+        font-size: var(--font-size-xxs);
+        font-weight: var(--font-weights-commerce-sans-1);
+    }
+
+    .coupon-detail-info dd {
+        color: var(--gray-700);
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weights-commerce-sans-0);
+    }
+
+    .coupon-detail-input-wrap {
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+        margin-top: 16px;
+    }
+
+    .coupon-detail-input-wrap .ncua-input__content {
+        flex: 1;
+        max-width: 400px;
+    }
+
+    .remove-coupon-btn {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        text-indent: -9999px;
+        background: url('../../image/trash-03.svg') no-repeat center center / 16px 16px;
+    }
+
+    .empty-coupon-data {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 8px;
+        padding: 24px 0;
+        border: 1px solid var(--gray-100);
+        border-radius: 8px;
+        box-shadow: var(--shadow-xs);
+    }
+
+    .empty-coupon-data p {
+        color: var(--gray-400);
+        font-weight: var(--font-weights-commerce-sans-0);
+    }
+
+    .link-column-button-wrap .ncua-input__content-wrap {
+        width: 100%;
+        gap: 8px;
+    }
+
+    .link-column-button-wrap .ncua-input__content {
+        flex: 1;
+    }
+
+    .kakao-friend-point-info {
+        margin-top: 40px;
+    }
+
+    .kakao-friend-point-info .ncua-table {
+        margin-top: 8px;
+    }
+
+    .kakao-friend-point-info .ncua-table strong {
+        color: var(--primary-red-450);
+        font-weight: var(--font-weights-commerce-sans-2);
+    }
+
+    .kakao-friend-point-info-notice {
+        margin-top: 8px;
+    }
+
+    .kakao-friend-notice {
+        margin-top: 32px;
+    }
+
+    .alternative-message-notice {
+        margin-top: 40px;
+    }
+
+    .kakao-notification-notice {
+        margin-top: 40px;
+    }
+
+    .myapp-condition-setting .myapp-condition-setting-notice {
+        margin-top: 8px;
+    }
+
+    .myapp-condition-setting .ncua-table {
+        margin-top: 8px;
+    }
+
+    .myapp-condition-setting + .message-content {
+        margin-top: 16px;
+    }
+
+    .myapp-condition-setting.display-none + .message-content {
+        margin-top: 24px;
+    }
+
+    .campaign-name.display-none ~ .myapp-condition-setting.display-none + .message-content {
+        margin-top: 0;
+    }
+
+    .myapp-message-title {
+        margin-top: 8px;
+    }
+
+    .myapp-message-title .ncua-input__content {
+        flex: 1;
+    }
+
+    .myapp-condition-additional-setting {
+        margin-top: 16px;
+    }
+
+    .myapp-condition-additional-setting .ncua-table {
+        margin-top: 8px;
+    }
+
+    .myapp-condition-additional-setting .ncua-table .my-app-image-container {
+        display: block;
+    }
+
+    .myapp-condition-additional-setting .ncua-input__content {
+        flex: 1;
+    }
+
+    .myapp-condition-additional-setting .ncua-file-tag {
+        margin-top: 6px;
+        padding: 12px 8px;
+        background-color: var(--gray-50);
+    }
+
+    .myapp-condition-additional-setting .ncua-file-tag:empty {
+        display: none;
+    }
+
+    .url-input-wrap {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        gap: 4px;
+
+        /* 긴 base URL을 잘라내지 않고 전체 노출 — 줄바꿈으로 흘려보내 입력창·검증 버튼 폭을 보장한다 */
+        #mobileUrl {
+            min-width: 0;
+            word-break: break-all;
+        }
+
+        .ncua-input {
+            flex-shrink: 0;
+        }
+
+        /* 폭이 좁아질 때 버튼이 압축되며 '검증' 문구가 세로로 깨지는 현상 방지 */
+        .ncua-btn {
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+    }
+
+    .myapp-notice {
+        margin-top: 40px;
+    }
+
+    .campaign-image .ncua-table {
+        margin-top: 8px;
+    }
+
+    .campaign-image .ncua-file-input {
+        display: none;
+    }
+
+    .campaign-carousel-count {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 24px;
+    }
+
+    .campaign-carousel-count .ncua-horizontal-tab {
+        display: inline-block;
+    }
+
+    .campaign-carousel-count .ncua-horizontal-tab .swiper-wrapper {
+        display: inline-flex;
+        width: auto;
+    }
+
+    .campaign-carousel-count .ncua-horizontal-tab__item .ncua-tab-close {
+        display: none;
+    }
+
+    .campaign-carousel-count .ncua-horizontal-tab__item:has(.is-active) .ncua-tab-close {
+        display: block;
+    }
+
+    .campaign-carousel-count .ncua-tab-button {
+        padding: 5px 12px;
+    }
+
+    .campaign-carousel-count .ncua-horizontal-tab__item:has(.ncua-tab-close) .ncua-tab-button.is-active {
+        padding-inline-end: 34px;
+    }
+
+    .campaign-carousel-count + .campaign-title.display-none + .campaign-image {
+        margin-top: 16px;
+    }
+
+    .campaign-carousel-count.display-none + .campaign-title.display-none + .campaign-image {
+        margin-top: 24px;
+    }
+
+    .campaign-image-notice,
+    .campaign-wide-image-notice,
+    .campaign-carousel-feed-notice {
+        margin-top: 8px;
+    }
+
+    .campaign-item-list {
+        margin-top: 16px;
+    }
+
+    .campaign-item-list .ncua-table {
+        margin-top: 8px;
+    }
+
+    .campaign-item-list .ncua-table .ncua-input__content {
+        flex: 1;
+    }
+
+    .campaign-item-list-notice {
+        margin-top: 8px;
+    }
+
+    .campaign-item-list .ncua-file-input {
+        display: none;
+    }
+
+    .select-alarm-template {
+        margin-top: 8px;
+        padding: 16px;
+        border: 1px solid var(--gray-200);
+        border-radius: 8px;
+    }
+
+    .select-alarm-template .template-option-title {
+        font-size: var(--font-size-xxs);
+        font-weight: var(--font-weights-commerce-sans-1);
+        color: var(--gray-600);
+    }
+
+    .select-alarm-template .template-option-title:not(:first-child) {
+        margin-top: 24px;
+    }
+
+    .select-alarm-template .template-option-title span {
+        margin-right: 2px;
+        color: var(--primary-red-500);
+        font-size: 11px;
+    }
+
+    .select-alarm-template .template-option-title + * {
+        margin-top: 4px;
+    }
+
+    .select-alarm-template .template-radio-wrap {
+        display: flex;
+        gap: 16px;
+        padding: 0 8px;
+    }
+
+    .select-alarm-template .ncua-select {
+        display: inline-block;
+    }
+
+    .send-time-setting-content {
+        margin-top: 16px;
+    }
+
+    .send-time-setting-content:has(.send-setting-reserved.display-none + .send-setting-repeat.display-none) {
+        margin-top: 0;
+    }
+
+    .send-setting-reserved-date,
+    .send-setting-repeat-date,
+    .send-setting-repeat-cycle-select,
+    .send-cycle-monthly {
+        gap: 8px;
+        align-items: center;
+    }
+
+    .send-setting-reserved-date,
+    .send-setting-repeat-date {
+        display: flex;
+    }
+
+    .send-setting-repeat-cycle-select,
+    .send-cycle-monthly,
+    .send-cycle-weekly {
+        display: inline-flex;
+    }
+
+    .send-cycle-weekly {
+        gap: 16px;
+        align-items: center;
+    }
+
+    .send-setting-reserved .send-setting-repeat-notice,
+    .send-setting-repeat .send-setting-repeat-notice {
+        margin-top: 8px;
+    }
+
+    .send-setting-repeat .ncua-card__body-title--sm {
+        margin-top: 24px;
+    }
+
+    .send-setting-repeat .send-setting-repeat-cycle {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-top: 8px;
+    }
+
+    .send-setting-repeat-cycle-select {
+        margin-right: 16px;
+    }
+
+    .send-setting-repeat-cycle-select span {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .send-cycle-weekly, .send-cycle-monthly {
+        position: relative;
+        margin-left: 16px;
+    }
+
+    :is(.send-cycle-weekly, .send-cycle-monthly)::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -16px;
+        width: 1px;
+        height: 12px;
+        background-color: var(--gray-200);
+    }
+
+    .send-cycle-monthly-notice {
+        font-size: var(--font-size-xxs);
+        font-weight: var(--font-weights-commerce-sans-0);
+        color: var(--gray-400);
+        white-space: nowrap;
+    }
+
+    .send-tag-wrap {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-top: 16px;
+        padding: 12px 8px;
+        background-color: var(--gray-50);
+    }
+
+    .send-tag-wrap .send-tag-content {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .send-tag-wrap:has(.send-tag-content:empty) {
+        display: none;
+    }
+}

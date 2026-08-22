@@ -1,0 +1,19 @@
+<?php
+
+/* 
+ * Copyright (C) 2025 NHN COMMERCE. - All Rights Reserved 
+ * 
+ * Unauthorized copying or redistribution of this file in source and binary forms via any medium 
+ * is strictly prohibited. 
+ */
+
+namespace Bundle\Controller\Admin\Share\Ncds;
+
+class LayerGoodsController extends \Controller\Admin\Share\LayerGoodsController
+{
+    public function index()
+    {
+        parent::index();
+        $this->getView()->setPageName('share/ncds/layer_goods.php');
+    }
+}

@@ -1,0 +1,451 @@
+/* =============================== */
+/* breadcrumb, 컨텐츠 타이틀 영역 스타일 재정의 */
+/* =============================== */
+#header .breadcrumb {
+    --gap: 8px;
+
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    padding: 24px 40px 0;
+    height: 40px;
+    color: var(--gray-400);
+    border-block-end: none;
+    line-height: var(--line-height-xxs, 16px);
+    font-family: var(--font-family-ncua-commerce-sans);
+}
+
+#header .breadcrumb::before {
+    content: none;
+}
+
+#header .breadcrumb > li + li:before {
+    margin-inline-end: var(--gap);
+    width: 16px;
+    height: 16px;
+    background: url('../../image/breadcrumb-arrow-right.png') no-repeat center center / cover;
+}
+
+#header .breadcrumb > li:last-child {
+    color: var(--gray-600, #2f2f30);
+    font-weight: var(--font-weights-commerce-sans-1, 500);
+    text-decoration: none;
+}
+
+body:not(.sitemap):not(.cache) #container-wrap #content.row {
+    margin-top: 40px;
+}
+
+#container-wrap #content.row[style] {
+    margin-top: 0;
+}
+
+.ncua-content-wrap .page-header,
+.sitemap .page-header,
+.crm-recipe-send .page-header {
+    position: relative;
+    margin-block:0 24px;
+    margin-inline-start: -30px;
+    padding-block: 4px 24px;
+    padding-inline: 40px;
+    box-shadow: var(--shadow-sm, 0px 1px 3px 0px #1018281a, 0px 1px 2px 0px #1018280f);
+}
+
+/* iframe 가 있는 페이지들은 page-header의 margin bottom으로 인해 간격이 벌어짐 */
+.ncua-content-wrap:has(:is([name="aggregator"], [name="marketingBooster"])) .page-header {
+    margin-block-end: 0 !important;
+}
+
+/* 회원 > crm은 제외 */
+#content:has(:is([name="crmScheduledSend"], [name="mobileMessageHistory"], [name="crmRecipe"])),
+body:not(:is(.crm-group-create, .crm-group-list)) #content:has(:is([name="crmgroup"])) {
+    margin-top: 0 !important;
+}
+.ncua-content-wrap:has(:is([name="crmScheduledSend"], [name="mobileMessageHistory"], [name="crmRecipe"])),
+body:not(:is(.crm-group-create, .crm-group-list)) .ncua-content-wrap:has(:is([name="crmgroup"])) {
+    padding-inline-start: 0 !important;
+    padding-inline-end: 0 !important;
+}
+
+:is(body.sitemap .page-header, .cache #header > .page-header) {
+    margin-inline-start: 0;
+}
+
+/* ================================== */
+/* 속도개선 관리 공통 */
+/* ================================== */
+.cache #header {
+    height: auto;
+}
+
+.cache #header > .page-header {
+    display: flex;
+    align-items: center;
+    margin: 0 !important;
+    padding: 0 20px;
+    height: 55px;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+
+.cache #header > .page-header h3 {
+    font-size: var(--font-size-sm);
+}
+
+#header .page-header h3,
+#content .page-header h3,
+.crm-recipe-send .page-header h3 {
+    line-height: 32px;
+}
+
+/* ================================== */
+/* 속도개선 관리 */
+/* ================================== */
+.cache #content .page-header {
+    position: relative;
+    margin: 0;
+    padding-block: 24px;
+}
+
+.cache #content .page-header .btn-group {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    float: none;
+    margin-top: auto;
+}
+
+#content .ncua-content-wrap .page-header.affix,
+.crm-recipe-send .page-header.affix {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    padding-inline: 40px;
+    padding-block: 0;
+    margin-inline-start: 0;
+    height: 64px;
+    border-block-end: 1px solid var(--gray-300);
+}
+
+#content .ncua-content-wrap .page-header h3,
+.crm-recipe-send .page-header[class*="affix"] h3 {
+    margin-block: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--font-size-display-xs) !important;
+}
+
+[class*="ssl"] .page-header .btn,
+.ncua-content-wrap .page-header > .btn,
+.page-header .btn-group .btn {
+    border-radius: 8px !important;
+}
+
+[class*="ssl"] .page-header h3 + [style] > * {
+    margin: 0 !important;
+}
+
+#content .ncua-content-wrap .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 68px;
+    z-index: 5;
+    border-block-end-width: 0;
+}
+
+#content .ncua-content-wrap .page-header > .btn-group .btn:nth-child(n + 2) {
+    margin-left: 0;
+}
+
+#content .ncua-content-wrap .page-header > [type="submit"],
+#content .ncua-content-wrap .page-header > [type="button"],
+.ncua-page-header__actions,
+.ds-origin__header-actions,
+#content .ncua-content-wrap .page-header > [style="float:right"], /* 기본설정 > 관리자 보안서버 관리 TODO: 페이지 개선 시 정리 할 것 */
+#content .ncua-content-wrap .page-header > .btn-group {
+    position: initial;
+    float: none;
+    margin-top: initial;
+    display: inline-flex;
+    gap: 8px;
+}
+
+#content .ncua-content-wrap .page-header > .btn-group > a:has([type="button"]) {
+    padding-block-start: initial;
+}
+
+#content .ncua-content-wrap .page-header.affix > .btn-group {
+    margin-top: initial;
+}
+
+/* 개발 소스 관리 */
+.ncua-content-wrap .ds-origin__header-top {
+    flex: 1;
+}
+
+.ncua-content-wrap .ds-origin__header-actions {
+    height: initial;
+}
+
+/* 임시 스타일 지정, 페이지 개선 후 삭제 */
+.page-header .ncua-go-guide {
+    position: absolute;
+    right: 40px;
+    top: 15px;
+}
+
+.page-header .ncua-go-guide small {
+    vertical-align: bottom;
+}
+
+:is(.ncua-page-header, .page-header) .ncua-history-back.only-icon {
+    overflow: hidden;
+    margin-inline-end: 4px;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    text-indent: -9999em;
+    background: url('../../image/history-back-chevron-left.svg') no-repeat center center / 16px 16px;
+}
+
+:is(.ncua-page-header, .page-header) .ncua-btn:hover {
+    text-decoration: none;
+}
+
+/* ================================== */
+/* 코드 관리 팝업 header */
+/* ================================== */
+:is(.base-code-list, .mail-send) .page-header > .btn {
+  border-radius: 8px;
+}
+
+
+.ncds .ncua-content-wrap {
+    padding-block-end: 48px !important;
+    background-color: var(--gray-50, #f6f7f9);
+}
+
+.ncua-content-wrap:has(:is([name="formConfig"], #formSendMail, #btnSendPowerMail, #tabMall)),
+.ncua-content-wrap:has(#formSearch):has(#formList) {
+    background-color: #fff;
+}
+
+/* =============================== */
+/* B016-서비스 프로세스 관련 안내 */
+/* =============================== */
+.ncua-full-width-notification {
+    position: relative;
+    margin-inline-start: -30px;
+    margin-top: -23px;
+    margin-bottom: 23px;
+}
+
+.ncua-full-width-notification__container {
+    max-width: 100%;
+    height: 52px;
+    justify-content: center;
+}
+
+.ncua-full-width-notification__link {
+    color: var(--violet-600);
+    text-decoration: underline;
+}
+
+.ncua-info-circle-violet {
+    background: url('../../image/info-circle-violet.svg') no-repeat center center / cover;
+    width: 16px;
+    height: 16px;
+}
+
+.ncua-close-icon-violet {
+    background: url('../../image/x-close-violet.svg') no-repeat center center / cover;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+
+/* =============================== */
+/* C038 항목 내(콘텐츠 3Depth) 그리드 없는 레이아웃 */
+/* =============================== */
+.ncua-border-content-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 16px;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    width: 100%;
+
+    .ncua-border-content {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-weight: var(--font-weights-commerce-sans-1);
+    }
+
+    .ncua-border-content-title {
+        font-size: var(--font-size-xxs);
+        color: var(--gray-600);
+        &.required::before {
+            content: '*';
+            color: var(--primary-red-500);
+        }
+    }
+
+    .ncua-border-content-form:has(.ncua-radio-field:first-child, .ncua-checkbox-field:first-child) {
+        padding-left: 8px;
+    }
+}
+
+
+/* =============================== */
+/* C038_1 항목 내(콘텐츠 3Depth) 그리드 없는 레이아웃(상품이미지 특화) */
+/* =============================== */
+.ncua-border-product-image-layout {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+    padding: 16px;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+
+    .ncua-border-product-detail {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .ncua-border-product-detail-item {
+            padding-left: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            .ncua-product-label {
+                color: var(--gray-600);
+                font-size: var(--font-size-xxs);
+                font-weight: var(--font-weights-commerce-sans-1);
+            }
+
+            .ncua-product-value {
+                color: var(--gray-400);
+                font-size: var(--font-size-xs);
+                font-weight: var(--font-weights-commerce-sans-0);
+            }
+
+            /* 상품명, 상품명 내에 있는 링크 */
+            .ncua-product-value.ncua-product-name,
+            .ncua-product-value .ncua-product-link {
+                display: inline-block;
+                cursor: pointer;
+                color: var(--blue-500);
+                text-decoration: underline;
+                background: transparent;
+            }
+        }
+
+        .ncua-border-product-detail-item {
+            border-bottom: 1px solid var(--gray-100);
+            padding-bottom: 16px;
+        }
+        .ncua-border-product-detail-item:not(:first-child) {
+            padding-top: 16px;
+        }
+        .ncua-border-product-detail-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+    }
+}
+
+.ncua-table-td {
+    width: calc(100% - 240px);
+}
+
+
+/* =============================== */
+/* C038_2 항목 내(콘텐츠 3Depth) 그리드 없는 레이아웃(정보일반) */
+/* =============================== */
+.ncua-border-info-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    width: 100%;
+
+    .ncua-border-info-item {
+        border-bottom: 1px solid var(--gray-100);
+        padding-bottom: 16px;
+
+        .ncua-border-info-label {
+            color: var(--gray-600);
+            font-size: var(--font-size-xxs);
+            font-weight: var(--font-weights-commerce-sans-1);
+        }
+
+        .ncua-border-info-value {
+            color: var(--gray-400);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weights-commerce-sans-0);
+        }
+    }
+
+    .ncua-border-info-item:last-child {
+        border: none;
+        padding-bottom: 0;
+    }
+}
+
+
+/* =============================== */
+/* ncua-content-box : gray-50 배경색에 border 있는 컨텐츠 영역 */
+/* =============================== */
+.ncua-content-box {
+    background-color: var(--gray-50);
+    width: 100%;
+    border-radius: 8px;
+    padding: 12px 16px;
+    border: 1px solid var(--gray-200);
+    margin-bottom: 16px;
+
+    &:last-child {
+        margin-bottom: 0px;
+    }
+
+
+    .ncua-content-box__title {
+        color: var(--gray-500);
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weights-commerce-sans-2);
+
+        .ncua-notice-info {
+            margin-top: 8px;
+        }
+    }
+
+    .ncua-content-box__content {
+        margin-top: 16px;
+    }
+}
+
+
+/* ================================== */
+/* layer가 content를 넘치는 페이지 */
+/* ================================== */
+:is(.ncds.coupon-regist) #content-wrap {
+    overflow: initial;
+    display: flow-root;
+}
+
+#content-wrap:has(.ncua-content.content-wrap-initial) {
+    overflow: initial;
+    display: flow-root;
+}

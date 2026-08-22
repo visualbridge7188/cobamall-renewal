@@ -1,0 +1,180 @@
+.ncua-dash-board {
+	display: flex;
+	gap: var(--spacing-lg, 12px);
+	width: 100%;
+
+	.ncua-dash-board__card {
+		flex: 1;
+		display: flex;
+		gap: var(--spacing-xs);
+		flex-direction: column;
+		padding: 16px;
+		background-color: var(--gray-50);
+		border: 1px solid var(--gray-100);
+		border-radius: var(--border-radius-md);
+	}
+
+	.ncua-dash-board__label {
+		margin: 0;
+		font-weight: var(--font-weights-commerce-sans-1);
+		font-size: var(--font-size-xs);
+		line-height: var(--line-heights-xs);
+		color: var(--gray-400);
+	}
+
+	.ncua-dash-board__content {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		gap: var(--spacing-xl, 16px);
+		height: 100%;
+		justify-content: space-between;
+	}
+
+	.ncua-dash-board__amount-group {
+		display: flex;
+		align-items: flex-end;
+		gap: var(--spacing-xs);
+	}
+
+	.ncua-dash-board__amount {
+		font-weight: var(--font-weights-commerce-sans-1);
+		font-size: var(--font-size-lg);
+		line-height: var(--line-heights-lg);
+		color: var(--gray-700);
+		white-space: nowrap;
+	}
+
+	.ncua-dash-board__unit {
+		font-weight: var(--font-weights-commerce-sans-1);
+		font-size: var(--font-size-sm);
+		line-height: var(--line-heights-sm);
+		color: var(--gray-600);
+		padding-bottom: 2px;
+	}
+
+	.ncua-dash-board__date {
+		margin: 0;
+		font-weight: var(--font-weights-commerce-sans-0);
+		font-size: var(--font-size-xxs);
+		line-height: var(--line-heights-xxs);
+		color: var(--gray-400);
+		text-align: right;
+
+		.ncua-dash-board__time {
+			position: relative;
+			display: inline-block;
+			margin-right: 12px;
+			font-size: var(--font-size-xxs);
+			font-weight: var(--font-weights-commerce-sans-1);
+			line-height: var(--line-heights-xxs);
+			color: var(--gray-500);
+
+			&::after {
+				content: '|';
+				position: absolute;
+				right: -7px;
+				top: 0;
+				color: var(--gray-200);
+				font-weight: var(--font-weights-commerce-sans-0);
+			}
+		}
+	}
+
+	.ncua-dash-board__percentage {
+		color: var(--blue-500);
+		font-weight: var(--font-weights-commerce-sans-1);
+		font-size: var(--font-size-xxs);
+		line-height: var(--line-heights-xxs);
+	}
+
+	/* 강조 카드 타입 */
+	.ncua-dash-board__featured-card {
+		background-color: var(--blue-100);
+		border: 1px solid var(--blue-200);
+
+		.ncua-dash-board__label {
+			color: var(--blue-600);
+		}
+
+		.ncua-dash-board__amount {
+			font-size: var(--font-size-xl);
+			line-height: var(--line-heights-xl);
+			font-weight: var(--font-weights-commerce-sans-2);
+		}
+	}
+
+	/* 상세 카드 */
+	.ncua-dash-board__card.ncua-dash-board__card--detail {
+		.ncua-dash-board__content {
+			gap: var(--spacing-xl, 16px);
+		}
+
+		.ncua-dash-board__detail-list {
+			border-top: 1px dashed var(--gray-200);
+			padding-top: 12px;
+			display: flex;
+			flex-direction: column;
+			gap: var(--spacing-xs);
+		}
+
+		.ncua-dash-board__detail-item {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			font-size: var(--font-size-xs);
+			line-height: var(--line-heights-xs);
+			color: var(--gray-700);
+		}
+
+		.ncua-dash-board__detail-label {
+			font-weight: var(--font-weights-commerce-sans-0);
+		}
+
+		.ncua-dash-board__detail-value {
+			font-weight: var(--font-weights-commerce-sans-1);
+			text-align: right;
+		}
+	}
+}
+
+/* 여러 줄 그리드 타입 */
+.ncua-dash-board.ncua-dash-board--multi-line {
+	align-items: stretch;
+
+	.ncua-dash-board__card-line-group {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-md, 8px);
+	}
+
+	.ncua-dash-board__card-line {
+		display: flex;
+		gap: var(--spacing-md, 8px);
+	}
+}
+
+.ncua-dash-board--multi-line.multi-card-4 {
+	.ncua-dash-board__featured-card {
+		flex: 0 0 calc((100% - 12px - (8px * 3)) / 5);
+	}
+}
+
+.ncua-dash-board--multi-line.multi-card-5 {
+	.ncua-dash-board__featured-card {
+		flex: 0 0 calc((100% - 12px - (8px * 4)) / 6);
+	}
+}
+
+.ncua-dash-board--multi-line.multi-card-6 {
+	.ncua-dash-board__featured-card {
+		flex: 0 0 calc((100% - 12px - (8px * 5)) / 7);
+	}
+}
+
+.ncua-dash-board--multi-line.multi-card-7 {
+	.ncua-dash-board__featured-card {
+		flex: 0 0 calc((100% - 12px - (8px * 6)) / 8);
+	}
+}

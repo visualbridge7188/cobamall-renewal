@@ -1,0 +1,63 @@
+.ncua-content.scm-board-view {
+    .button-wrap {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-block-start: 16px;
+    }
+
+    .article-content {
+        display: block;
+    }
+
+    .article-pagination {
+        padding-block-start: 8px;
+        margin-block-start: 32px;
+        border-top: 1px solid var(--gray-100);
+
+        .article-pagination__item {
+            display: flex;
+            align-items: center;
+            height: 40px;
+            text-align: center;
+            color: var(--gray-300);
+
+            .article-pagination__item-label {
+                flex: 0 0 60px;
+            }
+
+            .article-pagination__item-title {
+                flex: 1;
+                text-align: left;
+                color: var(--gray-400);
+
+                &:hover {
+                    color: var(--gray-700);
+                }
+            }
+
+            .article-pagination__item-writer {
+                flex: 0 0 120px;
+            }
+
+            .article-pagination__item-date {
+                flex: 0 0 160px;
+
+            }
+
+            &.current-article {
+                background-color: var(--gray-50);
+                border-radius: 8px;
+                color: var(--gray-500);
+
+                .article-pagination__item-title {
+                    color: var(--gray-700);
+                }
+            }
+        }
+    }
+    
+    
+}
+
+

@@ -1,0 +1,33 @@
+.ncua-content.scm-board-list {
+    .radio-btn-group {
+        width: 100%;
+        align-items: center;
+    }
+
+    .radio-combobox-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+
+    .supply-radio-group {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .search-kind:has(:disabled) {
+        display: none;
+    }
+
+    .scm-board-list-subject {
+        justify-content: flex-start;
+        gap: 4px;
+        
+        a {
+            color: var(--blue-500);
+            text-decoration: underline;
+        }
+    }
+}

@@ -1,0 +1,61 @@
+{*** 상단 기본파일 | main/index.php ***}
+<style>
+<!--{ ? tpls.side_inc && layout.outline_sidefloat == 'left' }-->
+.content_box { width:calc(100% - 168px); padding-left:40px; box-sizing:border-box; }
+<!--{ / }-->
+</style>
+<div id="header">
+	<!-- 탑 배너 -->
+	{=includeFile('outline/outside/top_bn.html')}
+
+	<div class="header-wrap">
+		<div class="header-inner">
+			<div class="header-top">
+				<!-- 멀티상점 선택 -->
+				{=includeWidget('proc/_global_select.html')}
+				<!-- 멀티상점 선택 -->
+				<!-- 로고 -->
+				<h1 class="top-logo"><!--{ @dataBanner('4238483832') }-->{.tag}<!--{ / }--></h1>
+				<div class="header-left">
+					<!-- category -->
+					<div id="category" class="header-main">
+						<!-- 사이드 카테고리 출력 시작 -->
+						{=includeWidget('proc/category_side', 'type', 'layer','cateType','cate','menuType','all')}
+						<!-- 사이드 카테고리 출력 끝 -->
+					</div><!--// #category -->
+				</div>
+				<div class="header-right">
+					<div class="top-account">
+						<ul>
+							<li class="search"><a href="#none"><em>검색</em></a></li>
+							<li class="basket"><a href="../order/cart.php">{=__('장바구니')}<span class="count">( <em>{=dataCartGoodsCnt()}</em> )</span></a></li>
+							<li class="mypage">
+								<a href="../mypage/index.php">{=__('마이페이지')}</a>
+								<div class="mypage-sub" style="display:none;">
+									<ul>
+										<li><a href="../mypage/mileage.php">{=gd_display_mileage_name()}</a></li>
+										<li><a href="../mypage/wish_list.php">{=__('찜 리스트')}</a></li>
+										<li><a href="../mypage/mypage_qa.php">1:1 {=__('문의')}</a></li>
+										<li><a href="../mypage/order_list.php">{=__('주문조회')}</a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="login-btn">
+						<ul>
+							<!--{ ? gd_is_login() === false }-->
+							<li class="log"><a href="../member/login.php">{=__('로그인')}</a></li>
+							<!--{ : }-->
+							<li class="log"><a href="../member/logout.php?returnUrl={=logoutReturnUrl}">{=__('로그아웃')}</a></li>
+							<!--{ / }-->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 검색 레이어 -->
+		{=includeFile('outline/outside/search_layer.html')}
+	</div>
+</div>
+<!-- //header -->

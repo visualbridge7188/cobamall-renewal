@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+/*========================================================================
+사이드 플로팅
+========================================================================*/
+.side-floating { position:fixed; bottom:25px; right:25px; width:auto; z-index:61; }
+.side-floating ul li { margin:10px 0 0; }
+.side-floating ul li a { display:flex; align-items:center; justify-content:center; width:50px; height:50px; border-radius:50%; overflow:hidden; box-sizing:border-box; }
+.side-floating ul li a img { width:100%; }
+.side-floating.end-stop { position:absolute; bottom:25px; }

@@ -1,0 +1,148 @@
+/**
+ * 에러 로그 보기 페이지 스타일
+ * BEM prefix: ds-error-log
+ * NCDS 디자인 토큰 사용
+ */
+
+/* === Block Container (CDN 미구현 — DES-SPEC-042) === */
+.block-container { background: var(--base-white); border: 1px solid var(--gray-100); border-radius: 12px; box-shadow: var(--shadow-sm); overflow: visible; }
+
+/* === Block Header (CDN 미구현 — DES-SPEC-043) === */
+.block-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 24px; max-height: 48px; border-bottom: 1px solid var(--gray-100); gap: 8px; }
+.block-header__title { font-size: 16px; font-weight: 700; color: var(--gray-700); line-height: 24px; }
+.block-header__title-area { display: flex; align-items: center; gap: 6px; }
+
+/* === Block Body === */
+.block-body { padding: 16px 24px; display: flex; flex-direction: column; gap: 16px; }
+
+/* === DataGrid Action Area (CDN 미구현 — DES-SPEC-046 §5) === */
+.datagrid-action-area { display: flex; align-items: center; justify-content: flex-end; padding: 8px 24px; background: var(--gray-50); border-bottom: 1px solid var(--gray-200); gap: 8px; border-radius: 8px 8px 0 0; }
+
+/* === DataGrid Table 공통 (CDN 미구현 — DES-SPEC-046 + DES-SPEC-045) === */
+.datagrid-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+.datagrid-table thead th { background: var(--gray-100); font-size: 13px; font-weight: 500; color: var(--gray-500); padding: 10px 16px; border-bottom: 1px solid var(--gray-200); border-right: 1px solid var(--gray-200); text-align: center; }
+.datagrid-table thead th:last-child { border-right: none; }
+.datagrid-table tbody td { font-size: 13px; font-weight: 400; color: var(--gray-700); padding: 12px 16px; border-bottom: 1px solid var(--gray-100); border-right: 1px solid var(--gray-100); vertical-align: middle; }
+.datagrid-table tbody td:last-child { border-right: none; }
+.datagrid-table tbody tr:last-child td { border-bottom: none; }
+.datagrid-table tbody tr:last-child td:first-child { border-bottom-left-radius: 8px; }
+.datagrid-table tbody tr:last-child td:last-child { border-bottom-right-radius: 8px; }
+.datagrid-table tbody tr:hover { background: var(--gray-50); }
+
+/* === Table [outer] Wrapper (CDN 미구현 — DES-SPEC-046 §1.4) === */
+.table-outer { border: 1px solid var(--gray-100); border-radius: 8px; box-shadow: var(--shadow-xs); overflow: visible; }
+
+/* === EmptyState (DES-SPEC-046 §4.1 + DES-SPEC-037) === */
+.ncds-empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-height: 192px; padding: 24px; border-radius: 0 0 8px 8px; }
+.ncds-empty-state__title { font-size: 14px; font-weight: 600; color: var(--gray-500); line-height: 22px; }
+.ncds-empty-state__description { font-size: 13px; font-weight: 400; color: var(--gray-400); line-height: 18px; }
+
+/* === Search Summary (DES-SPEC-046 §9) === */
+.search-summary { font-size: 13px; font-weight: 400; color: var(--gray-500); margin-bottom: 8px; }
+.search-summary strong { font-weight: 700; color: #EC1D31; }
+
+/* === Pagination Wrapper (DES-SPEC-046 §7) === */
+.pagination-wrap { padding: 0; display: flex; justify-content: center; }
+.ncua-pagination.ncua-pagination--pc { height: 32px; }
+
+/* === Tooltip 보정 (DES-SPEC-028) === */
+.ds-error-log__block .ncua-tooltip { display: flex; align-items: center; }
+
+/* ================================================================
+   에러 로그 페이지 전용 (BEM prefix: ds-error-log)
+   ================================================================ */
+
+.ds-error-log__block {
+    margin-bottom: var(--spacing-l, 24px);
+}
+
+/* Search Summary + 필터: 같은 행, table-outer 바깥 */
+.ds-error-log__filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* 균등 분배 (table-layout: fixed → 6열 동등 너비) */
+.ds-error-log__table {
+    table-layout: fixed;
+}
+
+/* 테이블 행 — 클릭 커서 */
+.ds-error-log__table tbody tr.ds-error-log__row {
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.ds-error-log__table tbody tr.ds-error-log__row--selected {
+    background: var(--gray-50);
+}
+
+
+.ds-error-log__message-text {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.ds-error-log__table tbody td:nth-child(3) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 0;
+}
+
+/* 파일 셀 */
+.ds-error-log__file-cell {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 에러 상세 모달 */
+#errorDetailModal {
+    position: fixed;
+    inset: 0;
+    z-index: 1050;
+}
+
+.ds-error-log__detail-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.ds-error-log__detail-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ds-error-log__detail-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gray-700);
+}
+
+.ds-error-log__detail-code {
+    margin: 0;
+    padding: 16px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: 8px;
+    font-family: Consolas, Monaco, 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--gray-700);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+/* 에러 상세 모달 — 닫기 버튼 우측 정렬 */
+.ds-error-log__modal-actions { justify-content: flex-end; }

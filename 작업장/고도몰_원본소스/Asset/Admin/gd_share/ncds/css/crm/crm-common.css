@@ -1,0 +1,317 @@
+@import 'layer-preview.css';
+
+/* ================================== */
+/*  미리보기 패널이 있는 페이지 레이아웃 */
+/* ================================== */
+.ncua-content:has(.ncua-split-layout) {
+    position: relative;
+}
+
+.ncds.crm #container-wrap:has(.ncua-split-layout) {
+    min-width: 1600px;
+}
+
+.ncua-split-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+
+    .section-container {
+        width: 100%;
+    }
+}
+
+.ncua-split-layout {
+    .ncua-panel {
+        flex-shrink: 0;
+        width: 522px;
+        
+        .swiper-wrapper {
+            gap: 8px;
+        }
+        
+        .ncua-tab-button {
+            height:28px;
+        }
+
+        .preview-content-wrap + .ncua-notice-info,
+        .preview-content-wrap + .ncua-notice-list {
+            margin-top: 16px;
+        }
+
+        .preview-variable-checkbox {
+            padding-top: 16px;
+        }
+
+        .ncua-notice-info + .preview-variable-checkbox,
+        .ncua-notice-list + .preview-variable-checkbox {
+            margin-top: 16px;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .ncua-prev:empty {
+            display: none;
+        }
+    }
+}
+
+/* ncua-card__body 내 section 레이아웃 */
+.ncua-card__body-block-section-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ncua-card__body-block-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ncua-card__body-block-section-actions {
+    padding-top: 16px;
+    border-top: 1px solid var(--gray-100);
+    margin-top: 40px;
+    display: flex;
+    gap: 4px;
+}
+/* 메세지 포인트 레이아웃 */
+.message-point .ncua-card__header {
+    justify-content: flex-start;
+}
+
+.message-point .message-point-text {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+    margin-left: 24px;
+}
+
+.message-point-text .point-value {
+    color: var(--primary-red-450);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weights-commerce-sans-2);
+}
+
+.message-point-text .unit-text {
+    display: inline-block;
+    color: var(--gray-400);
+    font-size: var(--font-size-xxs);
+    font-weight: var(--font-weights-commerce-sans-0);
+}
+
+.message-point button {
+    margin-left: 8px;
+}
+
+.message-point-detail {
+    display: flex;
+    gap: 16px;
+    padding-top: 8px;
+}
+
+.message-point-detail > span {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--font-size-xxs);
+}
+
+.message-point-detail > span:not(:last-child) {
+    position: relative;
+    padding-right: 16px;
+}
+
+.message-point-detail > span:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 12px;
+    background-color: var(--gray-200);
+}
+
+.message-point-count {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 2px;
+    margin-left: 16px;
+    color: var(--gray-700);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weights-commerce-sans-2);
+}
+
+.message-point-count .unit-text {
+    font-weight: var(--font-weights-commerce-sans-0);
+}
+
+/* CRM 전용 탭 디자인 */
+.ncua-horizontal-tab--panel + .tab-content-wrap {
+    padding: 24px;
+    border: 1px solid var(--gray-200);
+    border-radius: 0 8px 8px 8px;
+}
+
+.ncua-horizontal-tab--panel {
+    margin-bottom: -1px;
+
+    .ncua-horizontal-tab__item .ncua-tab-button  {
+        font-size: var(--font-size-xs);
+        background: var(--gray-100);
+        border: 1px solid var(--gray-100);
+        border-radius: 8px 8px 0 0;
+        border-bottom: 1px solid var(--gray-200);
+    }
+
+    .ncua-horizontal-tab__item .ncua-tab-button:not(.is-active):hover {
+        background: var(--gray-200);
+        border-color: var(--gray-200);
+        border-bottom: 1px solid transparent;
+    }
+
+    .ncua-horizontal-tab__item .is-active {
+        background: var(--base-white);
+        border-color: var(--gray-200);
+        border-bottom: 1px solid transparent;
+    }
+
+    &.ncua-horizontal-tab--md .ncua-tab-button {
+        height: 34px;
+        padding: 5px 12px;
+    }
+}
+
+/* 칩 버튼 영역 레이아웃 */
+.chip-selector {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.chip-selector .ncua-select {
+    flex-shrink: 0;
+    width: 120px;
+}
+
+.chip-button-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.chip-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 24px;
+    padding: 3px 8px;
+    color: var(--gray-700);
+    font-size: var(--font-size-xxs);
+    font-weight: var(--font-weights-commerce-sans-0);
+    background-color: var(--gray-100);
+    border-radius: 4px;
+    text-align: left;
+}
+
+.chip-button:has(.remove-button) {
+    padding-right: 3px;
+}
+
+.chip-button .chip-button-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.chip-button .remove-button {
+    display: inline-block;
+    text-indent: -9999px;
+    width: 18px;
+    height: 18px;
+    margin-left: 8px;
+    border-radius: 4px;
+    background: url('../../image/x-close.svg') no-repeat center center / 14px 14px;
+}
+
+.chip-button:hover {
+    background: var(--gray-200) url('../../image/corner-right-up.svg') no-repeat right 8px center / 14px 14px;
+}
+
+.chip-button:has(.remove-button):hover {
+    background: var(--gray-200) url('../../image/corner-right-up.svg') no-repeat right 30px center / 14px 14px;
+}
+
+.chip-button:hover .chip-button-text {
+    width: calc(100% - 16px);
+}
+
+.chip-button:has(.remove-button):hover .chip-button-text {
+    width: calc(100% - 40px);
+}
+
+.chip-button .remove-button:hover {
+    background: rgba(164, 165, 168, 0.60) url('../../image/x-close-gray-600.svg') no-repeat center center / 14px 14px;
+}
+
+.ncua-card__body-title-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &.ncua-required p::before {
+        content: "*";
+        margin-inline-end: 4px;
+        color: var(--primary-red-500);
+        font-weight: var(--font-weights-commerce-sans-1);
+        font-size: var(--font-size-sm);
+    }
+}
+
+.ncua-card__body-title--sm,
+.ncua-card__body-title--xs {
+    color: var(--gray-700);
+    font-weight: var(--font-weights-commerce-sans-2);
+}
+
+.ncua-card__body-title--sm {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-heights-sm);
+}
+
+.ncua-card__body-title--xs {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-heights-xs);
+}
+
+.ncua-card__body-title--required::before {
+    content: '*';
+    color: var(--primary-red-500);
+    margin-right: 4px;
+}
+
+/* 컴포넌트 보더 박스 스타일 */
+.ncua-border-group-box {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 16px;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+}
+
+.message-list-content-btn {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    background-color: transparent;
+    cursor: pointer;
+    text-decoration: underline;
+    text-overflow: ellipsis;
+    text-align: start;
+}

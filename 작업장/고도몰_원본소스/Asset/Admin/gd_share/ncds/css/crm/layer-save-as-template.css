@@ -1,0 +1,9 @@
+.layer-save-as-template {
+    .ncua-select {
+        width: 128px;
+    }
+
+    .ncua-input__field-text-count {
+        min-width: 43px;
+    }
+}

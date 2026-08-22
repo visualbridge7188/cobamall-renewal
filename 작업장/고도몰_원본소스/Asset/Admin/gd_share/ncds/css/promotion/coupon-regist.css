@@ -1,0 +1,143 @@
+.promotion-coupon-regist {
+    /* Datapicker 추가로 인한 하단 여백 추가 */
+    min-height: 1270px;
+    padding-bottom: 20px;
+
+    /* 부트스트랩 스타일 초기화 (radio-inline, checkbox-inline) */
+    .radio-inline {
+        padding-left: 0;
+    }
+    .radio-inline + .radio-inline {
+        margin-left: 0;
+    }
+    .radio-inline input[type="radio"],
+    .checkbox input[type="checkbox"] {
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .ncua-search-result {
+        margin-top: 0;
+
+        th:first-child {
+            border-top-left-radius: 5px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 5px;
+        }
+    }
+
+    .ncua-info {
+        margin-block-end: 16px;
+
+        .ncua-info__ico {
+            width: 30px;
+            height: 30px;
+            background-image: url('../../image/ico_info.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+    }
+}
+
+.promotion-coupon-regist .ncua-flex-column {
+    display: flex;
+    align-items: flex-start;
+}
+
+.promotion-coupon-regist .ncua-coupon-amount-type-group,
+.promotion-coupon-regist .ncua-coupon-benefit-type-group,
+.promotion-coupon-regist .ncua-coupon-use-period-type-group,
+.promotion-coupon-regist .ncua-coupon-use-member-group,
+.promotion-coupon-regist .ncua-coupon-apply-member-group {
+    display: flex;
+    align-items: center;
+}
+
+.promotion-coupon-regist .ncua-coupon-apply-member-group > :nth-child(3),
+.promotion-coupon-regist .ncua-coupon-use-member-group > :nth-child(3) { 
+    margin-left: -8px;
+}
+
+.promotion-coupon-regist .ncua-select-group-tag { 
+    width: 16px;
+    height: 16px;
+}
+
+.promotion-coupon-regist .member-group-display-none { 
+    display: none;
+}
+
+.promotion-coupon-regist .member-group-display-none.active { 
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.promotion-coupon-regist .member-group-display-none.active h5 { 
+    display: none;
+}
+
+.promotion-coupon-regist .except-supply-tag-group {
+    margin-top: -8px;
+}
+
+.promotion-coupon-regist .except-supply-tag-group:empty {
+    margin-top: -16px;
+}
+
+.promotion-coupon-regist .ncua-select-dropdown {
+    z-index: 2
+}
+
+.promotion-coupon-regist .ncua-coupon-image__group {
+    .ncua-coupon-image__group-default img {
+        padding-inline-start: 5px;
+    }
+
+    .ncua-coupon-image__preview{
+        display: flex;
+
+        input[type="file"] + .bootstrap-filestyle.input-group {
+            display: none;
+        }
+    }
+}
+
+.promotion-coupon-regist .ncua-benefit-config {
+    display: flex;
+    gap: 24px;
+}
+
+.promotion-coupon-regist .ncua-input__unit,
+.promotion-coupon-regist .ncua-input-text {
+    color: var(--gray-500, #7a7c80);
+    font-size: var(--font-size-xs, 13px);
+    font-weight: var(--font-weights-commerce-sans-1, 400);
+    font-family: var(--font-family-ncua-commerce-sans);
+}
+
+.promotion-coupon-regist .ncua-search-result {
+    width: 100%;
+    margin-block-start: 16px;
+
+    h5 {
+        display: none;
+    }
+}
+
+.modal-dialog__content .ncua-btn-group {
+    margin-block-start: 8px;
+}
+
+.board-template-write-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    height: 69px;
+    padding: 16px 20px;
+    border-block-start: 1px solid var(--gray-300, #a4a5a8);
+}

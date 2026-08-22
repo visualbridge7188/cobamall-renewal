@@ -1,0 +1,229 @@
+{*** 게시글 신고 팝업창 | board/popup_goods_board_report.php ***}
+{ # header }
+<script type="text/javascript" src="{=setBrowserCache('../js/lib/storage.js')}"></script>
+<div class="contents-inner cs-page">
+    <div class="tab_area">
+        <ul class="popup_tab">
+            <li name="tab_br" id="tab_br"><a href="#" onclick="boardReportOn()">게시글 신고</a></li>
+            <li name="tab_mr" id="tab_mr"><a href="#" onclick="memberReportOn()">회원 신고 및 차단</a></li>
+        </ul>
+    </div>
+    <div class="write_qa">
+        <div id="boardregister" class="ly_ct">
+            <!-- 게시글 신고 탭 영역 -->
+            <form name="frmWrite" id="frmWrite" action="../board/board_ps.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="mode" value="report"/>
+                <input type="hidden" name="bdId" value="{=req.bdId}"/>
+                <input type="hidden" name="bdSno" value="{=req.bdSno}"/>
+                <input type="hidden" name="memoSno" value="{=req.memoSno}"/>
+                <input type="hidden" name="goodsNo" value="{=req.goodsNo}"/>
+                <input type="hidden" name="returnUrl" value="{=req.returnUrl}"/>
+                <div class="write_wrap">
+                    <dl>
+                        <dt><label>신고자</label></dt>
+                        <dd>
+                            {=memId}
+                        </dd>
+                    </dl>
+                    <dl class="b_content">
+                        <dt>
+                            <label for="reportMemo">신고사유</label>
+                        </dt>
+                        <dd>
+                            <div class="textarea_box">
+                                <textarea class="textarea" id="reportMemo" name="reportMemo" oninput="maxLengthCheck(this)" placeholder="내용을 입력해주세요." maxlength="300"></textarea>
+                            </div>
+                            <p class="text_length"><span class="js_textCount">0</span> / 300</p>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><label for="checkCollectAgreeFl">개인정보수집<br />&nbsp;&nbsp;동의(필수)</label></dt>
+                        <dd>
+                            <span class="inp_chk">
+                                <input type="checkbox" id="checkCollectAgreeFl" name="checkCollectAgreeFl" value="y">
+                                <label for="checkCollectAgreeFl">동의함</label>
+                            </span>
+                            <div class="terms_txt">
+                                - 수집목적 : 게시물 신고 데이터 관리<br />
+                                - 수집정보 : 회원 아이디<br />
+                                - 보유 기간 : 게시물 삭제 시 삭제<br />
+                                수집 된 개인 정보는 데이터 관리를 위해서만 사용 되며, 수집 목적 이외의 용도로 사용되지 않습니다.
+                            </div>
+                        </dd>
+                    </dl>
+                    <ul class="btn_box">
+                        <li><button type="button" class="write_cancel_btn ly_btn_close" onclick="location.href='{=req.returnUrl}'">취 소</button></li>
+                        <li><button type="button" onclick="save();" class="write_save_btn">저 장</button></li>
+                    </ul>
+                </div>
+            </form>
+            <!-- 회원 신고 및 차단 탭 영역 -->
+            <form name="frmMemberReportWrite" id="frmMemberReportWrite" action="../board/board_ps.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="mode" value="block"/>
+                <input type="hidden" name="bdId" value="{=req.bdId}"/>
+                <input type="hidden" name="bdSno" value="{=req.bdSno}"/>
+                <input type="hidden" name="memId" value="{=memId}"/>
+                <input type="hidden" name="memoWriterId" value="{=memo.writerId}"/>
+                <input type="hidden" name="memoWriterMemNo" value="{=memo.memNo}"/>
+                <input type="hidden" name="writerMemNo" value="{=writerMemNo}"/>
+                <input type="hidden" name="writerId" value="{=writerId}"/>
+                <input type="hidden" name="memoSno" value="{=req.memoSno}"/>
+                <input type="hidden" name="returnUrl" value="{=req.returnUrl}"/>
+                <div class="write_wrap">
+                    <dl>
+                        <dt><label>신고자</label></dt>
+                        <dd>
+                            {=memId}
+                        </dd>
+                    </dl>
+                    <dl class="b_content">
+                        <dt>
+                            <label for="reportMemberMemo">신고사유</label>
+                        </dt>
+                        <dd>
+                            <div class="textarea_box">
+                                <textarea id="reportMemberMemo" name="reportMemberMemo" oninput="maxLengthCheck(this)" placeholder="내용을 입력해주세요." maxlength="100"></textarea>
+                            </div>
+                            <p class="text_length"><span class="js_textCount">0</span> / 100</p>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><label>회원차단여부</label></dt>
+                        <dd>
+                            <span class="inp_chk">
+                                <!--{ ? blockAllBoardFl == 'y' }-->
+                                    <label>이미 차단 한 회원입니다.</label>
+                                <!--{ : }-->
+                                    <input type="checkbox" id="blockAllBoardFl" name="blockAllBoardFl" value="y">
+                                    <label for="blockAllBoardFl">해당회원의 모든 게시물을 차단합니다.</label><br/>
+                                    <div class="c_red">※ 차단 한 회원의 게시물을 쇼핑몰에서 확인이 불가하며, 차단 상태를 해제할 수 없습니다.</div>
+                                <!--{ / }-->
+                            </span>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><label for="checkCollectAgreeFl">개인정보수집<br />&nbsp;&nbsp;동의(필수)</label></dt>
+                        <dd>
+                            <span class="inp_chk">
+                                <input type="checkbox" id="checkCollectAgreeFl2" name="checkCollectAgreeFl" value="y">
+                                <label for="checkCollectAgreeFl2">동의함</label>
+                            </span>
+                            <div class="terms_txt">
+                                - 수집목적 : 회원 신고/차단 데이터 관리<br />
+                                - 수집정보 : 회원 아이디<br />
+                                - 보유 기간 : 신고/차단회원 탈퇴 시 삭제<br />
+                                수집 된 개인 정보는 데이터 관리를 위해서만 사용 되며, 수집 목적 이외의 용도로 사용되지 않습니다.
+                            </div>
+                        </dd>
+                    </dl>
+                    <ul class="btn_box">
+                        <li><button type="button" class="write_cancel_btn ly_btn_close" onclick="location.href='{=req.returnUrl}'">취 소</button></li>
+                        <li><button type="button" onclick="saveMemberReport();" class="write_save_btn">저 장</button></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        firstOpenReport(); // 게시글 신고 영역 우선노출
+        $('#frmWrite').find('textarea[name=reportMemo]').keyup(function() {
+            var textLength = $(this).val().length;
+            textLength = (textLength >= 300) ? 300 : textLength;
+            $(this).closest('#frmWrite').find('.js_textCount').text(textLength);
+        });
+        $('#frmMemberReportWrite').find('textarea[name=reportMemberMemo]').keyup(function() {
+            var textLength = $(this).val().length;
+            textLength = (textLength >= 100) ? 100 : textLength;
+            $(this).closest('#frmMemberReportWrite').find('.js_textCount').text(textLength);
+        });
+    });
+    function maxLengthCheck(object) {
+        if (object.value.length > object.maxLength) {
+            object.value = object.value.slice(0, object.maxLength);
+        }
+    }
+    function firstOpenReport() {
+        $("#frmWrite").show();
+        $("#frmMemberReportWrite").hide();
+        $("#tab_br > a").addClass('on');
+    }
+    // 게시글 신고탭 노출
+    function boardReportOn() {
+        if ($('#frmMemberReportWrite').find('#reportMemberMemo').val()) {
+            if (confirm("탭 이동 시 현재 입력한 내용은 저장 되지 않습니다. 이동하시겠습니까?") === true) {
+                // 기존탭에 입력된 내용 초기화
+                $("#reportMemberMemo").val("");
+                $("#frmMemberReportWrite").find("#blockAllBoardFl").attr('checked', false);
+                $("#frmMemberReportWrite").find("input[name=checkCollectAgreeFl]").attr('checked', false);
+                $("#frmWrite").show();
+                $("#frmMemberReportWrite").hide();
+                $("#tab_br > a").addClass('on');
+                $("#tab_mr > a").removeClass('on');
+            } else {
+                $("#tab_br > a").removeClass('on');
+                $("#tab_mr > a").addClass('on');
+            }
+        } else {
+            $("#frmWrite").show();
+            $("#frmMemberReportWrite").hide();
+            $("#tab_br > a").addClass('on');
+            $("#tab_mr > a").removeClass('on');
+        }
+    }
+    // 회원 신고차단탭 노출
+    function memberReportOn() {
+        var memoSno = $('#frmMemberReportWrite').find('input[name=memoSno]').val()
+        var writerId = $('#frmMemberReportWrite').find('input[name=writerId]').val();
+        var memoWriterId = $('#frmMemberReportWrite').find('input[name=memoWriterId]').val();
+        if (memoSno > 0) { // 댓글을 작성한 경우
+            writerId = memoWriterId;
+        }
+        if (!writerId) { // 피신고자가 비회원인 경우
+            alert("회원 신고 및 차단이 불가한 회원입니다.");
+        } else {
+            if ($('#frmWrite').find('#reportMemo').val()) {
+                if (confirm("탭 이동 시 현재 입력한 내용은 저장 되지 않습니다. 이동하시겠습니까?") === true) {
+                    // 기존탭에 입력된 내용 초기화
+                    $("#reportMemo").val("");
+                    $("#frmWrite").find("#checkCollectAgreeFl").attr('checked', false);
+                    $("#frmMemberReportWrite").show();
+                    $("#frmWrite").hide();
+                    $("#tab_br > a").removeClass('on');
+                    $("#tab_mr > a").addClass('on');
+                } else {
+                    $("#tab_br > a").addClass('on');
+                    $("#tab_mr > a").removeClass('on');
+                }
+            } else {
+                $("#frmMemberReportWrite").show();
+                $("#frmWrite").hide();
+                $("#tab_br > a").removeClass('on');
+                $("#tab_mr > a").addClass('on');
+            }
+        }
+    }
+    function save() {
+        if ($.trim($("#reportMemo").val()) == '') {
+            alert("게시글 신고 사유를 작성하여 주세요.");
+            return false;
+        }
+        if(!$("#checkCollectAgreeFl").is(":checked")) {
+            alert("게시글 신고를 위한 개인정보 수집에 동의하여 주세요.");
+            return false;
+        }
+        $('#frmWrite').submit();
+    }
+    function saveMemberReport() {
+        if ($.trim($("#reportMemberMemo").val()) == '') {
+            alert("회원 신고 사유를 작성하여 주세요.");
+            return false;
+        }
+        if (!$("#checkCollectAgreeFl2").is(":checked")) {
+            alert("회원 신고 및 차단을 위한 개인정보 수집에 동의하여 주세요.");
+            return false;
+        }
+        $('#frmMemberReportWrite').submit();
+    }
+</script>

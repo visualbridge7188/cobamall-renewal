@@ -1,0 +1,105 @@
+.ncua-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+
+    &:has(.pagination:empty) {
+        display: none;
+    }
+
+    .pagination {
+        margin-block-end: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .pagination li,
+    .pagination a {
+        border: none;
+    }
+
+    .pagination a,
+    .pagination span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        float: none;
+        width: 32px;
+        height: 32px;
+        font-size: var(--font-size-sm, 14px);
+    }
+
+    .pagination a {
+        font-weight: var(--font-weights-commerce-sans-1, 500);
+    }
+
+    .pagination a:focus {
+        outline: none;
+    }
+
+    .pagination .front-page a {
+        overflow: hidden;
+        width: 28px;
+        height: 28px;
+        border: 1px solid var(--gray-200, #d3d4d8);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 16px;
+        text-indent: -9999px;
+        box-shadow: var(--shadow-xs, 0px 1px 2px 0px #1018280d);
+        border-radius: 6px;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    .pagination .front-page img {
+        display: none;
+    }
+
+    .pagination .front-page a:hover {
+        background-color: var(--gray-50, #f6f7f9);
+    }
+
+    .pagination .front-page a:focus {
+        box-shadow: var(--shadow-xs-focused-4px-gray-100, 0px 1px 2px 0px #1018280d,0px 0px 0px 4px #f2f4f7);
+    }
+
+    .pagination .front-page-first a {
+        background-image: url('../../image/chevron-left-double.svg');
+    }
+
+    .pagination .front-page-prev a {
+        background-image: url('../../image/chevron-left.svg');
+    }
+
+    .pagination .front-page-next a {
+        background-image: url('../../image/chevron-left.svg');
+    }
+
+    .pagination .front-page-last a {
+        background-image: url('../../image/chevron-left-double.svg');
+    }
+
+    .pagination .front-page-next a,
+    .pagination .front-page-last a {
+        transform: rotate(180deg);
+    }
+
+    .pagination .front-page-prev a {
+        margin-inline-end: 4px;
+    }
+
+    .pagination .front-page-next a {
+        margin-inline-start: 4px;
+    }
+
+    .pagination .active span,
+    .pagination :not(.front-page) a:hover,
+    .pagination :not(.front-page) a:focus {
+        background-color: var(--gray-50, #f6f7f9);
+        color: var(--gray-600, #2f2f30);
+        font-weight: var(--font-weights-commerce-sans-2, 700);
+        border: none;
+        border-radius: 8px;
+    }
+}

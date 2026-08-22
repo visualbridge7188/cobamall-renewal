@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+/*========================================================================
+탑 배너
+========================================================================*/
+#topLine { position:relative; width:100%; overflow:hidden; }
+#topLine .top-bn { position:relative; left:50%; }
+#topLine .top-bn img { transform:translateX(-50%); }
+
+/* 닫기 버튼 */
+#topLine .top-btn-close { position:absolute; top:50%; left:50%; transform:translate(580px,-50%); }
+#topLine .top-btn-close span { display:block; line-height:1; cursor:pointer; }

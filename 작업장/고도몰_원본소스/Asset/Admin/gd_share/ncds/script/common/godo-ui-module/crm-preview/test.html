@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Preview - prototype</title>
+    <style>
+        /* CSS Variables */
+        :root {
+            --gray-50: #fafafa;
+            --gray-200: #e0e0e0;
+            --gray-300: #d0d0d0;
+            --gray-400: #999;
+            --gray-500: #767676;
+            --base-white: #fff;
+            --font-size-xs: 12px;
+            --font-size-sm: 13px;
+            --font-weights-commerce-sans-1: 600;
+            --font-weights-commerce-sans-2: 500;
+            --line-heights-xs: 1.4;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .controls {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .preview-area {
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .radio-group label {
+            display: inline-flex;
+            width: 90px;
+            align-items: center;
+            gap: 5px;
+            font-weight: normal;
+        }
+
+        .radio-group label input {
+            width: 30px;
+        }
+        
+        button {
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #0056b3;
+        }
+        
+        .slide-tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .slide-tab {
+            background: #e0e0e0;
+        }
+        
+        .slide-tab.active {
+            background: #007bff;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        h2 {
+            margin-top: 0;
+        }
+        
+        .button-item {
+            background: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .button-item input {
+            margin-bottom: 5px;
+        }
+        
+        .item-item {
+            background: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .item-item input {
+            margin-bottom: 5px;
+        }
+
+        .form-group .checkbox-label {
+            display: inline-flex;
+            gap: 5px;
+            align-items: center;
+            font-weight: normal;
+        }
+
+        /* ========================================== */
+        /* CRM Preview Styles (from layer-preview.css) */
+        /* ========================================== */
+
+        .mobile-preview {
+            --wrap-width-sm: 255px;
+            --wrap-width-lg: 300px;
+            --radius: 8px;
+
+            position: relative;
+            padding: 20px;
+            width: 474px;
+            background-color: var(--gray-50);
+            border-radius: 8px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .mobile-preview--kakao, .mobile-preview--alim {
+            overflow: hidden;
+            padding: 0;
+            background-color: #afc0cf;
+        }
+
+        .mobile-preview--kakao:not(:has(.mobile-preview__slider)),
+        .mobile-preview--alim {
+            padding: 48px 20px 20px 74px;
+        }
+
+        .mobile-preview--myapp {
+            padding-inline-start: 74px;
+        }
+
+        /* slider */
+        .mobile-preview__slider {
+            margin-block-start: 50px;
+            padding-block-end: 40px;
+        }
+
+        .mobile-preview__slider .slick-list {
+            padding-inline-start: 80px;
+            overflow: visible;
+        }
+        
+        .mobile-preview__slider .slick-track {
+            display: flex;
+        }
+
+        .mobile-preview__slider .ncua-prev + .ncua-prev {
+            margin-inline-start: 12px;
+        }
+
+        .mobile-preview__slider .slick-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-flex !important;
+            justify-content: center;
+            gap: 6px;
+            padding: 6px;
+            height: 10px;
+            border-radius: 12px;
+            background-color: #999;
+        }
+
+        .mobile-preview__slider .slick-dots li {
+            line-height: 1;
+        }
+
+        .mobile-preview__slider .slick-dots button {
+            overflow: hidden;
+            width: 6px;
+            height: 6px;
+            padding: 0;
+            border-radius: 50%;
+            background-color: var(--gray-200);
+            text-indent: -9999em;
+            vertical-align: top;
+        }
+
+        .mobile-preview__slider .slick-dots .slick-active button {
+            background-color: var(--gray-500);
+        }
+
+        /* profile */
+        .ncua-profile {
+            display: inline-flex;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        .ncua-profile::before {
+            content: '';
+            width: 46px;
+            height: 46px;
+            border-radius: 18px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #fee500;
+        }
+
+        .ncua-profile--float {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        /* preview layout common */
+        .ncua-prev {
+            padding: 12px 10px;
+            width: var(--wrap-width-sm);
+            border-radius: var(--radius);
+            background-color: #fff;
+            color: #000;
+            word-break: break-all;
+            font-size: var(--font-size-xs);
+            min-height: 120px;
+        }
+
+        .ncua-prev :where(& > .ncua-prev__title ~ *) {
+            margin-block-start: 14px;
+        }
+
+        .ncua-prev[hidden] {
+            display: none !important;
+        }
+
+        .ncua-prev__title {
+            margin-block: 0 12px;
+            font-size: inherit;
+            font-weight: 600;
+            color: #191919;
+        }
+
+        .ncua-prev--sm {
+            width: 235px;
+        }
+
+        .ncua-prev--lg {
+            width: var(--wrap-width-lg);
+        }
+
+        /* text */
+        .ncua-prev__text {
+            margin-block: 0;
+        }
+        
+        .ncua-prev > :not([hidden]) + .ncua-prev__text {
+            margin-block: 14px 0;
+        }
+
+        /* image */
+        .ncua-prev__media:not([hidden]) {
+            display: block;
+        }
+
+        .ncua-prev__media img {
+            max-width: 100%;
+            width: 100%;
+            vertical-align: top;
+        }
+
+        .ncua-prev__media + *:not(.ncua-prev) {
+            margin-block-start: 12px;
+        }
+
+        /* 아이템 */
+        .ncua-prev__prd {
+            display: flex;
+            gap: 8px;
+        }
+
+        .ncua-prev__prd img {
+            max-width: 100%;
+            width: 100%;
+            vertical-align: top;
+        }
+
+        .ncua-prev__prd + .ncua-prev__prd {
+            margin-block-start: 8px;
+        }
+
+        .ncua-prev__prd-media {
+            flex-shrink: 0;
+            width: 46px;
+            height: 46px;
+        }
+
+        .ncua-prev__prd-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 16px;
+            font-size: var(--font-size-xs);
+            color: #000;
+            letter-spacing: -0.25px;
+        }
+
+        .ncua-prev__prd-text > * {
+            margin: 0;
+        }
+
+        /* 버튼 */
+        .ncua-prev__btn {
+            padding: 5px 10px;
+            width: 100%;
+            min-height: 37px;
+            background-color: #efefef;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: var(--font-size-xs);
+            color: #191919;
+        }
+
+        .ncua-prev__btn + .ncua-prev__btn {
+            margin-block-start: 4px;
+        }
+
+        /* 가로 버튼 */
+        .ncua-prev__btns + .ncua-prev__btns {
+            margin-block-start: 4px;
+        }
+
+        .ncua-prev__btns--horizontal:not([hidden]) {
+            display: flex;
+            gap: 4px;
+        }
+
+        .ncua-prev__btns--horizontal .ncua-prev__btn {
+            flex: 1;
+        }
+
+        .ncua-prev__btns--horizontal .ncua-prev__btn + .ncua-prev__btn {
+            margin-block-start: 0;
+        }
+
+        /* coupon */
+        .ncua-prev__coupon:not([hidden]) {
+            display: flex;
+        }
+
+        .ncua-prev__coupon {
+            overflow: hidden;
+            margin-block-start: 14px;
+            width: 100%;
+            min-height: 46px;
+            font-size: 10px;
+            text-align: start;
+            color: #191919;
+            line-height: 1.1;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+
+        .ncua-prev__coupon-text {
+            position: relative;
+            flex: 1;
+            padding: 11px;
+            background-color: var(--base-white);
+            border-radius: 5px;
+        }
+
+        .ncua-prev__coupon-text::before,
+        .ncua-prev__coupon-text::after {
+            content: '';
+            position: absolute;
+            right: -4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #d9d9d9;
+        }
+
+        .ncua-prev__coupon-text::before {
+            top: -4px;
+        }
+        
+        .ncua-prev__coupon-text::after {
+            bottom: -4px;
+        }
+
+        .ncua-prev__coupon-title {
+            display: block;
+            font-weight: 600;
+        }
+
+        .ncua-prev__coupon-desc {
+            display: block;
+            color: #767676;
+        }
+
+        .ncua-prev__coupon-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2px;
+            flex: none;
+            width: 41px;
+            background-color: #e6f1fb;
+            border-radius: 5px;
+            border-inline-start: 1px dashed #e6e6e6;
+            font-size: 5px;
+            font-weight: 600;
+            color: #2bb7de;
+        }
+
+        .ncua-prev__coupon-icon::before {
+            content: '↓';
+            font-size: 20px;
+        }
+
+        /* sms,lms */
+        .mobile-preview--sms {
+            min-height: 370px;
+        }
+
+        .mobile-preview--sms .ncua-prev {
+            padding: 12px 14px;
+            min-width: 330px;
+            border: 1px solid var(--gray-200);
+            color: var(--gray-500);
+        }
+
+        /* kakao friend */
+        .mobile-preview--kakao .ncua-prev[data-location] {
+            position: relative;
+            margin-block-end: 20px;
+        }
+
+        .mobile-preview--kakao .ncua-prev[data-location]::after {
+            position: absolute;
+            bottom: -20px;
+            right: 0;
+            content: attr(data-location);
+            color: #767676;
+            font-size: 10px;
+        }
+
+        .mobile-preview--kakao .ncua-prev:not(:has(.ncua-prev__title)) .ncua-prev__media {
+            overflow: hidden;
+            margin: -12px -10px 0;
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+
+        .mobile-preview--kakao .ncua-prev__content-title {
+            font-size: 15px;
+            color: #191919;
+            font-weight: 700;
+            padding-block: 12px;
+            margin-block: 0 12px;
+            border-block-end: 1px solid #e0e0e0;
+        }
+
+        .mobile-preview--kakao .ncua-prev .ncua-prev__text {
+            margin-block-end: 14px;
+            color: #000;
+            font-size: 13px;
+            line-height: 16px;
+            letter-spacing: -0.032px;
+        }
+
+        /* slide 일때 */
+        .mobile-preview--kakao .mobile-preview__slider .ncua-prev__text {
+            color: #767676;
+        }
+
+        /* 알림톡 */
+        .ncua-prev-alim {
+            --point-color: #fee500;
+            overflow: hidden;
+            width: var(--wrap-width-sm);
+            border-radius: 8px;
+            font-size: var(--font-size-xs);
+        }
+
+        .ncua-prev-alim__media {
+            display: block;
+            margin-block-end: 10px;
+        }
+
+        .ncua-prev-alim__media img {
+            max-width: 100%;
+            width: 100%;
+            vertical-align: top;
+        }
+
+        .ncua-prev-alim__title {
+            padding: 12px 10px;
+            margin: 0;
+            background-color: var(--point-color);
+            color: #191919;
+            font-weight: var(--font-weights-commerce-sans-1);
+            font-size: inherit;
+        }
+
+        .ncua-prev-alim__content {
+            padding: 10px;
+            color: #191919;
+            font-size: 15px;
+            line-height: 1.2;
+            background-color: var(--base-white);
+            word-break: break-all;
+        }
+
+        .ncua-prev-alim__info {
+            margin-block: 10px 0;
+            color: #767676;
+            font-size: var(--font-size-xs);
+        }
+
+        .ncua-prev-alim__footer {
+            padding: 0 10px 10px;
+            background-color: var(--base-white);
+        }
+
+        .ncua-prev-alim__footer button + button {
+            margin-block-start: 4px;
+        }
+
+        .ncua-prev-btn {
+            padding: 5px 10px;
+            width: 100%;
+            min-height: 37px;
+            background-color: #efefef;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: var(--font-size-xs);
+            color: #191919;
+        }
+
+        .ncua-prev-alim__btn--add-channel {
+            overflow: hidden;
+            background: var(--point-color);
+            text-indent: -9999em;
+        }
+
+        /* 강조 표기형 */
+        .ncua-prev-alim__em {
+            margin-block-end: 10px;
+            padding: 16px 0 23px;
+            border-block-end: 1px solid #e0e0e0;
+        }
+
+        .ncua-prev-alim__em-title {
+            margin-block: 0 8px;
+            font-size: 11px;
+            color: #838383;
+        }
+
+        .ncua-prev-alim__em-title-sub {
+            font-size: 18px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* 리스트형, 복합형 */
+        .ncua-prev-alim__list {
+            margin-block-end: 12px;
+        }
+
+        .ncua-prev-alim__list-title {
+            margin-block: 0;
+            padding-block: 14px;
+            border-block-end: 1px solid #e0e0e0;
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weights-commerce-sans-2);
+        }
+
+        .ncua-prev-alim__highlight {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-block: 20px;
+            gap: 20px;
+            color: #838383;
+            font-size: 11px;
+            border-block-end: 1px solid #e0e0e0;
+        }
+
+        .ncua-prev-alim__highlight img {
+            width: 54px;
+            height: 54px;
+        }
+
+        .ncua-prev-alim__highlight-title {
+            margin-block: 0 8px;
+            font-weight: 500;
+            font-size: 15px;
+            color: #000;
+        }
+
+        .ncua-prev-alim-table {
+            padding-block: 12px;
+            color: #767676;
+            font-size: 13px;
+            border-block-end: 1px solid #e0e0e0;
+        }
+
+        .ncua-prev-alim-table table {
+            width: 100%;
+        }
+
+        .ncua-prev-alim-table tbody tr + tr th,
+        .ncua-prev-alim-table tbody tr + tr td {
+            padding-block-start: 8px;
+        }
+
+        .ncua-prev-alim-table th {
+            text-align: start;
+            font-weight: 400;
+        }
+
+        .ncua-prev-alim-table td {
+            text-align: end;
+        }
+
+        .ncua-prev-alim-table tfoot {
+            margin-block-start: 12px;
+        }
+
+        .ncua-prev-alim-table tfoot th,
+        .ncua-prev-alim-table tfoot td {
+            padding-block-start: 12px;
+        }
+        
+        .ncua-prev-alim-table tfoot td {
+            font-weight: 700;
+            font-size: 15px;
+            color: #333;
+        }
+
+        .ncua-prev-alim-table:not(:has(tfoot)) td {
+            text-align: start;
+        }
+
+        /* 마이앱 */
+        .ncua-prev-myapp {
+            width: var(--wrap-width-lg);
+            padding: 10px;
+            border-radius: 8px;
+            background-color: var(--base-white);
+            color: var(--gray-500);
+            font-size: 15px;
+            line-height: var(--line-heights-xs);
+            word-break: break-all;
+        }
+
+        .ncua-prev-myapp__caption {
+            margin-block-end: 10px;
+        }
+
+        .ncua-prev-myapp__media {
+            display: block;
+            aspect-ratio: 16 / 10;
+        }
+
+        .ncua-prev-myapp__media img {
+            max-width: 100%;
+            width: 100%;
+            vertical-align: top;
+        }
+
+        .ncua-prev-myapp__media:has([src=""]) {
+            background: #efefef;
+        }
+
+        .slick-prev, .slick-next {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>CRM Preview prototype</h1>
+    
+    <div class="container">
+        <!-- 컨트롤 영역 -->
+        <div class="controls">
+            <h2>설정</h2>
+            
+            <!-- 발송 타입 선택 -->
+            <div class="form-group">
+                <label>발송 타입</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="sendType" value="SMS" checked>
+                        SMS
+                    </label>
+                    <label>
+                        <input type="radio" name="sendType" value="FRIENDTALK">
+                        친구톡
+                    </label>
+                    <label>
+                        <input type="radio" name="sendType" value="ALIMTALK">
+                        알림톡
+                    </label>
+                    <label>
+                        <input type="radio" name="sendType" value="MYAPP">
+                        마이앱
+                    </label>
+                </div>
+            </div>
+            
+            <!-- 친구톡 메시지 타입 (친구톡 선택 시만 표시) -->
+            <div class="form-group friendtalk-only hidden">
+                <label>메시지 타입 (친구톡)</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="messageType" value="TEXT" checked>
+                        텍스트
+                    </label>
+                    <label>
+                        <input type="radio" name="messageType" value="IMAGE">
+                        이미지
+                    </label>
+                    <label>
+                        <input type="radio" name="messageType" value="WIDE_IMAGE">
+                        와이드 이미지
+                    </label>
+                    <label>
+                        <input type="radio" name="messageType" value="WIDE_ITEM_LIST">
+                        와이드 아이템
+                    </label>
+                    <label>
+                        <input type="radio" name="messageType" value="CAROUSEL_FEED">
+                        캐러셀
+                    </label>
+                </div>
+            </div>
+            
+            <!-- 캐러셀 컨트롤 (캐러셀 타입 선택 시만 표시) -->
+            <div class="form-group carousel-only hidden">
+                <label>슬라이드 관리</label>
+                <div class="slide-tabs"></div>
+                <button type="button" id="addSlideBtn">슬라이드 추가</button>
+                <button type="button" id="removeSlideBtn">현재 슬라이드 삭제</button>
+            </div>
+            
+            <!-- 제목 -->
+            <div class="form-group" id="titleGroup">
+                <label>제목</label>
+                <input type="text" id="titleInput" placeholder="제목을 입력하세요">
+            </div>
+            
+            <!-- 내용 -->
+            <div class="form-group">
+                <label>내용</label>
+                <textarea id="contentInput" placeholder="내용을 입력하세요"></textarea>
+            </div>
+            
+            <!-- 내용 제목 (친구톡 전용) -->
+            <div class="form-group friendtalk-only hidden">
+                <label>내용 제목</label>
+                <input type="text" id="contentTitleInput" placeholder="내용 제목을 입력하세요">
+            </div>
+            
+            <!-- 이미지 -->
+            <div class="form-group" id="imageGroup">
+                <label>이미지 URL</label>
+                <input type="text" id="imageInput" placeholder="이미지 URL을 입력하세요">
+            </div>
+            
+            <!-- 마이앱 전용 -->
+            <div class="form-group myapp-only hidden">
+                <label>수신거부 방법</label>
+                <input type="text" id="withdrawalMethodInput" placeholder="무료거부 0000-0000">
+            </div>
+            
+            <!-- 버튼 -->
+            <div class="form-group friendtalk-alimtalk-only hidden">
+                <label>버튼</label>
+                <div id="buttonsList"></div>
+                <button type="button" id="addButtonBtn">버튼 추가</button>
+            </div>
+            
+            <!-- 쿠폰 (친구톡 전용) -->
+            <div class="form-group friendtalk-only hidden">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="couponToggle">
+                    쿠폰 사용
+                </label>
+                <div id="couponFields">
+                    <input type="text" id="couponText" placeholder="쿠폰명" style="margin-bottom: 5px;">
+                    <input type="text" id="couponDate" placeholder="사용기한 (예: 2024.12.31)">
+                </div>
+            </div>
+            
+            <!-- 아이템 리스트 (친구톡 WIDE_ITEM_LIST 전용) -->
+            <div class="form-group wide-item-only hidden">
+                <label>아이템 리스트</label>
+                <div id="itemsList"></div>
+                <button type="button" id="addItemBtn">아이템 추가</button>
+            </div>
+            
+            <!-- 알림톡 전용 -->
+            <div class="form-group alimtalk-only hidden">
+                <label>강조 제목</label>
+                <input type="text" id="emTitleInput" placeholder="강조 제목">
+            </div>
+            
+            <div class="form-group alimtalk-only hidden">
+                <label>강조 부제목</label>
+                <input type="text" id="emSubTitleInput" placeholder="강조 부제목">
+            </div>
+            
+            <div class="form-group alimtalk-only hidden">
+                <label>리스트 헤더</label>
+                <input type="text" id="listHeaderInput" placeholder="리스트 헤더 (예: 주문 정보)">
+            </div>
+            
+            <div class="form-group alimtalk-only hidden">
+                <label>추가 정보</label>
+                <input type="text" id="extraInfoInput" placeholder="추가 정보 (예: 자세한 사항은 고객센터에 문의...)">
+            </div>
+            
+            <div class="form-group alimtalk-only hidden">
+                <label>채널 메시지</label>
+                <input type="text" id="channelMessageInput" placeholder="채널 메시지 (예: 채널 추가하고 이 채널의 마케팅 메시지 등을...)">
+            </div>
+            
+            <!-- 알림톡 하이라이트 -->
+            <div class="form-group alimtalk-only hidden">
+                <label>하이라이트 제목</label>
+                <input type="text" id="highlightTitleInput" placeholder="하이라이트 제목">
+            </div>
+            
+            <div class="form-group alimtalk-only hidden">
+                <label>하이라이트 설명</label>
+                <input type="text" id="highlightDescInput" placeholder="하이라이트 설명">
+            </div>
+            
+            <div class="form-group alimtalk-only hidden">
+                <label>하이라이트 이미지 URL</label>
+                <input type="text" id="highlightImageInput" placeholder="하이라이트 이미지 URL">
+            </div>
+            
+            <!-- 알림톡 아이템 리스트 -->
+            <div class="form-group alimtalk-only hidden">
+                <label>아이템 리스트 (테이블)</label>
+                <div id="alimtalkItemsList"></div>
+                <button type="button" id="addAlimtalkItemBtn">아이템 추가</button>
+            </div>
+            
+            <!-- 메서드 테스트 -->
+            <div class="form-group" style="border-top: 2px solid #ddd; padding-top: 20px; margin-top: 20px;">
+                <h3 style="margin-bottom: 10px;">메서드 테스트</h3>
+                
+                <label>Notice 텍스트/HTML 변경</label>
+                <input type="text" id="noticeTextInput" placeholder="텍스트 또는 HTML 입력 (예: <strong>강조</strong> 텍스트)">
+                <div style="display: flex; gap: 5px; margin-top: 5px;">
+                    <button type="button" id="setNoticeTextBtn">Notice 텍스트 적용</button>
+                    <button type="button" id="setNoticeElementBtn">Notice HTML 엘리먼트 적용</button>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Checkbox 라벨 텍스트 변경</label>
+                <input type="text" id="checkboxTextInput" placeholder="Checkbox 라벨 텍스트 입력">
+                <button type="button" id="setCheckboxTextBtn" style="margin-top: 5px;">Checkbox 라벨 적용</button>
+            </div>
+            
+            <div class="form-group">
+                <label>체크박스 상태 제어</label>
+                <div style="display: flex; gap: 10px; margin-top: 5px;">
+                    <button type="button" id="checkCheckboxBtn">체크박스 체크</button>
+                    <button type="button" id="uncheckCheckboxBtn">체크박스 해제</button>
+                    <button type="button" id="getCheckboxStatusBtn">현재 상태 확인</button>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Raw HTML 직접 주입 (setRawHtml)</label>
+                <textarea id="rawHtmlInput" placeholder="HTML을 입력하세요..." style="min-height: 150px; font-family: monospace;"></textarea>
+                <button type="button" id="setRawHtmlBtn" style="margin-top: 5px;">Raw HTML 적용</button>
+                <button type="button" id="loadSampleHtmlBtn" style="margin-top: 5px; margin-left: 5px;">샘플 HTML 불러오기</button>
+            </div>
+        </div>
+        
+        <!-- 미리보기 영역 -->
+        <div class="preview-area">
+            <h2>미리보기</h2>
+            <div class="preview-container">
+                <!-- CrmPreview가 동적으로 생성합니다 -->
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- jQuery (slick.js 의존성) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Slick -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    
+    <!-- CRM Preview Library -->
+    <!-- 방법 1: 로더 사용 -->
+    <script src="crm-preview-loader.js"></script>
+    <!-- GodoUIModule (CrmPreview 어댑터) -->
+    <script src="../godo-ui-module.js"></script>
+    
+    <script>
+        // 라이브러리 로드 완료 대기
+        window.addEventListener('crmPreviewLoaded', function() {
+            initTest();
+        });
+        
+        // 이미 로드된 경우 (수동 로드 사용 시)
+        if (typeof CrmPreview !== 'undefined') {
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initTest);
+            } else {
+                initTest();
+            }
+        }
+        
+        function initTest() {
+            console.log('CRM Preview prototype 초기화 시작 (GodoUIModule 사용)');
+            
+            // GodoUIModule을 사용한 미리보기 인스턴스 생성 (로컬 변수)
+            const crmPreview = GodoUIModule.render({
+                type: 'MessagePreview',
+                target: '.preview-container',
+                sendType: 'SMS', // 발송 타입
+                noticeText: '미리보기와 실제가 다를 수 있습니다.',
+                checkboxText: '변수로 변환해서 보기',
+                onVariableToggle: function(isChecked) {
+                    console.log('변수 모드:', isChecked ? '활성화' : '비활성화');
+                    // 여기서 변수 치환 로직 실행
+                }
+            });
+            
+            console.log('GodoUIModule.render() 반환값:', crmPreview);
+            
+            // 초기 UI 상태 설정 (SMS는 제목/이미지 숨김)
+            updateFieldsVisibility('SMS');
+            
+            // 발송 타입 변경
+            document.querySelectorAll('input[name="sendType"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const sendType = this.value;
+                    
+                    // 폼 초기화
+                    resetForm();
+                    
+                    crmPreview.setSendType(sendType).render();
+                    
+                    // UI 표시/숨김
+                    updateFieldsVisibility(sendType);
+                    
+                    document.querySelectorAll('.friendtalk-only').forEach(el => {
+                        el.classList.toggle('hidden', sendType !== 'FRIENDTALK');
+                    });
+                    document.querySelectorAll('.alimtalk-only').forEach(el => {
+                        el.classList.toggle('hidden', sendType !== 'ALIMTALK');
+                    });
+                    document.querySelectorAll('.myapp-only').forEach(el => {
+                        el.classList.toggle('hidden', sendType !== 'MYAPP');
+                    });
+                    document.querySelectorAll('.friendtalk-alimtalk-only').forEach(el => {
+                        el.classList.toggle('hidden', sendType !== 'FRIENDTALK' && sendType !== 'ALIMTALK');
+                    });
+                });
+            });
+            
+            // 필드 표시/숨김 함수
+            function updateFieldsVisibility(sendType) {
+                const titleGroup = document.getElementById('titleGroup');
+                const imageGroup = document.getElementById('imageGroup');
+                
+                if (sendType === 'SMS') {
+                    titleGroup.classList.add('hidden');
+                    imageGroup.classList.add('hidden');
+                } else {
+                    titleGroup.classList.remove('hidden');
+                    imageGroup.classList.remove('hidden');
+                }
+            }
+            
+            // 폼 초기화 함수
+            function resetForm() {
+                // 입력 필드 초기화
+                document.getElementById('titleInput').value = '';
+                document.getElementById('contentInput').value = '';
+                document.getElementById('contentTitleInput').value = '';
+                document.getElementById('imageInput').value = '';
+                document.getElementById('withdrawalMethodInput').value = '';
+                document.getElementById('emTitleInput').value = '';
+                document.getElementById('emSubTitleInput').value = '';
+                document.getElementById('listHeaderInput').value = '';
+                document.getElementById('extraInfoInput').value = '';
+                document.getElementById('channelMessageInput').value = '';
+                document.getElementById('highlightTitleInput').value = '';
+                document.getElementById('highlightDescInput').value = '';
+                document.getElementById('highlightImageInput').value = '';
+                
+                // 버튼 목록 초기화
+                document.getElementById('buttonsList').innerHTML = '';
+                
+                // 아이템 목록 초기화 (친구톡)
+                document.getElementById('itemsList').innerHTML = '';
+                
+                // 아이템 목록 초기화 (알림톡)
+                document.getElementById('alimtalkItemsList').innerHTML = '';
+                
+                // 쿠폰 초기화
+                document.getElementById('couponToggle').checked = false;
+                document.getElementById('couponText').value = '';
+                document.getElementById('couponDate').value = '';
+                document.getElementById('couponFields').classList.add('hidden');
+                
+                // 슬라이드 탭 초기화
+                document.querySelector('.slide-tabs').innerHTML = '';
+                
+                // CrmPreview 통합 초기화 (각 State가 자신의 UI 초기화)
+                if (crmPreview) {
+                    crmPreview.reset();
+                }
+            }
+            
+            // 친구톡 메시지 타입 변경
+            document.querySelectorAll('input[name="messageType"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const messageType = this.value;
+                    
+                    // 폼 초기화 (메시지 타입 변경 시)
+                    resetForm();
+                    
+                    crmPreview.setMessageType(messageType).render();
+                    
+                    // 캐러셀 컨트롤 표시/숨김
+                    document.querySelectorAll('.carousel-only').forEach(el => {
+                        el.classList.toggle('hidden', messageType !== 'CAROUSEL_FEED');
+                    });
+                    
+                    // 와이드 아이템 리스트 컨트롤 표시/숨김
+                    document.querySelectorAll('.wide-item-only').forEach(el => {
+                        el.classList.toggle('hidden', messageType !== 'WIDE_ITEM_LIST');
+                    });
+                    
+                    // 캐러셀이면 기존 슬라이드에 대한 탭 생성
+                    if (messageType === 'CAROUSEL_FEED') {
+                        // 탭 초기화
+                        const slideTabsContainer = document.querySelector('.slide-tabs');
+                        slideTabsContainer.innerHTML = '';
+                        
+                        // 현재 존재하는 슬라이드 개수만큼 탭 생성
+                        const slideCount = crmPreview.getSlideCount();
+                        for (let i = 0; i < slideCount; i++) {
+                            const tab = document.createElement('button');
+                            tab.className = 'slide-tab';
+                            if (i === 0) tab.classList.add('active');
+                            tab.setAttribute('data-slide-index', i);
+                            tab.textContent = `슬라이드 ${i + 1}`;
+                            slideTabsContainer.appendChild(tab);
+                        }
+                    }
+                });
+            });
+            
+            // 제목 입력
+            document.getElementById('titleInput').addEventListener('input', function() {
+                crmPreview.setTitle(this.value);
+            });
+            
+            // 내용 입력
+            document.getElementById('contentInput').addEventListener('input', function() {
+                crmPreview.setContent(this.value);
+            });
+            
+            // 내용 제목 입력 (친구톡 전용)
+            document.getElementById('contentTitleInput').addEventListener('input', function() {
+                crmPreview.setContentTitle(this.value);
+            });
+            
+            // 이미지 입력
+            document.getElementById('imageInput').addEventListener('input', function() {
+                crmPreview.setImage(this.value);
+            });
+            
+            // 수신거부 방법 입력 (마이앱 전용)
+            document.getElementById('withdrawalMethodInput').addEventListener('input', function() {
+                crmPreview.setWithdrawalMethod(this.value);
+            });
+            
+            // 버튼 추가
+            document.getElementById('addButtonBtn').addEventListener('click', function() {
+                const buttonItem = document.createElement('div');
+                buttonItem.className = 'button-item';
+                buttonItem.innerHTML = `
+                    <input type="text" class="button-text" placeholder="버튼명">
+                    <input type="text" class="button-url" placeholder="URL">
+                    <button type="button" class="remove-button-btn">삭제</button>
+                `;
+                document.getElementById('buttonsList').appendChild(buttonItem);
+                updateButtons();
+            });
+            
+            // 버튼 삭제 (이벤트 위임)
+            document.getElementById('buttonsList').addEventListener('click', function(e) {
+                if (e.target.classList.contains('remove-button-btn')) {
+                    e.target.closest('.button-item').remove();
+                    updateButtons();
+                }
+            });
+            
+            // 버튼 업데이트 (이벤트 위임)
+            document.getElementById('buttonsList').addEventListener('input', function(e) {
+                if (e.target.classList.contains('button-text') || e.target.classList.contains('button-url')) {
+                    updateButtons();
+                }
+            });
+            
+            function updateButtons() {
+                const buttons = [];
+                document.querySelectorAll('.button-item').forEach(item => {
+                    const text = item.querySelector('.button-text').value;
+                    const url = item.querySelector('.button-url').value;
+                    if (text) {
+                        buttons.push({ text, url, type: 'WL' });
+                    }
+                });
+                crmPreview.setButtons(buttons);
+            }
+            
+            // 쿠폰 토글
+            document.getElementById('couponToggle').addEventListener('change', function() {
+                document.getElementById('couponFields').classList.toggle('hidden', !this.checked);
+                updateCoupon();
+            });
+            
+            document.getElementById('couponText').addEventListener('input', updateCoupon);
+            document.getElementById('couponDate').addEventListener('input', updateCoupon);
+            
+            function updateCoupon() {
+                const couponToggle = document.getElementById('couponToggle');
+                if (couponToggle.checked) {
+                    const coupon = {
+                        text: document.getElementById('couponText').value,
+                        date: document.getElementById('couponDate').value
+                    };
+                    crmPreview.setCoupon(coupon);
+                } else {
+                    crmPreview.setCoupon(null);
+                }
+            }
+            
+            // 알림톡 강조 제목
+            document.getElementById('emTitleInput').addEventListener('input', function() {
+                crmPreview.setEmTitle(this.value);
+            });
+            
+            document.getElementById('emSubTitleInput').addEventListener('input', function() {
+                crmPreview.setEmSubTitle(this.value);
+            });
+            
+            // 알림톡 리스트 헤더
+            document.getElementById('listHeaderInput').addEventListener('input', function() {
+                crmPreview.setListHeader(this.value);
+            });
+            
+            // 알림톡 추가 정보
+            document.getElementById('extraInfoInput').addEventListener('input', function() {
+                crmPreview.setExtraInfo(this.value);
+            });
+            
+            // 알림톡 채널 메시지
+            document.getElementById('channelMessageInput').addEventListener('input', function() {
+                crmPreview.setChannelMessage(this.value);
+            });
+            
+            // 알림톡 하이라이트 제목
+            document.getElementById('highlightTitleInput').addEventListener('input', function() {
+                crmPreview.setHighlightTitle(this.value);
+            });
+            
+            // 알림톡 하이라이트 설명
+            document.getElementById('highlightDescInput').addEventListener('input', function() {
+                crmPreview.setHighlightDesc(this.value);
+            });
+            
+            // 알림톡 하이라이트 이미지
+            document.getElementById('highlightImageInput').addEventListener('input', function() {
+                crmPreview.setHighlightImage(this.value);
+            });
+            
+            // 알림톡 아이템 추가
+            document.getElementById('addAlimtalkItemBtn').addEventListener('click', function() {
+                const itemItem = document.createElement('div');
+                itemItem.className = 'item-item';
+                itemItem.innerHTML = `
+                    <input type="text" class="alimtalk-item-title" placeholder="항목명 (예: 상품명)">
+                    <input type="text" class="alimtalk-item-desc" placeholder="값 (예: 테스트 상품)">
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="alimtalk-item-summary">
+                        요약 행 (tfoot)
+                    </label>
+                    <button type="button" class="remove-alimtalk-item-btn">삭제</button>
+                `;
+                document.getElementById('alimtalkItemsList').appendChild(itemItem);
+                updateAlimtalkItems();
+            });
+            
+            // 알림톡 아이템 삭제 (이벤트 위임)
+            document.getElementById('alimtalkItemsList').addEventListener('click', function(e) {
+                if (e.target.classList.contains('remove-alimtalk-item-btn')) {
+                    e.target.closest('.item-item').remove();
+                    updateAlimtalkItems();
+                }
+            });
+            
+            // 알림톡 아이템 업데이트 (이벤트 위임)
+            document.getElementById('alimtalkItemsList').addEventListener('input', function(e) {
+                if (e.target.classList.contains('alimtalk-item-title') || 
+                    e.target.classList.contains('alimtalk-item-desc') ||
+                    e.target.classList.contains('alimtalk-item-summary')) {
+                    updateAlimtalkItems();
+                }
+            });
+            
+            function updateAlimtalkItems() {
+                const items = [];
+                document.querySelectorAll('#alimtalkItemsList .item-item').forEach(item => {
+                    const title = item.querySelector('.alimtalk-item-title').value;
+                    const desc = item.querySelector('.alimtalk-item-desc').value;
+                    const isSummary = item.querySelector('.alimtalk-item-summary').checked;
+                    if (title || desc) {
+                        items.push({ title, desc, isSummary });
+                    }
+                });
+                crmPreview.setItemList(items);
+            }
+            
+            // 친구톡 아이템 추가
+            document.getElementById('addItemBtn').addEventListener('click', function() {
+                const itemItem = document.createElement('div');
+                itemItem.className = 'item-item';
+                itemItem.innerHTML = `
+                    <input type="text" class="item-title" placeholder="아이템 제목">
+                    <input type="text" class="item-desc" placeholder="아이템 설명 (선택)">
+                    <input type="text" class="item-image" placeholder="이미지 URL">
+                    <button type="button" class="remove-item-btn">삭제</button>
+                `;
+                document.getElementById('itemsList').appendChild(itemItem);
+                updateItems();
+            });
+            
+            // 아이템 삭제 (이벤트 위임)
+            document.getElementById('itemsList').addEventListener('click', function(e) {
+                if (e.target.classList.contains('remove-item-btn')) {
+                    e.target.closest('.item-item').remove();
+                    updateItems();
+                }
+            });
+            
+            // 아이템 업데이트 (이벤트 위임)
+            document.getElementById('itemsList').addEventListener('input', function(e) {
+                if (e.target.classList.contains('item-title') || 
+                    e.target.classList.contains('item-desc') || 
+                    e.target.classList.contains('item-image')) {
+                    updateItems();
+                }
+            });
+            
+            function updateItems() {
+                const items = [];
+                document.querySelectorAll('.item-item').forEach(item => {
+                    const title = item.querySelector('.item-title').value;
+                    const desc = item.querySelector('.item-desc').value;
+                    const image = item.querySelector('.item-image').value;
+                    if (title || image) {
+                        items.push({ title, desc, image });
+                    }
+                });
+                crmPreview.setItemList(items);
+            }
+            
+            // 슬라이드 추가
+            document.getElementById('addSlideBtn').addEventListener('click', addSlide);
+            
+            function addSlide() {
+                crmPreview.addSlide();
+                const slideIndex = crmPreview.getSlideCount() - 1;
+                
+                const tab = document.createElement('button');
+                tab.className = 'slide-tab';
+                tab.setAttribute('data-slide-index', slideIndex);
+                tab.textContent = `슬라이드 ${slideIndex + 1}`;
+                
+                document.querySelector('.slide-tabs').appendChild(tab);
+            }
+            
+            // 슬라이드 삭제
+            document.getElementById('removeSlideBtn').addEventListener('click', function() {
+                const currentIndex = crmPreview.getCurrentSlideIndex();
+                if (crmPreview.getSlideCount() <= 1) {
+                    alert('최소 1개의 슬라이드가 필요합니다.');
+                    return;
+                }
+                
+                if (confirm(`슬라이드 ${currentIndex + 1}을(를) 삭제하시겠습니까?`)) {
+                    crmPreview.removeSlide(currentIndex);
+                    const tabToRemove = document.querySelector(`.slide-tab[data-slide-index="${currentIndex}"]`);
+                    if (tabToRemove) {
+                        tabToRemove.remove();
+                    }
+                    
+                    // 탭 번호 재정렬
+                    document.querySelectorAll('.slide-tab').forEach((tab, index) => {
+                        tab.setAttribute('data-slide-index', index);
+                        tab.textContent = `슬라이드 ${index + 1}`;
+                    });
+                    
+                    // 첫 번째 탭 선택
+                    const firstTab = document.querySelector('.slide-tab');
+                    if (firstTab) {
+                        firstTab.click();
+                    }
+                }
+            });
+            
+            // 슬라이드 탭 클릭 (이벤트 위임)
+            document.querySelector('.slide-tabs').addEventListener('click', function(e) {
+                if (e.target.classList.contains('slide-tab')) {
+                    const slideIndex = parseInt(e.target.getAttribute('data-slide-index'));
+                    
+                    document.querySelectorAll('.slide-tab').forEach(tab => {
+                        tab.classList.remove('active');
+                    });
+                    e.target.classList.add('active');
+                    
+                    crmPreview.setSlideIndex(slideIndex);
+                }
+            });
+            
+            // ========================================
+            // 메서드 테스트 이벤트 리스너
+            // ========================================
+            
+            // Notice 텍스트 변경 (문자열/HTML)
+            document.getElementById('setNoticeTextBtn').addEventListener('click', function() {
+                const noticeText = document.getElementById('noticeTextInput').value;
+                if (noticeText) {
+                    crmPreview.setNoticeText(noticeText);
+                    alert(`Notice가 "${noticeText}"로 변경되었습니다.`);
+                } else {
+                    alert('Notice 텍스트를 입력하세요.');
+                }
+            });
+            
+            // Notice HTML 엘리먼트 적용
+            document.getElementById('setNoticeElementBtn').addEventListener('click', function() {
+                const noticeText = document.getElementById('noticeTextInput').value;
+                if (noticeText) {
+                    // 입력한 HTML 문자열을 HTMLElement로 변환
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = noticeText;
+                    
+                    // 첫 번째 자식 엘리먼트를 사용 (또는 전체 내용)
+                    const element = tempDiv.firstElementChild || tempDiv;
+                    
+                    crmPreview.setNoticeText(element);
+                    alert(`HTML 엘리먼트가 Notice 영역에 적용되었습니다: "${noticeText}"`);
+                } else {
+                    alert('HTML 텍스트를 입력하세요. 예: <strong>강조</strong> 텍스트');
+                }
+            });
+            
+            // Checkbox 라벨 텍스트 변경
+            document.getElementById('setCheckboxTextBtn').addEventListener('click', function() {
+                const checkboxText = document.getElementById('checkboxTextInput').value;
+                if (checkboxText) {
+                    crmPreview.setCheckboxText(checkboxText);
+                    alert(`Checkbox 라벨이 "${checkboxText}"로 변경되었습니다.`);
+                } else {
+                    alert('Checkbox 라벨 텍스트를 입력하세요.');
+                }
+            });
+            
+            // 체크박스 체크
+            document.getElementById('checkCheckboxBtn').addEventListener('click', function() {
+                crmPreview.setCheckboxChecked(true);
+                alert('체크박스가 체크되었습니다.');
+            });
+            
+            // 체크박스 해제
+            document.getElementById('uncheckCheckboxBtn').addEventListener('click', function() {
+                crmPreview.setCheckboxChecked(false);
+                alert('체크박스가 해제되었습니다.');
+            });
+            
+            // 현재 상태 확인
+            document.getElementById('getCheckboxStatusBtn').addEventListener('click', function() {
+                const isChecked = crmPreview.isCheckboxChecked();
+                alert(`현재 체크박스 상태: ${isChecked ? '체크됨' : '해제됨'}`);
+            });
+            
+            // Raw HTML 적용
+            document.getElementById('setRawHtmlBtn').addEventListener('click', function() {
+                const rawHtml = document.getElementById('rawHtmlInput').value;
+                if (rawHtml) {
+                    crmPreview.setRawHtml(rawHtml);
+                    alert('Raw HTML이 적용되었습니다.');
+                } else {
+                    alert('HTML을 입력하세요.');
+                }
+            });
+            
+            // 샘플 HTML 불러오기
+            document.getElementById('loadSampleHtmlBtn').addEventListener('click', function() {
+                const sampleHtml = `<section class="mobile-preview mobile-preview--alim" data-component="kakao-notification-message-preview">
+    <span class="ncua-profile ncua-profile--float ncua-profile--kakao">채널명</span>
+    <section class="ncua-prev-alim">
+        <h2 class="ncua-prev-alim__title">알림톡 도착</h2>
+        <section class="ncua-prev-alim__content">
+            <div class="alimtalk-contents-preview" style="white-space: pre-wrap;">
+[테스트 쇼핑몰] 테스트
+
+안녕하세요 홍길동님
+홍길동님이 주문하신 상품이 배송되었습니다.
+배송조회 버튼을 클릭하여, 배송 진행 상황 확인 부탁드립니다.
+
+■ 상품명 : 테스트 상품
+■ 배송업체 : CJ대한통운
+■ 송장번호 : 123456789
+
+이용해주셔서 감사합니다.
+            </div>
+        </section>
+        <footer class="ncua-prev-alim__footer">
+            <button class="ncua-prev-btn" type="button">배송조회</button>
+        </footer>
+    </section>
+</section>`;
+                document.getElementById('rawHtmlInput').value = sampleHtml;
+                alert('샘플 HTML을 불러왔습니다. "Raw HTML 적용" 버튼을 클릭하세요.');
+            });
+            
+            console.log('CRM Preview prototype 초기화 완료');
+        }
+    </script>
+</body>
+</html>

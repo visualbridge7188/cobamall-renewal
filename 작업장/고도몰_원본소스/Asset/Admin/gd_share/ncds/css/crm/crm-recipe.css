@@ -1,0 +1,37 @@
+/**
+ * CRM 레시피 등록/재등록 드로어(레이어)
+ * crm_recipe_frame.php 가 hub 의 LAYER_OPEN 수신 시 crm_recipe_send.php 를 오른쪽 드로어(iframe)로 띄운다.
+ * - 뷰포트 >= 1252px : 패널은 1252px 고정(오른쪽), 왼쪽 영역은 dimmed.
+ * - 뷰포트 <  1252px : 패널도 뷰포트 폭으로 줄고, 내용(1252px)은 유지되어 가로 스크롤이 생김.
+ */
+.crm-recipe-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end; /* 패널을 오른쪽에 정렬 */
+    background: rgba(0, 0, 0, 0.5); /* 왼쪽 영역 dimmed */
+}
+
+.crm-recipe-drawer__panel {
+    width: 1252px;
+    max-width: 100%; /* 뷰포트 < 1252 → 패널도 같이 줄어듦 */
+    height: 100%;
+    background: #fff;
+    overflow-x: auto; /* 줄어든 만큼 가로 스크롤 */
+    overflow-y: hidden;
+}
+
+.crm-recipe-drawer__iframe {
+    width: 100%; /* 패널 폭을 따름 — 내용의 가로 스크롤은 iframe 내부에서 처리 */
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+/* 드로어가 열린 동안 부모(어드민) 페이지 스크롤 잠금 + 스크롤바 제거.
+   어드민은 window(html/body) 스크롤이라 html 까지 hidden 해야 스크롤바 트랙이 사라진다. */
+html.crm-recipe-drawer-open,
+body.crm-recipe-drawer-open {
+    overflow: hidden;
+}

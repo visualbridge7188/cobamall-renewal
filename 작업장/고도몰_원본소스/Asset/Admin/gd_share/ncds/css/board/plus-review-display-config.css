@@ -1,0 +1,55 @@
+.plus_review_config .ncua-number {
+    width: 70px !important;
+}
+
+.plus_review_config .ncua-flex-column {
+    align-items: flex-start;
+}
+
+.plus_review_config .ncua-input-text {
+    min-width: 35px;
+}
+
+.plus_review_config .ncua-border-content {
+    label {
+        font-weight: var(--font-weights-commerce-sans-1);
+    }
+}
+
+.plus_review_config .ncua-preview-template-layout {
+    position: relative;
+
+    .ncua-preview-template {
+        position: absolute;
+        top: 0px;
+        left: 320px;
+        z-index: 9;
+        display:none;
+    }
+
+    .ncua-preview-template-2 {
+        position: absolute;
+        top: -210px;
+        left: 250px;
+        z-index: 9;
+        display:none;
+    }
+
+    .ncua-radio-field {
+        align-items: center;
+        margin-right: 16px;
+    }
+
+    .ncua-radio-field__text  .ncua-btn {
+        margin-left: 8px;
+    }
+    
+}
+
+
+.plus_review_config {
+    .ncua-popup-period-config, .ncua-popup-position-config {
+        gap: 8px;
+    }
+}
+

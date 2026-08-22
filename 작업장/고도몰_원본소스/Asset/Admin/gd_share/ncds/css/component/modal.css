@@ -1,0 +1,161 @@
+/* =============================== */
+/* NCDS 에서 사용되는 bootstrap-dialog 레이어 모달 스타일 */
+/* =============================== */
+.ncds .bootstrap-dialog.ncds-modal {
+    .modal-dialog{
+        top: 56px;
+    }
+    .bootstrap-dialog-message {
+        padding: 0px;
+    }
+
+    .modal-content {
+        overflow: hidden;
+        padding: 0;
+        border-width: 0;
+        border-radius: 12px;
+    }
+
+    .modal-header {
+        position: relative;
+        padding: 16px 20px;
+        border: none;
+        border-bottom: 1px solid var(--gray-100, #e4e5e7);
+    }
+
+    .bootstrap-dialog-title {
+        transform: translateY(2px);
+        color: var(--gray-700, #171818);
+        font-size: var(--font-size-sm, 14px);
+        font-weight: var(--font-weights-commerce-sans-2, 700);
+        line-height: var(--line-heights-sm, 22px);
+    }
+
+    .modal-title-description {
+        font-size: var(--font-size-xs);
+        color: var(--gray-400);
+        font-weight: var(--font-weights-commerce-sans-0);
+    }
+
+    .bootstrap-dialog-close-button {
+        float: none;
+        position: absolute;
+        right: 12px;
+        top: 10px;
+        margin-top: 0;
+
+        button {
+            width: 36px;
+            height: 36px;
+            border-radius: 4px;
+            background-image: url(../../image/modal-close-x.png);
+            background-size: cover;
+            transition: background-color .2s ease-in-out;
+        }
+
+        button:hover {
+            background-color: var(--gray-50, #f6f7f9);
+        }
+    }
+
+    .modal-body {
+        padding-block-start: 0;
+    }
+
+    .modal-dialog__content {
+        overflow-y: auto;
+        height: calc(775px / 1080px * 100vh); /* content height / browser height * 100vh */
+        max-height: max-content;
+        padding: 20px;
+
+        .ncua-btn-group {
+            margin-block-start: 8px;
+        }
+
+        .ncua-select-group {
+            display: flex;
+            align-items: center;
+
+            .ncua-checkbox-field:not(.ncua-checkbox-field ~ .ncua-checkbox-field) {
+                margin-inline-start: 12px;
+            }
+        }
+
+        .ncua-table--vertical {
+            tbody > tr > th {
+                width: 144px;;
+            }
+        }
+
+        .ncua-table--rounded {
+            th:first-child {
+                border-top-left-radius: 5px;
+            }
+        
+            th:last-child {
+                border-top-right-radius: 5px;
+            }
+        }
+    }
+
+    .ncua-table table {
+        font-size: var(--font-size-xs, 13px);
+    }
+
+    .modal-dialog__footer.no-border {
+        border-block-start: none;
+    }
+
+    @media (min-width: 992px) {
+        .modal-lg {
+            width: 1000px;
+        }
+    }
+}
+
+.ncds .bootstrap-dialog  .modal-dialog__footer {
+    margin-block-start: 0;
+    padding: 16px 20px;
+    border-block-start: 1px solid var(--gray-100, #e4e5e7);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+}
+
+.ncds .bootstrap-dialog-close-button {
+    float: none;
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    margin-top: 0;
+
+    button {
+        width: 36px !important;
+        height: 36px !important;
+        border-radius: 4px;
+        background-image: url(../../image/modal-close-x.png) !important;
+        background-size: cover !important;
+        transition: background-color .2s ease-in-out;
+    }
+
+    button:hover {
+        background-color: var(--gray-50, #f6f7f9);
+    }
+}
+
+.ncds .ncds-alert-modal .ncua-modal__actions--horizontal {
+    flex-direction: row;
+}
+
+.ncua-modal-content-title {
+    font-size: var(--font-size-sm);
+    color: var(--gray-700);
+    font-weight: var(--font-weights-commerce-sans-1);
+    line-height: var(--line-heights-sm);
+}
+
+/** spinner modal 스타일 */
+.ncds .ncds-spinner-modal .ncua-modal {
+    width: 320px;
+}

@@ -1,0 +1,40 @@
+/* =============================== */
+/* search 영역 버튼 스타일 */
+/* =============================== */
+.ncua-btn-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-block: 8px 0;
+}
+
+/* =============================== */
+/* 상세 검색 여/닫기 스타일 */
+/* =============================== */
+.ncua-btn--toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+
+    &::before {
+        position: absolute;
+        left: 3px;
+        bottom: 0;
+        content: '';
+        width: calc(100% - 20px);
+        height: 1px;
+        background-color: var(--blue-500);
+    }
+
+    &::after {
+        content: '';
+        width: 14px;
+        height: 14px;
+        background: url('../../image/chevron-up.png') no-repeat center center / contain;
+        transform: rotate(180deg);
+    }
+
+    &.opened::after {
+        transform: rotate(0deg);
+    }
+}

@@ -1,0 +1,130 @@
+/* 자동 알림 미리보기 레이어 모달 */
+.layer-preview-auto-send {
+    .ncua-horizontal-tab {
+        width: 100%;
+        margin-bottom: 16px;
+        padding: 0 4px;
+    }
+
+    .swiper-wrapper {
+        gap: 8px;
+        padding: 0;
+    }
+
+    .ncua-horizontal-tab__item {
+        flex: 1;
+
+        .ncua-tab-button:disabled {
+            color: var(--gray-200);
+            pointer-events: none;
+            cursor: default;
+        }
+    }
+
+    /* 미리보기 컨텐츠 영역 */
+    .preview-content-wrap {
+        background-color: var(--gray-50);
+        width: 100%;
+        padding: 24px;
+        overflow-x:hidden;
+    }
+
+    .preview-content-item-wrap {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        align-items: stretch;
+    }
+
+    .preview-content-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .preview-content-item-title {
+        font-weight: var(--font-weights-commerce-sans-1);
+        font-size: var(--font-size-md);
+        color: var(--gray-700);
+        margin-bottom: 8px;
+    }
+
+
+    /* 미리보기 컨텐츠 영역 내부 컨텐츠 */
+    .mobile-preview {
+        width: 293px;
+        min-height: 307px;
+
+        &:not(.mobile-preview--alim) {
+            background-color: var(--gray-100);
+        }
+    }
+
+
+    /* SMS 미리보기 */
+    .mobile-preview--sms {
+        padding: 12px;
+        
+        .ncua-prev {
+            min-width: 250px;
+            padding: 10px;
+            font-size: var(--font-size-xs);
+            line-height: var(--line-heights-xs);
+        }
+    }
+
+    /* 카카오 알림톡 미리보기 */
+    .mobile-preview--alim {
+        overflow: visible;
+        padding: 63px 18px 16px 20px;
+    }
+
+    .ncua-profile--kakao {
+        color: var(--gray-500);
+        font-weight: var(--font-weights-commerce-sans-1);
+    }
+
+    .ncua-prev-alim__media {
+        margin-block-end: 0px;
+    }
+
+    .ncua-prev-alim {
+        width: 255px;
+        font-size: var(--font-size-xs);
+        line-height: var(--line-heights-xs);
+
+        .ncua-prev-alim__content {
+            font-size: 15px;
+        }
+    }
+
+    /* 마이앱 미리보기 */
+    .mobile-preview--myapp {
+        padding-inline-start: 59px;
+    }
+
+    .ncua-prev-myapp {
+        width: 216px;
+        font-size: var(--font-size-xs);
+        line-height: var(--line-heights-xs);
+
+        .ncua-prev-myapp__title {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 15px;
+            color: var(--gray-500);
+            font-weight: var(--font-weights-commerce-sans-2);
+        }
+    }
+
+    /* 카카오 알림톡, 마이앱 공통 프로필 스타일 */
+    .ncua-profile {
+        gap: 7px;
+        align-items: center;
+        
+        &::before {
+            width: 34px;
+            height: 34px;
+            border-radius: 13px;
+        }
+    }
+}

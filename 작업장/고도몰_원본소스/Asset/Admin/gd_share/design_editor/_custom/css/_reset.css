@@ -1,0 +1,618 @@
+@charset "utf-8";
+
+/*========================================================================
+
+RESET : 수정 및 삭제 주의 : 쇼핑몰 화면이 정상적으로 보이지 않을 수 있습니다.
+
+========================================================================*/
+/* Common */
+a, a:hover { text-decoration:none; }
+a { color:inherit; }
+em { font-style:normal; }
+h1, h2, h3, h4, h5, h6 { font-weight:400; }
+input:focus, button:focus, select:focus { outline:none; }
+textarea { resize:vertical; }
+input:-webkit-autofill, 
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active { transition:background-color 5000s ease-in-out 0s; }
+input[type="text"]::-ms-clear,
+input[type="password"]::-ms-clear { display:none; }
+
+/* inner */
+.header-inner::after,
+.footer-inner::after { content:""; display:block; clear:both; }
+
+/* RESET LAYOUT */
+#container { border:0; }
+#container, .container { margin:0 auto; position:relative; }
+#contents { min-height:450px; }
+.sub_content { padding:0; }
+.side_cont .sub_menu_box h2 { padding:20px 0; border-top:1px solid #ececec; }
+.foot_certify { width:100%; padding:0; }
+/* RESET TOP_SEARCH */
+header .top_search .top_text_cont select::-ms-expand { display:none; }
+/* RESET LOCATION */
+.sub_content .location_wrap,
+.location_wrap { display:inline-block; width:100%; margin:0; border-bottom:0; }
+.location_wrap .location_cont { width:auto; }
+.location_wrap .location_cont em { padding-bottom:0;}
+.location_cont .local_home:hover { text-decoration:none; }
+.body-goods-list .location_cont em + span { margin-left:-3px; }
+.body-goods-view .location_select { margin-left:-3px; }
+/* RESET GOODS_LIST */
+.goods_list { padding-bottom:0; clear:both; }
+.goods_list_item_tit + .list_item_category { margin-top:0; border:0; }
+.goods_list .color { width:100% !important; }
+.list_item_category { border:0; }
+.location_select ul li a:hover { background:#404040; }
+.goods_pick_list .pick_list_num strong { color:#404040; }
+.goods_pick_list .pick_list_box { border-top:1px solid #dbdbdb; border-bottom:1px solid #dbdbdb; }
+.goods_pick_list .pick_list_box .pick_list label.on { background:url("../../_custom/img/common/icon_sort_check.png") no-repeat left 5px; }
+/* RESET 전체카테고리 */
+header .gnb_all .btn_all_menu_open { position:static; background-color:transparent; }
+.gnb_allmenu_box .all_depth2 { display:none; }
+.gnb_allmenu_box .all_depth3 { display:none; }
+/* RESET 사이드카테고리 */
+.sub_menu_box.layer_type ul > li > ul { padding:0; }
+.sub_menu_box.layer_type .sub_depth1 { top:100%; left:0; text-align:left; }
+.sub_menu_box.layer_type .sub_depth2 { top:-1px; left:100%; }
+.sub_menu_box.layer_type .sub_depth3 { top:-1px; }
+.sub_menu_box.layer_type .sub_depth4 { top:-1px; }
+.sub_menu_box ul > li > ul { padding:0; }
+.sub_menu_box .sub_depth1 li a:hover,
+.sub_menu_box .sub_depth1 li a.active,
+.sub_menu_box .sub_depth1 > li > a:hover,
+.sub_menu_box .sub_depth1 > li > a.active { color:inherit; background:none; }
+.sub_menu_box .sub_depth1 li a { padding:7px 10px 9px 19px; }
+.sub_menu_box .sub_depth2 { top:-1px; }
+.sub_menu_box .sub_depth3 { top:-1px; }
+.sub_menu_box .sub_depth4 { top:-1px; }
+/* RESET 상품진열 */
+.goods_list_cont ul { float:none; }
+.goods_list_cont ul li { margin-top:0; }
+/* RESET 상품 */
+.item_cont { padding:0 10px 50px; margin:0 auto; text-align:center; color:#1c1c1c; }
+.item_photo_box a { display:block; width:100%; height:auto; }
+.item_photo_box > a > img { width:100%; }
+.item_info_cont { display:block; padding:0; margin:0 auto; text-align:center; vertical-align:middle; }
+.item_tit_box .item_name { display:block; padding:5px 0 0 0; font-size:13px; font-weight:400; }
+.item_tit_box .item_name_explain { display:block; padding:3px 0 0; color:#a8a8a8; }
+.item_icon_box { margin:0; padding:0; }
+.item_money_box del { display:block; color:#888888; }
+.item_money_box .item_price { color:#404040; }
+.body-mypage.body-index .item_money_box .fixed-price { text-decoration:line-through; }
+.item_group_type .item_info_cont { display:table-cell; }
+#wrap .ly_wrap { font-size:12px; }
+/* RESET 검색페이지 */
+.sub_search_box .quick_btn input { width:100%; padding:10px 0; }
+.sub_search_box dl dd .select_box { padding-right:0; }
+.sub_search_box .benefit_box span { vertical-align:top; }
+.sub_search_box .benefit_box span label { background-position:0 0; }
+.sub_search_box .benefit_box span label:hover { background-position:0 0; }
+.sub_search_box .benefit_box span label.on { background-position:0 0; }
+.sub_search_box .benefit_box span label.on:hover { background-position:0 0; }
+/* RESET 페이지네이션 */
+.pagination li.on span { background:none; border-radius:0; }
+/* 마이페이지 회원 요약정보 */
+.mypage_top_info,
+.mypage_top_wallet ul { box-sizing:border-box; }
+/* 마이페이지 찜리스트 상품이미지 */
+.mypage_table_type .pick_add_cont .pick_add_img img { width:100%; }
+/* 갤러리 게시판 */
+.board_list_gallery ul li { vertical-align:top; }
+.board_list_gallery .board_img > a > img { width:100% !important; height:auto !important; }
+/* 이벤트 게시판 */
+.board_list_event ul li { min-height:auto; height:auto !important; }
+.board_list_event .board_img > a > img { width:100% !important; height:auto !important; }
+/* 장바구니 팝업 & 찜버튼 팝업 이미지 */
+.add_cart_layer p.success { background-image:url("../../_custom/img/common/add_cart_success.png"); }
+.add_wish_layer p.success { background-image:url("../../_custom/img/common/add_wish_success.png"); }
+/* 회원가입 */
+.addition_info_box .addition_info_sec { clear:both; }
+/* 쿠폰다운로드 레이어 팝업 */
+.coupon_down_layer .coupon_completed { display:inline-block; }
+
+
+/*========================================================================
+COLOR RESET
+========================================================================*/
+/* IMG COLOR */
+.scroll_right_cont li .btn_scroll_list_del img,
+.cart_btn_box .btn_open_layer img,
+.cart_btn_box .btn_alert_login img,
+.order_table_type .pick_add_cont .pick_btn_box img,
+.price_sum_cont .price_sum_list span img[alt="합계"],
+.order_wrap .order_tit li span > img,
+.chk_none,
+th > .important,
+.join_base_wrap .important,
+.join_agreement_wrap .member_tit li span > img,
+.join_base_wrap .member_tit li span > img,
+.join_wait_box .join_wait_tit,
+.coupon_content .cp_list_wrap .cp_down span
+{ filter: grayscale(1); }
+
+/* 취소버튼 COLOR RESET */
+.add_cart_layer .btn_cancel, 
+.add_cart_layer .btn_cancel:hover, 
+.add_wish_layer .btn_cancel,
+.add_wish_layer .btn_cancel:hover
+{ color:#3e3d3c; border-color:#cccccc; }
+
+/* FONT COLOR */
+.btn_restock_notice_v1,
+.btn_restock_notice_v1:hover,
+.btn_restock_notice_v2,
+.btn_restock_notice_v2:hover,
+.simple_join_layer .ly_tit h4 strong,
+.add_goods_layer .pick_list_num strong,
+.board_list_table .board_tit strong > span,
+.view_select_item_info > strong,
+.plus_review_info_cont .board_review_num em strong,
+.plus_review_view .review_comment_top .comment_best_num,
+#wrap .text_warning,
+#wrap .member_warning.prior_wrong .text_warning,
+#wrap .member_warning.prior_half_pass .text_warning,
+.chk_none,
+.goods_pick_list .pick_list_num strong,
+.goods_pick_list .pick_list_box .pick_list label.on,
+.top_table_type .coupon_price b,
+.layer_wrap .ly_tit h4 strong,
+.coupon_total_box dd strong,
+.add_goods_layer .pick_list_num strong,
+.plus_review_look .star_photo_num em strong,
+.plus_review_look .review_comment_top .comment_best_num,
+.plus_review_register .pr_goods_cont b,
+.time_sale_tit strong,
+.sale_clock .sale_buy_num strong,
+.coupon_content .cp_list_wrap .cp_down span,
+.coupon_content .cp_list_wrap .cp_list li .box_coupon .text_wrap .text_info .dis,
+.coupon_content .cp_list_wrap .cp_list li .cp_down_3 span,
+.time_sale .time_now_order span,
+.time_sale_price dd,
+.item_add_option_box dt strong,
+.item_tatal_box .total_amount dd,
+.item_goods_tab li a strong,
+.board_tit strong > span,
+.board_tit .js_comment_count,
+.view_comment_top .comment_num strong,
+.view_comment_top .comment_best_num strong,
+.search_text_result span,
+#goodsRestock .gs_privacy_agree .agree_choice_box a,
+.item_money_box .item_price,
+.item_money_box .item_sale,
+.item_vl_tab_type .goods_tab_tit li.on a,
+.top_member_box > li strong,
+.notice_rolling ul li a:hover,
+.side_cont .sub_menu_box .sub_menu a:hover,
+.side_cont .sub_menu_box .sub_menu .active,
+.side_cont .sub_menu_box .sub_menu_mypage a:hover,
+.side_cont .sub_menu_box .sub_menu_mypage .active,
+.side_cont .info_box .info_num,
+.content_info .cs_center strong,
+.content_info .bank_info strong,
+.scroll_right_cont .src_box strong,
+.scroll_right_cont .scr_paging strong,
+.cart_total_box .total_price_sec strong,
+.zzim_table_box .cart_chk_none,
+.cart_table_box .cart_chk_none,
+.find_complete_box .find_id_name,
+.find_id_sec > p,
+.join_wait_box .join_wait_tit .complete strong,
+.wake_base_box .wake_date dd strong,
+.join_base_wrap .member_tit .page_on,
+.base_info_box > span,
+.join_agreement_wrap .member_tit .page_on,
+.join_agreement_cont .form_element strong,
+.join_agreement_cont .form_element strong.choice,
+.join_agreement_cont .form_element span > a,
+.join_agreement_cont .important_check_box .important_check,
+.info_again a,
+.pick_list_num strong,
+.board_list_table .board_tit strong > span,
+.mypage_table_type td > strong,
+.mypage_top_wallet li strong,
+.mypage_order_info_cont .order_case_list ul li span > strong,
+.mypage_breakdown_tab li a strong,
+.coupon_before_use,
+.my_page_password .id_pw_cont dd strong,
+.order_wrap .order_tit .page_on,
+.price_sum_cont .price_sum_list dd,
+.price_sum_cont .price_sum_list dd strong,
+.order_agree_cont strong,
+.payment_progress .order_zone_tit > p,
+.payment_final_total dd,
+.payment_final .form_element label.check_s em b,
+.poll_list_tit strong,
+.poll_result_tit strong,
+.board_list_table .board_tit strong > span,
+.board_hot_list ul li.on span,
+.board_hot_list ul li a span:hover,
+#contents .base_info_box > span,
+#contents .join_agreement_cont .form_element strong.choice,
+#contents .join_agreement_cont .form_element span > a
+{ color:#404040; }
+
+.add_cart_layer .btn_confirm,
+.add_cart_layer .btn_confirm:hover,
+.add_wish_layer .btn_confirm,
+.add_wish_layer .btn_confirm:hover,
+.adult_wrap .guest_login .login_input_sec button,
+.adult_wrap .guest_login .login_input_sec button:hover,
+.bnt_cash_receipt,
+.bnt_cash_receipt:hover,
+.bnt_tax_invoice,
+.bnt_tax_invoice:hover,
+.brand_all_list button.on,
+.brand_all_list button.on:hover,
+.btn_add_cart_related,
+.btn_add_cart_related:hover,
+.btn_add_order_related,
+.btn_add_order_related:hover,
+.btn_board_search,
+.btn_board_search:hover,
+.btn_buy_ok,
+.btn_buy_ok:hover,
+.btn_claim_ok,
+.btn_claim_ok:hover,
+.btn_comfirm,
+.btn_comfirm:hover,
+.btn_comment_best,
+.btn_comment_best:hover,
+.btn_date_check,
+.btn_date_check:hover,
+.btn_escrow_go,
+.btn_escrow_go:hover,
+.btn_goods_restock,
+.btn_goods_restock:hover,
+.btn_list_cart,
+.btn_list_cart:hover,
+.btn_ly_coupon_apply,
+.btn_ly_coupon_apply:hover,
+.btn_ly_date_check,
+.btn_ly_date_check:hover,
+.btn_ly_depositor,
+.btn_ly_depositor:hover,
+.btn_ly_download,
+.btn_ly_download:hover,
+.btn_ly_ok,
+.btn_ly_ok:hover,
+.btn_ly_save,
+.btn_ly_save:hover,
+.btn_ly_write_ok,
+.btn_ly_write_ok:hover,
+.btn_main_go,
+.btn_main_go:hover,
+.btn_member_black,
+.btn_member_black:hover,
+.btn_member_id,
+.btn_member_id:hover,
+.btn_member_login,
+.btn_member_login:hover,
+.btn_member_next,
+.btn_member_next:hover,
+.btn_member_ok,
+.btn_member_ok:hover,
+.btn_order_buy,
+.btn_order_buy:hover,
+.btn_order_end_ok,
+.btn_order_end_ok:hover,
+.btn_order_whole_buy,
+.btn_order_whole_buy:hover,
+.btn_pg_cartmove,
+.btn_pg_cartmove:hover,
+.btn_pg_go,
+.btn_pg_go:hover,
+.btn_poll_finish,
+.btn_poll_finish:hover,
+.btn_pw_certify,
+.btn_pw_certify:hover,
+.btn_qna_write,
+.btn_qna_write:hover,
+.btn_review_write,
+.btn_review_write:hover,
+.btn_reviews_write,
+.btn_reviews_write:hover,
+.btn_wish_cart,
+.btn_wish_cart:hover,
+.btn_write_ok,
+.btn_write_ok:hover,
+.cart_btn_box button.btn_alert_login,
+.coupon_gift_before_use,
+.guest_btn.base3,
+.guest_btn.base3:hover,
+header .gnb .depth1 > li > a:hover,
+header .gnb .depth1 > li > a.active,
+header .gnb .depth1 li a:hover,
+header .gnb .depth1 li a.active,
+.intro_member_wrap .member_login_box .btn_login_box .btn_join,
+.intro_member_wrap .member_login_box .btn_login_box .btn_join:hover,
+.intro_member_wrap .member_login_box .login_input_sec button,
+.intro_member_wrap .member_login_box .login_input_sec button:hover,
+.join_ok_box .btn_member_sec .btn_login,
+.join_ok_box .btn_member_sec .btn_login:hover,
+.location_select ul li a:hover,
+.member_cont .member_login_box .login_input_sec button,
+.member_cont .member_login_box .login_input_sec button:hover,
+.mypage_cont .btn_date_check,
+.mypage_cont .btn_date_check:hover,
+.option_layer_cont .btn_confirm,
+.option_layer_cont .btn_confirm:hover,
+.option_total_box .btn_shop_soldout,
+.plus_review_grade .grade_stick em,
+.plus_review_look .btn_comment_best,
+.plus_review_look .btn_comment_best:hover,
+.plus_review_register .btn_pr_save,
+.poll_stick em,
+.quick_search_cont_box .quick_btn input,
+.quick_search_cont_box .quick_btn input:hover,
+.review_file_upload .btn_right_box .btn_plus_review_enroll,
+.review_file_upload .btn_right_box .btn_plus_review_enroll:hover,
+#shop_cart_wrap .btn_shop_buy,
+#shop_cart_wrap .btn_shop_buy:hover,
+.sns_copy_url button,
+.sns_copy_url button:hover,
+.top_mypage_cont li a:hover,
+.user_certify_box .btn_member_sec li button[type="submit"],
+.user_certify_box .btn_member_sec li button[type="submit"]:hover
+{ color: var(--nde-button-text-color); }
+
+/* BORDER COLOR */
+.add_cart_layer .btn_confirm,
+.add_cart_layer .btn_confirm:hover,
+.add_wish_layer .btn_confirm,
+.add_wish_layer .btn_confirm:hover,
+.adult_wrap .guest_login .login_input_sec button,
+.adult_wrap .guest_login .login_input_sec button:hover,
+.attend_reply_box .attend_reply_comment .btn_attend_check,
+.attend_reply_box .attend_reply_comment .btn_attend_check:hover,
+.bnt_cash_receipt,
+.bnt_cash_receipt:hover,
+.bnt_tax_invoice,
+.bnt_tax_invoice:hover,
+.brand_all_list button.on,
+.brand_all_list button.on:hover,
+.board_hot_list ul li a span:hover,
+.btn_add_cart_related,
+.btn_add_cart_related:hover,
+.btn_add_order_related,
+.btn_add_order_related:hover,
+.btn_board_search,
+.btn_board_search:hover,
+.btn_buy_ok,
+.btn_buy_ok:hover,
+.btn_claim_ok,
+.btn_claim_ok:hover,
+.btn_comfirm,
+.btn_comfirm:hover,
+.btn_comment_best,
+.btn_comment_best:hover,
+.btn_comment_best,
+.btn_comment_best:hover,
+.btn_date_check,
+.btn_date_check:hover,
+.btn_escrow_go,
+.btn_escrow_go:hover,
+.btn_goods_restock,
+.btn_goods_restock:hover,
+.btn_ly_coupon_apply,
+.btn_ly_coupon_apply:hover,
+.btn_ly_date_check,
+.btn_ly_date_check:hover,
+.btn_ly_depositor,
+.btn_ly_depositor:hover,
+.btn_ly_download,
+.btn_ly_download:hover,
+.btn_ly_ok,
+.btn_ly_ok:hover,
+.btn_ly_save,
+.btn_ly_save:hover,
+.btn_ly_write_ok,
+.btn_ly_write_ok:hover,
+.btn_main_go,
+.btn_main_go:hover,
+.btn_member_black,
+.btn_member_black:hover,
+.btn_member_id,
+.btn_member_id:hover,
+.btn_member_login,
+.btn_member_login:hover,
+.btn_member_next,
+.btn_member_next:hover,
+.btn_member_ok,
+.btn_member_ok:hover,
+.btn_order_buy,
+.btn_order_buy:hover,
+.btn_order_end_ok,
+.btn_order_end_ok:hover,
+.btn_order_whole_buy,
+.btn_order_whole_buy:hover,
+.btn_pg_cartmove,
+.btn_pg_cartmove:hover,
+.btn_pg_go,
+.btn_pg_go:hover,
+.btn_poll_finish,
+.btn_poll_finish:hover,
+.btn_pw_certify,
+.btn_pw_certify:hover,
+.btn_qna_write,
+.btn_qna_write:hover,
+.btn_restock_notice_v1,
+.btn_restock_notice_v1:hover,
+.btn_restock_notice_v2,
+.btn_restock_notice_v2:hover,
+.btn_review_write,
+.btn_review_write:hover,
+.btn_reviews_write,
+.btn_reviews_write:hover,
+.btn_wish_cart,
+.btn_wish_cart:hover,
+.btn_write_ok,
+.btn_write_ok:hover,
+.coupon_content .cp_list_wrap .cp_list li .cp_down_2,
+.coupon_gift_before_use,
+.guest_btn.base3,
+.guest_btn.base3:hover,
+.intro_member_wrap .member_login_box .btn_login_box .btn_join,
+.intro_member_wrap .member_login_box .btn_login_box .btn_join:hover,
+.intro_member_wrap .member_login_box .login_input_sec button,
+.intro_member_wrap .member_login_box .login_input_sec button:hover,
+.join_ok_box .btn_member_sec .btn_login,
+.join_ok_box .btn_member_sec .btn_login:hover,
+.member_cont .member_login_box .login_input_sec button,
+.member_cont .member_login_box .login_input_sec button:hover,
+.mypage_cont .btn_date_check,
+.mypage_cont .btn_date_check:hover,
+.option_layer_cont .btn_confirm,
+.option_layer_cont .btn_confirm:hover,
+.plus_review_goods_search .plus_review_goods_option a.btn_search,
+.plus_review_goods_search .plus_review_goods_option a.btn_search:hover,
+.plus_review_look .btn_comment_best,
+.plus_review_look .btn_comment_best:hover,
+.plus_review_register .btn_pr_save,
+.quick_search_cont_box .quick_btn input,
+.quick_search_cont_box .quick_btn input:hover,
+.review_file_upload .btn_right_box .btn_plus_review_enroll,
+.review_file_upload .btn_right_box .btn_plus_review_enroll:hover,
+#shop_cart_wrap .btn_shop_buy,
+#shop_cart_wrap .btn_shop_buy:hover,
+.sns_copy_url button,
+.sns_copy_url button:hover,
+.stamp_calendar_box .btn_attend_check,
+.stamp_calendar_box .btn_attend_check:hover,
+.user_certify_box .btn_member_sec li button[type="submit"],
+.user_certify_box .btn_member_sec li button[type="submit"]:hover,
+#wrap .member_warning.prior_wrong .chosen-single,
+#wrap .member_warning.prior_wrong .form_element
+{ border-color:var(--nde-button-border-color); }
+
+/* BACKGROUND COLOR */
+.add_cart_layer .btn_confirm,
+.add_cart_layer .btn_confirm:hover,
+.add_wish_layer .btn_confirm,
+.add_wish_layer .btn_confirm:hover,
+.adult_wrap .guest_login .login_input_sec button,
+.adult_wrap .guest_login .login_input_sec button:hover,
+.bnt_cash_receipt,
+.bnt_cash_receipt:hover,
+.bnt_tax_invoice,
+.bnt_tax_invoice:hover,
+.brand_all_list button.on,
+.brand_all_list button.on:hover,
+.btn_add_cart_related,
+.btn_add_cart_related:hover,
+.btn_add_order_related,
+.btn_add_order_related:hover,
+.btn_board_search,
+.btn_board_search:hover,
+.btn_buy_ok,
+.btn_buy_ok:hover,
+.btn_claim_ok,
+.btn_claim_ok:hover,
+.btn_comfirm,
+.btn_comfirm:hover,
+.btn_comment_best,
+.btn_comment_best:hover,
+.btn_comment_best,
+.btn_comment_best:hover,
+.btn_date_check,
+.btn_date_check:hover,
+.btn_escrow_go,
+.btn_escrow_go:hover,
+.btn_goods_restock,
+.btn_goods_restock:hover,
+.btn_list_cart,
+.btn_list_cart:hover,
+.btn_ly_coupon_apply,
+.btn_ly_coupon_apply:hover,
+.btn_ly_date_check,
+.btn_ly_date_check:hover,
+.btn_ly_depositor,
+.btn_ly_depositor:hover,
+.btn_ly_download,
+.btn_ly_download:hover,
+.btn_ly_ok,
+.btn_ly_ok:hover,
+.btn_ly_save,
+.btn_ly_save:hover,
+.btn_ly_write_ok,
+.btn_ly_write_ok:hover,
+.btn_main_go,
+.btn_main_go:hover,
+.btn_member_black,
+.btn_member_black:hover,
+.btn_member_id,
+.btn_member_id:hover,
+.btn_member_login,
+.btn_member_login:hover,
+.btn_member_next,
+.btn_member_next:hover,
+.btn_member_ok,
+.btn_member_ok:hover,
+.btn_order_buy,
+.btn_order_buy:hover,
+.btn_order_end_ok,
+.btn_order_end_ok:hover,
+.btn_order_whole_buy,
+.btn_order_whole_buy:hover,
+.btn_pg_cartmove,
+.btn_pg_cartmove:hover,
+.btn_pg_go,
+.btn_pg_go:hover,
+.btn_poll_finish,
+.btn_poll_finish:hover,
+.btn_pw_certify,
+.btn_pw_certify:hover,
+.btn_qna_write,
+.btn_qna_write:hover,
+.btn_review_write,
+.btn_review_write:hover,
+.btn_reviews_write,
+.btn_reviews_write:hover,
+.btn_wish_cart,
+.btn_wish_cart:hover,
+.btn_write_ok,
+.btn_write_ok:hover,
+.cart_btn_box button.btn_alert_login,
+.coupon_content .cp_list_wrap .cp_list li .cp_down_2,
+.coupon_gift_before_use,
+.guest_btn.base3,
+.guest_btn.base3:hover,
+header .gnb .depth1 > li > a:hover,
+header .gnb .depth1 > li > a.active,
+header .gnb .depth1 li a:hover,
+header .gnb .depth1 li a.active,
+.intro_member_wrap .member_login_box .btn_login_box .btn_join,
+.intro_member_wrap .member_login_box .btn_login_box .btn_join:hover,
+.intro_member_wrap .member_login_box .login_input_sec button,
+.intro_member_wrap .member_login_box .login_input_sec button:hover,
+.join_ok_box .btn_member_sec .btn_login,
+.join_ok_box .btn_member_sec .btn_login:hover,
+.location_select ul li a:hover,
+.member_cont .member_login_box .login_input_sec button,
+.member_cont .member_login_box .login_input_sec button:hover,
+.mypage_cont .btn_date_check,
+.mypage_cont .btn_date_check:hover,
+.option_layer_cont .btn_confirm,
+.option_layer_cont .btn_confirm:hover,
+.option_total_box .btn_shop_soldout,
+.plus_review_grade .grade_stick em,
+.plus_review_goods_search .plus_review_goods_option a.btn_search,
+.plus_review_goods_search .plus_review_goods_option a.btn_search:hover,
+.plus_review_look .btn_comment_best,
+.plus_review_look .btn_comment_best:hover,
+.plus_review_register .btn_pr_save,
+.poll_stick em,
+.quick_search_cont_box .quick_btn input,
+.quick_search_cont_box .quick_btn input:hover,
+.review_file_upload .btn_right_box .btn_plus_review_enroll,
+.review_file_upload .btn_right_box .btn_plus_review_enroll:hover,
+#shop_cart_wrap .btn_shop_buy,
+#shop_cart_wrap .btn_shop_buy:hover,
+.sns_copy_url button,
+.sns_copy_url button:hover,
+.top_mypage_cont li a:hover,
+.user_certify_box .btn_member_sec li button[type="submit"],
+.user_certify_box .btn_member_sec li button[type="submit"]:hover
+{ background:var(--nde-button-background-color); }

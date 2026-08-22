@@ -1,0 +1,17 @@
+.ncds .flag {
+    height: 10px;
+    background-position: center center !important;
+}
+.ncds .flag-kr {
+    background-image: url(../../image/flag-kr.svg);
+}
+
+.ncds .flag-us {
+    background-image: url(../../image/flag-us.svg);
+}
+.ncds .flag-cn {
+    background-image: url(../../image/flag-cn.svg);
+}
+.ncds .flag-jp {
+    background-image: url(../../image/flag-jp.svg);
+}

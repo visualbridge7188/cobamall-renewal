@@ -1,0 +1,90 @@
+/* =============================== */
+/* 메세지 포인트 충전 팝업 */
+/* =============================== */
+.ncds.crm.popup-manage-call-number #content > .col-xs-12 {
+    padding: 0px;
+}
+
+#content .popup-manage-call-number {
+    display: flex;
+    flex-direction: column;
+    font-weight: var(--font-weights-commerce-sans-2);
+
+    > .ncua-page-header {
+        margin: 0px;
+        padding: 0px;
+        border-bottom:1px solid var(--gray-100);
+        padding: 16px 20px;
+
+        > h3 {
+            display: flex;
+            gap: 8px;
+            color: var(--gray-700);
+            font-weight: var(--font-weights-commerce-sans-2);
+            font-size: var(--font-size-sm);
+            line-height: var(--line-heights-sm);
+            margin: 0px;
+        }
+    }
+}
+
+.popup-manage-call-number .popup-manage-call-number__content {
+    display: flex; 
+    gap: 16px;
+    padding: 20px;
+    flex-direction: column;
+    font-weight: var(--font-weights-commerce-sans-2);
+    
+}
+
+.send-number-section {
+    gap: 8px;
+    flex-direction: column;
+    display: flex;
+
+    header {
+        h4 {
+            margin: 0px;
+            font-size: var(--font-size-sm);
+            line-height: var(--line-heights-sm);
+            color: var(--gray-700);
+        }
+    }
+
+    .ncua-search-result {
+        margin-block-start: 0;
+
+        .ncua-table {
+            border: 1px solid var(--gray-100);
+            border-bottom: none;
+            box-shadow: var(--shadow-xs);
+
+            td, th {
+                > div {
+                    padding: 12px 16px;
+                }
+            }
+
+            thead > tr > th:first-child {
+                border-top-left-radius: 5px;
+            }
+            th:last-child {
+                border-top-right-radius: 5px;
+            }
+        }
+        
+        .ncua-table-bottom {
+            box-shadow: var(--shadow-xs);
+        }
+    }
+}
+
+/* 라디오 버튼이 있는 행 선택 시 */
+
+.popup-manage-call-number__product-table .no-data {
+    padding: 24px 0px;
+    min-height: 18px;
+    span {
+        line-height: var(--line-heights-xs);
+    }
+}

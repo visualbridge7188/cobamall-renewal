@@ -1,0 +1,331 @@
+/* 드로어용 페이지 — 표준 래퍼 없이 콘텐츠 패딩 직접 지정 */
+body.crm-recipe-send {
+    background-color: var(--gray-50, #f6f7f9);
+}
+.crm-recipe-send > .ncua-content {
+    padding: 60px 25px 48px 40px;
+}
+.crm-recipe-send .ncua-split-layout {
+    width: 1172px;
+    padding-top: 16px;
+    gap: 16px;
+}
+
+.crm-recipe-send .ncua-split-layout .ncua-panel {
+    width: 456px;
+}
+
+.crm-recipe-send .ncua-split-layout .ncua-panel[style*="fixed"] {
+    top: 77px !important;
+}
+
+.crm-recipe-send .ncua-split-layout .ncua-panel .mobile-preview {
+    width: 100%;
+}
+.crm-recipe-send .ncua-split-layout .section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 700px;
+    flex-shrink: 0;
+}
+
+.crm-recipe-send .ncua-split-layout .section-container .ncua-card:not(:first-child) {
+    margin-top: 0;
+}
+.recipient-condition-group {
+    flex-direction: column;
+    gap: 12px;
+}
+/* 선택된 그룹 태그 + 발송 인원/추출 상태를 한 줄로 (미선택 시 JS가 .display-none 토글) */
+.crm-group-selected-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.condition-guide-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.condition-guide-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+/* 상품 선택 박스 — .ncua-border-group-box 재사용, 세로 배치만 덮어씀 */
+.condition-product-select-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    background-color: var(--gray-50, #F6F7F9);
+}
+.condition-product-select__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+}
+.condition-product-select__list:empty {
+    display: none;
+}
+.condition-product-select__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    background-color: var(--white, #fff);
+    border: 1px solid var(--gray-200, #d0d5dd);
+    border-radius: 4px;
+    color: var(--gray-700, #171818);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-heights-xs);
+}
+
+/* SMS/LMS 메시지 작성 /친구톡/마이앱 */
+#layerSendMethodSetting {
+
+    /* 사용 가능한 변수 (메인·SMS/LMS 대체 메시지 컨테이너 공통) */
+    .js-replace-code {
+        .variable-selector-wrap .chip-selector {
+            margin-top: 8px;
+        }
+    }
+
+    .ncua-card__header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        /* 타이틀-서브텍스트 간격 */
+        gap: 4px;
+    }
+    /* card.css 의 no-border 기본값(8px) 오버라이드 */
+    .ncua-card__body {
+        padding-top: 16px;
+    }
+
+    .ncua-card__title,
+    .js-message-send-guide {
+        white-space: normal;
+        word-break: keep-all;
+        overflow-wrap: anywhere;
+    }
+
+    /* 메시지 성과 추적 */
+    .message-performance-analysis {
+        margin-top: 24px;
+    }
+
+    /* 친구톡 쿠폰 테이블 */
+    #kakaoFriendTalkcouponTable {
+        .coupon-detail-info {
+            row-gap: 6px;
+        }
+    }
+}
+
+/* 가이드 문구 기본 아이콘·들여쓰기 제거 */
+.ncua-notice-info.js-recipient-guide,
+.ncua-notice-info.js-message-send-guide {
+    padding-left: 0;
+}
+.ncua-notice-info.js-recipient-guide::before,
+.ncua-notice-info.js-message-send-guide::before {
+    content: none;
+}
+#layerRecipientSetting .js-condition-value-select {
+    width: 100px;
+}
+#layerRecipientSetting .js-recipe-recipient-section {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-self: stretch;
+}
+#layerRecipientSetting .ncua-card__header {
+    padding: 12px 24px;
+    align-items: flex-start;
+    align-self: stretch;
+    border-bottom: 1px solid var(--gray-100, #EAECF0);
+}
+/* 타이틀-서브텍스트 간격 */
+#layerRecipientSetting .ncua-card__header > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+#layerRecipientSetting .ncua-card__body {
+    padding: 16px 24px;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+#layerRecipientSetting .recipient-info {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+}
+
+#layerSendMethodSetting .ncua-card__header,
+#layerSendTimeSetting .ncua-card__header {
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--gray-100, #EAECF0);
+}
+
+/* 발송 설정 영역 */
+#layerSendTimeSetting {
+    .ncua-card__body {
+        padding-top: 16px;
+
+        .send-time-setting-content {
+            margin-top: 0px;
+
+            .send-setting-repeat {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+
+                .send-time-setting-content-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+
+                    .send-setting-repeat-cycle,
+                    .send-setting-repeat-notice {
+                        margin-top: 0px;
+                    }
+
+                    /* 매주/매월 설정을 발송 주기 아랫줄로 배치, 구분선 제거 */
+                    .send-setting-repeat-cycle {
+                        flex-wrap: wrap;
+                        row-gap: 14px;
+
+                        .send-cycle-weekly,
+                        .send-cycle-monthly {
+                            flex-basis: 100%;
+                            margin-left: 0;
+                        }
+
+                        :is(.send-cycle-weekly, .send-cycle-monthly)::before {
+                            content: none;
+                        }
+                    }
+                }
+            }
+
+            .ncua-card__body-title--sm {
+                margin-top: 0px;
+            }
+        }
+    }
+}
+
+.crm-recipe-send .mobile-preview {
+    width: 408px;
+}
+
+/* 성과추적은 SMS/LMS에서만 노출, 친구톡·알림톡·마이앱(.send-method-component)은 미노출 */
+.crm-recipe-send .message-performance-analysis.send-method-component {
+    display: none;
+}
+
+.crm-recipe-send .kakao-friend-point-info {
+    display: none;
+}
+
+.crm-recipe-send .campaign-title .ncua-hint-text {
+    margin-top: 8px;
+    color: var(--primary-red-600);
+}
+
+/* affix 시 폭 보정 — 이 페이지엔 #content 가 없어 직접 지정 */
+.crm-recipe-send .page-header.affix {
+    width: 100%;
+}
+
+.crm-recipe-send #frmCrmRecipe .page-header {
+    position: fixed;
+    top: 0;
+    /* inline style로 left:auto, width:0 을 방지하기 위함 */
+    left: 0 !important;
+    width: 100% !important;
+    margin: 0;
+}
+
+.mobile-send #frmCrmRecipe .ncua-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 12px 40px;
+
+    h3.ncua-help-manual {
+        font-family: var(--font-family-ncua-commerce-sans, CommerceSans, 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif);
+        font-weight: var(--font-weights-commerce-sans-2);
+        font-size: var(--font-size-xl, 20px) !important; /* layout.css 에서 important로 잡고 있는 상태라 important 처리*/
+        line-height: var(--line-heights-xl, 30px);
+    }   
+}
+.mobile-send .ncua-page-header__actions {
+    position: sticky;
+    right: 12px;
+    display: inline-flex;
+    gap: 8px;
+}
+
+/* ===== BTS/1675 메시지발송 블록 디자인 수정 ===== */
+
+/* 발송 수단 탭 래퍼 — textarea 포커스 링이 overflow에 잘리지 않도록 */
+.crm-recipe-send #layerSendMethodContent.ncua-horizontal-tab {
+    overflow: visible;
+}
+
+/* mobile-send.css(.ncua-content.mobile-send 중첩 룰)보다 우선 적용을 위한 스코프 */
+.crm-recipe-send .mobile-send {
+
+    /* 친구톡 — 버튼(쿠폰 상세 박스) */
+    .coupon-detail-info {
+        /* 텍스트 간 간격 6px */
+        row-gap: 6px;
+        margin-top: 6px;
+    }
+
+    /* 친구톡 — 메시지 타입 & 사용 포인트 */
+    .kakao-friend-point-info {
+        margin-top: 24px;
+
+        th {
+            width: 140px;
+        }
+    }
+
+    /* 친구톡 — 아이템 리스트 */
+    .campaign-item-list-notice {
+        /* 하단 안내문구 미노출 */
+        display: none;
+    }
+
+    /* 마이앱 — 조건 설정 · 세부 설정 */
+    .myapp-condition-setting th,
+    .myapp-condition-additional-setting th {
+        width: 140px;
+    }
+
+    /* 발송 조건 행이 숨겨지면 NCDS의 :first-child 테두리 보정이 숨은 행에 남아,
+       보이는 다음 행의 윗 테두리가 래퍼 테두리와 겹쳐 두꺼워짐
+       → 숨은 발송 조건 행 뒤 첫 행의 윗 테두리 제거 */
+    .myapp-condition-setting .js-myapp-push-send-condition-row.display-none + tr > th,
+    .myapp-condition-setting .js-myapp-push-send-condition-row.display-none + tr > td {
+        border-top: none;
+    }
+
+    /* textarea — 스크롤바 트랙의 불투명 채움이 둥근 코너(8px)의 테두리를 가리지 않도록 투명 처리
+       (scrollbar-color는 표준 속성 — 네이티브 스크롤바 형태 유지, 색만 변경.
+        clip-path 방식은 포커스 링까지 잘라내서 사용하지 않음) */
+    .ncua-input__textarea {
+        scrollbar-color: var(--gray-300, #a4a5a8) transparent;
+    }
+}

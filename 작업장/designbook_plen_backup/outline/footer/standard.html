@@ -1,0 +1,86 @@
+{*** 하단 기본타입 | main/index.php ***}
+<div id="footer">
+	<div class="footer-inner">
+		<div class="footer-info">
+			<!-- 하단 로고 -->
+			<h1 class="footer-logo"><!--{ @dataBanner('2838517793') }-->{.tag}<!--{ / }--></h1>
+			<div class="footer-company">
+				<ul>
+					<li><a href="../service/company.php">{=__('회사소개')}</a></li>
+					<li><a href="../service/private.php">{=__('개인정보처리방침')}</a></li>
+					<li><a href="../service/guide.php">{=__('이용안내')}</a></li>
+					<li><a href="../service/agreement.php">{=__('이용약관')}</a></li>
+				</ul>
+			</div>
+			<!-- 회사 정보 -->
+			<div class="shop-info">
+				<div class="address">
+					<dl>
+						<dt>상호 :</dt><dd>{=gMall.companyNm}</dd>
+						<dt>{=__('대표자')} :</dt><dd>{=gMall.ceoNm}</dd>
+						<dt>{=__('EMAIL')} :</dt><dd><a href="mailto:{=gMall.email}" class="btn_email">{=gMall.email}</a></dd>
+						<dt>{=__('대표번호')} :</dt><dd>{=gMall.phone}</dd>
+						
+					</dl>
+					<dl>
+						<dt>{=__('통신판매업신고번호')} :</dt><dd>{=gMall.onlineOrderSerial}</dd>
+						<dt>{=__('사업자등록번호')} :</dt><dd>{=gMall.businessNo} <a href="#" class="btn_licensee_info" onclick="gd_popup_bizInfo('{=str_replace('-', '', gMall.businessNo)}'); return false;">[{=__('사업자정보확인')}]</a></dd>
+					</dl>
+					<dl>
+						<dt>{=__('개인정보관리자')} :</dt><dd>{=gMall.privateNm}</dd>
+						<dt>{=__('주소')} :</dt><dd>{=gMall.address} {=gMall.addressSub}</dd>
+					</dl>
+				</div>
+				<p class="copyright">copyright &copy; <strong>{=gMall.mallDomain}</strong>. all rights reserved.</p>
+			</div>
+			<div class="footer-sns">
+				<ul>
+					<li><a href="https://www.instagram.com" target="_blank"><img src="../../_dbook/img/footer_sns_icon1.png" alt=""></a></li>
+					<li><a href="https://facebook.com/" target="_blank"><img src="../../_dbook/img/footer_sns_icon2.png" alt=""></a></li>
+					<li><a href="https://www.youtube.com/" target="_blank"><img src="../../_dbook/img/footer_sns_icon3.png" alt=""></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer-content">
+			<!--{ ? !gGlobal.isFront }-->
+			<!-- 은행 정보 -->
+			<div class="cont-box column1">
+				<h3>입금 계좌번호</h3>
+				<p>신한 100-029-953578</p>
+				<p>농협 302-1016-3087-11</p>
+				<span>{=__('예금주')} : 디자인교과서(서수정)</span>
+			</div>
+			<!--{/}-->
+			<!-- 고객센터 -->
+			<div class="cont-box column2">
+				<h3>고객센터</h3>
+				<strong>{gMall.centerPhone}</strong>
+				<span>
+					평일 09:00~18:00 점심시간 12:00~13:00<br/>토,일,공휴일 휴무
+				</span>
+			</div>
+		</div>
+	</div>
+    <!--// footer-info -->
+	<div>
+		<div class="foot_certify">
+			<!--{? gFairTrade['logoFl'] == 'default'}-->
+			<span><a href="https://www.ftc.go.kr/www/cop/bbs/selectBoardList.do?key=201&bbsId=BBSMSTR_000000002320&bbsTyCode=BBST01" target="_blank"><img alt="{=__('공정거래위원회')}" src="../../img/certify/logo_kftc.png"></a></span>
+			<!--{: gFairTrade['logoFl'] == 'upload'}-->
+			<span><img alt="{=__('공정거래위원회')}" src="{=gFairTrade['uploadLogoPath']}"></span>
+			<!--{/}-->
+			<span>{=displaySSLSeal}</span>
+			<span>{=dataEggBanner()}</span>
+			<span>{=dataReceiptBanner}</span>
+		</div>
+		<!-- //foot_certify -->
+		<!--{ ? isMobileDevice == true }-->
+		<div class="foot_mobile">
+			<p class="btn_center_box">
+				<a href="{=currentPageMobileUri}"><img src="../../img/etc/btn_go_mobile.png" alt="{=__('모바일 화면으로 보기')}"></a>
+			</p>
+		</div>
+		<!--{ / }-->
+    </div>
+</div>
+<!-- //footer -->

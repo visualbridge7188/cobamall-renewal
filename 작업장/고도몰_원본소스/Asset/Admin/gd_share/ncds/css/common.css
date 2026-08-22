@@ -1,0 +1,542 @@
+:root {
+    --font-family-ncua-commerce-sans: CommerceSans,'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+}
+/* ncua로 인한 스타일 오버라이딩 되어 고도몰 어드민 스타일로 재정의 */
+body {
+    line-height: 1.42857143;
+    font-size: 13px;
+    font-family: Malgun Gothic, '맑은 고딕', AppleGothic, Dotum, '돋움', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+
+
+/* =============================== */
+/* content 영역 base스타일 재정의 */
+/* =============================== */
+.ncua-modal,
+.ncua-content,
+.ncds .modal-dialog,
+.page-header {
+    line-height: var(--line-height-xs, 18px);
+    font-size: var(--font-size-xs, 13px);
+    font-family: var(--font-family-ncua-commerce-sans);
+    -webkit-font-smoothing: antialiased;
+}
+
+:where(.ncua-content) p, label {
+    margin: 0;
+}
+
+.ncua-content input[hidden] {
+    display: none;
+}
+
+.ncua-content .ncua-file-input__hint-list {
+    padding: 0;
+}
+
+.ncua-content .ncua-file-input__hint-item {
+    position: relative;
+    padding-left: 16px;
+}
+
+.ncua-content .ncua-file-input__hint-item::before {
+    content: '\2022';
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* =============================== */
+/* utility */
+/* =============================== */
+.ncua-flex-column {
+    flex-direction: column;
+}
+
+.ncua-align-right {
+    justify-content: flex-end;
+}
+
+.ncua-align-center {
+    justify-content: center;
+}
+
+.ncua-justify-between {
+    justify-content: space-between;
+}
+
+.ncua-flex-gap {
+    gap: 16px;
+}
+
+.ncua-gap-4 {
+    gap: 4px;
+}
+
+.ncua-gap-8 {
+    gap: 8px;
+}
+
+.ncua-gap-10 {
+    gap: 10px;
+}
+
+.ncua-flex {
+    display: flex;
+}
+
+.ncua-align-items-center {
+    align-items: center;
+}
+
+.ncua-align-items-start {
+    align-items: flex-start;
+}
+
+.ncua-text-align-center {
+    text-align: center;
+}
+
+.ncua-flex-wrap {
+    flex-wrap: wrap;
+}
+
+/* =============================== */
+/* COS - 안내박스 ul, li는 사용하지 않음 p, div, span 으로만 디자인 */
+/* =============================== */
+.ncua-information {
+    margin-top: 16px;
+    font-family: var(--font-family-ncua-commerce-sans);
+    font-size: var(--font-size-xxs, 12px);
+    font-weight: var(--font-weights-commerce-sans-0, 400);
+    line-height: var(--line-height-xxs, 16px);
+
+    /* 안내 */
+    h4 {
+        background: url(../image/annotation-info.svg) no-repeat left center;
+        padding-left: 18px;
+        font-size: var(--font-size-xs, 13px);
+        font-family: var(--font-family-ncua-commerce-sans);
+        font-weight: var(--font-weights-commerce-sans-2, 700);
+        line-height: var(--line-height-xs, 18px);
+    }
+
+    .content {
+        padding-left: 7px;
+    }
+
+    /* 안내 타이틀 : 질문 */
+    .info-title {
+        font-size: var(--font-size-xxs, 12px);
+        font-weight: var(--font-weights-commerce-sans-1, 500);
+        line-height: var(--line-heights-xxs, 16px);
+        color: var(--gray-500, #464748);
+        margin-bottom: 4px;
+    }
+
+    /* 안내 내용 : 답변 */
+    .info-content {
+        font-size: var(--font-size-xxs, 12px);
+        font-weight: var(--font-weights-commerce-sans-0, 400);
+        line-height: var(--line-heights-xxs, 16px);
+        color: var(--gray-400, #757678);
+    }
+
+    /* 안내 내용 : 테이블 */
+    .content_table {
+        width: 100%;
+        border-spacing: 0;
+        border-radius: 8px;
+        overflow: hidden;
+        border: hidden;
+        box-shadow: 0 0 0 1px var(--gray-200, #d3d4d8);
+        margin-top:12px; 
+
+        td {
+            border: 1px solid var(--gray-100, #eaecf0);
+            border-collapse: collapse;
+            background-color: var(--base-white);
+            color: var(--gray-700);
+            padding-left: 16px;
+            font-size: var(--font-size-xxs, 12px);
+            font-weight: var(--font-weights-commerce-sans-0, 400);
+            line-height: var(--line-heights-xxs, 16px);
+        }
+
+        td.multiple-line {
+            padding-block: 16px;
+        }
+
+        th {
+            background-color: var(--gray-100, #eaecf0);
+            border: 1px solid var(--gray-200, #d3d4d8);
+            border-collapse: collapse;
+            padding: 8px 16px;
+            font-size: var(--font-size-xxs, 12px);
+            font-weight: var(--font-weights-commerce-sans-1, 500);
+            line-height: var(--line-height-xxs, 16px);
+            color: var(--gray-500, #464748);
+        }
+    }
+
+    span,
+    p,
+    div {
+        margin: 0 0 2px;
+    }
+
+}
+
+
+
+/* =============================== */
+/* 별점 스타일 */
+/* =============================== */
+.ncua-rating {
+    display: inline-block;
+    width: 88px;
+    height: 16px;
+    background: url('../image/star-bg-88x16.png') no-repeat left top;
+    background-size: cover;
+    vertical-align: middle;
+    text-indent: -9999px;
+}
+
+.ncua-rating span {
+    display: block;
+    height: 100%;
+    background: url('../image/star-fill-88x16.png') no-repeat left top;
+    background-size: cover;
+}
+
+
+/* =============================== */
+/* C037 - Text Copy 기능 */
+/* =============================== */
+.ncua-copy {
+    width: 24px;
+    height: 24px;
+    background: url(../image/copy-06.svg) no-repeat center;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-left: 3px;
+    background-size: 14px 14px;
+}
+
+.ncua-copy:hover {
+    background-color: var(--gray-50);
+    border-radius: 4px;
+}
+
+/* =============================== */
+/* NCDS 에서 사용되는 bootstrap-dialog 스타일 재정의 (시스템 얼럿) */
+/* =============================== */
+.ncds .bootstrap-dialog {
+    font-family: var(--font-family-ncua-commerce-sans);
+
+    div.bootstrap-dialog-title {
+        transform: translateY(2px);
+        color: var(--gray-700, #171818);
+        font-size: var(--font-size-sm, 14px);
+        font-weight: var(--font-weights-commerce-sans-2, 700);
+        line-height: var(--line-heights-sm, 22px);
+    }
+
+    div.modal-header {
+        position: relative;
+        padding: 16px 20px;
+        border: none;
+        border-bottom: 1px solid var(--gray-100, #e4e5e7);
+    }
+
+    div.modal-dialog {
+        top: 150px;
+    }
+
+    .modal-body {
+        padding-block-start: 0;
+    }
+
+    div.modal-content {
+        overflow: hidden;
+        padding: 0;
+        border-width: 0;
+        border-radius: 12px;
+    }
+
+    div.bootstrap-dialog-message {
+        padding: 20px;
+        font-size: var(--font-size-xs);
+        line-height: var(--line-heights-sm);
+        color: var(--gray-400);
+        font-weight: var(--font-weights-commerce-sans-0, 400);
+    }
+
+    div.bootstrap-dialog-close-button {
+        float: none;
+        position: absolute;
+        right: 12px;
+        top: 10px;
+        margin-top: 0;
+
+        button {
+            width: 36px;
+            height: 36px;
+            background-image: url(../image/modal-close-x.png);
+            background-size: cover;
+        }
+    }
+}
+
+.ncds .ncua-plus-icon {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: currentColor;
+    mask-image: url('../image/plus-icon.svg');
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-image: url('../image/plus-icon.svg');
+    -webkit-mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+}
+
+.ncds .ncua-minus-icon {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: currentColor;
+    mask-image: url('../image/minus-icon.svg');
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-image: url('../image/minus-icon.svg');
+    -webkit-mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+}
+
+/* =============================== */
+/* 다운로드 파일 생성 요청 진행 상태 표시 스타일 */
+/* =============================== */
+
+.ncds .ncua-progress-container-dimmed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0.4;
+    z-index: 1060;
+}
+
+.ncds .ncua-progress-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    min-height: 190px;
+    background-color: var(--base-white);
+    z-index: 1070;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-xl);
+    text-align: center;
+    font-family: var(--font-family-ncua-commerce-sans);
+
+    p {
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weights-commerce-sans-2);
+        color: var(--gray-600);
+        margin: 0;
+    }
+
+    .sub-message {
+        margin-top: 4px;
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weights-commerce-sans-0);
+        color: var(--gray-400);
+    }
+
+    .ncua-progress-circle__svg {
+        width: 64px;
+        height: 64px;
+    }
+}
+
+/* =============================== */
+/* code 태그 스타일 상쇄 */
+/* =============================== */
+.ncds code {
+    font-family: var(--font-family-ncua-commerce-sans);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weights-commerce-sans-0);
+    color: var(--gray-700);
+    background-color: var(--base-white);
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    padding: 5px 10px;
+    display: block;
+}
+
+
+/* =============================== */
+/* 링크 스타일 */
+/* =============================== */
+.ncua-link {
+    cursor: pointer;
+    color: var(--blue-500);
+    text-decoration: underline;
+}
+
+/* =============================== */
+/* 경고 텍스트 스타일 */
+/* =============================== */
+.ncua-caution-text {
+    color: var(--primary-red-600);
+    position: relative;
+    padding-left: 16px;
+    font-size: var(--font-size-xs);
+    line-height: var(--line-heights-xs);
+
+    &::before {
+        content: '\2022';
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
+
+/* =============================== */
+/* cos 에서 등록한 툴팁 스타일 */
+/* =============================== */
+body.ncds {
+    [data-tooltip-seq] .ncua-tooltip__icon {
+        display: flex;
+    }
+
+    #tooltip-global-layer {
+        font-family: var(--font-family-ncua-commerce-sans);
+        font-size: var(--font-size-xxs, 12px);
+
+        a {
+            color: var(--blue-500, #1570EF);
+        }
+
+        p {
+            margin: 0px;
+        }
+
+        [id^="tooltip-panel-"] {
+            padding-block: 12px;
+        }
+
+        .ncua-tooltip__content {
+            line-height: var(--line-height-xxs, 16px);
+        }
+    }
+} 
+
+/* =============================== */
+/* 순서 변경 아이콘 스타일 */
+/* =============================== */
+[class*="ncua-chevron-icon-"] {
+    font-size: 0 !important;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+}
+
+.ncua-chevron-icon-bottom {
+    background-image: url('../image/chevron-down-double.svg');
+}
+
+.ncua-chevron-icon-down {
+    background-image: url('../image/chevron-down-single.svg');
+}
+
+.ncua-chevron-icon-up {
+    background-image: url('../image/chevron-up-single.svg');
+}
+
+.ncua-chevron-icon-top {
+    background-image: url('../image/chevron-up-double.svg');
+}
+
+/* =============================== */
+/* Tag 닫기 버튼 스타일 */
+/* =============================== */
+.ncua-tag__close {
+    width: 14px;
+    height: 14px;
+    background: url('../image/tag-close-icon.svg') no-repeat center/14px 14px;
+}
+
+.ncua-tooltip__icon {
+    color: var(--gray-300);
+}
+
+/* =============================== */
+/* 버튼 링크 스타일 */
+/* =============================== */
+:where(a.ncua-btn):not(.has-underline):hover {
+    text-decoration: none;
+}
+
+.ncds .fr-popup.fr-desktop.fr-ltr.fr-active {
+    z-index: 2000 !important;
+}
+
+/* =============================== */
+/* 삭제 아이콘 스타일 */
+/* =============================== */
+.ncua-remove-icon-button {
+    width: 16px;
+    height: 16px;
+    background-image: url('../image/trash-03.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    margin: 6px;
+}
+
+/** 
+* Content in footer section style
+*/
+.ncua-content-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 16px 20px;
+    border-top: 1px solid var(--gray-100);
+}
+
+/**
+* 공급사 콤보박스 > disabled 옵션 스타일
+*/
+.ncua-select-dropdown__option--disabled {
+    pointer-events: none;
+    background-color: var(--gray-50);
+    .ncua-select-dropdown__option-text {
+        color: var(--gray-200);
+    }
+}
+
+/* icon */
+.icon-new {
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
+    background: url(../image/Icon_new.png) no-repeat center center / cover;
+}

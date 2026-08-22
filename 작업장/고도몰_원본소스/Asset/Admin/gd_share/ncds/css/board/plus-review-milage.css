@@ -1,0 +1,44 @@
+/* Plus Review Milage 전용 스타일 */
+
+.bootstrap-dialog .bootstrap-dialog-message .plus-review-milage table {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-heights-xs);
+    font-family: var(--font-families-commerce-sans);
+}
+
+.plus-review-milage {   
+    .plus-review-milage__bullet-list {
+        color: var(--gray-700);
+        position: relative;
+        padding-left: 16px;
+    
+        &::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+
+    .ncua-flex-column {
+        align-items: flex-start;
+    }
+
+    .milage-add-way, .member-guide, .member-guide-notice {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .member-guide .member-guide-item{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}
+
+
+
+
+
+

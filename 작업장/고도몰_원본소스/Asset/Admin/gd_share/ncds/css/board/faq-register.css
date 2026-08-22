@@ -1,0 +1,61 @@
+.faq-register {
+
+
+
+    .ncua-btn--secondary:hover {
+        text-decoration: none;
+    }
+
+
+    .ncua-horizontal-tab {
+        margin-block: 12px 24px;
+
+        .ncua-tab-button::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--gray-100);
+        }
+
+        .ncua-tab-button:hover {
+            text-decoration: none;
+        }
+
+        .ncua-tab-button.is-active {
+            background-color: var(--gray-450);
+            color: #fff;
+        }
+
+        .ncua-tab-button.is-active::before {
+            height: 2px;
+            background-color: var(--gray-700);
+        }
+
+        &::after {
+            content: none;
+        }
+
+        .swiper-wrapper {
+            display: inline-flex;
+            width: auto;
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 1px;
+                background-color: var(--gray-100);
+            }
+        }
+    }
+
+    .faq-register-subject .ncua-input {
+        width: 100%;
+    }
+
+    .ncds-editor-container {
+        display: block;
+    }
+}

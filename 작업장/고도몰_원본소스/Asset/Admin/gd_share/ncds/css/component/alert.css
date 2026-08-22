@@ -1,0 +1,15 @@
+/* =============================== */
+/* NCDS Alert Modal */
+/* =============================== */
+.ncds-alert-modal .ncua-modal {
+    position: fixed !important;
+    top: 180px !important;
+}
+
+.ncds-alert-modal .ncua-modal__header {
+    padding-block-end: 0;
+}
+
+.ncds-alert-modal .ncua-modal__close-button {
+    display: none;
+}

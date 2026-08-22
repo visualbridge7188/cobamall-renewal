@@ -1,0 +1,25 @@
+.plus-review-widget {
+    .plus-review-widget-preview {
+        display: flex;
+        gap: 5px;
+    }
+
+    /* 전체리뷰 게시판 위젯 생성 미리보기(기본형) */
+    .board_zone_list {
+        width:100%;
+
+        .plus_review_view {
+            height: auto;
+        }
+    }
+
+    /* 전체리뷰 게시판 위젯 생성 미리보기(간편형) */
+    .plus_review_article {
+        width:100%;
+
+        .plus_review_list, .plus_review_view {
+            height: auto;
+        }
+    }
+    
+}

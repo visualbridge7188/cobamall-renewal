@@ -1,0 +1,516 @@
+/*
+ * Copyright (C) 2026 NHN COMMERCE. - All Rights Reserved
+ *
+ * Unauthorized copying or redistribution of this file in source and binary forms via any medium
+ * is strictly prohibited.
+ */
+
+@charset "utf-8";
+
+/* 상품상세화면 : goods/goods_view.html */
+.item_photo_info_sec .item_regular_goods_box .regular_delivery_type_tab {margin: 5px 0 0 0; padding: 10px 0 10px 0; border-top: 1px solid #dbdbdb;}
+.item_photo_info_sec .item_regular_goods_box dl:after {display: block; clear: both; content: "";}
+.item_photo_info_sec .item_regular_goods_box .delivery_type_tab {display: flex; gap: 5px;}
+.item_photo_info_sec .item_regular_goods_box .delivery_cycle_type_tab {display: flex; gap: 5px; flex-wrap: wrap;}
+.item_photo_info_sec .item_regular_goods_box .delivery_cycle_type_tab .cycle_wrap {width: 100%;}
+.item_photo_info_sec .item_regular_goods_box .cycle_wrap,
+.item_photo_info_sec .item_regular_goods_box .round_wrap {display: flex; margin-top: 8px;}
+.item_photo_info_sec .item_regular_goods_box .cycle_row,
+.item_photo_info_sec .item_regular_goods_box .round_row {display: flex; gap: 5px; align-items: center; flex-wrap: wrap;}
+.item_photo_info_sec .item_regular_goods_box .cycle_row [id^="firstDeliveryDate"] {width: 100%; font-size: 11px; color: #888;}
+.item_photo_info_sec .item_regular_goods_box select {height: 31px; padding: 0 18px 0 8px; font-size: 11px; border: 1px solid #ccc; width: auto; box-sizing: border-box; background: #fff url('../../img/etc/select_arrow_down_11x7.png') no-repeat right -8px center; -webkit-appearance: none; appearance: none;}
+.item_photo_info_sec .item_regular_goods_box .toggle-button {width: 120px; background-color: #fff; border: 1px solid #ccc; padding: 5px 15px; cursor: pointer; text-align: center;}
+.item_photo_info_sec .item_regular_goods_box .toggle-button.active { background-color: var(--nde-button-background-color); border: 1px solid var(--nde-button-border-color); color: var(--nde-button-text-color); }
+.item_photo_info_sec .regular_goods_total_price_box dt {width: 140px;}
+.item_photo_info_sec .regular_goods_total_price_box .regular-delivery-total-price { width: 130px !important; }
+.item_photo_info_sec .regular_goods_total_price_box .regular-delivery-sum-price { width: 180px !important; }
+.item_photo_info_sec .regular_goods_total_price_box .total_amount dd {width: 140px;}
+.item_photo_info_sec .regular_goods_delivery_info {line-height: 1.12rem;}
+.item_photo_info_sec div.div_disabled_order {text-align: center; width: 100%;}
+.item_photo_info_sec button.btn_disabled_order { display: none; width: 390px; height: 52px; margin: 0 0 0 6px; padding: 0 10px; color: #ffffff; font-size: 20px; border: 1px solid #666666; background: #666666; text-align: center; font-weight: bold; cursor:default;}
+.item_photo_info_sec #frmView .regular_goods_elements .chosen-container {width: auto !important}
+.item_photo_info_sec #frmView.hidden_regular_goods_elements .regular_goods_elements {display: none !important;}
+.item_photo_info_sec #frmView .item_price .regular_discount {font-weight: bold;}
+
+/* 옵션변경 레이어 : goods/layer_option.html */
+#optionViewLayer .option_layer_cont {width: 627px; height: 500px;}
+.option_layer_cont .btn_disabled_order { display: none; margin: 0 0 0 5px; padding: 1.5% 4.5%; color: #ffffff; border: 1px solid #d3d3d3; background: #d3d3d3; font-weight: bold;}
+.option_layer_cont #frmViewLayer.hidden_regular_goods_elements .regular_goods_elements {display: none !important;}
+.option_layer_scroll .option_tit_box .chosen-container {width: auto !important;}
+.option_layer_scroll .option_select_box .chosen-container {width: 325px !important;}
+.option_layer_scroll .option_select_box .option_chosen {padding: 0;}
+.option_layer_scroll .option_select_box .option_chosen dl:first-child {padding-top: 20px !important; padding-bottom: 0 !important;}
+.option_layer_scroll .option_select_box .option_chosen dl:not(:first-child) {padding-top: 15px !important; padding-bottom: 0 !important;}
+.option_layer_scroll .option_select_box .option_chosen dt {width: 94px;}
+.option_layer_scroll .item_regular_goods_box {margin: 20px 0 8px 133px;}
+.option_layer_scroll .item_regular_goods_box .regular_delivery_type_tab {padding: 10px 0 10px 0;}
+.option_layer_scroll .item_regular_goods_box dl {width: 100%; padding: 10px 0;}
+.option_layer_scroll .item_regular_goods_box dl:after {display: block; clear: both; content: "";}
+.option_layer_scroll .item_regular_goods_box dl dt {float: left; width: 94px; font-weight: bold; color: #555555; word-wrap: break-word; line-height: 30px;}
+.option_layer_scroll .item_regular_goods_box dl dd {float: right; width: 357px;}
+.option_layer_scroll .item_regular_goods_box .cycle_wrap, .round_wrap {display: flex;}
+.option_layer_scroll .item_regular_goods_box .cycle_row, .round_row {display: flex; flex-wrap: wrap; gap: 5px; align-items: center;}
+.option_layer_scroll .item_regular_goods_box select {height: 30px; padding: 5px; font-size: 11px; border: 1px solid #ccc; min-width: 90px;}
+.option_layer_scroll .item_regular_goods_box .toggle-button {width: 120px; background-color: #fff; border: 1px solid #ccc; margin-right: 5px; padding: 5px 15px;}
+.option_layer_scroll .item_regular_goods_box .toggle-button.active { background-color: var(--nde-button-background-color); border: 1px solid var(--nde-button-border-color); color: var(--nde-button-text-color); }
+.option_layer_scroll .regular_goods_delivery_info {line-height: 1.12rem;}
+.option_layer_cont .btn_box {padding: 30px 0 0 0;}
+
+/* 배송주기 변경 레이어 : goods/layer_regular_delivery_cycle.html */
+.option_layer_cont.delivery_cycle .info_table,
+.option_layer_cont.delivery_cycle .goods_select_table {width: 100%;border-collapse: collapse;}
+.option_layer_cont.delivery_cycle .info_table th,
+.option_layer_cont.delivery_cycle .info_table td,
+.option_layer_cont.delivery_cycle .goods_select_table th,
+.option_layer_cont.delivery_cycle .goods_select_table td {border-top: 1px solid #ddd; vertical-align: middle;}
+.option_layer_cont.delivery_cycle .info_table th, .mypage_cont .goods_select_table thead th {background: #f8f8f8; text-align: center;}
+.option_layer_cont.delivery_cycle .info_table tbody {border-bottom: 1px solid #ddd;}
+.option_layer_cont.delivery_cycle .info_table th,
+.option_layer_cont.delivery_cycle .info_table td {padding: 10px; font-size: 12px;}
+.option_layer_cont.delivery_cycle .inner_table tbody {border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;}
+.option_layer_cont.delivery_cycle .cycle_row {display: none; align-items: center;}
+.option_layer_cont.delivery_cycle .cycle_row > * {margin-right: 8px;}
+.option_layer_cont.delivery_cycle .cycle_row > *:last-child {margin-right: 0;}
+.option_layer_cont.delivery_cycle .round_row {display: flex; align-items: center;}
+.option_layer_cont.delivery_cycle .round_row > * {margin-right: 8px;}
+.option_layer_cont.delivery_cycle .round_row > *:last-child {margin-right: 0;}
+.option_layer_cont.delivery_cycle .delivery_due_date {display: none; margin-top: 8px; padding-left: 2px; font-size: 11px; text-align: left;}
+.option_layer_cont.delivery_cycle .tab_wrap {display: flex; margin-bottom: 8px;}
+.option_layer_cont.delivery_cycle .tab_wrap .tab_btn + .tab_btn {margin-left: 5px;}
+.option_layer_cont.delivery_cycle .btn_box {padding: 30px 0 0 0; border: none;}
+.option_layer_cont.delivery_cycle .tab_btn {padding: 8px 15px; border: 1px solid #ddd; background: #fff;}
+.option_layer_cont.delivery_cycle .tab_btn.active {background: var(--nde-button-background-color); border-color: var(--nde-button-border-color); color: var(--nde-button-text-color);}
+
+/* 마이페이지 > 정기배송 관리 : mypage/regular_delivery.html */
+.my_regular_delivery .tab_container {margin-bottom: 40px;}
+.my_regular_delivery .tab_menu {display: flex; margin-bottom: 20px;}
+.my_regular_delivery .tab_menu li {flex: 1; text-align: center;}
+.my_regular_delivery .tab_menu li a {display: flex; height: 44px; flex-direction: column; justify-content: center; align-items: center; gap: 10px; font-size: 14px; color: #999; font-weight: 400; border-bottom: 1px solid #bbb; border-top: none;}
+.my_regular_delivery .tab_menu li.active a {color: #333333; font-weight: bold; border: 1px solid #bbb; border-bottom: none; background: none;}
+.my_regular_delivery .tab_content {display: none;}
+.my_regular_delivery .tab_content.active {display: block;}
+.my_regular_delivery .info_box {background: #f8f8f8; padding: 20px; margin-bottom: 30px;}
+.my_regular_delivery .info_list {list-style: none; padding: 0; margin: 0;}
+.my_regular_delivery .info_list li {position: relative; padding-left: 15px; margin-bottom: 4px; color: #666; font-size: 12px; line-height: 1.6;}
+.my_regular_delivery .info_list li:before {content: "·"; position: absolute; left: 0;}
+.my_regular_delivery .btn_add_card {display: flex; justify-content: flex-end; align-items: center; gap: 10px; width: 100%;}
+.my_regular_delivery .btn_register_card {display: inline-flex; width: 80px; height: 30px; margin-bottom: 10px; background: #979797; justify-content: center; align-items: center; font-size: 12px; font-weight: 400; line-height: 18px; color: #fff;}
+.my_regular_delivery .btn_register_card:hover {background: #626262; cursor: pointer;}
+.my_regular_delivery .btn_save_card {display: flex; width: 90px; height: 42px; padding: 5px 15px; margin: 30px auto 0; background: var(--nde-button-background-color); border: 1px solid var(--nde-button-border-color); justify-content: center; align-items: center; font-size: 12px; font-weight: 400; line-height: 18px; color: var(--nde-button-text-color);}
+.my_regular_delivery .btn_save_card:hover {opacity: 0.85; cursor: pointer;}
+.my_regular_delivery .btn_group {padding: 10px;}
+.my_regular_delivery .btn_box {display: flex; flex-direction: column; gap: 5px;}
+.my_regular_delivery .btn_edit {display: block; width: 120px; padding: 8px 0; border: 1px solid #ccc; background: #fff; color: #333; font-size: 13px; text-align: center; cursor: pointer; transition: all 0.2s; margin-top: 5px;}
+.my_regular_delivery .btn_edit:hover {background: #f8f8f8; border-color: #ccc;}
+.my_regular_delivery .delivery_info_wrap {display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0;}
+.my_regular_delivery .delivery_info_wrap .next_delivery_right {font-size : 14px; font-weight : bold; color : #333}
+.my_regular_delivery .delivery_title {position: relative; color: #333;}
+.my_regular_delivery .delivery_title::after {content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 1px;}
+.my_regular_delivery .info_table,
+.my_regular_delivery .goods_select_table {width: 100%;border-collapse: collapse;}
+.my_regular_delivery .info_table th,
+.my_regular_delivery .info_table td,
+.my_regular_delivery .goods_select_table th,
+.my_regular_delivery .goods_select_table td {border-top: 1px solid #ddd; vertical-align: middle;}
+.my_regular_delivery .info_table th, .my_regular_delivery .goods_select_table thead th {background: #f8f8f8; text-align: center;}
+.my_regular_delivery .info_table tbody {border-bottom: 1px solid #ddd;}
+.my_regular_delivery #deliveryChangeLayer .info_table th,
+.my_regular_delivery #deliveryChangeLayer .info_table td {padding: 10px; font-size: 12px;}
+.my_regular_delivery #deliveryChangeLayer .inner_table tbody {border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;}
+.my_regular_delivery #deliveryChangeLayer .inner_table th,
+.my_regular_delivery #deliveryChangeLayer .inner_table td {padding: 10px;}
+.my_regular_delivery .inner_table {width: 100%; border-collapse: collapse;}
+.my_regular_delivery .inner_table tbody {border: 0;}
+.my_regular_delivery .inner_table th, .my_regular_delivery .inner_table td {padding: 15px; text-align: left;}
+.my_regular_delivery .inner_table tr:first-child td {border-top: none;}
+.my_regular_delivery .inner_table th.gray_bg {background: #f8f8f8; font-weight: normal; color: #666;}
+.my_regular_delivery .inner_table td .pick_add_cont {display: flex;}
+.my_regular_delivery .inner_table td .pick_add_cont .pick_add_img {width: 70px; min-height: 70px;}
+.my_regular_delivery .inner_table td .pick_add_cont .pick_add_img img {width: 65px !important;}
+.my_regular_delivery .inner_table td .pick_add_cont .pick_add_info {padding-left: 15px;}
+.my_regular_delivery .inner_table td .pick_add_cont .pick_add_plus {display: inline-block; padding: 1px 5px 3px 5px; color: #ffffff; font-size: 11px; background: #959595; min-width: 22px; max-width: 22px; max-height: 16px;}
+.my_regular_delivery .notice_info {background-color: #f8f8f8; margin-top: 15px; padding: 10px;}
+.my_regular_delivery .notice_info .info_tit {display: inline-block; padding: 0 0 5px 10px; font-size: 13px; font-weight: bold;}
+.my_regular_delivery .notice_info .info_list {list-style-type: disc; padding-left: 10px; margin: 0;}
+.my_regular_delivery .notice_info .info_list .item {margin-bottom: 5px; font-size:12px;}
+.my_regular_delivery .btn_small, .my_regular_delivery .btn_small_gray {display: inline-flex; min-width: 52px; height: 24px; align-items: center; justify-content: center; padding: 0 15px; border: 1px solid #DBDBDB; background: #fff; font-size: 11px; line-height: 1; color: #333; cursor: pointer;}
+.my_regular_delivery .btn_small:hover, .my_regular_delivery .btn_small_gray:hover {border-color: #999; color: #333;}
+.my_regular_delivery .btn_edit {padding: 5px 10px; border: 1px solid #ddd; background: #fff; font-size: 12px; cursor: pointer;}
+.my_regular_delivery .btn_wrap {display: flex; align-items: center; justify-content: center; padding: 30px; gap: 10px; background: #fff;}
+.my_regular_delivery .btn_wrap button {padding: 5px 15px; font-size: 12px;}
+.my_regular_delivery .btn_white {background: #fff; border: 1px solid #CCC; }
+.my_regular_delivery .btn_color {background: var(--nde-button-background-color); border: 1px solid var(--nde-button-border-color); color: var(--nde-button-text-color);}
+.my_regular_delivery .goods_info {display: inline-block; vertical-align: top; margin-left: 10px;}
+.my_regular_delivery .goods_select_table .goods_name {text-align: left;}
+.my_regular_delivery .option_text {margin-top: 5px; color: #666; font-size: 12px;}
+.my_regular_delivery .add_tag {display: inline-block; padding: 2px 8px; background: #666; color: #fff; border-radius: 2px; font-size: 12px; margin-right: 5px;}
+.my_regular_delivery .cycle_row {display: none; align-items: center;}
+.my_regular_delivery .cycle_row > * {margin-right: 8px;}
+.my_regular_delivery .cycle_row > *:last-child {margin-right: 0;}
+.my_regular_delivery .round_row {display: flex; align-items: center;}
+.my_regular_delivery .round_row > * {margin-right: 8px;}
+.my_regular_delivery .round_row > *:last-child {margin-right: 0;}
+.my_regular_delivery .delivery_due_date {margin-top: 8px; padding-left: 2px; font-size: 11px;}
+.my_regular_delivery .tab_wrap {display: flex; margin-bottom: 8px;}
+.my_regular_delivery .tab_wrap .tab_btn + .tab_btn {margin-left: 5px;}
+.my_regular_delivery .tab_btn {padding: 8px 15px; border: 1px solid #ddd; background: #fff;}
+.my_regular_delivery .tab_btn.active {background: var(--nde-button-background-color); border-color: var(--nde-button-border-color); color: var(--nde-button-text-color);}
+.my_regular_delivery .tab_btn:hover:not(.active) {border-color: var(--nde-button-border-color); color: var(--nde-button-background-color);}
+.my_regular_delivery .layer_dim {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 300;}
+.my_regular_delivery .layer_wrap {position: fixed; z-index: 302; display: none; width: 100%; height: 100%; left: 0;}
+.my_regular_delivery .layer_wrap .box {position: relative; width: 600px; height: auto; background: #fff; margin: 0 auto; top: 50%; transform: translateY(-50%);}
+.my_regular_delivery .layer_wrap .scroll_box {padding: 20px; max-height: 90vh; overflow-y: auto; text-align: left;}
+.my_regular_delivery .layer_wrap .tit {padding: 20px 20px 15px 20px; font-size: 18px; border-bottom: 1px solid #999;}
+.my_regular_delivery .layer_wrap .btn_layer_close {position: absolute; top: 10px; right: 20px; padding: 10px; border: 0; background: none; cursor: pointer;}
+.my_regular_delivery .layer_wrap .btn_layer_close img {width: 15px; height: 15px; vertical-align: top;}
+.my_regular_delivery .layer_wrap .layer_cont {height: 430px;}
+.my_regular_delivery #deliveryCancelLayer .layer_cont {height: auto;}
+.my_regular_delivery .layer_wrap .layer_cont.regular_delivery_change_info,
+.my_regular_delivery .layer_wrap .layer_cont.regular_delivery_goods_change {min-height: 340px; max-height: 340px; height: 340px;}
+.my_regular_delivery .layer_wrap .goods_select_wrap {padding-bottom: 30px;}
+.my_regular_delivery .layer_wrap .goods_select_wrap h2 {font-size: 16px; margin-bottom: 15px;}
+.my_regular_delivery .layer_wrap .goods_select_table {width: 100%; border-top: 1px solid #333; border-collapse: collapse;}
+.my_regular_delivery .layer_wrap .goods_select_table th,
+.my_regular_delivery .layer_wrap .goods_select_table td {padding: 15px; border-bottom: 1px solid #ddd; text-align: center; vertical-align: middle;}
+.my_regular_delivery .layer_wrap .goods_select_table thead th {background: #f8f8f8;}
+.my_regular_delivery .layer_wrap .goods_select_table .goods_name {text-align: left;}
+.my_regular_delivery .layer_wrap .btn_small {padding: 5px 10px; border: 1px solid #ddd; background: #fff; font-size: 12px; cursor: pointer;}
+.my_regular_delivery .layer_wrap .btn_wrap {margin-top: 0; text-align: center;}
+.my_regular_delivery .layer_wrap .btn_wrap button {width: 82px; height: 38px;}
+.my_regular_delivery .layer_wrap .btn_search {display: inline-block; min-width: 100px; height: 31px; color: var(--nde-button-text-color); font-weight: bold; border: 1px solid var(--nde-button-border-color); background: var(--nde-button-background-color); text-align: center;}
+.my_regular_delivery .layer_wrap .btn_search:hover {opacity: 0.85;}
+.my_regular_delivery .layer_wrap .btn_search em {padding: 0 20px 0 0; background-image: url("../../img/common/btn/btn_goods_search.png"); background-position: right 3px; background-repeat: no-repeat; font-weight: bold;}
+.my_regular_delivery .layer_wrap .search_info {border: 2px solid #ddd; padding: 10px 15px;}
+.my_regular_delivery .layer_wrap .search_info tr:first-child td {padding-bottom: 5px;}
+.my_regular_delivery .layer_wrap .category_container {display: flex; gap: 10px;}
+.my_regular_delivery .layer_wrap .category_container .select_box {width: 110px;}
+.my_regular_delivery .layer_wrap .category_container .select_box .chosen-container {width: 110px !important;}
+.my_regular_delivery .layer_wrap .category_container .select_box .chosen-container .chosen-single span {font-size: 11px;}
+.my_regular_delivery .layer_wrap .category_container .select_box .chosen-container .chosen-results li {font-size: 11px;}
+.my_regular_delivery .layer_wrap .search_type {width: 80px;}
+.my_regular_delivery .layer_wrap .search_goods_key {border-radius: 0; width: 110px; font-size: 11px; color: #717171; border: solid 1px #ccc;}
+.my_regular_delivery .layer_wrap input[name="keywordToGoodsSearch"] {margin-left: 5px; width: 350px; font-size: 11px; color: #717171; border: solid 1px #ccc;}
+.my_regular_delivery .layer-wrap input[name="keywordToGoodsSearch"]::placeholder {font-size: 10px; padding-left: 5px;}
+.my_regular_delivery .delivery_manage_wrap .delivery_list .pick_list_num {padding-bottom: 10px; padding-top: 0px; margin-bottom: 0px;}
+.my_regular_delivery .delivery_manage_wrap .delivery_table {width: 100%; border-collapse: collapse;}
+.my_regular_delivery .delivery_manage_wrap .delivery_table th {background: #F5F5F5; padding: 12px; font-weight: bold; text-align: center;  border-top: 1px solid #999999; color: #777777;}
+.my_regular_delivery .delivery_manage_wrap .delivery_table tr {border-bottom: 1px solid #DBDBDB;}
+.my_regular_delivery .delivery_manage_wrap .delivery_table td {padding: 8px; text-align: center; line-height: 1.4; color: #777777;}
+.my_regular_delivery .delivery_manage_wrap .delivery_table .regular_delivery_shipping_title {color: #333333;}
+.my_regular_delivery .delivery_manage_wrap .delivery_notice {margin-top: 20px; color: #666;}
+.my_regular_delivery .delivery_manage_wrap .select_cell {text-align: center;}
+.my_regular_delivery .delivery_manage_wrap .btn_select {min-width: 60px; height: 28px; padding: 0 10px; background: #fff; border: 1px solid #ddd; font-size: 11px; font-weight: normal; color: #777777; cursor: pointer;}
+.my_regular_delivery .delivery_manage_wrap .btn_select:hover {background: #f5f5f5;}
+.my_regular_delivery .card_manage_wrap .pick_list_num {font-weight: bold; padding-top: 0px; margin: 0px;}
+.my_regular_delivery .card_manage_wrap .card_table {width: 100%; border-collapse: collapse;}
+.my_regular_delivery .card_manage_wrap .card_table th {background: #f8f8f8; padding: 12px; border-bottom: 1px solid #ddd; text-align: center; border-top: 1px solid #999999; color: #777777; font-weight: bold;}
+.my_regular_delivery .card_manage_wrap .card_table tr {border-bottom: 1px solid #DBDBDB;}
+.my_regular_delivery .card_manage_wrap .card_table td {padding: 12px; border-bottom: 1px solid #ddd; text-align: center; color: #777777;}
+.my_regular_delivery .card_manage_wrap .card_table .regular_delivery_card_name {color: #333333;}
+.my_regular_delivery .card_manage_wrap .btn_select {min-width: 60px; height: 28px; padding: 0 10px; background: #fff; border: 1px solid #ddd; font-size: 11px; cursor: pointer; color: #777777;}
+.my_regular_delivery .card_manage_wrap .card_notice {margin-top: 20px; color: #666;}
+.my_regular_delivery .mypage_table_type .td_left {border-left: none;}
+.my_regular_delivery .mypage_table_type td {border-right: 1px solid #eee; border-left: 1px solid #eee;}
+.my_regular_delivery .mypage_table_type td:first-child {border-left: none;}
+.my_regular_delivery .mypage_table_type td:last-child {border-right: none;}
+.my_regular_delivery .mypage_table_type table td.order_day_num {border-right: none;}
+.my_regular_delivery .mypage_table_type .payment-card-item {background: #fff;}
+.my_regular_delivery .layer-wrap {position:fixed; left:0; top:0; z-index:100; overflow-y:auto; width:100%; height:100%;}
+.my_regular_delivery .delete-card {background-color: white; color: #777777; border: 1px solid #dbdbdb; padding: 5px 15px; text-align: center; display: inline-block; font-size: 12px; margin: 2px 1px; cursor: pointer;}
+.my_regular_delivery .delete-card:hover {background-color: #f7f7f7; color: #777777;}
+.my_regular_delivery .drag-handle {cursor: move; text-align: center; vertical-align: middle;}
+.my_regular_delivery .drag-handle::before {content: '≡'; font-size: 18px; color: #ccc;}
+.my_regular_delivery .main-tag {background-color: #cfcbcb; color: #000000; padding: 2px 6px; font-size: 12px; font-weight: bold; display: inline-block; margin-left: 5px;}
+.my_regular_delivery .cancel_section {padding: 10px;}
+.my_regular_delivery .cancel_section h3 {font-size: 16px; font-weight: bold; margin-bottom: 20px;}
+.my_regular_delivery .cancel_section .cancel_reasons {margin-bottom: 20px;}
+.my_regular_delivery .cancel_section .reason_item {margin-bottom: 10px;}
+.my_regular_delivery .cancel_section .reason_item input[type="radio"] {margin-right: 10px;}
+.my_regular_delivery .cancel_section .reason_item label {font-size: 14px; cursor: pointer;}
+.my_regular_delivery .cancel_section .detail-reason {margin-top: 20px;}
+.my_regular_delivery .cancel_section .detail-reason textarea {width: 100%; height: 100px; padding: 10px; border: 1px solid #ddd; resize: none;}
+.my_regular_delivery .btn_wrap.cancel {margin-top: 20px; text-align: center;}
+.my_regular_delivery .btn_wrap.cancel button {min-width: 100px; height: 40px; padding: 0 20px; font-size: 14px;}
+.my_regular_delivery .btn_wrap.cancel .btn_cancel {background: #fff; border: 1px solid #ddd; margin-right: 5px;}
+.my_regular_delivery .btn_wrap.cancel .btn_color {background: var(--nde-button-background-color); border: 1px solid var(--nde-button-border-color); color: var(--nde-button-text-color);}
+.my_regular_delivery .gift_select_table {width: 100%; border-collapse: collapse; border-top: 1px solid #333;}
+.my_regular_delivery .gift_select_table th,
+.my_regular_delivery .gift_select_table td {padding: 15px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; text-align: center; vertical-align: middle;}
+.my_regular_delivery .gift_select_table thead th {background: #f8f8f8;}
+.my_regular_delivery .gift_select_table .regular_gift_image {border-left: 1px solid #ddd;}
+.my_regular_delivery .gift_select_table .regular_gift_name {text-align: left;}
+.my_regular_delivery select {padding: 5px 20px 5px 5px; border: 1px solid #ddd; min-width: 80px;}
+.my_regular_delivery .cycle_row select {min-width: auto; width: auto;}
+.my_regular_delivery .pick_list_num {margin-bottom: 10px; display: block;}
+.my_regular_delivery .delivery_list .pick_list_num {font-weight: bold;}
+
+/* 마이페이지 > 배송지 관리 : mypage/shipping.html */
+.mypage_main .tab_container {margin-bottom: 30px;}
+.mypage_main .tab_menu {display: flex; margin-bottom: 20px;}
+.mypage_main .tab_menu li {flex: 1; text-align: center;}
+.mypage_main .tab_menu li a {display: flex; height: 44px; flex-direction: column; justify-content: center; align-items: center; gap: 10px; font-size: 14px; color: #999; font-weight: 400; border-bottom: 1px solid #bbb; border-top: none;}
+.mypage_main .tab_menu li.active a {color: #333333; font-weight: bold; border: 1px solid #bbb; border-bottom: none; background: none;}
+.mypage_main .tab_content {display: none;}
+.mypage_main .tab_content.active {display: block;}
+.mypage_main .shipping_content_only { display: block; }
+#regularShippingList .mypage_table_type .td_phone span { width:auto; }
+
+/* 장바구니 : order/cart.html */
+.regular_order_wrap .order_tit {border-bottom: 1px solid #ddd; margin-bottom: 30px;}
+.cart_cont .tab-container {display: flex; height: 44px;}
+.cart_cont .tab {flex: 1; padding: 10px 20px; font-weight: 400; font-style: normal; font-size: 14px; text-align: center; cursor: pointer; border-bottom: 1px solid #bbb; color: #999;}
+.cart_cont .tab.active {background: white; font-weight: 700; border: 1px solid #bbb; border-bottom: none; color: #333;}
+.cart_cont .tab-content {display: none;}
+.cart_cont .tab-content.active {display: block; overflow: hidden;}
+.cart_cont table {width: 100%; border-collapse: collapse; margin-top: 10px;}
+.cart_cont th, .cart_cont td {padding: 10px; text-align: center;}
+.cart_cont .regularRound {text-align: left; font-weight: bold; border-left: none; border-right: none;}
+.cart_cont .regularRound span {font-size: 1.3em; margin-left: 50px;}
+.cart_cont .regularRound input[type="radio"] {margin-left: 10px; vertical-align: middle;}
+.cart_cont .regularRound .spacing {margin-left: 10px;}
+.cart_cont .regularRound select {width :50px; height: 25px;}
+.cart_cont .regularRound .regular-delivery-date {float: right; font-size: 14px; color: #333;}
+.order_table_type .td_order_regular_goods_price{border-left:1px solid #eee; border-right:1px solid #eee;}
+.order_table_type .td_order_regular_delivery_cycle{border-left:1px solid #eee; border-right:1px solid #eee;}
+.order_table_type .td_order_regular_total_price{border-left:1px solid #eee; border-right:1px solid #eee;}
+
+/* 정기결제 신청서 작성 / 결제 : order/regular_order.html */
+.regular_order_wrap table {width: 100%; border-collapse: collapse; margin-top: 10px;}
+.regular_order_wrap th, .regular_order_wrap td {border-top: 1px solid #999999; border-left: none; padding: 10px; text-align: center;}
+.regular_order_wrap .regularRound {text-align: left; font-weight: bold; border-left: none; border-right: none;}
+.regular_order_wrap .regularRound span {font-size: 1.3em; margin-left: 50px;}
+.regular_order_wrap .regularRound input[type="radio"] {margin-left: 10px; vertical-align: middle;}
+.regular_order_wrap .regularRound .spacing {margin-left: 10px;}
+.regular_order_wrap .regularRound select {width :50px; height: 25px;}
+.regular_order_wrap .regularRound .regular-delivery-date {float: right; font-size: 14px; color: #333;}
+.regular_order_wrap .regular-order-payment-message {background: #f7f7f7; padding: 15px; color: #777777;}
+.regular_order_wrap .regular-order-payment-message li {list-style-type: disc; list-style-position: inside; padding-bottom: 5px;}
+.regular_order_wrap .regular-order-payment-message li:last-child {padding-bottom: 0;}
+
+/* 정기결제 신청서 카드 선택 영역 */
+.card_list .table_left td {display: flex; flex-wrap: wrap; padding: 12px 15px 12px 15px; align-items: center; border-top: none;}
+.card_list .table_left td input[type="radio"] {margin-right: 2px; accent-color: #333; vertical-align: middle !important;}
+.card_list .table_left td span {padding-right: 20px;}
+
+/* ========================================
+   반응형
+   ======================================== */
+
+/* 1240px 이하 */
+@media all and (max-width: 1240px) {
+    .item_photo_info_sec .regular_goods_total_price_box dt {width: auto;}
+    .item_photo_info_sec .regular_goods_total_price_box .regular-delivery-total-price,
+    .item_photo_info_sec .regular_goods_total_price_box .regular-delivery-sum-price {width: auto !important;}
+    .item_photo_info_sec button.btn_disabled_order {width: 100%;}
+}
+
+/* 1024px 이하 — PC→모바일뷰 전환 */
+@media all and (max-width: 1024px) {
+    /* 상품상세 정기배송: 버튼 유동 폭 */
+    .item_photo_info_sec .item_regular_goods_box .toggle-button {width: auto; flex: 1; min-width: 80px;}
+
+    /* 옵션변경 레이어 */
+    #optionViewLayer .option_layer_cont {width: 95vw; height: auto; max-height: 90vh;}
+    .option_layer_scroll .item_regular_goods_box {margin-left: 0;}
+    .option_layer_scroll .item_regular_goods_box .delivery_type_tab,
+    .option_layer_scroll .item_regular_goods_box .delivery_cycle_type_tab {display: flex; gap: 5px; flex-wrap: wrap;}
+    .option_layer_scroll .item_regular_goods_box .delivery_cycle_type_tab .cycle_wrap {width: 100%;}
+    .option_layer_scroll .item_regular_goods_box .toggle-button {width: auto; flex: 1; min-width: 80px;}
+    .option_layer_scroll .item_regular_goods_box dl {display: flex; flex-wrap: wrap;}
+    .option_layer_scroll .item_regular_goods_box dl:after {display: none;}
+    .option_layer_scroll .item_regular_goods_box dl dt {float: none; flex: none; width: 94px;}
+    .option_layer_scroll .item_regular_goods_box dl dd {float: none; flex: 1; width: auto; min-width: 0;}
+    .option_layer_scroll .option_select_box .option_chosen {margin-left: 0;}
+    .option_layer_scroll .option_chosen dl {display: flex; align-items: center;}
+    .option_layer_scroll .option_chosen dt {float: none; flex: none; width: 94px;}
+    .option_layer_scroll .option_chosen dd {float: none; flex: 1; width: auto;}
+    .option_layer_scroll .option_select_box .chosen-container {width: 100% !important;}
+
+    /* 마이페이지 정기배송 레이어 */
+    .my_regular_delivery .layer_wrap .box {max-width: 95vw; height: auto !important; max-height: 90vh; top: 50% !important; left: auto !important; transform: translateY(-50%) !important;}
+    .my_regular_delivery .layer_wrap .layer_cont {height: auto; max-height: 70vh; overflow-x: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column;}
+    .my_regular_delivery .layer_wrap .layer_cont .scroll_box {flex: 1; overflow-y: auto;}
+    .my_regular_delivery .layer_wrap .scroll_box {padding: 12px; padding-right: 0; border-right: 12px solid #fff;}
+    .my_regular_delivery .layer_wrap .layer_cont .btn_wrap {flex-shrink: 0;}
+    .my_regular_delivery .layer_wrap .layer_cont.regular_delivery_change_info,
+    .my_regular_delivery .layer_wrap .layer_cont.regular_delivery_goods_change {min-height: auto; max-height: none; height: auto; display: block;}
+    .my_regular_delivery .info_table col:first-child {width: 80px !important;}
+    .my_regular_delivery .layer_wrap .tit {position: relative; z-index: 1;}
+    .my_regular_delivery .layer_wrap .btn_layer_close {z-index: 2;}
+    .my_regular_delivery .layer_wrap .layer_cont .scroll_box {margin-top: 0;}
+    .my_regular_delivery .info_table,
+    .my_regular_delivery .goods_select_table,
+    .my_regular_delivery .delivery_manage_wrap .delivery_table,
+    .my_regular_delivery .card_manage_wrap .card_table {font-size: 12px;}
+    .my_regular_delivery .inner_table td .pick_add_cont {flex-wrap: nowrap;}
+    .my_regular_delivery .inner_table td .pick_add_cont .pick_add_info {flex: 1; min-width: 0; word-break: break-word;}
+    .my_regular_delivery .layer_wrap input[name="keywordToGoodsSearch"] {width: 100%; margin-left: 0; margin-top: 5px; box-sizing: border-box;}
+    .my_regular_delivery .layer_wrap .category_container {flex-wrap: wrap;}
+
+    /* 상품 검색 레이어 */
+    .my_regular_delivery .layer_wrap .search_info .table-cols {table-layout: fixed; width: 100%;}
+    .my_regular_delivery .layer_wrap .search_info .table-cols col:first-child {width: 60px !important;}
+    .my_regular_delivery .layer_wrap .search_info .table-cols th {padding: 8px 4px; font-size: 12px; word-break: keep-all; vertical-align: top;}
+    .my_regular_delivery .layer_wrap .search_info .table-cols td {padding: 8px 4px;}
+    .my_regular_delivery .layer_wrap .category_container .select_box {width: 100%;}
+    .my_regular_delivery .layer_wrap .category_container .select_box .chosen-container {width: 100% !important;}
+    .my_regular_delivery .layer_wrap .form-inline {display: flex; flex-wrap: wrap; gap: 5px;}
+    .my_regular_delivery .layer_wrap .form-inline select {flex-shrink: 0;}
+    .my_regular_delivery .layer_wrap .form-inline input[name="keywordToGoodsSearch"] {flex: 1; min-width: 0; margin: 0 !important;}
+    /* 상품 선택: hr 숨김 → goods_select_wrap 상단선으로 대체 */
+    .my_regular_delivery .layer_wrap .scroll_box > hr {display: none;}
+    .my_regular_delivery .layer_wrap .goods_select_wrap {border-top: 1px solid #ddd; padding-top: 10px;}
+
+    /* 상품 선택 테이블: 모바일 그리드 전환 */
+    .my_regular_delivery .goods_select_table {min-width: 0 !important;}
+    .my_regular_delivery .goods_select_table colgroup {display: none;}
+    .my_regular_delivery .goods_select_table thead {display: none;}
+    .my_regular_delivery .layer_wrap .goods_select_table th,
+    .my_regular_delivery .layer_wrap .goods_select_table td {padding: 0; text-align: left;}
+    .my_regular_delivery .goods_select_table tbody tr {display: grid; grid-template-columns: auto 55px 1fr; grid-template-rows: auto auto; padding: 10px 5px; gap: 0 10px;}
+    .my_regular_delivery .goods_select_table tbody td {display: block; border: none !important; padding: 0; margin: 0;}
+    .my_regular_delivery .goods_select_table tbody td:nth-child(1) {grid-row: 1 / 3; align-self: center;}
+    .my_regular_delivery .goods_select_table tbody td:nth-child(2) {grid-row: 1 / 3; align-self: center;}
+    .my_regular_delivery .goods_select_table tbody td:nth-child(2) img {width: 50px; height: 50px; object-fit: cover; display: block;}
+    .my_regular_delivery .goods_select_table tbody tr {border-bottom: 1px solid #ddd;}
+    .my_regular_delivery .goods_select_table tbody td:nth-child(3) {font-size: 13px; word-break: break-word; line-height: 1.4; align-self: start;}
+    .my_regular_delivery .goods_select_table tbody td:nth-child(4) {font-size: 12px; color: #555; align-self: start;}
+
+    /* 신청목록 수정 버튼 — 프론트와 동일 사이즈 유지 */
+    .my_regular_delivery .mypage_table_type .btn_edit {display: block; width: 120px; padding: 8px 0; font-size: 13px; text-align: center;}
+
+    /* 신청목록 테이블 — rowspan 셀 보정 */
+    .my_regular_delivery .mypage_table_type td.order_day_num {vertical-align: middle; border-right: 1px solid #e8e8e8; white-space: nowrap; min-width: 90px;}
+    /* delivery_info_row: 모바일에서 축소 표시 */
+    .my_regular_delivery .delivery_info_row td {padding: 4px 8px; font-size: 11px;}
+    .my_regular_delivery .delivery_info_row .delivery_info_wrap {justify-content: flex-start !important;}
+
+    /* 마이페이지 정기배송 테이블 스크롤 */
+    .my_regular_delivery .mypage_table_type {overflow-x: auto; -webkit-overflow-scrolling: touch;}
+    .my_regular_delivery .mypage_table_type > table {min-width: 1000px;}
+
+    /* 정기배송 조회기간 */
+    .my_regular_delivery .date_check_box {overflow: hidden;}
+    .my_regular_delivery .date_check_list {display: flex; flex-wrap: wrap; gap: 4px;}
+    .my_regular_delivery .date_check_list button {flex: 1; min-width: 40px;}
+    .my_regular_delivery .date_check_calendar {display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px;}
+    .my_regular_delivery .date_check_calendar input {flex: 1; min-width: 0;}
+    .my_regular_delivery .btn_date_check {margin-top: 8px;}
+    .my_regular_delivery .delivery_manage_wrap .delivery_table {min-width: 600px;}
+    .my_regular_delivery .card_manage_wrap .card_table {min-width: 500px;}
+    .my_regular_delivery .goods_select_table {min-width: 500px;}
+    .my_regular_delivery .gift_select_table col:nth-child(1) {width: 56px !important;}
+    .my_regular_delivery .gift_select_table col:nth-child(2) {width: 70px !important;}
+    .my_regular_delivery .gift_select_table td {padding: 10px 5px;}
+    .my_regular_delivery .gift_select_table .regular_gift_name {font-size: 12px; word-break: break-word;}
+
+    /* 정기주문 배송지 레이어 */
+    .regular-delivery-layer {width: 95vw !important; max-width: 95vw !important; box-sizing: border-box !important; overflow-x: hidden;}
+    .regular-delivery-layer table {min-width: 0 !important; width: 100% !important;}
+    .regular-delivery-layer table colgroup {display: none;}
+    .regular-delivery-layer table thead {display: none;}
+    .regular-delivery-layer table td:empty {display: none !important;}
+    .regular-delivery-layer .ly_cont {overflow-x: hidden; overflow-y: auto; min-height: auto !important; max-height: 70vh;}
+    .regular-delivery-layer .address_postcode,
+    #contents .layer_wrap_cont .member_address .address_postcode {display: grid !important; grid-template-columns: 3fr 2.5fr;}
+
+    /* 배송주기 변경 레이어 */
+    .option_layer_cont.delivery_cycle .delivery_cycle_th_col {width: 70px !important;}
+    .option_layer_cont.delivery_cycle .info_table th {padding: 6px 4px; font-size: 11px; word-break: keep-all;}
+    .option_layer_cont.delivery_cycle .info_table td {padding: 8px 5px;}
+    .option_layer_cont.delivery_cycle .cycle_row > * {margin-right: 4px;}
+    .option_layer_cont.delivery_cycle .cycle_row select {min-width: 60px;}
+    .option_layer_cont.delivery_cycle .tab_btn {padding: 6px 10px; font-size: 12px;}
+
+    /* 장바구니 정기배송 탭 */
+    .cart_cont .tab-container {height: auto;}
+    .cart_cont .tab {padding: 8px 10px; font-size: 13px;}
+
+    /* 정기배송 장바구니 */
+    #regularCart .order_table_type table {table-layout: auto;}
+    #regularCart .td_left {width: auto;}
+    #regularCart .mo-view .btn_gray_list {margin-top: 5px;}
+    #regularCart .mo-view .btn_gray_small {white-space: nowrap;}
+
+    /* 장바구니 / 주문서 회차 정보 */
+    .cart_cont .regularRound span {margin-left: 10px; font-size: 1em;}
+    .cart_cont .regularRound .regular-delivery-date {float: none; display: block; margin-top: 5px;}
+    .regular_order_wrap .regularRound span {margin-left: 10px; font-size: 1em;}
+    .regular_order_wrap .regularRound .regular-delivery-date {float: none; display: block; margin-top: 5px;}
+
+    /* 정기주문서 결제카드 선택 영역 */
+    .card_list.order_table_type .table_left td {flex-direction: column !important; align-items: flex-start !important; height: auto !important; width: auto !important; padding: 12px 15px 15px !important; border-bottom: 1px solid #e8e8e8;}
+    .card_list.order_table_type .table_left td > span {display: block; padding-right: 0; margin-bottom: 8px;}
+    .card_list.order_table_type .table_left td > span:last-child {margin-bottom: 0;}
+    .card_list.order_table_type .table_left td .btn_gray_list {margin-top: 5px;}
+
+    /* 정기주문서 테이블: mo-view 레이블 스타일 */
+    #frmOrder .order_table_type .mo-view .order_sum_txt {display: block; font-size: 12px; color: #555; margin-top: 3px;}
+    #frmOrder .order_table_type .order_goods_num.mo-view {margin-top: 4px;}
+
+    /* 구매불가 버튼 */
+    .item_photo_info_sec button.btn_disabled_order {width: 100%;}
+
+    /* 배송지 관리 탭 */
+    .mypage_main .tab_menu li a {font-size: 12px; height: 38px;}
+    .mypage_main .mypage_table_type {overflow-x: auto;}
+}
+
+/* 768px 이하 */
+@media all and (max-width: 768px) {
+    /* 마이페이지 정기배송 */
+    .my_regular_delivery .tab_menu li a {font-size: 12px; height: 38px;}
+    .my_regular_delivery .inner_table th,
+    .my_regular_delivery .inner_table td {padding: 8px; font-size: 12px;}
+    .my_regular_delivery .delivery_manage_wrap .delivery_table th,
+    .my_regular_delivery .delivery_manage_wrap .delivery_table td,
+    .my_regular_delivery .card_manage_wrap .card_table th,
+    .my_regular_delivery .card_manage_wrap .card_table td {padding: 8px; font-size: 11px;}
+
+    /* 마이페이지 정기배송 레이어 내 검색 */
+    .my_regular_delivery .layer_wrap .search_info {padding: 8px;}
+    .my_regular_delivery .layer_wrap .search_type {width: 100%; margin-bottom: 5px;}
+    .my_regular_delivery .layer_wrap .search_goods_key {width: 100%;}
+
+    /* 상품 선택 레이어: 카테고리/검색 100% */
+    .my_regular_delivery .layer_wrap .category_container .chosen-container {width: 100% !important;}
+    .my_regular_delivery .layer_wrap .category_container select {width: 100% !important;}
+    .my_regular_delivery .layer_wrap .form-inline {flex-direction: column;}
+    .my_regular_delivery .layer_wrap .form-inline select {width: 100%;}
+    .my_regular_delivery .layer_wrap .form-inline input[name="keywordToGoodsSearch"] {width: 100%; margin: 0 !important;}
+
+    /* 정기배송지 레이어 우편번호 검색 */
+    .regular-delivery-layer .address_postcode,
+    #contents .layer_wrap_cont .member_address .address_postcode {display: grid !important; grid-template-columns: 3fr 2.5fr !important;}
+}
+
+/* 상품 목록 정기배송가 표시 */
+.nde-c-goods .regular_delivery_price {display: inline-flex; align-items: center; gap: 4px; font-weight: 700; color: var(--nde-color-primary); font-size: var(--nde-font-price, 1em); line-height: 1.375;}
+.nde-c-goods .regular_delivery_price img {height: 1.125em; vertical-align: middle;}
+
+/* 360px 이하 — 소형 모바일 */
+@media all and (max-width: 360px) {
+    /* 상품상세 배송주기 셀렉트 줄바꿈: [월선택 마다] / [일선택 에배송] */
+    .item_photo_info_sec .item_regular_goods_box .cycle_row {flex-wrap: wrap;}
+    .item_photo_info_sec .item_regular_goods_box .cycle_row select {max-width: 45%;}
+
+    /* 배송주기 셀렉트 줄바꿈 (공통) */
+    .my_regular_delivery .cycle_row,
+    .option_layer_cont.delivery_cycle .cycle_row {flex-wrap: wrap; gap: 5px;}
+    .my_regular_delivery .cycle_row select,
+    .option_layer_cont.delivery_cycle .cycle_row select {width: auto; padding-right: 20px;}
+    .my_regular_delivery .cycle_row span,
+    .option_layer_cont.delivery_cycle .cycle_row span {font-size: 11px;}
+
+    /* 정기배송지 관리 타이틀 줄바꿈 */
+    #regularShippingList .mypage_zone_tit {display: flex; flex-wrap: wrap; gap: 5px;}
+    #regularShippingList .mypage_zone_tit h3 {width: 100%;}
+    #regularShippingList .mypage_zone_tit .pick_list_num {font-size: 11px;}
+
+    /* 마이페이지 정기배송 버튼 축소 */
+    .my_regular_delivery .btn_wrap {padding: 15px; gap: 5px;}
+    .my_regular_delivery .btn_wrap button {width: 70px; height: 34px; font-size: 11px;}
+    .my_regular_delivery .btn_small,
+    .my_regular_delivery .btn_small_gray {padding: 0 8px; font-size: 10px;}
+    .my_regular_delivery .btn_edit {width: auto; padding: 5px 8px; font-size: 11px;}
+}

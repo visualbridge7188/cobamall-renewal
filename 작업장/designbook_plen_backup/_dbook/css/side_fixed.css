@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+/*========================================================================
+우측 고정바
+========================================================================*/
+/* 우측 메뉴 */
+.side-fixed { display:none !important; position:fixed; top:0; bottom:0; right:0; padding-top:20px; width:204px; border-left:1px solid #c7c7c7; background:#fff; text-align:center; z-index:100; }
+.side-fixed .side-menu { display:table; margin:20px auto 0; }
+.side-fixed .side-menu li{ display:inline-block; margin:0 4px 7px; width:74px; height:30px; line-height:30px; color:#454545; font-size:13px; border:1px solid #d0d0d0; text-align:center; }
+.side-fixed .side-menu li a:hover { color:#c7c7c7; text-decoration:none; -khtml-transition:all 0.2s ease; -moz-transition:all 0.2s ease; -ms-transition:all 0.2s ease; -o-transition:all 0.2s ease; transition:all 0.2s ease; }
+
+/* 우측 회사정보 */
+.side-fixed .side-info { text-align:left; padding:0 0 0 24px; }
+.side-fixed .side-info > div { margin-top:24px; }
+.side-fixed .side-info h3 { padding:14px 0 0 0; margin-bottom:8px; color:#1a1d2c; font-size:13px; position:relative; }
+.side-fixed .side-info h3:before { content:""; position:absolute; top:0; left:0; width:17px; border-top:1px solid #cbcbcd; }
+.side-fixed .side-info strong { color:#1a1d2c; font-size:24px; font-weight:400; }
+.side-fixed .side-info p { padding-top:9px; color:#707070; font-size:12px; line-height:17px; }
+
+/* 컨트롤 버튼 & 링크 */
+.side-fixed .side-control { position:absolute; top:50%; left:-49px; background:#fff; transform:translate(0,-49%); z-index:10; }
+.side-fixed .side-control > li { position:relative; }
+.side-fixed .side-control > li .name { visibility:hidden; opacity:0; filter:alpha(opacity=0); position:absolute; top:50%; right:55px; padding:0 10px; margin-top:-13px; height:25px; line-height:25px; font-size:12px; border:1px solid #ddd; background:#fff; white-space:nowrap; z-index:5; }
+.side-fixed .side-control > li:hover .name { visibility:visible; opacity:1; filter:alpha(opacity=1); }
+.side-fixed .side-control > li p { cursor:pointer; }
+.side-fixed .side-home { width:48px; height:48px; background:#000; }
+.side-fixed .side-home > a { display:block; width:100%; height:100%; }
+.side-fixed .side-home > a img { position:relative; top:50%; transform:translate(0,-50%); }

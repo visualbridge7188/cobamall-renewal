@@ -1,0 +1,102 @@
+	</div>
+	<!-- //contents_wrap -->
+
+	<!-- 플로팅 -->
+	{=includeFile('outline/side/side_floating.html')}
+</div>
+<!-- //container -->
+<div id="footer">
+	<footer>
+		<div class="footer-board">
+			<h3><a href="../board/list.php?bdId=notice">[공지사항]</a></h3>
+			<div class="swiper-container">
+				<ul class="swiper-vertical-wrapper">
+					<!--{ @getArticles( 'notice' , 5 , 100 ) }-->
+					<li class="vertical-slide"><a href="../board/view.php?bdId={.bdId}&sno={.sno}">{.subject}</a></li>
+					<!--{ / }-->
+				</ul>
+			</div>
+			<a href="../board/list.php?bdId=notice" class="more">더보기</a>
+		</div>
+		<div class="footer-inner">
+			<div class="footer-info">
+				<div class="footer-company">
+					<ul>
+						<li><a href="../service/private.php">{=__('개인정보처리방침')}</a></li>
+						<li><a href="../service/agreement.php">{=__('이용약관')}</a></li>
+						<li><a href="../service/guide.php">{=__('이용안내')}</a></li>
+						<li><a href="../service/faq_list.php">{=__('고객센터')}</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer-content">
+				<!-- 고객센터 -->
+				<div class="cont-box">
+					<h3>고객센터</h3>
+					<strong>{gMall.centerPhone}</strong>
+					<span>
+						평일 09:00~17:00 (점심 12:00~13:00) 토,일,공휴일 휴무<br/>
+						업무 시간 외에는 게시판으로 문의 바랍니다.
+					</span>
+				</div>
+				<!-- 은행 정보 -->
+				<div class="cont-box column1">
+					<h3>입금계좌</h3>
+					<strong>0123-456-78910</strong>
+					<span>신한은행 {=__('예금주')} : 디자인교과서</span>
+				</div>
+			</div>
+		</div>
+		<div class="shop-info">
+			<address class="address">
+				<dl>
+					<dt>{=__('상호')} :</dt><dd>{=gMall.companyNm}</dd>
+					<dt>{=__('대표')} :</dt><dd>{=gMall.ceoNm}</dd>
+					<dt>{=__('대표번호')} :</dt><dd> {=gMall.phone}</dd>
+				</dl>
+				<dl>
+					<dt>{=__('사업자등록번호')} :</dt><dd>{=gMall.businessNo}</dd>
+				</dl>
+				<dl>
+					<dt>{=__('통신판매업신고')} :</dt><dd>{=gMall.onlineOrderSerial}</dd>
+				</dl>
+				<dl>
+					<dt>{=__('주소')} :</dt><dd>{=gMall.address} {=gMall.addressSub}</dd>
+				</dl>
+				<dl>
+					<dt>{=__('팩스')} :</dt><dd>{=gMall.fax}</dd>
+					<dt>{=__('개인정보관리책임자')} :</dt><dd>{=gMall.privateNm}</dd>
+				</dl>
+			</address>
+			<p class="copyright">Copyright&copy; {=gMall.mallDomain}. All Rights Reserved.</p>
+		</div>
+
+		<ul class="footer-btn">
+			<li><a href="tel:{=gMall.centerPhone}">{=__('고객센터')}</a></li>
+			<li><a href="{=c.URI_OVERSEAS_HOME}main/index.php?pcView=y">{=__('PC화면')}</a></li>
+		</ul>
+
+		<!-- 바로가기 아이콘 추가 -->
+		<div class="ft_info2_box">
+			<div class="shortcut">
+				<a href="#footer" class="js_add_favorite" data-title="{=gMall.mallNm}" style="display:none;">
+					<span style="background-image:url({gMobile.mobileShopIcon});"><em>{gMall.mallNm}</em> {=__('바로가기 아이콘 추가하기')}</span>
+					<iframe id="ifrmAddFavoriteLauncher" src="/blank.php" style="display:none" width="0" height="0"></iframe>
+				</a>
+			</div>
+		</div>
+		<!-- //ft_info2_box -->
+		<div class="foot_certify">
+			<!--{? gFairTrade['logoFl'] == 'default'}-->
+			<span><a href="https://www.ftc.go.kr/www/cop/bbs/selectBoardList.do?key=201&bbsId=BBSMSTR_000000002320&bbsTyCode=BBST01" target="_blank"><img alt="{=__('공정거래위원회')}" src="../../img/certify/logo_kftc.png"></a></span>
+			<!--{: gFairTrade['logoFl'] == 'upload'}-->gFairTrade
+			<span><img alt="{=__('공정거래위원회')}" src="{=['uploadLogoPath']}"></span>
+			<!--{/}-->
+			<span>{=displaySSLSeal}</span>
+			<span>{=dataEggBanner()}</span>
+			<span>{=dataReceiptBanner}</span>
+		</div>
+		<!-- //foot_certify -->
+	</footer>
+</div>
+<!-- //footer -->

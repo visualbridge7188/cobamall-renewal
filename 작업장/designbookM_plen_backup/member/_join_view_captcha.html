@@ -1,0 +1,18 @@
+{*** [위젯] 회원가입/자동등록 방지 | member/_join_view_captcha.html ***}
+<!--{? joinField.captcha.use == 'y'}-->
+<div class="join_view_other">
+    <div class="tit">{=__('자동등록방지')}</div>
+        <div class="input_wrap">
+            <div class="capcha">
+                <div class="capcha_img"><span><img src="./captcha.php" id="captchaImg" alt="{=__('자동등록방지 이미지')}"/></span></div>
+                <div class="capcha_body">
+                    <p class="capcha_text">{=__('보이는 순서대로 %s숫자 및 문자를 모두 입력해 주세요.', '<br />')}</p>
+                    <div class="capcha_input">
+                        <input type="text" name="captchaKey" maxlength="5" onKeyUp="this.value=this.value.toUpperCase();" onfocus="this.select()" placeholder="{=__('문자를 입력해주세요.')}" class="captcha"/>
+                    </div>
+                    <div class="capcha_button"><button type="button" id="reload_captcha" class="captchareload_btn"><img src="../img/etc/icon-reset.png" alt="{=__('이미지 새로고침')}"> {=__('이미지 새로고침')}</button></div>
+                </div>
+            </div>
+        </div>
+</div>
+<!--{/}-->

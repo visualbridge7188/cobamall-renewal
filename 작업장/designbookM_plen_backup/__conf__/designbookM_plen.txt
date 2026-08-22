@@ -1,0 +1,12 @@
+skin_sno: 8
+skin_type: adaptive
+skin_name: 디자인교과서_플리엔
+skin_code: designbookM_plen
+skin_version: 2.0
+skin_date: 2026-08-06 00:00:00
+skin_device: mobile
+skin_country: kr_global
+apply_solution: 고도몰5
+notice1: 압축화일(zip)로 업로드한 스킨임\n디자인교과서_플리엔(designbookM_plen) - 
+registered_date: 2026-08-06 11:50:17
+skin_cover: /data/conf/skin_mobile/designbookM_plen.jpg

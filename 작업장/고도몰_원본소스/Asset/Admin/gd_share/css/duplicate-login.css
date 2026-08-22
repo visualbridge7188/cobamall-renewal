@@ -1,0 +1,88 @@
+/* =============================== */
+/* 관리자 동시 접속 감지 페이지 (non-NCDS) */
+/* =============================== */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.duplicate-login-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.duplicate-login-dialog {
+    background: #fff;
+    border-radius: 8px;
+    padding: 24px;
+    width: 640px;
+    max-width: calc(100vw - 40px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+.duplicate-login-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 16px;
+    color: #171818;
+}
+.duplicate-login-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 20px;
+    margin-bottom: 24px;
+}
+.duplicate-login-desc {
+    font-size: 13px;
+    color: #464748;
+    line-height: 22px;
+    margin: 0;
+}
+.duplicate-login-ip-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #d3d4d8;
+}
+.duplicate-login-ip-table th,
+.duplicate-login-ip-table td {
+    padding: 10px 16px;
+    font-size: 13px;
+    border: 1px solid #d3d4d8;
+    text-align: left;
+}
+.duplicate-login-ip-table th {
+    background: #eaecf0;
+    font-weight: 500;
+    color: #464748;
+}
+.duplicate-login-ip-table td {
+    background: #fff;
+    color: #171818;
+}
+.duplicate-login-options {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.duplicate-login-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #171818;
+    cursor: pointer;
+    margin: 0;
+}
+.duplicate-login-option input[type="radio"] {
+    margin: 0;
+}
+.duplicate-login-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}

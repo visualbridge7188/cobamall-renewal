@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+/*========================================================================
+플로팅
+========================================================================*/
+.side-floating { position:fixed; bottom:13px; right:11px; width:auto; transition:all 0.3s ease; z-index:61; }
+.side-floating ul li { margin:5px 0 0; }
+.side-floating ul li a { display:flex; align-items:center; justify-content:center; width:35px; height:35px; background-color:#fff; border:0; border-radius:50%; overflow:hidden; box-sizing:border-box; }
+.side-floating ul li a:hover { border-color:#222222; }
+.side-floating ul li a img { width:100%; }
+.side-floating.on { bottom: 65px; }
+.side-floating.end-stop { position:absolute; bottom:13px; }
+.side-floating.end-stop.on { bottom:13px; }
+
+/* 상세 */
+.body-goods-view .side-floating,
+.body-goods-view .side-floating.on { bottom:90px; }
+.body-goods-view .side-floating.end-stop,
+.body-goods-view .side-floating.end-stop.on { bottom:13px; }

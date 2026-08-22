@@ -1,0 +1,244 @@
+{*** 쇼핑몰 메인본문 | main/index.php ***}
+{ # header }
+<link type="text/css" rel="stylesheet" href="../_dbook/css/main.css" />
+<script type="text/javascript" src="../_dbook/js/main.js"></script>
+<div id="main">
+	<!-- 메인 비주얼 -->
+	<div class="main-visual">
+		<div class="visual-slider">
+			{=includeWidget('proc/_slider_banner.html', 'bannerCode', '3606671697')}
+			<div class="slick-control">
+				<span class="slick-player-btn"></span>
+				<div class="caption"><span class="current"></span> / <span class="total"></span></div>
+			</div>
+		</div>
+		<ul class="slider-nav" style="display:none;">
+			<!-- 슬라이드 개수와 동일하게 사용해야함 -->
+			<li>
+				<div class="visual-title">
+					<strong><span>PROMOTION</span></strong>		
+					<h3><span>지금, 나를 챙길 몸을 깨우는<br/>건강 루틴팩 찾기!</span></h3>
+					<p><span>루틴 별 건강제안! 나에게 맞는 영양 루틴을 칮아줄게요</span></p>
+				</div>
+			</li>
+			<li>
+				<div class="visual-title">
+					<strong><span>BEST</span></strong>		
+					<h3><span>플리엔으로 하루 한 알,<br/>건강한 내일을 위한 선택!</span></h3>
+					<p><span>믿을 수 있는 건강, 확실한 선택</span></p>
+				</div>
+			</li>
+			<li>
+				<div class="visual-title">
+					<strong><span>NEW</span></strong>		
+					<h3><span>매일 한 알의 건강<br/>필수 영양, 지금 챙겨야 할 순간</span></h3>
+					<p><span>몸이 먼저 아는 진짜 건강기능식품 플리엔</span></p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!--// 메인 비주얼 -->
+	<div class="main-wrap">
+		<div class="main-box">
+			<div class="main-inner">
+				<div class="main-quick-menu swiper swiper-container">
+					<ul class="swiper-wrapper">
+						<!--{ @dataBanner('3251068616',true) }-->
+						<li class="swiper-slide">
+							<a href="{.bannerLink}" target="{.bannerTarget}">
+								<span class="w100"><img src="{.bannerImageUrl}"></span>
+								<p>{.bannerImageAlt}</p>
+							</a>
+						</li>
+						<!--{ / }-->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="main-box2">
+			<div class="main-inner">
+				<div class="wide-bn _transY" >
+					<!--{ @dataBanner('4252770060',true) }-->
+						<a href="{.bannerLink}" target="{.bannerTarget}">
+							<span class="w100"><img src="{.bannerImageUrl}"></span>
+							<div class="bn-txt _transYSBn ani4">	
+								<h3>신규 회원 무료배송<br/>무료반품 서비스</h3>
+								<p>다양한 혜택을 누려보세요!</p>
+							</div>
+						</a>
+					<!--{ / }-->
+				</div>
+			</div>
+		</div>
+		<div class="main-box3">
+			<div class="main-inner">
+				<div class="main-prd1">
+					<div class="main-title">
+						<h3><span>주목할 브랜드</span></h3>
+					</div>
+					<!-- 메인 상품 노출 -->{=includeWidget('goods/_goods_display_main.html', 'sno', '10')}<!-- 메인 상품 노출 list_01.html 갤러리형 2*3 상품명,짧은설명,정가,판매가 -->
+				</div>
+			</div>
+		</div>
+		<div class="main-box4">
+			<div class="main-inner">
+				<div class="main-video fadeIn">
+					<!--{ @dataBanner('3058047196',true) }-->
+						<a href="{.bannerLink}" target="{.bannerTarget}">
+							<iframe id="myVideo" width="360" height="202" data-video-id="{.bannerImageAlt}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="pointer-events: none;" ></iframe>
+						</a>
+					<!--{ / }-->
+				</div>
+			</div>
+		</div>
+		<div class="main-box5">
+			<div class="best-review">
+				<div class="main-inner">
+					<div class="main-title">
+						<h3>실시간 리뷰</h3>
+						<a href="../board/list.php?bdId=goodsreview">더보기 ></a>
+					</div>	
+					<div class="review _transY ani4">
+						<div class="swiper swiper-container">
+							<ul class="swiper-wrapper">
+								<!--{ @getArticles( 'goodsreview' , 5 , 100 ) }-->
+								<li class="swiper-slide _transY">
+									<a href="../board/view.php?bdId={.bdId}&sno={.sno}">
+										<div class="prd-img">
+											<!--{ ? .attachImageSrc }-->
+											<div class="attach"><img src="{=stripslashes(str_replace(array('/thumb','/t'), '', .attachImageSrc))}" alt="첨부이미지" /></div>
+											<!--{ : .editorImageSrc }-->
+											<div><img class="editor" src="{.editorImageSrc}" alt="에디터이미지" /></div>
+											<!--{ : .goodsImageSrc }-->
+											<div class="goods"><img src="{.goodsImageSrc}" alt="상품이미지" /></div>
+											<!--{ / }-->
+										</div>
+										<div class="review-wrap">
+											<div>
+												<div class="tit"><h5>{.subject}</h5></div>
+												<div class="cont"><p>{=gd_remove_tag(.contents)}</p></div>
+											</div>
+											<div class="star-wrap">
+												<div class="point">
+													<span class="rating"><span style="width:{.goodsPtPer}%;"></span></span>
+												</div>
+												<span>{.writer}</span>
+											</div>
+										</div>
+									</a>
+									<div class="thumb">
+										<span class="img">
+											<!--{ ?  .goodsNo != '0' }-->
+											<a href="../goods/goods_view.php?goodsNo={=.goodsNo}"><img src="{.goodsImageSrc}" alt="상품이미지" /></a>
+											<!--{ : }-->
+											<a href="javascript:;"><img src="{.goodsImageSrc}" alt="" /></a>
+											<!--{ / }-->
+										</span>
+										<span class="name">
+											<!--{ ?  .goodsNo != '0' }-->
+											<a href="../goods/goods_view.php?goodsNo={=.goodsNo}">{.goodsNm}</a>
+											<!--{ / }-->
+										</span>
+									</div>
+								</li>
+								<!--{ / }-->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="main-box6">
+			<div class="main-inner">
+				<div class="main-slide-prd">
+					<div class="main-title">
+						<h3>지금 특가</h3>
+					</div>
+					<div class="main-slide-box">					
+						<!-- 메인 상품 노출 -->{=includeWidget('goods/_goods_display_main.html', 'sno', '11')}<!-- 메인 상품 노출 list_01.html 갤러리형 2*1 상품명,짧은설명,정가,판매가 -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="main-box7">
+			<div class="main-inner">
+				<div class="wide-bn _transY" >
+					<!--{ @dataBanner('2805788834',true) }-->
+						<a href="{.bannerLink}" target="{.bannerTarget}">
+							<span class="w100"><img src="{.bannerImageUrl}"></span>
+							<div class="bn-txt bn-txt2 _transYSBn ani4">	
+								<h3>플리엔 런칭 특가!<br/>지금만 최대 30% OFF</h3>
+								<p>건강을 챙기며 혜택도 누리세요</p>
+							</div>
+						</a>
+					<!--{ / }-->
+				</div>
+			</div>
+		</div>
+		<div class="main-box8">
+			<div class="main-inner">
+				<div class="main-magazine">
+					<div class="main-title">
+						<h3>플리엔 매거진</h3>
+						<a href="../board/list.php?bdId=event">더보기 ></a>
+					</div>	
+					<div class="magazine-inner fadeIn ani2">
+						<div class="swiper-container">		
+							<ul class="swiper-wrapper">
+								<!--{ @getArticles( 'event' , 3 , 100 ) }-->
+								<li class="swiper-slide">
+									<a href="../board/view.php?bdId={.bdId}&sno={.sno}">
+										<div class="prd-img">
+											<!--{ ? .attachImageSrc }-->
+											<span class="attach w100"><img src="{=stripslashes(str_replace(array('/thumb','/t'), '', .attachImageSrc))}" alt="첨부이미지" /></span>
+											<!--{ / }-->
+										</div>
+										<div class="tit"><h5>{.subject}</h5></div>
+									</a>
+								</li>
+								<!--{ / }-->
+							</ul>
+						</div>
+						<div class="slide-control">
+							<span class="swiper-button-prev"></span>
+							<span class="swiper-button-next"></span>
+							<div class="swiper-pagination"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="main-box9">
+			<div class="main-inner">
+				<div class="new-prd">
+					<div class="main-title">
+						<h3><span>신제품</span></h3>
+					</div>
+					<!-- 메인 상품 노출 -->{=includeWidget('goods/_goods_display_main.html', 'swiper', 'true', 'sno', '12')}<!-- 메인 상품 노출 list_07.html 5탭 탭진열형 4*1 상품명,짧은설명,정가,판매가 -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="pollview"><!-- 설문조사 배너 -->{=pollViewBanner()}<!-- 설문조사 배너 --></div>
+</div>
+{=includeWidget('proc/_populate.html', 'sno', '1')}
+<!--// main -->
+{*
+	디자인교과서 스킨제작
+	/_dbook/
+	/outline/_header.html
+			/_share_header.html
+	/outline/header/
+		    /footer/
+		    /outside/
+		    /side/
+	/main/
+	/goods/goods_list.html
+		  /goods_view.html
+		  /list/list_01.html
+			   /list_02.html
+			   /list_07.html
+			   /list_09.html
+	/js/gd_ui.js - dbook으로 검색
+*}
+{ # footer }

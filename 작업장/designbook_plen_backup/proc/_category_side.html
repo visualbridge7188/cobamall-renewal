@@ -1,0 +1,65 @@
+{*** [위젯] 레이어형 측면 카테고리 | proc/category_side.htm ***}
+
+<div class="sub_menu_box {type}_type cate-menu"><!-- N : 레이어 타입 : layer_type 추가, 트리형 타입 tree_type 추가 -->
+    <ul class="sub_depth0 sub_menu0 menu-list">
+        <!--{ @ data }-->
+        <li class="tit{.index_+1}<!--{ ? .divisionFl =='y' }--> group_tit<!--{ / }--> menu-item"><!-- dbook.fe index 추가 -->
+            <!--{ ? .divisionFl =='n' }-->
+            <a href="../goods/goods_list.php?{cateType}Cd={.cateCd}" >{.cateNm}</a>
+            <!--{ : }-->
+            {.cateNm}
+            <!--{ / }-->
+            <!--{ ? .children }-->
+            <ul class="sub_depth1">
+                <!--{ @ .children }-->
+                <li <!--{ ? ..divisionFl =='y' }--> class='group_tit'<!--{ / }-->>
+                <!--{ ? ..divisionFl =='n' }-->
+                <a href="../goods/goods_list.php?{cateType}Cd={..cateCd}" >{..cateNm}</a>
+                <!--{ : }-->
+                {..cateNm}
+                <!--{ / }-->
+                    <!--{ ? ..children }-->
+                    <ul class="sub_depth2">
+                        <!--{ @ ..children }-->
+                        <li <!--{ ? ...divisionFl =='y' }--> class='group_tit'<!--{ / }-->>
+                        <!--{ ? ...divisionFl =='n' }-->
+                        <a href="../goods/goods_list.php?{cateType}Cd={...cateCd}" >{...cateNm}</a>
+                        <!--{ : }-->
+                        {...cateNm}
+                        <!--{ / }-->
+                            <!--{ ? ...children }-->
+                            <ul class="sub_depth3">
+                                <!--{ @ ...children }-->
+                                <li <!--{ ? ....divisionFl =='y' }--> class='group_tit'<!--{ / }-->>
+                                <!--{ ? ....divisionFl =='n' }-->
+                                <a href="../goods/goods_list.php?{cateType}Cd={....cateCd}" >{....cateNm}</a>
+                                <!--{ : }-->
+                                {....cateNm}
+                                <!--{ / }-->
+                                </li>
+                                <!--{ / }-->
+                            </ul>
+                            <!--{ / }-->
+                        </li>
+                        <!--{ / }-->
+                    </ul>
+                    <!--{ / }-->
+                </li>
+                <!--{ / }-->
+            </ul>
+            <!--{ / }-->
+        </li>
+        <!--{ / }-->
+		<li><a href="../main/html.php?htmid=_dbook/page/brand.html">플리엔 소개</a></li>
+		<li><a href="../service/index.php">{=__('고객센터')}</a>
+			<ul class="sub_depth1">
+				<li><a href="../board/list.php?bdId=notice">공지사항</a></li>
+				<li><a href="../mypage/mypage_goods_review.php">{=__('상품 사용후기')}</a></li>
+				 <li><a href="../mypage/mypage_qa.php">1:1 {=__('문의')}</a></li>
+				<li><a href="../board/list.php?bdId=event">이벤트</a></li>
+			</ul>
+		</li>
+    </ul>
+</div>
+<!-- //sub_menu_box -->
+

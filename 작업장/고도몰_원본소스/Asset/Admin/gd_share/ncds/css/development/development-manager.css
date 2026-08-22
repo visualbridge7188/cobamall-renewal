@@ -1,0 +1,314 @@
+/* ── 개발담당자 정보 (개발소스관리 14/19 페이지) ── */
+
+/* === NCDS 폰트 === */
+.dev-page-content,
+.staging-top-banner,
+.notification-area {
+    font-family: var(--font-family-ncua-commerce-sans) !important;
+}
+
+/* 헤더 타이틀 + 가이드 버튼 */
+.ds-devinfo__header-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ============================================================
+   §17 스테이징 배너 (DES-SPEC-027 §5.5, 공통CSS §17)
+   ============================================================ */
+.staging-top-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 8px 32px;
+    background: #FEFAF5;
+    border-bottom: 1px solid #F7B27A;
+    color: #B93815;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 22px;
+}
+.staging-top-banner__icon {
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #EC1D31;
+}
+
+/* ============================================================
+   페이지 콘텐츠 래퍼 (§1.1 레이아웃)
+   ============================================================ */
+.dev-page-content {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: var(--gray-50);
+    min-height: calc(100vh - 71px);
+}
+
+/* ============================================================
+   §1 Block Container (DES-SPEC-042, 공통CSS §1)
+   ============================================================ */
+.block-container {
+    background: var(--base-white);
+    border: 1px solid var(--gray-100);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    overflow: visible;
+}
+
+/* ============================================================
+   §2 Block Header (DES-SPEC-043, 공통CSS §2)
+   ============================================================ */
+.block-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 24px;
+    max-height: 48px;
+    border-bottom: 1px solid var(--gray-100);
+    gap: 8px;
+}
+.block-header__title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gray-700);
+    line-height: 24px;
+}
+.block-header__title-area {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ============================================================
+   §3 Block Body (DES-SPEC-042, 공통CSS §3)
+   ============================================================ */
+.block-body {
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ============================================================
+   §9 Vertical Table — Page 240px (DES-SPEC-045 §2.2, 공통CSS §9)
+   ============================================================ */
+.vtable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--gray-100);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.vtable th {
+    width: 240px;
+    background: var(--gray-50);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray-500);
+    padding: 10px 16px;
+    text-align: left;
+    vertical-align: middle;
+    border-right: 1px solid var(--gray-100);
+}
+.vtable td {
+    padding: 10px 16px;
+    vertical-align: top;
+    font-size: 13px;
+    color: var(--gray-700);
+}
+/* 행 구분선 (border-collapse: separate 대응 — th/td에 직접, §18-6-4) */
+.vtable tr+tr th,
+.vtable tr+tr td {
+    border-top: 1px solid var(--gray-100);
+}
+
+/* 14페이지 고유 (공통CSS §9.3) */
+.vtable .dev-form__radio-group {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+.vtable .ncua-input {
+    width: 320px;
+}
+
+/* ============================================================
+   Detail Actions — Block 바깥 (§18-6-1)
+   ============================================================ */
+.detail-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+.detail-actions > span {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* ============================================================
+   §14 Tooltip 보정 (DES-SPEC-028, 공통CSS §14)
+   ============================================================ */
+.ncua-tooltip {
+    display: inline-flex;
+    align-items: center;
+}
+.ncua-tooltip__bg {
+    max-width: 320px;
+    white-space: normal;
+    z-index: 90;
+}
+.ncua-tooltip__content {
+    max-width: 296px;
+    white-space: normal;
+    word-break: keep-all;
+    font-weight: 100;
+    line-height: 14px;
+}
+
+/* ============================================================
+   §15 Input CDN 오버라이드 + width helpers (§18-6-5, 공통CSS §15)
+   ============================================================ */
+.ncua-input .ncua-input__content-wrap {
+    display: block !important;
+}
+.ncua-input input,
+.ncua-input textarea {
+    background-color: transparent !important;
+}
+
+/* width helpers (DES-SPEC-014 §1.5) */
+.ncua-input.w-80  { width: 80px;  display: flex; }
+.ncua-input.w-80  .ncua-input__content-wrap,
+.ncua-input.w-80  .ncua-input__content,
+.ncua-input.w-80  .ncua-input__field,
+.ncua-input.w-80  input { width: 100%; }
+
+.ncua-input.w-120 { width: 120px; display: flex; }
+.ncua-input.w-120 .ncua-input__content-wrap,
+.ncua-input.w-120 .ncua-input__content,
+.ncua-input.w-120 .ncua-input__field,
+.ncua-input.w-120 input { width: 100%; }
+
+.ncua-input.w-320 { width: 320px; display: flex; }
+.ncua-input.w-320 .ncua-input__content-wrap,
+.ncua-input.w-320 .ncua-input__content,
+.ncua-input.w-320 .ncua-input__field,
+.ncua-input.w-320 input { width: 100%; }
+
+.ncua-input.w-520 { width: 520px; display: flex; }
+.ncua-input.w-520 .ncua-input__content-wrap,
+.ncua-input.w-520 .ncua-input__content,
+.ncua-input.w-520 .ncua-input__field,
+.ncua-input.w-520 input { width: 100%; }
+
+.ncua-input.w-full { width: 100%; display: flex; }
+.ncua-input.w-full .ncua-input__content-wrap,
+.ncua-input.w-full .ncua-input__content,
+.ncua-input.w-full .ncua-input__field,
+.ncua-input.w-full input { width: 100%; }
+
+/* ============================================================
+   §18 Floating Notification Area (공통CSS §18)
+   ============================================================ */
+.notification-area {
+    display: none;
+    position: fixed;
+    top: 120px;
+    right: 40px;
+    z-index: 10000;
+}
+.notification-area.show {
+    display: block;
+}
+
+/* ============================================================
+   페이지 고유 유틸리티
+   ============================================================ */
+
+/* 필수 표시 (§6.3) */
+.dev-form__required {
+    color: var(--primary-red-500);
+    margin-right: 4px;
+}
+
+/* 보기 모드 읽기 전용 텍스트 (소속 구분 등) */
+.dev-form__readonly-text {
+    font-size: 13px;
+    color: var(--gray-700);
+    line-height: 1.5;
+}
+
+/* ============================================================
+   잔존 ds-devinfo__ 클래스 (인증 영역, 동의, 메시지 — JS 참조)
+   ============================================================ */
+
+/* 개인정보 동의 */
+.ds-devinfo__consent {
+    display: flex;
+    justify-content: left;
+    padding: 0px;
+}
+
+/* 인증 영역 */
+.ds-devinfo__auth-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.ds-devinfo__auth-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.ds-devinfo__auth-input-row .ncua-input {
+    max-width: 240px;
+}
+
+/* 타이머 */
+.ds-devinfo__timer {
+    color: var(--primary-red-500);
+    font-size: var(--font-size-xxs);
+}
+
+/* 검증 메시지 */
+.ds-devinfo__message {
+    margin-top: 4px;
+    font-size: var(--font-size-xxs);
+}
+.ds-devinfo__message--success {
+    color: var(--blue-500);
+}
+.ds-devinfo__message--error {
+    color: var(--primary-red-500);
+}
+
+/* 입력 오류 힌트텍스트: 아이콘 제거, 폰트 12px */
+.ds-devinfo__message p.notice-danger {
+    background: none;
+    padding-left: 0;
+    font-size: 12px;
+}
+.ds-devinfo__message p.ds-devinfo__message--error {
+    font-size: 12px;
+}
+
+/* outline destructive 버튼 — NCUA에 없는 variant를 secondary-gray 기반으로 구현 */
+.src-viewer__btn--destructive-outline {
+    border-color: var(--primary-red-600) !important;
+    color: var(--primary-red-600) !important;
+}
+.src-viewer__btn--destructive-outline:hover {
+    background: var(--primary-red-50) !important;
+}

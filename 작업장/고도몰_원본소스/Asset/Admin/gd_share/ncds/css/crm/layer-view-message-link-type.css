@@ -1,0 +1,41 @@
+.layer-view-message-link-type {
+    padding: 20px;
+
+    .ncua-table table {
+        th {
+            div {
+                justify-content: center;
+            }
+        }
+
+        td {
+            align-content: flex-start;
+            
+            > div {
+                padding: 10px 16px;
+            }
+        }
+        
+        td:first-child {
+            align-content: center;
+            div {
+                justify-content: center;
+            }
+        }
+
+        .description-title {
+            font-weight: var(--font-weights-commerce-sans-1, 500);
+            padding-bottom: 2px;
+        }
+
+        .input-view-web,
+        .input-view-app,
+        .example-view-app,
+        .example-view-web {
+            justify-content: center;
+            img {
+                max-width: 280px;
+            }
+        }
+    }
+}

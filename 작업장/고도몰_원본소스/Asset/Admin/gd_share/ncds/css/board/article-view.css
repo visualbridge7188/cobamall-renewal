@@ -1,0 +1,145 @@
+.ncua-content.article-view .button-wrap {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.ncua-content.article-view .ncua-table .ncua-table {
+    width: 100%;
+}
+
+.ncua-content.article-view {
+    .ncua-memo-wrap {
+        display: block;
+        padding: 0;
+    }
+
+    .article-reply-contents {
+        display: block;
+    }
+
+    .ncua-memo-write {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 10px 16px;
+
+        .ncua-input__textarea {
+            padding: 12px 14px;
+            margin-top: 16px;
+            min-height: 78px;
+        }
+
+        .ncua-btn {
+            margin-top: 8px;
+        }
+    }
+
+    .ncua-memo-list {
+        padding: 10px 16px;
+        border-top: 1px solid var(--gray-100);
+
+        .ncua-memo-count {
+            padding-bottom: 16px;
+            color: var(--gray-700);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weights-commerce-sans-2);
+        }
+
+        .ncua-table {
+            th> div, td >div {
+                justify-content: center;
+            }
+        }
+
+        .ncua-memo-content-layout {
+            width: 100%;
+
+            .ncua-memo-text {
+                display: flex;
+                align-items: flex-start;
+                gap: 2px;
+            }
+
+            .ncua-btn {
+                margin-top: 8px;
+            }
+        }
+
+        .ncua-input__textarea {
+            padding: 12px 14px;
+            margin-top: 16px;
+            min-height: 78px;
+        }
+
+        .js-textarea-reply-memo {
+            margin-top: 16px;
+        }
+
+        .ncua-memo-button-group {
+            display: flex;
+            gap: 4px;
+        }
+    }
+
+    .article-detail-title img {
+        margin-right: 4px;
+    }
+
+    .article-detail-content {
+        display: block;
+    }
+
+    .article-detail-content:has(> p:only-child) {
+        padding: 15px;
+    }
+}
+
+.layout-blank.article-view #content .col-xs-12 {
+    padding: 0px 0px 24px;
+}
+
+#content .ncua-content.article-view.popup-mode {
+    .ncua-page-header {
+        position: sticky;
+        top: 0;
+        height: auto;
+        margin: 0;
+        padding: 13px 0 12px 20px;
+        border-bottom: 1px solid var(--gray-100);
+        box-shadow: none;
+        background-color: var(--base-white);
+    }
+
+    .ncua-page-header h3 {
+        font-size: var(--font-size-sm);
+        margin: 0;
+    }
+
+    .ncua-card {
+        padding: 24px 24px 0 24px;
+        border: none;
+        box-shadow: none;
+    }
+
+    .ncua-card .ncua-card__header {
+        padding: 0;
+        border: none;
+        font-weight: var(--font-weights-commerce-sans-1);
+    }
+
+    .ncua-card__title {
+        font-weight: var(--font-weights-commerce-sans-1);
+        color: var(--gray-700);
+    }
+
+    .ncua-card .ncua-card__body {
+        padding: 0;
+        margin-top: 16px;
+    }
+
+    .button-wrap {
+        padding: 0 24px;
+    }
+}

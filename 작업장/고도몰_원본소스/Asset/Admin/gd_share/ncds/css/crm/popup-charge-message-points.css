@@ -1,0 +1,106 @@
+/* =============================== */
+/* 메세지 포인트 충전 팝업 */
+/* =============================== */
+
+#content .popup-charge-message-points {
+    display: flex;
+    flex-direction: column;
+    font-weight: var(--font-weights-commerce-sans-2);
+
+    .ncua-content {
+       display: flex; 
+       gap: 16px;
+       padding: 20px;
+       flex-direction: column;
+    }
+
+    & > .ncua-page-header {
+        margin: 0px;
+        padding: 0px;
+        border-bottom: 1px solid var(--gray-100);
+        padding: 16px 20px;
+
+        > h3 {
+            display: flex;
+            gap: 8px;
+            color: var(--gray-700);
+            font-weight: var(--font-weights-commerce-sans-2);
+            font-size: var(--font-size-sm);
+            line-height: var(--line-heights-sm);
+            margin: 0px;
+        }
+    }
+}
+
+.popup-charge-message-points .popup-charge-message-points__content {
+    font-weight: var(--font-weights-commerce-sans-2);
+    
+    h4 {
+        margin: 0px;
+        font-size: var(--font-size-sm);
+    }
+}
+.ncds.crm.popup-charge-message-points #content {
+    background-color: #fff;
+}
+.ncds.crm.popup-charge-message-points #content > .col-xs-12 {
+    padding: 0px;
+}
+
+/* 포인트 정보 영역 */
+.popup-charge-message-points__point-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: var(--font-size-xs);
+    line-height: var(--line-heights-xs);
+    color: var(--gray-400);
+
+    .ncua-notice-info {
+        display: flex;
+        align-items: center;
+        font-weight: var(--font-weights-commerce-sans-0);
+    
+        .point-info-item-value {
+            color: var(--primary-red-450);
+        }
+    }
+}
+
+
+/* 잔여 포인트 강조 */
+.popup-charge-message-points__remaining-points {
+    font-weight: var(--font-weights-commerce-sans-2);
+    color: var(--primary-red-450);
+}
+
+
+.product-section {
+    .ncua-search-result {
+        margin-block-start: 0;
+
+        .ncua-table {
+            border: 1px solid var(--gray-100);
+            border-bottom: none;
+            box-shadow: var(--shadow-xs);
+
+            thead>tr>th:first-child {
+                border-top-left-radius: 5px;
+            }
+            th:last-child {
+                border-top-right-radius: 5px;
+            }
+        }
+
+        .ncua-table-bottom {
+            box-shadow: var(--shadow-xs);
+        }
+    }
+}
+
+/** tr 마우스 호버 시 포인터 및 배경색 */
+.popup-charge-message-points__product-table tbody tr:hover {
+    background-color: rgb(246 247 249 / 40%);
+    cursor: pointer;
+}
+

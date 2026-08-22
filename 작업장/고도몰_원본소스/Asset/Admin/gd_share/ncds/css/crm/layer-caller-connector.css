@@ -1,0 +1,18 @@
+.layer-caller-connector {
+    .ncua-accordion__content {
+        gap: 0px;
+    }
+}
+
+.layer-caller-connector__title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weights-commerce-sans-2);
+    margin: 0;
+}
+
+.layer-caller-connector__content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

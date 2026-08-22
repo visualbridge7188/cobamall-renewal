@@ -1,0 +1,459 @@
+/* ── 고도몰 원본소스 보기 (BEM: ds-origin) ── */
+
+/* NCDS 폰트 */
+.ncua-content.ds-origin,
+.ncua-content.ds-origin * {
+    font-family: var(--font-family-ncua-commerce-sans) !important;
+}
+
+/* 헤더 레이아웃 — 타이틀 좌측 + 버튼 우측 */
+.ds-origin__header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--spacing-s, var(--spacing-md, 8px));
+}
+
+.ds-origin__header-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-s, var(--spacing-md, 8px));
+}
+
+.ds-origin__header-actions {
+    display: flex;
+    gap: var(--spacing-s, var(--spacing-md, 8px));
+    height: 32px;
+}
+
+/* 스테이징 툴팁 */
+.ds-origin__help-tooltip-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.ds-origin__help-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--gray-700);
+    color: var(--base-white);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.ds-origin__help-tooltip {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    padding: 10px 12px;
+    background: var(--gray-700);
+    color: var(--base-white);
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 6px;
+    z-index: 100;
+    box-shadow: var(--shadow-md);
+}
+
+.ds-origin__help-tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-bottom-color: var(--gray-700);
+}
+
+.ds-origin__help-tooltip a {
+    color: var(--color-blue-300);
+    text-decoration: underline;
+}
+
+.ds-origin__help-tooltip-wrap:hover .ds-origin__help-tooltip {
+    display: block;
+}
+
+/* 2-Pane 레이아웃 */
+.source-pane-container {
+    border: 1px solid var(--gray-100);
+    border-radius: 8px;
+    box-shadow: var(--shadow-xs);
+    overflow: hidden;
+    min-height: 520px;
+}
+
+.source-pane {
+    display: flex;
+    min-height: 520px;
+}
+
+/* 트리뷰 패널 */
+.tree-panel {
+    width: 320px;
+    flex-shrink: 0;
+    background: var(--base-white);
+    border-right: 1px solid var(--gray-100);
+    display: flex;
+    flex-direction: column;
+}
+
+.tree-panel-body {
+    padding: 8px 0;
+    overflow-y: auto;
+    flex: 1;
+    font-size: var(--font-size-xs);
+    line-height: 1.6;
+}
+
+.tree-panel-body ul li.tui-tree-leaf {
+    display: none;
+}
+
+.tree-panel-body button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: var(--gray-500);
+    font-size: 12px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.tree-panel-body ul {
+    margin: 0;
+    padding-left: 15px;
+    list-style: none;
+}
+
+.tree-panel-body ul li {
+    padding: 3px 0;
+}
+
+/* 파일 목록 패널 */
+.ds-origin__file-panel {
+    flex: 1;
+    background: var(--base-white);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.ds-origin__file-panel-inner {
+    overflow: auto;
+    flex: 1;
+}
+
+/* DataGrid */
+.ds-origin__datagrid {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.ds-origin__datagrid thead th {
+    background: var(--gray-100);
+    color: var(--gray-500);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 16px;
+    text-align: center;
+    border-bottom: 1px solid var(--gray-200);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.ds-origin__datagrid thead th:not(:last-child) {
+    border-right: 1px solid var(--gray-200);
+}
+
+.ds-origin__datagrid thead th:first-child {
+    width: 56px;
+    text-align: center;
+}
+
+.ds-origin__datagrid tbody tr {
+    transition: background 0.1s;
+}
+
+.ds-origin__datagrid tbody tr:hover {
+    background: var(--gray-50);
+}
+
+.ds-origin__datagrid tbody tr.ds-origin__row--selected {
+    background: var(--gray-50);
+    box-shadow: inset 3px 0 0 var(--base-black);
+}
+
+.ds-origin__datagrid tbody td {
+    padding: 12px 16px;
+    font-size: var(--font-size-xs);
+    color: var(--gray-700);
+    vertical-align: middle;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+
+.ds-origin__datagrid tbody td:not(:last-child) {
+    border-right: 1px solid var(--gray-100);
+}
+
+.ds-origin__datagrid tbody td:first-child {
+    text-align: center;
+}
+
+.ds-origin__file-info {
+    font-size: 11px;
+    color: var(--gray-400);
+}
+
+.ds-origin__btn-group {
+    white-space: nowrap;
+    display: flex;
+    gap: var(--spacing-xs, 4px);
+}
+
+/* 하단 버튼 영역 */
+.ds-origin__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-s, var(--spacing-md, 8px));
+    margin-top: var(--spacing-m, var(--spacing-xl, 16px));
+}
+
+
+/* 트리 토글 버튼 ChevronRight */
+.tui-tree-toggleBtn { display: inline-flex; align-items: center; justify-content: center; }
+.tui-tree-toggleBtn * { pointer-events: none; }
+.tree-toggle { display: inline-flex; align-items: center; }
+
+/* 트리 노드 row 래퍼 */
+.tree-node-row { display: flex; align-items: center; cursor: pointer; }
+
+/* 트리 노드 호버/선택 배경색 */
+.tree-node-row:hover { background: var(--gray-50); border-radius: 4px; }
+.tree-panel-body ul li.tui-tree-selected > .tree-node-row { background: var(--gray-100); border-radius: 4px; }
+
+/* 하단 안내 */
+.bottom-guide {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 16px;
+}
+
+.bottom-guide__header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.bottom-guide__header-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    background: url(../../image/annotation-info.svg) no-repeat center;
+    background-size: contain;
+}
+
+.bottom-guide__header-title {
+    font-weight: var(--font-weights-commerce-sans-2, 700);
+}
+
+.bottom-guide__item-body {
+    font-size: var(--font-size-xxs, 12px);
+    line-height: var(--line-height-xxs, 16px);
+}
+
+.ds-work__datagrid tbody td {
+    padding: 12px 16px;
+}
+
+/* ── TOBE: src-viewer (CR16~CR19) ── */
+
+/* CR16: 레이아웃 컨테이너 */
+.src-viewer__content--max-1280 {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.src-viewer__pane {
+    background: var(--base-white);
+    border: 1px solid var(--gray-100);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    height: 720px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.1), 0 1px 2px rgba(16, 24, 40, 0.06);
+}
+
+/* CR16: 사이드바 트리 패널 */
+.src-viewer__tree-panel {
+    width: 320px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--gray-100);
+    background: var(--base-white);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.src-viewer__tree-body {
+    padding: 16px 24px;
+    overflow-y: auto;
+    flex: 1;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* CR16: 데이터 영역 */
+.src-viewer__data {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow-y: auto;
+}
+
+/* CR17: 커스텀 트리 노드 */
+.src-viewer__tree-node {
+    position: relative;
+}
+
+.src-viewer__tree-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    border-radius: 4px;
+    user-select: none;
+    /* L1 기본 패딩 */
+    padding: 6px 12px;
+}
+
+.src-viewer__tree-label:hover {
+    background: var(--gray-50);
+}
+
+/* 선택된 폴더 — 우측 그리드에 파일을 띄운 폴더 강조 */
+.src-viewer__tree-label.is-selected {
+    background: var(--gray-100);
+    color: var(--gray-700);
+}
+
+/* 중첩 단계마다 16px 누적 들여쓰기 — L1 12 / L2 28 / L3 44 / L4 60 ... 임의 깊이 대응 */
+.src-viewer__tree-node .src-viewer__tree-node {
+    padding-left: 16px;
+}
+
+.src-viewer__tree-toggle {
+    width: 14px;
+    height: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-400);
+    flex-shrink: 0;
+    transition: transform 0.15s;
+}
+
+/* CR17: 접힘 상태 */
+.src-viewer__tree-node.is-collapsed > .src-viewer__tree-node {
+    display: none;
+}
+
+.src-viewer__tree-node.is-collapsed > .src-viewer__tree-label .src-viewer__tree-toggle {
+    transform: rotate(-90deg);
+}
+
+/* CR18: 행 액션 버튼 그룹 */
+.src-viewer__grid-actions {
+    display: inline-flex;
+    gap: 4px;
+}
+
+/* 행 액션 셀(소스보기·다운로드·복사하기) — 셀 내 가운데 정렬 */
+.ds-origin__datagrid tbody td.is-actions {
+    text-align: center;
+}
+
+/* CR19: EmptyState */
+.src-viewer__grid-empty-row td {
+    height: 100%;
+    padding: 0 !important;
+    border-right: none !important;
+    border-bottom: none !important;
+}
+
+/* 빈 상태 placeholder 행은 데이터 행이 아니므로 hover 배경을 적용하지 않는다 */
+.src-viewer__data .src-viewer__grid-empty-row:hover {
+    background: transparent;
+}
+
+.src-viewer__empty {
+    padding: 260px 16px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+}
+
+.src-viewer__empty--full {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+}
+
+.src-viewer__empty-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.src-viewer__empty-icon img {
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+
+.src-viewer__empty-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    text-align: center;
+}
+
+.src-viewer__empty-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gray-700);
+    line-height: 22px;
+}
+
+.src-viewer__empty-desc {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--gray-400);
+    line-height: 18px;
+}

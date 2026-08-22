@@ -1,0 +1,99 @@
+/* Plus Review List 전용 스타일 */
+
+
+/* 내용 텍스트 말줄임 */
+.plus-review-list .js-contents-short {
+  display: inline-block;
+  width: 95%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 미리보기 컨테이너 */
+.plus-review-list {
+  position: relative;
+}
+
+.plus-review-list .js-preview {
+  position: relative;
+}
+
+/* js-preview 내부에 직접 있는 plus-preview는 숨김 (컨테이너로 이동했으므로) */
+.plus-review-list .js-preview > .plus-preview {
+  display: none !important;
+}
+
+.plus-review-list .plus-preview-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1050; /* 레이어 모달 기준 */
+}
+
+.plus-review-list .plus-preview {
+  width: 500px;
+  height: 550px;
+  position: absolute;
+  display: none;
+  border: 2px solid var(--gray-400);
+  padding: 0px;
+  margin: 0px;
+  background-color: var(--base-white);
+  pointer-events: auto;
+}
+
+.plus-review-list .bg-color {
+  background-color: var(--gray-200);
+}
+
+.plus-review-list .ncua-horizontal-tab {
+  margin-top: 24px;
+}
+
+
+.plus-review-list .ncua-caution-text {
+  margin: 8px 0;
+}
+
+
+.plus-review-list .plus-review-list-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.plus-review-list .align-left {
+  justify-content: flex-start !important;
+} 
+
+.plus-review-list .ncua-search-result {
+  margin-block-start: 16px;
+}
+
+/* 검색 종류 선택 영역 - 기본적으로 숨김 */
+.plus-review-list .ncua-flex-gap .ncua-select.search-kind {
+  display: none;
+}
+
+.plus-review-list .ncua-flex-gap #searchKind {
+  display: none;
+}
+
+/* writerNm, writerNick, writerId 선택 시 검색 종류 영역 표시 */
+.plus-review-list .ncua-flex-gap.has-writer-search .ncua-select.search-kind {
+  display: inline-block;
+}
+
+.plus-review-list .ncua-flex-gap.has-writer-search #searchKind {
+  display: block;
+}
+
+
+.plus-review-list .ncua-radio-field-group {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}

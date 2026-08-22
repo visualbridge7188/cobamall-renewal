@@ -1,0 +1,43 @@
+.ncua-content.select-crm-groups {
+    .ncua-modal-content-title {
+        margin-block: 24px 8px;
+    }
+
+    .crm-group-option {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        text-align: left;
+    }
+
+    .crm-group-option ul {
+        margin-left: 10px;
+    }
+}
+
+.create-crm-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 16px;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+}
+
+.create-crm-group-title {
+    font-size: var(--font-size-md);
+    color: var(--gray-700);
+    font-weight: var(--font-weights-commerce-sans-1);
+}
+
+.create-crm-group-description {
+    display: inline-block;
+    margin-top: 2px;
+    color: var(--gray-400);
+    font-weight: var(--font-weights-commerce-sans-0);
+}
+
+.crm-group-option p {
+    font-size: var(--gray-700);
+    font-weight: var(--font-weights-commerce-sans-2);
+}

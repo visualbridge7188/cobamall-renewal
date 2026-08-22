@@ -1,0 +1,448 @@
+<?php
+/**
+ * This is commercial software, only users who have purchased a valid license
+ * and accept to the terms of the License Agreement can install and use this
+ * program.
+ *
+ * Do not edit or add to this file if you wish to upgrade Godomall5 to newer
+ * versions in the future.
+ *
+ * @copyright ⓒ 2016, NHN godo: Corp.
+ * @link      http://www.godo.co.kr
+ */
+
+namespace Bundle\Component\Policy;
+
+use App;
+use Bundle\Component\Board\Board;
+use Bundle\Component\Board\BoardTheme;
+use Component\Board\BoardAdmin;
+use Component\Mall\Mall;
+use Component\Validator\Validator;
+use Exception;
+use Framework\Utility\StringUtils;
+use Globals;
+use Origin\Enum\Design\DesignEditorSkinType;
+
+/**
+ * Class DesignSkinPolicy
+ * @package Bundle\Component\Policy
+ * @author  yjwee
+ */
+class DesignSkinPolicy extends \Component\Policy\Policy
+{
+    const KEY = 'design.skin';
+    /** @var  \Framework\Database\DBTool $db */
+    protected $db;
+    /** @var  \Bundle\Component\Validator\Validator $validator */
+    protected $validator;
+    protected $boardSkinType = 'frontLive';
+    protected $boardLiveSkin;
+    protected $boardMobileFl = 'n';
+    protected $boardThemeField = 'themeSno';
+    protected $requestPolicy;
+    protected $saveDataFields = [
+        'skinType',
+        'frontLive',
+        'frontWork',
+        'mobileLive',
+        'mobileWork',
+    ];
+
+
+    public function __construct(array $config = [])
+    {
+        $this->db = is_object($config['db']) ? $config['db'] : App::load('DB');
+        $this->validator = is_object($config['validator']) ? $config['validator'] : new Validator();
+        if (is_object($config['storage'])) {
+            parent::__construct($config['storage']);
+        } else {
+            parent::__construct();
+        }
+    }
+
+    /**
+     * 상점에 설정된 스킨을 반환하는 함수
+     *
+     * @param $sno
+     *
+     * @return mixed
+     */
+    public function getSkin($sno)
+    {
+        $policy = $this->getValue(self::KEY);
+
+        return $policy[$sno];
+    }
+
+    /**
+     * 쇼핑몰 초기 세팅시 스킨 저장 함수
+     *
+     * @param array $skinInfo
+     *
+     * @return bool
+     * @throws Exception
+     */
+    public function initialSaveSkin(array $skinInfo)
+    {
+        \Logger::debug(__METHOD__, $skinInfo);
+        $this->requestPolicy = $skinInfo;
+        StringUtils::strIsSet($this->requestPolicy['sno'], DEFAULT_MALL_NUMBER);
+
+        $currentPolicy = $this->getValue(self::KEY, $this->requestPolicy['sno']);
+        if ($this->hasGlobalMallDefaultSkin() === false) {
+            $currentPolicy = $this->getValue(self::KEY, $this->requestPolicy['sno']);
+        }
+
+        $flagSkinAllSetting = false;
+        if (isset($this->requestPolicy['allLive']) || isset($this->requestPolicy['allWork'])) {         //세트 세팅일 경우
+            $skinBase = \App::load('Component\\Design\\SkinBase');
+            $skinList = $skinBase->getSkinListByType();         //현재 설치되어 있는 front와 mobile의 스킨 목록
+            $flagFront = in_array($this->requestPolicy['all'.$this->requestPolicy['skinUse']], $skinList['front']);       //세팅하고자 하는 PC 스킨이 있는지 확인
+            $flagMobile = in_array($this->requestPolicy['all'.$this->requestPolicy['skinUse']], $skinList['mobile']);     //세팅하고자 하는 Mobile 스킨이 있는지 확인
+            if (!$flagFront && !$flagMobile) {      //PC와 Mobile 둘 다 세팅하고자 하는 스킨이 설치되어 있지 않은 경우
+                throw new Exception(__('해당 스킨이 존재하지 않습니다.'));
+            }
+
+            if ($flagFront && $flagMobile) {        //PC와 Mobile 둘 다 세팅하고자 하는 스킨이 설치되어 있는 경우
+                $flagSkinAllSetting = true;
+            }
+
+            if ($flagFront) {                       //PC와 모바일 모두 스킨이 설치되어 있거나 PC스킨만 설치되어 있는 경우 : front를 기준으로 함
+                $this->requestPolicy['front'.$this->requestPolicy['skinUse']] = $this->requestPolicy['all'.$this->requestPolicy['skinUse']];
+            } else {
+                $this->requestPolicy['mobile'.$this->requestPolicy['skinUse']] = $this->requestPolicy['all'.$this->requestPolicy['skinUse']];
+            }
+            unset($this->requestPolicy['all'.$this->requestPolicy['skinUse']]);       //필요없는 키값 제거(Live, Work)
+        }
+
+        $this->initBoardSkinByChangeSkinLive();     //원하는 스킨에 맞추어 게시판 세팅
+        if ($flagSkinAllSetting) {                  //세트 세팅일 경우
+            //모바일 게시판 세팅을 할 수 있도록 $this->requestPolicy의 값 변경
+            $this->requestPolicy['mobile' . $this->requestPolicy['skinUse']] = $this->requestPolicy['front' . $this->requestPolicy['skinUse']];
+            unset($this->requestPolicy['front' . $this->requestPolicy['skinUse']]);
+
+            $this->initBoardSkinByChangeSkinLive();     //모바일 스킨 게시판 설정
+            //$this->requestPolicy의 값 원복
+            $this->requestPolicy['front' . $this->requestPolicy['skinUse']] = $this->requestPolicy['mobile' . $this->requestPolicy['skinUse']];
+            unset($this->requestPolicy['mobile' . $this->requestPolicy['skinUse']]);
+        }
+
+        $validatePolicy = $this->validateSkin();
+        if ($this->requestPolicy['skinUseAllFl'] == 'y') { // 사용스킨, 작업스킨 동시에 변경하는 경우
+            if ($this->requestPolicy['frontLive'] != null ) {
+                $validatePolicy['frontWork'] = $validatePolicy['frontLive'];
+            } else {
+                $validatePolicy['mobileWork'] = $validatePolicy['mobileLive'];
+            }
+            if ($flagSkinAllSetting) {      //세트 세팅일 경우, 모바일 세팅값 추가
+                $validatePolicy['mobileLive'] = $validatePolicy['frontLive'];
+                $validatePolicy['mobileWork'] = $validatePolicy['frontLive'];
+            }
+        }
+
+        foreach ($validatePolicy as $index => $item) {
+            $currentPolicy[$index] = $item;
+        }
+
+        return $this->setValue(self::KEY, $currentPolicy, $this->requestPolicy['sno']);
+    }
+
+    /**
+     * 쇼핑몰 스킨 변경 함수
+     *
+     * @param array $skinInfo
+     *
+     * @return bool
+     * @throws Exception
+     */
+    public function saveSkin(array $skinInfo)
+    {
+        \Logger::debug(__METHOD__, $skinInfo);
+        $this->requestPolicy = $skinInfo;
+        StringUtils::strIsSet($this->requestPolicy['sno'], DEFAULT_MALL_NUMBER);
+
+        $currentPolicy = $this->getValue(self::KEY, $this->requestPolicy['sno']);
+        if ($this->hasGlobalMallDefaultSkin() === false) {
+            $currentPolicy = $this->getValue(self::KEY, $this->requestPolicy['sno']);
+        }
+        $this->initBoardSkinByChangeSkinLive();
+
+        $validatePolicy = $this->validateSkin();
+        if ($this->requestPolicy['skinUseAllFl'] == 'y') { // 사용스킨, 작업스킨 동시에 변경하는 경우
+            if ($this->requestPolicy['frontLive'] != null ) {
+                $validatePolicy['frontWork'] = $validatePolicy['frontLive'];
+            } else {
+                $validatePolicy['mobileWork'] = $validatePolicy['mobileLive'];
+            }
+        }
+
+        // 반응형/적응형 스킨 전환 시 충돌 정책 초기화 (Live 스킨 변경 시에만)
+        if ($this->requestPolicy['skinUse'] === 'Live') {
+            $validatePolicy = $this->resetConflictingSkinPolicy($currentPolicy, $validatePolicy);
+        }
+
+        foreach ($validatePolicy as $index => $item) {
+            $currentPolicy[$index] = $item;
+        }
+
+        return $this->setValue(self::KEY, $currentPolicy, $this->requestPolicy['sno']);
+    }
+
+    /**
+     * 스킨 검증
+     *
+     * @return array
+     * @throws Exception
+     */
+    public function validateSkin()
+    {
+        if (Validator::number($this->requestPolicy['sno'], null, null, true) === false) {
+            throw new Exception(__('잘못된 상점번호입니다.'));
+        }
+        foreach ($this->saveDataFields as $item) {
+            if (isset($this->requestPolicy[$item])) {
+                $validatePolicy[$item] = $this->requestPolicy[$item];
+                $this->validator->add($item, 'designSkinName');
+            }
+        }
+        if ($this->validator->act($validatePolicy, true) === false) {
+            throw new \Exception(gd_implode('\n', $this->validator->errors));
+        }
+
+        return $validatePolicy;
+    }
+
+    /**
+     * 기본상점 스킨설정이 존재하는지 여부 체크
+     *
+     * @return bool 기본상점 스킨설정이 있으면 true, 없으면  false
+     */
+    public function hasGlobalMallDefaultSkin()
+    {
+        $policy = $this->getValue(self::KEY);
+
+        return gd_array_key_exists(DEFAULT_MALL_NUMBER, $policy);
+    }
+
+    /**
+     * 사용 스킨이 변경될 경우 게시판 스킨도 같이 변경하는 함수
+     *
+     * @throws Exception
+     */
+    protected function initBoardSkinByChangeSkinLive()
+    {
+        try {
+            if($this->requestPolicy['skinUse'] == 'Work') {
+                return;
+            }
+
+            if (\Globals::get('gGlobal.isUse')) {
+                foreach (\Globals::get('gGlobal.useMallList') as $val) {
+                    if ($val['sno'] == $this->requestPolicy['sno']) {
+                        $domainPostfix = $val['domainFl'] == 'kr' ? '' : ucfirst($val['domainFl']);
+                        break;
+                    }
+                }
+            }
+
+
+
+            if ($this->hasMobileLive()) {
+                $this->boardSkinType = 'mobileLive';
+                $this->boardMobileFl = 'y';
+                $this->boardThemeField = 'mobileTheme'.$domainPostfix.'Sno';
+            }
+            else {
+                $this->boardThemeField = 'theme'.$domainPostfix.'Sno';
+            }
+
+            $this->initBoardTheme($this->requestPolicy[$this->boardSkinType],$this->boardMobileFl);
+
+            $themeInfo = [
+                'liveSkin'   => $this->requestPolicy[$this->boardSkinType],
+                'bdMobileFl' => $this->boardMobileFl,
+            ];
+
+            $boardChangeThemeSno = $this->selectBoardThemeSno($themeInfo);
+            if (gd_count($boardChangeThemeSno) === 0) {
+                throw new Exception(__('스킨을 변경할 게시판을 찾지 못하였습니다.'), 200);
+            }
+
+
+            $this->updateBoardThemeSno($boardChangeThemeSno, $this->boardThemeField);
+        } catch (Exception $e) {
+            if ($e->getCode() === 200) {
+                \Logger::info(__METHOD__ . ', ' . $e->getMessage());
+            } else {
+                throw new Exception(__('게시판 스킨 변경 중 오류가 발생하였습니다.'), 500, $e);
+            }
+        }
+    }
+
+    /**
+     * 모바일사용스킨 정보가 있는지 체크
+     *
+     * @return bool
+     */
+    protected function hasMobileLive()
+    {
+        return isset($this->requestPolicy['mobileLive']);
+    }
+
+    /**
+     * 현재 글로벌 변수에 있는 라이브 스킨과 비교
+     *
+     * @return bool true 변경 안됨, false 변경 됨
+     */
+    protected function diffSkinLiveByGlobals()
+    {
+        $globalName = $this->hasMobileLive() ? 'gSkin.frontSkinLive' : 'gSkin.mobileSkinLive';
+
+        return Globals::get($globalName) == $this->requestPolicy[$this->boardSkinType];
+    }
+
+    /**
+     * 게시판 스킨 리스트 조회
+     *
+     * @param array $info
+     *
+     * @return array
+     */
+    public function selectBoardThemeSno(array $info)
+    {
+        $boardAdminService = new BoardAdmin();
+        $boardList = $boardAdminService->getBoardList(null, false, null, false, null);
+        foreach ($boardList['data'] as $board) {
+            $selectQuery = 'SELECT sno FROM ' . DB_BOARD_THEME . ' WHERE liveSkin=\'' . $info['liveSkin'] . '\'';
+            $selectQuery .= ' AND bdMobileFl=\'' . $info['bdMobileFl'] . '\' AND bdKind=\'' . $board['bdKind'] . '\'';
+            $selectQuery .= ' AND bdBasicFl=\'y\'';
+            $resultSet = $this->db->query_fetch($selectQuery, null, false);
+            $themeSno = $resultSet['sno'] ?? 0;
+            $boardChangeThemeSno[$board['bdId']] = $themeSno;
+        }
+        return $boardChangeThemeSno;
+    }
+
+    public function initBoardTheme($skin,$isMobile = 'n'){
+        $selectQuery = "SELECT *  FROM " . DB_BOARD_THEME . " WHERE liveSkin='" . $skin . "' ";
+        $selectQuery .= " AND bdMobileFl='" . $isMobile . "'   AND bdBasicFl='y'";
+        $result = $this->db->query_fetch($selectQuery);
+        foreach ($result as $row) {
+            $bdKind[] = $row['bdKind'];
+        }
+        if ($bdKind) {
+            $notExistsKind = array_diff(gd_array_flip(Board::KIND_LIST), $bdKind);
+        }
+        else {
+            $notExistsKind =gd_array_flip(Board::KIND_LIST);
+        }
+//        debug($notExistsKind,true);
+        if ($notExistsKind) {
+            foreach ($notExistsKind as $kind) {
+                $query="INSERT INTO es_boardTheme (themeId, themeNm, liveSkin, bdBasicFl, bdKind, bdAlign, bdWidth, bdWidthUnit, bdListLineSpacing,bdMobileFl,regDt) VALUES ('".$kind."', '".BoardTheme::getKindText($kind)."', '".$skin."', 'y', '".$kind."', 'center', 100, '%', 10,'".$isMobile."',now())";
+
+                $this->db->query($query);
+            }
+        }
+    }
+
+    /**
+     * 게시판 스킨 변경
+     *
+     * @param array  $changeThemeSno
+     * @param string $field
+     *
+     * @throws \Framework\Debug\Exception\DatabaseException
+     */
+    public function updateBoardThemeSno(array $changeThemeSno, $field = 'themeSno')
+    {
+        foreach ($changeThemeSno as $bdId => $themeSno) {
+            $updateQuery = 'UPDATE ' . DB_BOARD . ' SET ' . $field . ' = ' . $themeSno . ' WHERE bdId=\'' . $bdId . '\'';
+            $this->db->query($updateQuery);
+        }
+    }
+
+    /**
+     * @param mixed $requestPolicy
+     */
+    public function setRequestPolicy($requestPolicy)
+    {
+        $this->requestPolicy = $requestPolicy;
+    }
+
+    /**
+     * 반응형 -> 적응형 전환 여부 확인
+     * 요청의 skinType과 현재 정책의 skinType을 비교
+     *
+     * @param array $currentPolicy
+     * @return bool
+     */
+    protected function isResponsiveToAdaptiveTransition(array $currentPolicy): bool
+    {
+        if (empty($this->requestPolicy['skinType'])) {
+            return false;
+        }
+
+        $currentSkinType = $currentPolicy['skinType'] ?? DesignEditorSkinType::ADAPTIVE->value;
+        $newSkinType = $this->requestPolicy['skinType'];
+
+        return $currentSkinType === DesignEditorSkinType::RESPONSIVE->value
+            && $newSkinType === DesignEditorSkinType::ADAPTIVE->value;
+    }
+
+    /**
+     * 적응형 -> 반응형 전환 여부 확인
+     * 요청의 skinType과 현재 정책의 skinType을 비교
+     *
+     * @param array $currentPolicy
+     * @return bool
+     */
+    protected function isAdaptiveToResponsiveTransition(array $currentPolicy): bool
+    {
+        if (empty($this->requestPolicy['skinType'])) {
+            return false;
+        }
+
+        $currentSkinType = $currentPolicy['skinType'] ?? DesignEditorSkinType::ADAPTIVE->value;
+        $newSkinType = $this->requestPolicy['skinType'];
+
+        return $currentSkinType === DesignEditorSkinType::ADAPTIVE->value
+            && $newSkinType === DesignEditorSkinType::RESPONSIVE->value;
+    }
+
+    /**
+     * 스킨 타입 전환 시 충돌 하는 정책 초기화
+     *
+     * @param array $currentPolicy
+     * @param array $validatePolicy
+     * @return array
+     */
+    protected function resetConflictingSkinPolicy(array $currentPolicy, array $validatePolicy): array
+    {
+        // 반응형 -> 적응형 전환
+        if ($this->isResponsiveToAdaptiveTransition($currentPolicy)) {
+            // mobileLive 게시 중이면 frontLive 초기화
+            if (!empty($validatePolicy['mobileLive'])) {
+                $validatePolicy['frontLive'] = '';
+                \Logger::channel('designEditor')->info(__METHOD__ . ' - Responsive to Adaptive: frontLive reset (mobile skin publish)');
+            }
+            // frontLive 게시 중이면 mobileLive 초기화
+            if (!empty($validatePolicy['frontLive'])) {
+                $validatePolicy['mobileLive'] = '';
+                \Logger::channel('designEditor')->info(__METHOD__ . ' - Responsive to Adaptive: mobileLive reset (PC skin publish)');
+            }
+        }
+
+        // 적응형 -> 반응형 전환
+        if ($this->isAdaptiveToResponsiveTransition($currentPolicy)) {
+            // 기존 mobileLive가 있으면 초기화
+            if (!empty($currentPolicy['mobileLive'])) {
+                $validatePolicy['mobileLive'] = '';
+                \Logger::channel('designEditor')->info(__METHOD__ . ' - Adaptive to Responsive: mobileLive reset');
+            }
+        }
+
+        return $validatePolicy;
+    }
+}

@@ -1,0 +1,26 @@
+.layer-charge-message-points-history {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.layer-charge-message-points-history .ncua-search-result {
+    margin-block-start: 0;
+}
+
+.layer-charge-message-points-history .ncua-search-result .ncua-table {
+    border: 1px solid var(--gray-100, #eaecf0);
+}
+
+.layer-charge-message-points-history .ncua-search-result thead > tr > th:first-child {
+    border-top-left-radius: 5px;
+}
+
+.layer-charge-message-points-history .ncua-search-result thead > tr > th:last-child {
+    border-top-right-radius: 5px;
+}
+
+.layer-charge-message-points-history .empty-charge-history {
+    color: var(--gray-400)
+
+}

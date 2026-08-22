@@ -1,0 +1,86 @@
+.present-receiver-info {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px 15px 36px;
+    margin: 0;
+    width: 820px;
+    border: 0;
+    font-family: 'Malgun Gothic',"맑은 고딕",AppleGothic,Dotum,"돋움",sans-serif;
+    line-height: 1.5;
+}
+
+.present-receiver-info::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.present-receiver-info h2 {
+    padding-block-end: 18px;
+    margin-block: 0 16px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    border-block-end: 1px solid #999;
+}
+
+.present-receiver-info-total {
+    margin-block: 0 16px;
+    color: #333;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.present-receiver-info-total output {
+    color: var(--nde-button-background-color, #ab3e55);
+}
+
+
+.present-receiver-info-table {
+    --border-color: #dbdbdb;
+
+    max-height: 460px;
+    overflow-y: auto;
+    
+}
+
+.present-receiver-info-table table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: solid var(--border-color);
+    border-width: 1px 0;
+    text-align: center;
+    font-size: 12px;
+}
+
+.present-receiver-info-table th {
+    background-color: #fbfbfb;
+}
+
+.present-receiver-info-table th,
+.present-receiver-info-table td {
+    height: 46px;
+}
+
+.present-receiver-info-table th:nth-child(n+2),
+.present-receiver-info-table td:nth-child(n+2) {
+    border-inline-start: 1px solid var(--border-color);
+}
+
+.present-receiver-info-table td {
+    border-block-start: 1px solid var(--border-color);
+    color: #777;
+}
+
+.present-receiver-info-close {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    overflow: hidden;
+    border: 0;
+    text-indent: -9999em;
+    width: 27px;
+    height: 27px;
+    background: url(../../img/present/present-close-x.png) no-repeat center center / cover;
+}

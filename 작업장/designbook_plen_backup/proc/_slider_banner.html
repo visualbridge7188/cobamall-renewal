@@ -1,0 +1,314 @@
+{*** [위젯] 움직이는 배너 | proc/_slider_banner.php ***}
+
+<!--{ ? bannerUseFl === 'y' }-->
+
+<!--{ ? swiper == true }-->
+<!-- dbook.fe 움직이는 배너 swiper 추가 -->
+
+<style type="text/css">
+    .custom-swiper .swiper-pagination {
+		bottom:30px;
+	}
+	.custom-swiper .swiper-button-next {
+		right:30px;
+	}
+	.custom-swiper .swiper-button-prev {
+		left:30px;
+	}
+
+    .swiper-banner-{=bannerCode} {
+		width:{=bannerSize['width']}{=bannerSize['sizeType']};
+		<!--{ ? bannerSize['sizeType'] != '%' }-->
+		height:{=bannerSize['height']}px;
+		<!--{ / }-->
+    }
+
+	<!--{ ? bannerSize['sizeType'] == '%' }-->
+    .swiper-banner-{=bannerCode} .swiper-slide {
+		width:{=bannerSize['width']}{=bannerSize['sizeType']};
+        overflow:hidden;
+    }
+	.body-main #wrap .swiper-banner-{=bannerCode} img {max-width:none;}
+	<!--{ / }-->
+
+    .swiper-banner-{=bannerCode} img{
+        <!--{ ? bannerSize['sizeType'] != '%' }-->
+        width:{=bannerSize['width']}{=bannerSize['sizeType']};
+        height:{=bannerSize['height']}px;
+        <!--{ : }-->
+		max-width: 100{=bannerSize['sizeType']};
+        <!--{ / }-->
+    }
+
+    .swiper-banner-{=bannerCode} .swiper-button-prev {
+       background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23{=str_replace('#', '', bannerSideButton['activeColor'])}'%2F%3E%3C%2Fsvg%3E");
+       background:{bannerSideButton['activeColor']}\0/IE8;
+    }
+    .swiper-banner-{=bannerCode} .swiper-button-next {
+        background-image:   url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23{=str_replace('#', '', bannerSideButton['activeColor'])}'%2F%3E%3C%2Fsvg%3E");
+        background:{bannerSideButton['activeColor']}\0/IE8;
+    }
+
+	<!--{ ? bannerPageButton['useFl'] == 'c' }-->
+	.swiper-banner-{=bannerCode} .custom-swiper-pagination {
+		position:absolute;
+		bottom:30px;
+		text-align:center;
+		z-index:1;
+	}
+    .swiper-banner-{=bannerCode} .custom-swiper-pagination li{
+		display:inline-block;
+        width:12.5%;
+        margin:0 4px !important;
+		opacity:1;
+		border-radius:0;
+		background:none;
+    }
+    .swiper-banner-{=bannerCode} .custom-swiper-pagination li button{
+        font-size:12px;
+        width:100%;
+        height:30px;
+        text-align:center;
+        background:#000000;
+        border-radius:0;
+        color:#fff;
+        opacity:1;
+		border:0;
+		vertical-align:top;
+    }
+    .swiper-banner-{=bannerCode} .custom-swiper-pagination li.swiper-pagination-bullet-active button {
+        background:#cfcfcf;
+    }
+	<!--{ : }-->
+    .swiper-banner-{=bannerCode} .swiper-pagination .swiper-pagination-bullet {
+        width:{=bannerPageButton['size']}px;
+        height:{=bannerPageButton['size']}px;
+        border-radius:{=bannerPageButton['radius']}%;
+        background:{=bannerPageButton['inactiveColor']};
+		opacity:0.75;
+    }
+    .swiper-banner-{=bannerCode} .swiper-pagination .swiper-pagination-bullet-active {
+        background:{=bannerPageButton['activeColor']};
+		opacity:1;
+    }
+    <!--{ / }-->
+</style>
+
+<div class="swiper-container swiper-banner-{=bannerCode} custom-swiper">
+	<div class="swiper-wrapper">
+		<!--{ @ bannerInfo }-->
+		<div class="swiper-slide">
+			 {=.value_}
+		</div>
+		<!--{ / }-->
+	</div>
+	<!--{ ? bannerPageButton['useFl'] == 'c' }-->
+	<ul class="custom-swiper-pagination"></ul>
+	<!--{ : bannerPageButton['useFl'] != 'n' }-->
+	<div class="swiper-pagination"></div>
+	<!--{ / }-->
+	<!--{ ? bannerSideButton['useFl'] !== 'n' }-->
+	<div class="swiper-button swiper-button-next"></div>
+	<div class="swiper-button swiper-button-prev"></div>
+	<!--{ / }-->
+</div>
+
+<script type="text/javascript">
+	let option{=bannerCode} = {
+		slidesPerView: 1,
+		loop: true,
+		<!--{ ? bannerTime == 'manual' }-->
+		autoplay: false,
+		<!--{ : }-->
+		autoplay:{
+			  delay: {=bannerSliderTime},
+			  disableOnInteraction: false,
+		},
+		<!--{ / }-->
+		<!--{ ? bannerPageButton['useFl'] == 'c' }-->
+		pagination : {
+			el: '.swiper-banner-{=bannerCode} .custom-swiper-pagination',
+			clickable: true,
+			renderBullet: function (index, className) {
+				return '<li class="pagination-num' + index + ' ' + className + '"><button type="button" data-role="none" role="button">button</button></li>';
+			},
+		},
+		on : {
+			init : function() {
+				var navWidth, navHeight, defaultNavCSS, defaultNavBtnCSS, activeNavCSS, activeNavBtnCSS;
+				var navFontStyle = "font-size:0 !important;";
+				<!--{ @ bannerImgInfo }-->
+				<!--{ ? .value_['act'] }-->
+				navWidth = "width: {=.value_['act']['width']}px !important;";
+				navHeight = "height: {=.value_['act']['height']}px !important;";
+				activeNavCSS = ".swiper-banner-{=bannerCode} .custom-swiper-pagination li.swiper-pagination-bullet-active.pagination-num" + {=sprintf('%d', .key_)} + " \{" + navWidth + navHeight + "\}";
+				activeNavBtnCSS = ".swiper-banner-{=bannerCode} .custom-swiper-pagination li.swiper-pagination-bullet-active.pagination-num" + {=sprintf('%d', .key_)} + " button {" + navWidth + navHeight + navFontStyle + "background: url({=.value_['act']['img']}) no-repeat !important;}";
+				console.log({=sprintf('%d', .key_)});
+				<!--{ / }-->
+				<!--{ ? .value_['inact']}-->
+				$(".swiper-banner-{=bannerCode} .custom-swiper-pagination li.pagination-num" + {=sprintf('%d', .key_)}).addClass('default-slick-banner');
+				navWidth = "width: {=.value_['inact']['width']}px;";
+				navHeight = "height: {=.value_['inact']['height']}px;";
+				defaultNavCSS = ".swiper-banner-{=bannerCode} .custom-swiper-pagination li.pagination-num" + {=sprintf('%d', .key_)} + ":not(.swiper-pagination-bullet-active) \{" + navWidth + navHeight + "\}";
+				defaultNavBtnCSS = ".swiper-banner-{=bannerCode} .custom-swiper-pagination li.pagination-num" + {=sprintf('%d', .key_)} + ":not(.swiper-pagination-bullet-active) button {" + navWidth + navHeight + navFontStyle + "background: url({=.value_['inact']['img']}) no-repeat;}";
+				<!--{ / }-->
+				$('.swiper-banner-{=bannerCode}').siblings('style').append(defaultNavCSS + '\n' + defaultNavBtnCSS + '\n' + activeNavCSS + '\n' + activeNavBtnCSS);
+				<!--{ / }-->
+			}
+		},
+		<!--{ : bannerPageButton['useFl'] != 'n' }-->
+		pagination : {
+			el: '.swiper-banner-{=bannerCode} .swiper-pagination',
+			clickable: true,
+		},
+		<!--{ / }-->
+		<!--{ ? bannerSideButton['useFl'] !== 'n' }-->
+		navigation: {
+			nextEl: ".swiper-banner-{=bannerCode} .swiper-button-next",
+			prevEl: ".swiper-banner-{=bannerCode} .swiper-button-prev",
+		},
+		<!--{ / }-->
+		<!--{ ? bannerEffect === 'fade' }-->
+		effect: "fade",
+		<!--{ / }-->
+		speed: {=bannerSpeed},
+		loopAdditionalSlides : 1,
+	}
+
+	const swiper{=bannerCode} = new Swiper(".swiper-banner-{=bannerCode}", option{=bannerCode});
+</script>
+<!--{ : }-->
+
+<style type="text/css">
+    <!--{ ? bannerSize['sizeType'] == '%' }-->
+     .slider-wrap .slick-slide {
+        overflow:hidden;
+    }
+    <!--{ / }-->
+
+    .slider-banner-{=bannerCode}{
+    width:{=bannerSize['width']}{=bannerSize['sizeType']};
+    <!--{ ? bannerSize['sizeType'] != '%' }-->
+    height:{=bannerSize['height']}px;
+    <!--{ / }-->
+    }
+    .slider-banner-{=bannerCode} img{
+        <!--{ ? bannerSize['sizeType'] != '%' }-->
+        width:{=bannerSize['width']}{=bannerSize['sizeType']};
+        height:{=bannerSize['height']}px;
+        <!--{ : }-->
+		max-width: 100{=bannerSize['sizeType']};
+        <!--{ / }-->
+    }
+
+	<!--{ ? bannerSize['sizeType'] == '%' }-->
+	.body-main #wrap .slider-banner-{=bannerCode} img{max-width:none;}
+	<!--{ / }-->
+
+    .slider-banner-{=bannerCode} .slick-prev{
+       background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23{=str_replace('#', '', bannerSideButton['activeColor'])}'%2F%3E%3C%2Fsvg%3E");
+       background:{bannerSideButton['activeColor']}\0/IE8;
+    }
+    .slider-banner-{=bannerCode} .slick-next{
+        background-image:   url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23{=str_replace('#', '', bannerSideButton['activeColor'])}'%2F%3E%3C%2Fsvg%3E");
+        background:{bannerSideButton['activeColor']}\0/IE8;
+    }
+
+    <!--{ ? bannerPageButton['useFl'] == 'c' }-->
+    .slider-banner-{=bannerCode} .slick-dots li{
+        width:12.5%;
+        margin:0 4px !important;
+    }
+    .slider-banner-{=bannerCode} .slick-dots li button{
+        font-size:12px;
+        width:100%;
+        height:30px;
+        text-align:center;
+        background:#000000;
+        border-radius:0;
+        color:#fff;
+        opacity:1;
+    }
+    .slider-banner-{=bannerCode} .slick-dots li.slick-active button{
+        background:#cfcfcf;
+    }
+    <!--{ : }-->
+    .slider-banner-{=bannerCode}  .slick-dots li button{
+        width:{=bannerPageButton['size']}px;
+        height:{=bannerPageButton['size']}px;
+        border-radius:{=bannerPageButton['radius']}%;
+        background:{=bannerPageButton['inactiveColor']};
+    }
+    .slider-banner-{=bannerCode} .slick-dots li.slick-active button{
+        background:{=bannerPageButton['activeColor']};
+    }
+    <!--{ / }-->
+</style>
+
+<div  class="slider-wrap slider-banner-{=bannerCode}">
+    <!--{ @ bannerInfo }-->
+    <div>
+     {=.value_}
+    </div>
+    <!--{ / }-->
+
+</div >
+<script src="../js/slider/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.slider-banner-{=bannerCode}').not('.slick-initialized').slick({
+            <!--{ ? bannerTime == 'manual' }-->
+            autoplay: false,
+            <!--{ : }-->
+            autoplay: true,
+            <!--{ / }-->
+            <!--{ ? bannerPageButton['useFl'] != 'n' }-->
+            dots: true,
+            <!--{ : }-->
+            dots: false,
+            <!--{ / }-->
+            <!--{ ? bannerSideButton['useFl'] === 'n' }-->
+            arrows: false,
+            <!--{ / }-->
+            infinite: true,
+            autoplaySpeed :{=bannerSliderTime},
+            speed:{=bannerSpeed},
+            slidesToShow: 1,
+            <!--{ ? bannerEffect === 'fade' }-->
+            fade: true,
+            <!--{ / }-->
+            <!--{ ? bannerSize['sizeType'] == '%' }-->
+            centerMode:true,
+            variableWidth: true,
+            adaptiveHeight: true,
+            <!--{ / }-->
+            draggable : false,
+			<!--{ ? bannerCode === '511517418' }-->
+			draggable : true, // dbook.fe 
+			<!--{ / }-->
+        });
+        <!--{ ? bannerPageButton['useFl'] == 'c' }-->
+        var slickIndex = $('.slider-banner-{=bannerCode}').slick('getSlick').instanceUid;
+        var navWidth, navHeight, defaultNavCSS, defaultNavBtnCSS, activeNavCSS, activeNavBtnCSS;
+        var navFontStyle = "font-size:0 !important;";
+        <!--{ @ bannerImgInfo }-->
+        <!--{ ? .value_['act'] }-->
+        navWidth = "width: {=.value_['act']['width']}px !important;";
+        navHeight = "height: {=.value_['act']['height']}px !important;";
+        activeNavCSS = ".slider-banner-{=bannerCode} .slick-dots li.slick-active#slick-slide" + slickIndex + "{=sprintf('%d', .key_)} \{" + navWidth + navHeight + "\}";
+        activeNavBtnCSS = ".slider-banner-{=bannerCode} .slick-dots li.slick-active#slick-slide" + slickIndex + "{=sprintf('%d', .key_)} button {" + navWidth + navHeight + navFontStyle + "background: url({=.value_['act']['img']}) no-repeat !important;}";
+        <!--{ / }-->
+        <!--{ ? .value_['inact']}-->
+        $(".slider-banner-{=bannerCode} .slick-dots li#slick-slide" + slickIndex + "{=sprintf('%d', .key_)}").addClass('default-slick-banner');
+        navWidth = "width: {=.value_['inact']['width']}px;";
+        navHeight = "height: {=.value_['inact']['height']}px;";
+        defaultNavCSS = ".slider-banner-{=bannerCode} .slick-dots li.default-slick-banner#slick-slide" + slickIndex + "{=sprintf('%d', .key_)} \{" + navWidth + navHeight + "\}";
+        defaultNavBtnCSS = ".slider-banner-{=bannerCode} .slick-dots li.default-slick-banner#slick-slide" + slickIndex + "{=sprintf('%d', .key_)} button {" + navWidth + navHeight + navFontStyle + "background: url({=.value_['inact']['img']}) no-repeat;}";
+        <!--{ / }-->
+        $('.slider-banner-{=bannerCode}').siblings('style').append(defaultNavCSS + defaultNavBtnCSS + activeNavCSS + activeNavBtnCSS);
+        <!--{ / }-->
+        <!--{ / }-->
+    });
+</script>
+<!--{ / }-->
+<!--{ / }-->

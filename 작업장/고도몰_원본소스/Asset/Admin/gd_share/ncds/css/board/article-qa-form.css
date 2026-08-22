@@ -1,0 +1,9 @@
+.ncua-content.article-qa-form {
+    .article-detail-title img{
+        margin-right: 4px;
+    }
+
+    .article-detail-content {
+        display: block;
+    }
+}

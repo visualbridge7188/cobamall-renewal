@@ -1,0 +1,151 @@
+/**
+ * NCDS 아코디언 컴포넌트 공통 스타일
+ */
+.ncua-accordion {
+    border-radius: 8px;
+    font-size: var(--font-size-xs);
+    line-height: var(--line-heights-xs);
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+
+    summary, .ncua-accordion__summary {
+        cursor: pointer;
+        color: var(--gray-500);
+        font-weight: var(--font-weights-commerce-sans-2);
+        font-size: var(--font-size-xs);
+        line-height: var(--line-heights-xs);
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    summary::after {
+        content: "";
+        width: 16px;
+        height: 16px;
+        background-image: url("../../image/chevron-down-single.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+    }
+
+    & > .ncua-accordion__content {
+        color: var(--gray-400);
+        font-size: var(--font-size-xs);
+        line-height: var(--line-heights-xs);
+        font-weight: var(--font-weights-commerce-sans-0);
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+    
+    .ncua-indent-1 {
+        margin-left: 16px;
+    }
+    .ncua-indent-2 {
+        margin-left: 32px;
+    }
+    .ncua-indent-3 {
+        margin-left: 48px;
+    }
+    .ncua-indent-4 {
+        margin-left: 64px;
+    }
+
+    a {
+        color: var(--blue-500);
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    
+    .ncua-accordion__summary-style {
+        color: var(--gray-500);
+        font-weight: var(--font-weights-commerce-sans-2);
+        font-size: var(--font-size-xs);
+        line-height: var(--line-heights-xs);
+    }
+}
+
+.ncua-accordion[open] {
+    gap: 8px;
+}
+
+.ncua-accordion[open] summary::after {
+    transform: rotate(180deg);
+}
+
+/* Gray 스타일 (기본) */
+.ncua-accordion--gray {
+    color: var(--gray-500);
+    border: 1px solid var(--gray-200);
+    background-color: var(--gray-50);
+}
+
+/* Blue 스타일 */
+.ncua-accordion--blue {
+    color: var(--gray-400);
+    border: 1px solid var(--blue-200);
+    background-color: var(--blue-50);
+
+    summary::after {
+        background-color: var(--blue-400);
+        mask-image: url("../../image/chevron-down-single.svg");
+        mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-image: url("../../image/chevron-down-single.svg");
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        background-image: none;
+    }
+}
+
+/* 컨텐츠 내 리스트 스타일 */
+.ncua-accordion__content ul,
+.ncua-accordion__content ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ncua-accordion__content li {
+    margin: 0;
+    color: var(--gray-400);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weights-commerce-sans-0);
+    position: relative;
+}
+
+.ncua-accordion__content.has-dot li {
+    margin-left: 10px;
+    padding-left: 12px;
+}
+
+.ncua-accordion__content.has-dot li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 3px;
+    height: 3px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background-color: var(--gray-400);
+}
+
+/* 링크 스타일 */
+.ncua-accordion__content a {
+    color: var(--blue-500);
+    text-decoration: underline;
+}
+
+/* 주의 텍스트 스타일 */
+.ncua-accordion__content .caution-text {
+    color: var(--primary-red-500);
+}

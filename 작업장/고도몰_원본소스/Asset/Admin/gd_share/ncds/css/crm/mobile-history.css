@@ -1,0 +1,214 @@
+/* 공통 description */
+.mobile-history-desc {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weights-commerce-sans-0);
+    color: var(--gray-400);
+}
+
+.ncua-unit {
+    margin-inline-start: 4px;
+    padding-bottom: 2px;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-heights-sm);
+    color: var(--gray-600);
+}
+
+.ncua-metrics {
+    padding: 16px;
+    border-radius: 8px;
+    background-color: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    font-weight: var(--font-weights-commerce-sans-1);
+}
+
+.ncua-metrics__label {
+    display: flex;
+    align-items: center;
+    margin-block-end: 4px;
+    font-size: var(--font-size-xs);
+    color: var(--gray-400);
+}
+
+.ncua-metrics__number {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-heights-lg);
+    color: var(--gray-700);
+    white-space: nowrap;
+    font-weight: var(--font-weights-commerce-sans-1);
+}
+
+.mobile-msg {
+    .ncua-card__header {
+        justify-content: flex-start;
+        gap: 6px;
+        position: relative;
+
+        .ncua-btn {
+            position: absolute;
+            top: 50%;
+            right: 24px;
+            transform: translateY(-50%);
+        }
+
+        .ncua-btn:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.mobile-msg .send-history .ncua-card__header,
+.mobile-msg .msg-point-summary .ncua-card__header,
+.mobile-msg .shipping-schedule .ncua-card__header {
+    border-block-end: 1px solid var(--gray-100, #eaecf0) !important;
+}
+
+/* 발송 내역 요약 */
+.send-history {
+    .ncua-card__body {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .ncua-card__title {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .ncua-tooltip svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .ncua-metrics {
+        flex: 1;
+    }
+
+    .ncua-metrics:first-child {
+        border-color: var(--blue-200);
+        background-color: var(--blue-100);
+    }
+
+    .ncua-metrics:first-child .ncua-metrics__label {
+        color: var(--blue-600);
+    }
+
+    .ncua-metrics:first-child .ncua-metrics__number {
+        font-size: var(--font-size-xl);
+        font-weight: var(--font-weights-commerce-sans-2);
+    }
+}
+
+/* 메시지 포인트 사용 요약 */
+.msg-point-summary {
+    .ncua-card__body {
+        display: flex;
+        gap: 12px;
+    }
+
+
+    .ncua-metrics {
+        height: 158px;
+        flex: 1;
+    }
+
+    .msg-point-summary-average {
+        position: relative;
+
+
+        .mobile-history-desc {
+            position: absolute;
+            right: 16px;
+            bottom: 16px;
+            font-size: inherit;
+        }
+    }
+
+
+    .msg-each-point-remaining {
+        display: flex;
+        padding: 12px;
+        margin-block: 16px 0;
+        height: 60px;
+        background-color: var(--base-white);
+        border: 1px solid var(--gray-100);
+        border-radius: 6px;
+
+        div {
+            flex: 1;
+            
+            &:first-child {
+                padding-inline-end: 16px;
+            }
+
+            &:nth-child(n + 2) {
+                padding-inline: 16px;
+                border-inline-start: 1px solid var(--gray-100);
+            }
+        }
+
+        dt {
+            text-transform: uppercase;
+            color: var(--gray-400);
+            font-size: var(--font-size-xxs);
+            font-weight: var(--font-weights-commerce-sans-0);
+            line-height: var(--line-heights-xxs);
+        }
+
+        dd {
+            color: var(--gray-700);
+            font-weight: var(--font-weights-commerce-sans-2);
+            font-size: var(--font-size-xs);
+            line-height: var(--line-heights-xs);
+        }
+
+        .ncua-unit {
+            margin-inline-start: 2px;
+            font-weight: var(--font-weights-commerce-sans-0);
+        }
+    }
+
+
+
+    @media (1815px >= width) {
+        .ncua-card__body {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+    
+        .ncua-metrics:last-child {
+            grid-column: span 2; 
+        } 
+    }
+}
+
+
+/* 발송 예정 현황 */
+.shipping-schedule {
+    .ncua-card__body {
+        display: flex;
+        gap: 20px;
+    }
+
+    .ncua-metrics {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        .ncua-metrics__link {
+            display: inline-flex;
+            justify-content: flex-start;
+            gap: 8px;
+            margin-block-start: 16px;
+            font-size: var(--font-size-sm);
+        }
+
+        .ncua-metrics__link::after {
+            content: '';
+            width: 16px;
+            height: 16px;
+            background: url(../../image/arrow-right.svg) no-repeat center center / contain;
+        }
+    }
+}

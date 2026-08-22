@@ -1,0 +1,114 @@
+/**
+ * 개발소스관리(development) 전용 공통 스타일
+ *
+ * dev_source.css에서 분리 — 디자인 QA §1 공통 수정(Story 9-1).
+ * layout_dev_source.php에서만 로드하여 다른 관리자 페이지(GNB/LNB)에 영향을 주지 않도록 스코핑.
+ */
+
+/* ===================================================================
+ * 개발소스관리 전체 메뉴 컨텐츠 영역 gray-50.
+ * =================================================================== */
+.ncds #content {
+    background-color: var(--gray-50, #f6f7f9);
+}
+
+/* ===================================================================
+ * 디자인 QA §1 공통 수정 (Story 9-1)
+ * =================================================================== */
+
+/* --- §1-1 BreadCrumb --- */
+/* 기존 ncds/css/component/layout.css에서 #header .breadcrumb 스타일 정의됨 */
+/* AC1 추가 수정: 구분자를 chevron-right SVG로 교체, 텍스트 스타일 보강 */
+.ncds #header .breadcrumb > li {
+    font-size: 12px;
+    font-weight: 500;
+}
+.ncds #header .breadcrumb > li a {
+    color: inherit;
+    text-decoration: none;
+}
+.ncds #header .breadcrumb > li a:hover {
+    color: inherit;
+    text-decoration: none;
+}
+.ncds #header .breadcrumb > li + li:before {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%23d3d4d8' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m9 18 6-6-6-6'/%3E%3C/svg%3E") no-repeat center center;
+    background-size: 16px 16px;
+}
+
+/* --- §1-2 Block Header 제목 line-height: 24px (DES-SPEC-004 Text-md/Bold) --- */
+.ncds .ds-error-log__block-title,
+.ncds .ds-customization__frame-title,
+.ncds .ds-ver__block-title,
+.ncds .ds-devinfo__block-title {
+    line-height: 24px;
+}
+
+/* --- §1-3 테이블 공통 규격 --- */
+
+/* Table [outer] 래퍼: Block Body 내부 필수, Two-Pane(소스보기)은 생략 */
+.ncds .ds-table-outer {
+    border: 1px solid var(--gray-100, #eaecf0);
+    border-radius: 8px;
+    box-shadow: var(--shadow-xs, 0 1px 2px 0 rgba(16, 24, 40, 0.05));
+    overflow: hidden;
+}
+
+/* thead */
+.ncds .ds-table-outer table thead th,
+.ncds table.ds-table thead th {
+    background: var(--gray-100, #eaecf0);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray-500, #464748);
+    border-bottom: 1px solid var(--gray-200, #d3d4d8);
+}
+
+/* Header Cell 우측 border (마지막 제외) */
+.ncds .ds-table-outer table thead th:not(:last-child),
+.ncds table.ds-table thead th:not(:last-child) {
+    border-right: 1px solid var(--gray-200, #d3d4d8);
+}
+
+/* Row 하단 border */
+.ncds .ds-table-outer table tbody tr,
+.ncds table.ds-table tbody tr {
+    border-bottom: 1px solid var(--gray-200, #d3d4d8);
+}
+
+/* Body Cell 우측 border (마지막 제외) */
+.ncds .ds-table-outer table tbody td:not(:last-child),
+.ncds table.ds-table tbody td:not(:last-child) {
+    border-right: 1px solid var(--gray-200, #d3d4d8);
+}
+
+/* Row Hover */
+.ncds .ds-table-outer table tbody tr:hover,
+.ncds table.ds-table tbody tr:hover {
+    background: var(--gray-50, #f6f7f9);
+}
+
+/* border-collapse: separate */
+.ncds .ds-table-outer table,
+.ncds table.ds-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+
+/* Pagination */
+.ncds .ds-table-pagination {
+    padding: 12px 0;
+}
+
+/* 전체 건수 (Search Summary): Table outer 바깥 상단 좌측 */
+.ncds .ds-table-search-summary {
+    margin-bottom: 8px;
+}
+
+/* 필터 (Action Area): Table outer 내부 우측 */
+.ncds .ds-table-action-area {
+    display: flex;
+    justify-content: flex-end;
+    padding: 12px 16px;
+}

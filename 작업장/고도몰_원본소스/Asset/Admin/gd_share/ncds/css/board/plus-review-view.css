@@ -1,0 +1,67 @@
+.plus_review_view {
+    /* gd_style 상쇄 */
+    margin: 0;
+    background: none;
+    height: auto;
+    overflow: visible;
+
+    .ncua-flex-column {
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    
+    .ncua-memo-layout {
+        padding: unset;
+        flex-direction: column;
+    }
+
+    .ncua-memo-write-layout {
+        width: 100%;
+        padding: 10px 16px;
+
+        .ncua-input--textarea {
+            padding-bottom: 8px;
+        }
+    }
+
+    .ncua-memo-list-layout {
+        width: 100%;
+        padding: 10px 16px;
+        border-top: 1px solid var(--gray-100);
+
+        .ncua-memo-count {
+            padding-bottom: 16px;
+            color: var(--gray-700);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weights-commerce-sans-2);
+        }
+
+        .ncua-table {
+            th> div, td >div {
+                justify-content: center;
+            }
+        }
+
+        .ncua-memo-content-layout {
+            width: 100%;
+        }
+
+         .js-textarea-modify-memo,
+         .js-btn-memo-submit {
+             display: none;
+         }
+
+        .ncua-memo-button-group {
+            display: flex;
+            gap: 4px;
+        }
+    }
+
+    .ncua-card-button-group {
+        margin-top: 16px;
+        display: flex;
+        gap: 8px;
+        justify-content: flex-end;
+    }    
+}

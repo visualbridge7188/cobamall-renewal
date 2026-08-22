@@ -1,0 +1,154 @@
+.plus_review_article_config  {
+    .ncua-flex-column {
+        align-items: flex-start;
+    }
+
+    .ncua-layout-size, .ncua-auth-config {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .ncua-thumnail-size, .ncua-mileage-duplicate-limit {
+        display: flex;
+    }
+
+    .ncua-preview-template-layout {
+        position: relative;
+
+        .ncua-preview-template {
+            position: absolute;
+            top: 38px;
+            left: 320px;
+            z-index: 9999;
+            display: none;
+        }
+
+        .ncua-radio-field {
+            margin-right: 16px;
+        }
+
+        .ncua-radio-field__text  .ncua-btn {
+            margin-left: 8px;
+        }
+    }
+
+    .align-left {
+        justify-content: flex-start !important;
+    }
+
+    /* radio field align center */
+    .ncua-radio-field {
+        align-items: center;
+    }
+
+    .ncua-auth-write-buy-condition {
+        display: flex;
+        flex-direction: column;
+        
+        .ncua-radio-field {
+            align-items: center;
+        }
+
+        .ncua-checkbox-field {
+            align-items: center;
+            margin-left: 24px;
+        }
+
+        .ncua-checkbox-field__text {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+    }
+
+    .ncua-search-result {
+        margin-top: 0;
+
+        th:first-child {
+            border-top-left-radius: 5px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 5px;
+        }
+    }
+
+
+    .ncua-mileage-limit ,.ncua-mileage-config, .ncua-mileage-condition-config-limit{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .ncua-mileage-limit-price.display-none {
+        display: none;
+    }
+
+    .ncua-mileage-condition-config {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        .ncua-mileage-max-limit-wrap {
+            padding-left: 24px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ncua-mileage-max-limit {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+        }
+    }
+
+    .ncua-min-text-limit {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .ncua-add-info-input-value {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        
+        .ncua-add-info-input-value__item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    }
+
+    .ncua-except-goods-table {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+
+    .member-group-display-none { 
+        display: none;
+    }
+
+    .member-group-display-none.active { 
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .ncua-select-group-tag { 
+        width: 16px;
+        height: 16px;
+    }    
+}
+
+/* 예외 상품 선택 팝업 */
+.modal-dialog.modal-lg:has(#exceptGoodsForm){
+    width: 1000px;
+}

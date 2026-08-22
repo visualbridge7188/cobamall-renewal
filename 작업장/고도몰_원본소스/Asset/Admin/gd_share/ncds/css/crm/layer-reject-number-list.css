@@ -1,0 +1,25 @@
+.layer-reject-number-list {
+    display: flex;
+    flex-direction: column;
+
+    .ncua-search-result {
+        margin: 0;
+        padding: 0;
+
+        .ncua-table {
+            border: 1px solid var(--gray-100);
+        }
+    }
+}
+
+.layer-reject-number-list__wrapper {
+    display: flex;
+    flex-direction: column;
+
+    .layer-reject-number-list__content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px;
+    }
+}

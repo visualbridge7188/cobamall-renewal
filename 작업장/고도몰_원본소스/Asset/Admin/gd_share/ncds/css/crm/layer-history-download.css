@@ -1,0 +1,110 @@
+/* ============================== */
+/* 발송내역 다운로드, 엑셀 다운로드 사유, 발송 내역 상세 */
+/* ============================== */
+
+.modal-history-detail {
+  padding: 20px;
+}
+
+.modal-history-detail .ncua-btn-group {
+    justify-content: flex-end;
+}
+
+
+/* 발송내역 다운로드 */
+.layer-history-download,
+.layer-history-download-reason-content {
+  padding: 20px;
+}
+
+.layer-history-download > form {
+  position: relative;
+}
+
+.layer-history-download .ncua-input-password .ncua-input__field {
+  max-width: 270px;
+}
+
+.layer-history-download-request {
+  position: absolute;
+  bottom: -36px;
+  right: 0;
+  z-index: 1;
+}
+
+.layer-history-download-info {
+  margin-block-start: 8px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weights-commerce-sans-1);
+  color: var(--gray-400);
+}
+
+.layer-history-download-info li {
+  position: relative;
+  padding-inline-start: 18px;
+
+  &::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+  }
+
+  &:first-child {
+    color: var(--primary-red-500);
+  }
+
+  &:nth-child(n + 2) {
+    margin-block-start: 2px;
+  }
+
+  .ncua-link {
+    margin-inline-start: 4px;
+    gap: 1px;
+    text-decoration: none;
+
+    &::after {
+      content: '>';
+    }
+  }
+}
+
+.crm-excel-download-refresh::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  background: url(../../image/refresh-cw-02.svg) no-repeat center center / cover;
+}
+
+.layer-history-download .ncua-table--horizontal {
+
+  div {
+    justify-content: center;
+  }
+}
+
+.layer-history-download-btn {
+  display: inline-flex;
+
+  &::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: url('../../image/download-white.svg') no-repeat center center / 12px 12px;
+  }
+}
+
+/* 엑셀 다운로드 사유 */
+.layer-history-download-reason-caution {
+  margin-block: 16px 0;
+}
+
+.layer-history-download-reason-btns {
+    padding-block: 16px; 
+    padding-inline-end: 20px;
+    border-block-start: 1px solid var(--gray-100);
+}
+
+/* 발송 내역 상세 */
+.layer-history-detail-info {
+  margin-block-start: 4px;
+}

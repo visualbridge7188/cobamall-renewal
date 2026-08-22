@@ -1,0 +1,149 @@
+/*
+ * 어드민 메인 — 공지/업데이트 통합 + 셀러팁 영역 스타일
+ *
+ * 구 ncds/css/main/main.css 의 탭/헤더 규칙을 여기로 통합.
+ * (ncds 공용 컴포넌트가 아니라 메인 페이지 전용이라 feature CSS 로 이동,
+ *  클래스도 ncua- → board-notice- 로 변경)
+ *
+ * 뱃지 색상 토큰은 NHN 디자인시스템 변수(--pink-*, --gray-*, --blue-*) 우선,
+ * 미정의 시 hex fallback. fallback hex 는 placeholder — 디자이너 회수 후 정식 값 교체 예정.
+ */
+
+/* ===== 통합 탭/헤더 (구 ncua-*, ncds/css/main/main.css 통합) ===== */
+.main-section .board-notice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 34px;
+    margin-bottom: var(--spacing-lg, 12px);
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.board-notice-tab {
+    flex: 1;
+    display: flex;
+    border-bottom: 1px solid var(--gray-100, #EAECF0);
+}
+
+.board-notice-tab .board-notice-tab__btn {
+    align-items: center;
+    background-color: #0000;
+    border-radius: 6px;
+    color: var(--gray-400, #757678);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: var(--font-size-xs, 13px);
+    font-weight: var(--font-weights-commerce-sans-2, 700);
+    gap: 8px;
+    height: 34px;
+    padding: 5px 12px;
+    width: 100%;
+}
+
+.board-notice-tab .board-notice-tab__btn.is-active {
+    position: relative;
+    color: var(--gray-700, #171818);
+}
+
+.board-notice-tab .board-notice-tab__btn.is-active::before {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    content: '';
+    height: 2px;
+    background-color: var(--gray-500, #464748);
+}
+
+.board-notice-header .more-view {
+    line-height: 1;
+}
+
+.board-notice-header .btn-sm {
+    padding: 0;
+    color: var(--gray-500, #464748);
+    text-decoration: none;
+    font-size: var(--font-size-xs, 13px);
+    font-weight: var(--font-weights-commerce-sans-1, 500);
+}
+
+.board-notice-header__seller {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: 34px;
+    padding-block-start: 3px;
+    border-bottom: 1px solid var(--gray-100, #EAECF0);
+}
+
+/* ===== 통합 탭 (공지/업데이트) ===== */
+.board-notice-tabs {
+    margin: 0;
+    padding: 0;
+}
+.board-notice-tabs > li {
+    float: left;
+    margin-right: 4px;
+}
+.board-notice-tabs > li > a {
+    padding: 4px 10px;
+    border: 0;
+    color: var(--gray-600, #4B5563);
+    font-weight: 500;
+    border-radius: 4px 4px 0 0;
+}
+.board-notice-tabs > li.active > a,
+.board-notice-tabs > li.active > a:hover,
+.board-notice-tabs > li.active > a:focus {
+    color: var(--gray-900, #111827);
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid var(--gray-900, #111827);
+    font-weight: 700;
+}
+
+/* ===== 통합 리스트 항목 ===== */
+#panel_board_noticeUpdateAPI > li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+#panel_board_noticeUpdateAPI .published-at {
+    margin-left: auto;
+    color: var(--gray-600, #4B5563);
+}
+
+/* ===== 뱃지 (소식/공지/업데이트) ===== */
+.board-badge {
+    display: inline-block;
+    height: 18px;
+    font-size: 12px;
+    padding: 2px 4px 0;
+    border-radius: 2px;
+    line-height: 16px;
+    white-space: nowrap;
+}
+.badge-news {
+    background: var(--pink-100, #FCE7F3);
+    color: var(--pink-600, #DB2777);
+}
+.badge-notice {
+    background: var(--gray-100, #F3F4F6);
+    color: var(--gray-600, #4B5563);
+}
+.badge-update {
+    background: var(--blue-100, #DBEAFE);
+    color: var(--blue-600, #2563EB);
+}
+
+/* ===== 셀러팁 영역 ===== */
+#panel_board_sellerTipAPI > li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+#panel_board_sellerTipAPI .published-at {
+    margin-left: auto;
+    color: var(--gray-600, #4B5563);
+}

@@ -1,0 +1,20 @@
+.message-template-list {
+    .ncua-horizontal-tab {
+        margin-block: 12px 24px;
+    }
+
+    .ncua-notice-info {
+        margin-block-start: 8px;
+        
+        &::before {
+            margin-inline: 4px;
+        }
+    }
+
+    .message-config-info {
+        display: block;
+        padding-block: 24px;
+        line-height: var(--line-heights-xs);
+        color: var(--gray-400);
+    }
+}

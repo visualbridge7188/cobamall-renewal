@@ -1,0 +1,20 @@
+.faq-list-search {
+    gap: 4px;
+}
+
+.ncua-faq-search-result-subject {
+    color: var(--blue-500);
+    text-decoration: underline;
+}
+
+.ncua-faq-search-result-subject img {
+    pointer-events: none;
+}
+
+.faq-list-modify-btn:hover {
+    text-decoration: none;
+}
+
+.faq-list .ncua-table .faq-list-table-title {
+    justify-content: flex-start;
+}

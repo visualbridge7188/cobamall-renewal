@@ -1,0 +1,74 @@
+/* Plus Review Preview 전용 스타일 */
+
+.preview-layer .preview-layer-head,
+.preview-layer .preview-layer-scroll,
+.preview-layer .preview-layer-contents-length,
+.preview-layer .preview-layer-uploaded-images {
+    width: 100%;
+    border-bottom: 1px solid var(--gray-200, #d3d4d8);
+}
+
+/* preview-layer-scroll 스코프 */
+.preview-layer .preview-layer-scroll {
+    height: 300px;
+    overflow-y: auto;
+
+    .table.table-cols {
+        margin-bottom: 0;
+        border-top: none;
+
+        tbody > tr > th > div {
+            color: var(--base-black);
+        }
+
+        tbody > tr > td {
+            border-bottom: none;
+        }
+    }
+}
+
+.preview-layer .preview-layer-head {
+    padding: 15px;
+}
+
+.preview-layer .preview-layer-head-image {
+    float: left;
+
+    img {
+        width: 100px;
+        border: 1px solid var(--gray-200, #d3d4d8);
+        max-height: 150px;
+    }
+}
+
+.preview-layer .preview-layer-head-info {
+    float: left;
+    vertical-align: top;
+    padding-left: 15px;
+}
+
+.preview-layer .clear-both {
+    clear: both;
+}
+
+.preview-layer .preview-layer-contents-length {
+    text-align: right;
+    padding: 5px;
+}
+
+/* preview-layer-uploaded-images 스코프 */
+.preview-layer .preview-layer-uploaded-images {
+    ul {
+        padding: 5px;
+    }
+    
+    li {
+        display: inline-block;
+    }
+
+    img {
+        width: 80px;
+        height: 80px;
+    }
+}
+

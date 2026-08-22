@@ -1,0 +1,40 @@
+.ncua-content.article-list {
+    .table-title-content {
+        gap: 4px;
+        justify-content: flex-start;
+
+        a {
+            color: var(--blue-500);
+            text-decoration: underline;
+        }
+    }
+
+    .popup-open {
+        background: transparent;
+        margin-left: 4px;
+    
+        img {
+            transform: translateY(1px);
+        }
+    }
+
+    .subject, .preface, .reply-status {
+        min-width: 160px;
+    }
+
+    .search-kind:has(:disabled) {
+        display: none;
+    }
+
+    .ncua-pagination:has(.pagination:empty) {
+        display: none;
+    }
+
+    .ncua-search-result .ncua-caution-text {
+        margin-block-start: 16px;
+    }
+
+    .article-list-report-memo {
+        justify-content: flex-start;
+    }
+} 

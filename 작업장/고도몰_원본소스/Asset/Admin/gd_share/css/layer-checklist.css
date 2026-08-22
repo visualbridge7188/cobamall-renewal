@@ -1,0 +1,48 @@
+.modal-dialog {
+    width: 560px;
+
+    .modal-dialog__content {
+        background-color: var(--gray-100);
+    }
+
+    .modal-dialog__footer button,
+    .modal-dialog__footer a {
+        flex: 1;
+    }
+}
+
+.layer-checklist {
+    background-color: var(--gray-100);
+
+    .ncua-checkbox-field.has-text {
+        gap: 12px;
+    }
+
+    .ncua-checkbox-field__text {
+        font-weight: var(--font-weights-commerce-sans-2);
+        color: var(--gray-600);
+    }
+
+    .ncua-checkbox-field__support-text {
+        display: block;
+        margin-top: 2px;
+    }
+
+    .checklist-content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .checklist-item {
+        padding: 12px 16px;
+        background-color: var(--base-white);
+        border-radius: 8px;
+        border: 1px solid var(--gray-200);
+    }
+
+    .checklist-item.active {
+        background-color: var(--gray-50);
+        border-color: var(--gray-600);
+    }
+}

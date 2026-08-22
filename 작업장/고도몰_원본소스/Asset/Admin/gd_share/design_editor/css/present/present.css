@@ -1,0 +1,523 @@
+.present {
+    width: 1200px;
+    margin: 0 auto;
+    padding-block: 75px;
+}
+
+/* ===================== */
+/* 선물하기 공통 info */
+/* ===================== */
+.present-info {
+    padding: 15px;
+    background-color: #f7f7f7;
+    line-height: 1.5;
+}
+
+.present-info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #333;
+}
+
+.present-info-item::before {
+    content: '·';
+    color: #000;
+}
+
+.present-info-item:nth-child(n + 2) {
+    margin-block-start: 5px;
+}
+
+
+/* ===================== */
+/* 선물하기 공통 타이틀 */
+/* ===================== */
+.present-title {
+    padding-block-end: 20px;
+    margin-block-end: 45px;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.5;
+    color: #222;
+    border-block-end: 2px solid #ededed;
+}
+
+.present-title-sub {
+    margin-block-end: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.present-images-wrap {
+    position: relative;
+}
+
+.present-images {
+    margin-block-end: 20px;
+    padding-inline: 32px;
+}
+
+.present-images .slick-slide {
+    position: relative;
+    width: 100px;
+    height: 50px;
+}
+
+.present-images .slick-slide:nth-child(n + 1) {
+    margin-inline-start: 15px;
+}
+
+.present-images [data-active] {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: transparent;
+}
+
+.present-images [data-active="true"] {
+    border: 3px solid var(--nde-button-background-color);
+}
+
+.present-images img {
+    max-width: 100%;
+}
+
+.present-images-wrap .slick-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    overflow: hidden;
+    width: 15px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-indent: -9999em;
+}
+
+.present-images-wrap .present-prev {
+    left: 0;
+    background-image: url('../../img/present/chevron-prev.png');
+}
+
+.present-images-wrap .present-prev.slick-disabled {
+    background-image: url('../../img/present/chevron-prev-disabled.png');
+}
+
+.present-images-wrap .present-next {
+    right: 0;
+    background-image: url('../../img/present/chevron-next.png');
+}
+
+.present-images-wrap .present-next.slick-disabled {
+    background-image: url('../../img/present/chevron-next-disabled.png');
+}
+
+
+.present-card-wrap {
+    margin-block-end: 40px;
+    padding: 30px 20px;
+    background-color: #f5f5f5;
+    border: 2px solid #e3e3e3;
+}
+
+.present-card {
+    margin-inline: auto;
+    width: 340px;
+    background-color: #fff;
+}
+.present-card-image {
+    width: 100%;
+    height: 170px;
+}
+
+.present-card-textarea {
+    padding: 15px 16px;
+    line-height: 1.5;
+}
+
+.present-card-textarea-inner {
+    padding: 10px 16px;
+    height: 120px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+
+.present-card-textarea textarea {
+    margin-block-end: 5px;
+    padding: 0;
+    width: 100%;
+    height: 80px;
+    color: #333;
+    border: none;
+    resize: none;
+    font-family: inherit;
+}
+
+.present-card-textarea textarea:focus {
+    outline: none;
+}
+
+.present-card-textarea  output {
+    display: block;
+    text-align: end;
+    color: #777;
+    font-size: 10px;
+}
+
+.present-card-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    margin-block-start: 8px;
+    color: #777;
+}
+
+/* ===================== */
+/* 선물하기 받는 분 정보 */
+/* ===================== */
+.present-receiver-info {
+    margin-block-end: 50px;
+}
+
+.present-receiver-info .present-info {
+    margin-block-end: 20px;
+}
+
+.present-title-receiver {
+    margin-block-end: 10px;
+    font-size: 14px;
+}
+
+.present-receiver-info-list {
+    border-top: 1px solid #999;
+}
+
+.present-receiver-info-list {
+    counter-reset: item;
+}
+
+.present-receiver-info-item {
+    display: flex;
+    height: 56px;
+    counter-increment: item;
+    border-block-end: 1px solid #dbdbdb;
+}
+
+.present-receiver-info-item::before {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    background-color: #f5f5f5;
+    border-inline-end: 1px solid #dbdbdb;
+    font-weight: bold;
+    content: counter(item);
+}
+
+.present-receiver-info-field {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 12px;
+    color: #333;
+}
+
+.present-receiver-info-field label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-inline-start: 20px;
+    width: 160px;
+    height: 100%;
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.present-receiver-info-field label::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background-color: var(--nde-button-background-color);
+}
+
+.present-receiver-info-field input {
+    box-sizing: border-box;
+    padding: 6px 8px;
+    width: 220px;
+    height: 30px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    color: #777;
+}
+
+.present-order-button {
+    text-align: center;
+}
+
+.present-order-button .btn_add_order {
+    width: 230px;
+    height: 52px;
+    font-family: inherit;
+    color: var(--nde-button-text-color);
+    background-color: var(--nde-button-background-color);
+    border: 1px solid var(--nde-button-border-color);
+}
+
+/* excel upload */
+.present-upload-excel {
+    box-sizing: border-box;
+    width: 747px;
+    padding: 13px 15px 26px;
+    border-color: #555;
+    border-width: 2px;
+    color: #333;
+}
+
+.present-upload-excel::backdrop {
+    background-color: rgba(0 0 0 / .6);
+}
+
+.present-upload-excel-title {
+    margin-block: 0 15px;
+    padding-block-end: 15px;
+    font-size: 18px;
+    font-weight: 700;
+    border-block-end: 1px solid #999;
+}
+
+.present-upload-excel-desc {
+    margin-block: 0 15px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.present-upload-excel-drop-area {
+    --padding: 15px 20px;
+
+    display: flex;
+    align-items: center;
+    margin-block-end: 30px;
+    height: 92px;
+    border: 1px solid #dbdbdb;
+    background-color: #f5f5f5;
+    user-select: none;
+}
+.present-upload-excel-drop-area label {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: var(--padding);
+    background-image:  url(../../img/present/icon-plus.svg);
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    cursor: pointer;
+}
+.present-upload-excel-drop-area b {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.present-upload-excel-drop-area em {
+    color: #777;
+    font-size: 12px;
+}
+
+.present-uploaded-file-output {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: var(--padding);
+    font-weight: 700;
+}
+
+.present-uploaded-file-output output {
+    font-size: 14px;
+}
+.present-uploaded-file-output button {
+    font-size: 12px;
+    font-family: inherit;
+    text-decoration: underline;
+}
+
+.present-upload-excel-drop-area [hidden] {
+    display: none;
+}
+
+.present-upload-field-invalid em {
+    color: #f7444e;
+    font-weight: 700;
+}
+
+.present-upload-excel-btns {
+    position: relative;
+    text-align: end;
+}
+
+.present-upload-excel-btns button {
+    height: 38px;
+    border: 1px solid #ccc;
+    color: #3e3d3c;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: inherit;
+}
+
+.present-upload-excel-btns button:first-child {
+    position: absolute;
+    left: 0;
+    width: 135px;
+}
+
+.present-upload-excel-btns button:nth-child(n + 2) {
+    width: 82px;
+}
+.present-upload-excel-btns button:last-child {
+    margin-inline-start: 8px;
+    background-color: var(--nde-button-background-color);
+    border: 0;
+    color: #fff;
+}
+
+.present-upload-excel-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    overflow: hidden;
+    width: 27px;
+    height: 27px;
+    background: url(../../img/present/close.png) no-repeat center center / cover;
+    text-indent: -9999em;
+}
+
+/* ===================== */
+/* 반응형 (768px 이하) */
+/* ===================== */
+@media (max-width: 768px) {
+    /* 레이아웃 */
+    .present { width: 100%; padding: 0; box-sizing: border-box; }
+
+    .present > form > .present-title { display: none; }
+    .present-title {
+        padding: 10px 15px;
+        margin-block-end: 0;
+        font-size: 14px;
+        border-block-end: 0;
+        border-block-start: 1px solid #ccc;
+        background-color: #f2f3f3;
+        color: #333;
+    }
+    .present-title-sub {
+        padding: 10px 15px;
+        margin-block-end: 0;
+        font-size: 14px;
+        border-block-start: 1px solid #ccc;
+        background-color: #f2f3f3;
+        color: #333;
+    }
+
+    /* 카드 이미지 슬라이더 — 모먼트 모바일: arrows 없음, flex 기반 */
+    .present-images-wrap { margin-block: 15px 10px; padding-inline: 0; position: relative; }
+    .present-images-wrap .slick-arrow { display: none !important; }
+    .present-images { margin-block-end: 10px; padding-inline: 0; }
+    .present-images .slick-track { display: flex; justify-content: flex-start; }
+    .present-images.slick-slider,
+    .present-images .slick-list { overflow: visible; }
+    .present-images .slick-slide { position: relative; width: 90px !important; height: 44px; }
+    .present-images .slick-slide:nth-child(n + 2) { margin-inline-start: 5px; }
+    .present-images [data-active] { position: absolute; inset: 0; padding: 0; border: 0; background: transparent; }
+    .present-images [data-active="true"] { border: 3px solid var(--nde-button-border-color); }
+    .present-images img { width: 100%; height: 100%; object-fit: cover; vertical-align: top; }
+
+    /* 카드 영역 — 모먼트 모바일 */
+    .present-card-wrap { margin-block-end: 0; padding: 0 15px 0; border: 0; background-color: #fff; }
+    .present-card { width: 100%; }
+    .present-card-image { margin-block-end: 10px; height: auto; vertical-align: top; }
+    .present-card-textarea { box-sizing: border-box; padding: 0; height: auto; border: 0; line-height: 1.5; }
+    .present-card-textarea-inner { box-sizing: border-box; padding: 10px 16px; height: 110px; border: 1px solid #ccc; }
+    .present-card-textarea textarea { box-sizing: border-box; width: 100%; height: 70px; }
+    .present-card-notice { display: flex; align-items: center; gap: 6px; margin: 10px 15px 20px 0; padding: 0; color: #a9a9a9; font-style: normal; }
+    .present-card-notice svg { flex-shrink: 0; stroke: currentColor; }
+
+    /* 받는 분 정보 — 모먼트 모바일: 테이블 레이아웃 */
+    .present-receiver-info { margin-block-end: 15px; }
+    .present-receiver-info .present-info { margin-block-end: 0; }
+    .present-title-receiver { display: none; }
+    .present-receiver-info-list { border-top: 1px solid #e8e8e8; border-bottom: 1px solid #ccc; counter-reset: none; }
+    .present-receiver-info-item { display: block; height: auto; border-block-end: 0; }
+    .present-receiver-info-item::before { display: none; }
+    .present-receiver-info-field {
+        display: flex;
+        align-items: stretch;
+        border-block-end: 1px dashed #ccc;
+    }
+    .present-receiver-info-field:last-child { border-block-end: 0; }
+    .present-receiver-info-field label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-shrink: 0;
+        width: 100px;
+        padding: 10px 14px;
+        background-color: #f8f8f8;
+        font-weight: normal;
+        font-size: 13px;
+        height: auto;
+        box-sizing: border-box;
+    }
+    .present-receiver-info-field label::before {
+        width: 4px;
+        height: 4px;
+    }
+    .present-receiver-info-field input {
+        flex: 1;
+        display: block;
+        width: auto;
+        margin: 0;
+        padding: 5px 10px;
+        height: 31px;
+        border: 1px solid #c3c3c3;
+        font-size: 14px;
+        box-sizing: border-box;
+        align-self: center;
+        margin: 10px 9px;
+    }
+    .present-receiver-info-field .error-message { padding: 0 10px; }
+
+    /* 주문 버튼 — 모먼트 모바일: sticky 하단 */
+    .present-order-button {
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 15px;
+        background-color: #fff;
+        text-align: center;
+        z-index: 50;
+    }
+    #shop_cart_wrap ~ * .present-order-button,
+    body:has(#shop_cart_wrap) .present-order-button { bottom: 40px; }
+    .present-order-button.is-stuck { border-block-start: 1px solid #999; }
+    .present-order-button .btn_add_order {
+        width: 100%;
+        height: 43px;
+        font-size: 14px;
+        font-weight: bold;
+        border: none;
+        color: #fff;
+        background-color: var(--nde-button-background-color);
+    }
+
+    /* 엑셀 업로드 모달 */
+    .present-upload-excel { width: calc(100% - 30px); max-width: 100%; }
+    .present-upload-excel-title { font-size: 16px; }
+    .present-upload-excel-desc { font-size: 14px; }
+    .present-upload-excel-btns button:first-child { position: static; width: auto; }
+}
+

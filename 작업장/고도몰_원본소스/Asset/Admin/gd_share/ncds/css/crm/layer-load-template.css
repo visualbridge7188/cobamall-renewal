@@ -1,0 +1,20 @@
+.layer-load-template, .layer-load-template #layer-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .ncua-select {
+        flex:1;
+    }
+
+    .ncua-input { 
+        flex:3;
+        .ncua-input__content {
+            width: 100%;
+        }
+    }
+
+    .ncua-radio-field {
+        display: inline-flex;
+    }
+}

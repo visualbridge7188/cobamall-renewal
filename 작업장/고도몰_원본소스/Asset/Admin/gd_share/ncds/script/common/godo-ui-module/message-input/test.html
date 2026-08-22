@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MessageInput Component Test</title>
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --gray-50: #fafafa;
+            --gray-200: #e0e0e0;
+            --gray-300: #d0d0d0;
+            --gray-400: #999;
+            --gray-500: #767676;
+            --base-white: #fff;
+            --primary-500: #007bff;
+            --font-size-xs: 12px;
+            --font-size-sm: 13px;
+            --font-weights-commerce-sans-1: 600;
+            --font-weights-commerce-sans-2: 500;
+            --line-heights-xs: 1.4;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .panel h2 {
+            font-size: 18px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+            font-size: 13px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #545b62;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            color: #333;
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        .log-area {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        .log-item {
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            padding: 4px;
+            border-bottom: 1px solid #e0e0e0;
+            color: #333;
+        }
+
+        .log-item:last-child {
+            border-bottom: none;
+        }
+
+        .log-item .time {
+            color: #999;
+            margin-right: 8px;
+        }
+
+        .log-item .event {
+            color: #007bff;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        #log-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #007bff;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .info-box p {
+            margin: 5px 0;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .info-box code {
+            background: rgba(0, 123, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+
+        /* MessageInput 스타일 */
+        .ncua-input {
+            position: relative;
+        }
+
+        .ncua-input--textarea {
+            width: 100%;
+        }
+
+        .ncua-input__textarea {
+            width: 100%;
+            min-height: 180px;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: 'Noto Sans KR', Arial, sans-serif;
+            line-height: 1.6;
+            resize: vertical;
+            transition: border-color 0.2s;
+        }
+
+        .ncua-input__textarea:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        .ncua-input__text-count-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+            padding: 0 4px;
+        }
+
+        .ncua-hint-text {
+            font-size: 12px;
+            color: #dc3545;
+        }
+
+        .ncua-input__text-count {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .ncua-input__text-count-text {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .ncua-input__text-count-text-count {
+            font-weight: 600;
+            color: #007bff;
+        }
+
+        .ncua-input__text-count-text-max {
+            font-weight: 600;
+        }
+
+        .btn-group {
+            margin-top: 10px;
+        }
+
+        .section-divider {
+            margin: 15px 0;
+            border: none;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .api-section {
+            margin-bottom: 20px;
+        }
+
+        .api-section h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .output-display {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #333;
+            min-height: 40px;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <h1>📝 MessageInput Component Test</h1>
+    <p class="subtitle">MessageInput UI 모듈의 모든 기능을 테스트할 수 있습니다.</p>
+
+    <div class="info-box">
+        <p><strong>테스트 방법:</strong></p>
+        <p>• 왼쪽 패널에서 MessageInput UI 모듈을 직접 사용해보세요.</p>
+        <p>• 오른쪽 패널에서 모든 API 메서드를 테스트할 수 있습니다.</p>
+        <p>• 이벤트 로그에서 실시간으로 발생하는 이벤트를 확인하세요.</p>
+    </div>
+
+    <div class="container">
+        <!-- 왼쪽: MessageInput -->
+        <div class="panel">
+            <h2>✍️ MessageInput UI 모듈</h2>
+            <div id="message-input-container"></div>
+        </div>
+
+        <!-- 오른쪽: API 테스트 패널 -->
+        <div class="panel">
+            <h2>⚙️ API 테스트</h2>
+
+            <!-- setValue -->
+            <div class="api-section">
+                <h3>setValue(value)</h3>
+                <div class="form-group">
+                    <label>설정할 값</label>
+                    <textarea id="setValueInput" placeholder="설정할 텍스트를 입력하세요"></textarea>
+                </div>
+                <button class="btn btn-primary" onclick="testSetValue()">setValue() 실행</button>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- getValue -->
+            <div class="api-section">
+                <h3>getValue()</h3>
+                <button class="btn btn-secondary" onclick="testGetValue()">getValue() 실행</button>
+                <div class="output-display" id="getValueOutput">결과가 여기에 표시됩니다</div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- insertText -->
+            <div class="api-section">
+                <h3>insertText(text)</h3>
+                <div class="form-group">
+                    <label>삽입할 텍스트</label>
+                    <input type="text" id="insertTextInput" placeholder="예: #{회원명}" value="#{회원명}">
+                </div>
+                <button class="btn btn-primary" onclick="testInsertText()">insertText() 실행</button>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- setHint -->
+            <div class="api-section">
+                <h3>setHint(text)</h3>
+                <div class="form-group">
+                    <label>힌트 텍스트</label>
+                    <input type="text" id="setHintInput" placeholder="예: SMS는 90 bytes 이하 권장">
+                </div>
+                <button class="btn btn-primary" onclick="testSetHint()">setHint() 실행</button>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- setPlaceholder -->
+            <div class="api-section">
+                <h3>setPlaceholder(text)</h3>
+                <div class="form-group">
+                    <label>Placeholder 텍스트</label>
+                    <input type="text" id="setPlaceholderInput" placeholder="예: 메시지를 입력하세요">
+                </div>
+                <button class="btn btn-primary" onclick="testSetPlaceholder()">setPlaceholder() 실행</button>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- setMaxLength -->
+            <div class="api-section">
+                <h3>setMaxLength(length)</h3>
+                <div class="form-group">
+                    <label>최대 길이</label>
+                    <input type="number" id="setMaxLengthInput" placeholder="예: 1000" min="1">
+                </div>
+                <button class="btn btn-primary" onclick="testSetMaxLength()">setMaxLength() 실행</button>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- enableBytesMode / enableCharMode -->
+            <div class="api-section">
+                <h3>카운트 모드 전환</h3>
+                <div class="form-group">
+                    <label>모드 선택</label>
+                    <select id="countModeSelect">
+                        <option value="bytes">Bytes 모드</option>
+                        <option value="char">Char 모드</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>maxLength (숫자)</label>
+                    <input type="number" id="countModeMaxLength" placeholder="예: 2000" value="2000">
+                </div>
+                <div class="form-group" id="bytesThresholdGroup">
+                    <label>bytesThreshold (Bytes 모드 전용)</label>
+                    <input type="number" id="bytesThresholdInput" placeholder="예: 90" value="90">
+                </div>
+                <button class="btn btn-success" onclick="testChangeCountMode()">모드 전환</button>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- 이모티콘 설정 -->
+            <div class="api-section">
+                <h3>이모티콘 설정</h3>
+                <div class="form-group">
+                    <label>이모티콘 허용 여부</label>
+                    <select id="emojiModeSelect">
+                        <option value="true">허용 (기본)</option>
+                        <option value="false">차단</option>
+                    </select>
+                </div>
+                <button class="btn btn-success" onclick="testSetAllowEmoji()">setAllowEmoji() 실행</button>
+                <button class="btn btn-secondary" onclick="testGetAllowEmoji()" style="margin-top: 5px;">getAllowEmoji() 실행</button>
+                <div class="info-box" style="margin-top: 10px; background: #fff3cd; border-left-color: #ffc107;">
+                    <p style="font-size: 12px; margin: 0;">💡 이모티콘 차단 시 ⭐✨🎉 같은 이모티콘이 자동 제거됩니다.</p>
+                    <p style="font-size: 12px; margin: 5px 0 0 0;">테스트: "안녕⭐하세요✨" 입력 후 차단 모드로 전환해보세요!</p>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- 기타 API -->
+            <div class="api-section">
+                <h3>기타 메서드</h3>
+                <button class="btn btn-secondary" onclick="testFocus()">focus()</button>
+                <button class="btn btn-warning" onclick="testClear()">clear()</button>
+                <button class="btn btn-secondary" onclick="testGetCursorPosition()">getCursorPosition()</button>
+            </div>
+
+            <hr class="section-divider">
+
+            <button class="btn btn-danger" onclick="clearLog()">로그 초기화</button>
+
+            <h2 style="margin-top: 20px;">📋 이벤트 로그</h2>
+            <div class="log-area">
+                <ul id="log-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 스크립트 로드 -->
+    <script src="./message-input.js"></script>
+    <script src="../godo-ui-module.js"></script>
+
+    <script>
+        // MessageInput 인스턴스
+        let messageInput = null;
+
+        // 초기화
+        function init() {
+            try {
+                messageInput = GodoUIModule.render({
+                    type: 'MessageInput',
+                    target: '#message-input-container',
+                    name: 'testMessage',
+                    placeholder: '메시지를 입력하세요',
+                    hintText: 'SMS는 90 bytes 이하 권장, 최대 2000 bytes',
+                    maxLength: 2000,
+                    useBytes: true,
+                    bytesThreshold: 90,
+                    initialValue: '안녕하세요!\n여기에 메시지를 작성하세요.',
+                    onInput: function(value, event) {
+                        addLog('onInput', `입력 발생 (현재 ${value.length}자)`);
+                    },
+                    onChange: function(value, event) {
+                        addLog('onChange', `값 변경 완료 (${value.length}자)`);
+                    }
+                });
+
+                addLog('init', '✅ MessageInput 초기화 완료');
+            } catch (error) {
+                console.error('초기화 오류:', error);
+                addLog('error', '❌ ' + error.message);
+            }
+        }
+
+        // setValue 테스트
+        function testSetValue() {
+            const input = document.getElementById('setValueInput');
+            const value = input.value;
+            
+            if (!value) {
+                alert('설정할 값을 입력하세요');
+                return;
+            }
+
+            messageInput.setValue(value);
+            addLog('setValue', `값 설정: "${value.substring(0, 30)}${value.length > 30 ? '...' : ''}"`);
+        }
+
+        // getValue 테스트
+        function testGetValue() {
+            const value = messageInput.getValue();
+            const output = document.getElementById('getValueOutput');
+            
+            output.textContent = `"${value}"\n\n길이: ${value.length}자`;
+            addLog('getValue', `값 조회: ${value.length}자`);
+        }
+
+        // insertText 테스트
+        function testInsertText() {
+            const input = document.getElementById('insertTextInput');
+            const text = input.value;
+            
+            if (!text) {
+                alert('삽입할 텍스트를 입력하세요');
+                return;
+            }
+
+            messageInput.insertText(text);
+            addLog('insertText', `"${text}" 삽입`);
+        }
+
+        // setHint 테스트
+        function testSetHint() {
+            const input = document.getElementById('setHintInput');
+            const text = input.value;
+            
+            messageInput.setHint(text);
+            addLog('setHint', `힌트 설정: "${text}"`);
+        }
+
+        // setPlaceholder 테스트
+        function testSetPlaceholder() {
+            const input = document.getElementById('setPlaceholderInput');
+            const text = input.value;
+            
+            messageInput.setPlaceholder(text);
+            addLog('setPlaceholder', `Placeholder 설정: "${text}"`);
+        }
+
+        // setMaxLength 테스트
+        function testSetMaxLength() {
+            const input = document.getElementById('setMaxLengthInput');
+            const length = parseInt(input.value);
+            
+            if (!length || length <= 0) {
+                alert('올바른 최대 길이를 입력하세요 (1 이상)');
+                return;
+            }
+
+            messageInput.setMaxLength(length);
+            addLog('setMaxLength', `최대 길이 설정: ${length}`);
+        }
+
+        // 카운트 모드 전환 테스트
+        function testChangeCountMode() {
+            const modeSelect = document.getElementById('countModeSelect');
+            const mode = modeSelect.value;
+            const maxLengthInput = document.getElementById('countModeMaxLength');
+            const maxLength = parseInt(maxLengthInput.value);
+            
+            if (!maxLength || maxLength <= 0) {
+                alert('올바른 maxLength를 입력하세요');
+                return;
+            }
+
+            if (mode === 'bytes') {
+                const thresholdInput = document.getElementById('bytesThresholdInput');
+                const threshold = parseInt(thresholdInput.value) || 0;
+                
+                messageInput.enableBytesMode({
+                    maxLength: maxLength,
+                    bytesThreshold: threshold
+                });
+                addLog('enableBytesMode', `Bytes 모드 (max: ${maxLength}, threshold: ${threshold})`);
+            } else {
+                messageInput.enableCharMode({
+                    maxLength: maxLength
+                });
+                addLog('enableCharMode', `Char 모드 (max: ${maxLength})`);
+            }
+        }
+
+        // focus 테스트
+        function testFocus() {
+            messageInput.focus();
+            addLog('focus', 'textarea에 포커스');
+        }
+
+        // clear 테스트
+        function testClear() {
+            if (confirm('작성한 내용을 모두 지우시겠습니까?')) {
+                messageInput.clear();
+                addLog('clear', '내용 초기화');
+            }
+        }
+
+        // getCursorPosition 테스트
+        function testGetCursorPosition() {
+            const pos = messageInput.getCursorPosition();
+            alert(`현재 커서 위치: ${pos.start} ~ ${pos.end}`);
+            addLog('getCursorPosition', `커서 위치: ${pos.start} ~ ${pos.end}`);
+        }
+
+        // setAllowEmoji 테스트
+        function testSetAllowEmoji() {
+            const select = document.getElementById('emojiModeSelect');
+            const allow = select.value === 'true';
+            
+            const beforeValue = messageInput.getValue();
+            messageInput.setAllowEmoji(allow);
+            const afterValue = messageInput.getValue();
+            
+            if (beforeValue !== afterValue) {
+                addLog('setAllowEmoji', `${allow ? '허용' : '차단'} → 이모티콘 제거됨 (${beforeValue.length}자 → ${afterValue.length}자)`);
+            } else {
+                addLog('setAllowEmoji', `${allow ? '허용' : '차단'} → 변경 없음`);
+            }
+        }
+
+        // getAllowEmoji 테스트
+        function testGetAllowEmoji() {
+            const allow = messageInput.getAllowEmoji();
+            alert(`현재 이모티콘 허용 여부: ${allow ? '허용' : '차단'}`);
+            addLog('getAllowEmoji', `현재 설정: ${allow ? '허용' : '차단'}`);
+        }
+
+        // 로그 추가
+        function addLog(event, message) {
+            const logList = document.getElementById('log-list');
+            const logItem = document.createElement('li');
+            logItem.className = 'log-item';
+            
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('ko-KR');
+            
+            logItem.innerHTML = `
+                <span class="time">[${timeStr}]</span>
+                <span class="event">${event}</span>
+                <span class="message">${message}</span>
+            `;
+            
+            logList.insertBefore(logItem, logList.firstChild);
+            
+            // 로그가 너무 많으면 오래된 것 삭제 (최대 50개)
+            if (logList.children.length > 50) {
+                logList.removeChild(logList.lastChild);
+            }
+        }
+
+        // 로그 초기화
+        function clearLog() {
+            document.getElementById('log-list').innerHTML = '';
+            addLog('clear', '로그 초기화');
+        }
+
+        // 카운트 모드 선택에 따라 threshold 입력 표시/숨김
+        document.addEventListener('DOMContentLoaded', function() {
+            const modeSelect = document.getElementById('countModeSelect');
+            const thresholdGroup = document.getElementById('bytesThresholdGroup');
+            
+            if (modeSelect) {
+                modeSelect.addEventListener('change', function() {
+                    if (this.value === 'bytes') {
+                        thresholdGroup.style.display = 'block';
+                    } else {
+                        thresholdGroup.style.display = 'none';
+                    }
+                });
+            }
+        });
+
+        // 페이지 로드 시 초기화
+        window.addEventListener('DOMContentLoaded', function() {
+            init();
+        });
+    </script>
+</body>
+</html>

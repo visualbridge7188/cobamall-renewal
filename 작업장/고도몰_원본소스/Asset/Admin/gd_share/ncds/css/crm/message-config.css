@@ -1,0 +1,244 @@
+/* =============================== */
+/* 메세지 설정 페이지 */
+/* =============================== */
+
+.message-config-wrapper {
+    .message-config-point__red_strong {
+        font-weight: var(--font-weights-commerce-sans-2);
+        color: var(--primary-red-450);
+    }
+
+    .message-config-noti-info {
+        color: var(--gray-700);
+        font-size: var(--font-size-xxs);
+        line-height: var(--line-heights-xxxs);
+        font-weight: var(--font-weights-commerce-sans-0);
+    }
+
+    /* 카드 내 컨텐츠 레이아웃 */
+    .ncua-border-content-layout {
+        gap: 16px;
+    }
+
+
+}
+
+.display-none {
+    display: none !important;
+}
+
+/**
+ 공통
+*/
+/* 카카오톡 채널 등록 스타일 */
+.kakao-channel-setting__content-card {
+    width: 100%;
+
+    .ncua-border-content-layout {
+        > .ncua-border-content {
+            padding: 0 8px;
+            > a {
+                color: var(--blue-500);
+            }
+        }
+    }
+    .kakao-channel-setting__sub-title {
+        color: var(--gray-400);
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weights-commerce-sans-0);
+        line-height: var(--line-heights-xs);
+    }
+
+    .delete-kakao-channel-btn {
+        align-self: flex-start;
+    }
+}
+
+.accordion-section {
+    padding-top: 0;
+}
+
+.send-manager-link {
+    color: var(--blue-500);
+    text-decoration: underline;
+}
+
+.ncds .modal.bootstrap-dialog .modal-dialog.modal-wide-sm {
+    width: 760px;
+}
+
+.ncds.crm.message-config {
+    #legalRequirements_iframe {
+        z-index: 1000 !important;
+    }
+}
+
+/* destructive text count style */
+.ncua-input.destructive {
+    > .ncua-input__content-wrap > .ncua-input__field-text-count {
+        color: var(--primary-red-600);
+
+        output {
+            color: var(--primary-red-600);
+        }
+    }
+}
+
+/**
+* 기본 설정 카드 스타일
+*/
+.default-setting {
+
+    /* 카카오톡 채널 카드 width */
+    #layerCloudKakaoTalkChannel > #layer-wrap {
+        width: 100%;
+    }
+
+    /* 포인트 부족 알림 설정 */
+    .insuffic-message-point-alert-setting-row {
+        .point-reach-alarm-text {
+            color: var(--gray-700);
+            font-size: var(--font-size-xs);
+            line-height: var(--line-heights-xs);
+            font-weight: var(--font-weights-commerce-sans-0);
+        }
+
+        .point-reach-alarm-setting {
+            align-items: flex-start;
+            > div {
+                padding-top: 5px;
+            }
+        }
+        .point-reach-alarm-input {
+            width: 68px;
+        }
+        .message-point-input {
+            gap: 8px;
+        }
+
+        .message-config-insuffic-message-point-alert-setting {
+            gap: 4px;
+
+            .ncua-border-content-title {
+                font-weight: var(--font-weights-commerce-sans-1);
+                line-height: var(--line-heights-xxs);
+            }
+            .ncua-border-content {
+                gap: 8px;
+            }
+            .insuffic-message-point-alert-support-text.no-padding {
+                padding: 0;
+            }
+            .flex-start {
+                align-items: flex-start;
+            }
+            .insuffic-message-point-alert-support-text {
+                padding-left: 22px;
+                padding-top: 4px;
+                color: var(--primary-red-600);
+                font-size: var(--font-size-xxs);
+                line-height: var(--line-heights-xxxs);
+                font-weight: var(--font-weights-commerce-sans-0);
+            }
+        }
+    }
+
+        
+
+}
+
+/**
+* SMS 설정 카드 스타일
+*/
+.sms-setting {
+    
+    .sms-reject-number-info {
+        gap: 4px;
+        padding: 0 8px;
+        .ncua-border-content-title {
+            line-height: var(--line-heights-xxs);
+        }
+
+        .sms-reject-number {
+            color: var(--gray-400);
+            font-size: var(--font-size-xs);
+            line-height: var(--line-heights-xs);
+            font-weight: var(--font-weights-commerce-sans-0);
+        }
+        .sms-reject-number-status {
+            gap: 4px;
+            font-size: var(--font-size-xxxs);
+            line-height: var(--line-heights-xxxs);
+            font-weight: var(--font-weights-commerce-sans-0);
+            color: var(--gray-400);
+        }
+    }
+}
+
+/** 
+* 카카오 친구톡 설정 카드 스타일
+*/
+.kakao-friend-talk-setting {
+    .message-link-move-setting {
+        td div {
+            align-items: flex-start;
+        }
+    }
+}
+
+/**
+* 카카오 알림톡 설정 카드 스타일
+*/
+.kakao-alrim-talk-setting {
+    .accordion-section {
+        padding-top: 0;
+    }
+
+    /* 비즈엠, 블룸에이아이 카드 width */
+    #layerBizmKakaoTalkChannel,
+    #layerLunaKakaoTalkChannel{
+        width: 100%;
+    }
+
+    .alternative-sms-setting {
+        gap: 24px;
+
+        .ncua-radio-group {
+            padding-top: 4px;
+            padding-left: 8px;
+        }
+    }
+
+    .kakao-alim-talk-sender {
+        .sender-setting {
+            align-items: flex-start;
+            color: var(--gray-500);
+            line-height: var(--line-heights-xs);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weights-commerce-sans-1);
+            
+            .bizm-channel-setting {
+                width: 100%;
+                align-items: flex-start;
+            }
+            .bloomai-channel-setting {
+                width: 100%;
+                align-items: flex-start;
+            }
+        }
+    }
+}
+
+/**
+* 앱푸시 설정 카드 스타일
+*/
+.mobile-app-push-setting {
+    .mobile-app-alternative-sms-setting {
+        gap: 24px;
+
+        .ncua-radio-group {
+            padding-top: 4px;
+            padding-left: 8px;
+        }
+    }
+}

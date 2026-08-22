@@ -1,0 +1,18 @@
+.layer-my-app-send-guide {
+    .send-guide-notice li {
+        display: flex;
+        align-items: center;
+    }
+
+    .send-guide-notice li a {
+        margin-left: 4px;
+    }
+
+    .ncua-table {
+        margin-top: 16px;
+    }
+
+    .ncua-table img {
+        width: 100%;
+    }
+}

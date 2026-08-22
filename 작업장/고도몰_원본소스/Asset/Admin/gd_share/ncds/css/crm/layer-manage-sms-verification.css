@@ -1,0 +1,44 @@
+.layer-manage-sms-verification {
+    .ncua-search-result {
+        margin: 0;
+        padding: 20px;
+    }
+    .ncua-table {
+        table {
+            th {
+                width: 144px;
+            }
+        }
+    }
+
+    .ncua-input__content-wrap > .ncua-input__field {
+        box-shadow: var(--shadow-xs);
+    }
+    .ncua-input__field {
+        padding: 5px 10px;
+        width: 320px;
+    }
+}
+
+/* 하단 버튼 그룹 */
+.layer-manage-sms-verification__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 16px 20px;
+    border-top: 1px solid var(--gray-100);
+}
+
+.auto-registration-prevention {
+    gap: 8px;
+
+    .info-wrap {
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+        font-size: var(--font-size-xxs);
+        line-height: var(--line-heights-xxs);
+        gap: 8px;
+    }
+}

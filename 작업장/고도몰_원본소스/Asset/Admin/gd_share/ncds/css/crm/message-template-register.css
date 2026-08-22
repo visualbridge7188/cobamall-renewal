@@ -1,0 +1,135 @@
+.message-template-register {
+    .ncua-flex-column {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    input[type="file"] + .bootstrap-filestyle.input-group {
+        display: none;
+    }
+
+    .tooltip-align {
+        display: flex;
+        align-items: center;
+    }
+
+    .ncua-input--textarea .ncua-input__text-count {
+        color: var(--gray-300);
+    }
+
+    .ncua-card__body > [data-component] + [data-component]:not(.ncua-accordion) {
+        margin-block-start: 16px;
+    }
+
+    .template-type-content {
+        margin-block-end: 24px;
+    }
+
+    .ncua-card__body > .template-type-content[style*="display: none"] ~ [data-component].body-content {
+        margin-block-start: 0;
+    }
+
+    .ncua-split-layout {
+        margin-block-start: 40px;
+        gap: 32px;
+
+        .ncua-card__body-title-wrap {
+            margin-block-end: 8px;
+        }
+    }
+
+    .ncua-card__body-title-wrap--inline {
+        justify-content: flex-start;
+
+        .ncua-card__body-title-inline {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .ncua-input__text-count {
+        margin-left: auto;
+    }
+
+    .ncua-input--full-width-with-count .ncua-input__field-text-count {
+        min-width: auto;
+    }
+
+    /* .ncua-hint-text 가 있으면 .sms-byte-mode-hint 는 숨기기 */
+    .message-content .ncua-input--textarea:has(.ncua-hint-text) .sms-byte-mode-hint {
+        display: none;
+    }
+
+    .message-content .ncua-input--textarea .sms-byte-mode-hint,
+    .message-content .ncua-input--textarea .ncua-hint-text {
+        color: var(--primary-red-600);
+    }
+
+    .message-content-myapp {
+        .ncua-input + .message-input-container {
+            margin-block-start: 8px;
+        }
+    }
+
+    .channel-add-content {
+        textarea {
+            height: 22px;
+            min-height: 42px;
+            overflow: hidden;
+        }
+    }
+
+    .action-buttons {
+        .ncua-table {
+            margin-block-start: 8px;
+        }
+
+        .info-text {
+            text-align: center;
+            justify-content: center;
+            width: 100%;
+        }
+    }
+
+    .detailed-input-content {
+        .url-input-wrap {
+            gap: 6px;
+
+            .myapp-base-url {
+                word-break: break-all;
+            }
+
+            #validateUrlBtn {
+                flex-shrink: 0;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .ncua-accordion {
+        margin-block-start: 40px;
+    }
+
+    .ncua-custom-tooltip:not(.is-edit-mode) {
+        [data-tooltip-type="disabled-send-method"]:has(:is(input, select, button):disabled)::before {
+            content: "발송 수단이 준비되지 않았습니다.\A템플릿 등록 및 메시지를 발송하려면 메시지 설정에서 사용을 활성화해 주세요.";
+        }
+    }
+
+    /* 미리보기 */
+    .mobile-preview {
+        min-height: 294px;
+        max-height: 294px;
+        overflow-y: auto;
+    }
+}
+
+/* =============================== */
+/* destructive 상태에 따른 hint-text 표시 */
+/* =============================== */
+/* data-hint-target과 data-hint-for로 매칭하여 표시 */
+.ncua-flex-column:has([data-hint-target="templateCategory1"].destructive)
+    [data-hint-for="templateCategory1"].display-none {
+    display: block;
+    font-size: var(--font-size-xxs);
+}

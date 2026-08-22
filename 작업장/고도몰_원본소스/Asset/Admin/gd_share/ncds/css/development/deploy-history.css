@@ -1,0 +1,207 @@
+/**
+ * 배포 내역 페이지 CSS
+ * Story 2A.5 / Story 8.36 — 아코디언 제거, 배포 상세 모달 추가
+ * UX Spec: ux-spec_1-9.md §8 (페이지 07)
+ * 공통 CSS 출처: ux-spec_공통CSS.md
+ *
+ * @copyright (C) 2026 NHN COMMERCE. - All Rights Reserved
+ */
+
+/* 콘텐츠 영역 패딩 */
+.page-content { padding: 0; display: flex; flex-direction: column; gap: 16px; background: var(--gray-50); font-family: var(--font-family-ncua-commerce-sans); font-size: 14px; line-height: 22px; font-weight: 700; }
+
+/* ─────────────────────────────────────────
+   §1 Block Container (DES-SPEC-042)
+   ───────────────────────────────────────── */
+.block-container { background: var(--base-white); border: 1px solid var(--gray-100); border-radius: 12px; box-shadow: var(--shadow-sm); overflow: visible; }
+
+/* ─────────────────────────────────────────
+   §2 Block Header (DES-SPEC-043)
+   ───────────────────────────────────────── */
+.block-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 24px; max-height: 48px; border-bottom: 1px solid var(--gray-100); gap: 8px; }
+.block-header__title { font-size: 16px; font-weight: 700; color: var(--gray-700); line-height: 24px; }
+
+/* ─────────────────────────────────────────
+   §3 Block Body (DES-SPEC-042)
+   ───────────────────────────────────────── */
+.block-body { padding: 16px 24px; display: flex; flex-direction: column; gap: 16px; }
+
+/* ─────────────────────────────────────────
+   §4 DataGrid — Table Outer / datagrid-table (DES-SPEC-046)
+   ───────────────────────────────────────── */
+.table-outer { border: 1px solid var(--gray-100); border-radius: 8px; box-shadow: var(--shadow-xs); overflow: visible; }
+.datagrid-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+.datagrid-table thead th { background: var(--gray-100); font-size: 13px; font-weight: 500; color: var(--gray-500); padding: 10px 16px; border-bottom: 1px solid var(--gray-200); border-right: 1px solid var(--gray-200); text-align: left; }
+.datagrid-table thead th:nth-child(4),
+.datagrid-table thead th:nth-child(5) { text-align: center; }
+.datagrid-table thead th:last-child { border-right: none; }
+.datagrid-table tbody td { font-size: 13px; font-weight: 400; color: var(--gray-700); padding: 12px 16px; border-bottom: 1px solid var(--gray-100); border-right: 1px solid var(--gray-100); vertical-align: middle; text-align: left; }
+.datagrid-table tbody td:last-child { border-right: none; }
+.datagrid-table tbody tr:last-child td { border-bottom: none; }
+.datagrid-table tbody tr:last-child td:first-child { border-bottom-left-radius: 8px; }
+.datagrid-table tbody tr:last-child td:last-child { border-bottom-right-radius: 8px; }
+.datagrid-table tbody tr:hover { background: var(--gray-50); }
+
+/* ─────────────────────────────────────────
+   §6 EmptyState (DES-SPEC-037)
+   ───────────────────────────────────────── */
+.ncds-empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-height: 320px; padding: 24px; border-radius: 0 0 8px 8px; }
+.ncds-empty-state__title { font-size: 14px; font-weight: 600; color: var(--gray-500); line-height: 22px; }
+.ncds-empty-state__description { font-size: 13px; font-weight: 400; color: var(--gray-400); line-height: 18px; }
+
+/* ─────────────────────────────────────────
+   §10 Search Summary (DES-SPEC-046 §9)
+   ───────────────────────────────────────── */
+.search-summary { font-size: 13px; font-weight: 400; color: var(--gray-500); margin-bottom: 8px; }
+.search-summary strong { font-weight: 700; color: #EC1D31; }
+
+/* ─────────────────────────────────────────
+   §11 Pagination Wrapper (DES-SPEC-046 §7)
+   ───────────────────────────────────────── */
+.pagination-wrap { padding: 0; display: flex; justify-content: center; }
+.ncua-pagination.ncua-pagination--pc { height: 32px; }
+
+/* ─────────────────────────────────────────
+   페이지 고유 — 버전명 code 스타일 (§8.2)
+   ───────────────────────────────────────── */
+code.deploy-history__version-code {
+    font-family: monospace;
+    font-size: 12px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: 4px;
+    padding: 2px 6px;
+    display: inline;
+}
+
+/* ─────────────────────────────────────────
+   페이지 고유 — 진행중 스피너 (Badge leadingIcon)
+   ───────────────────────────────────────── */
+.ds-deploy-history__spinner-icon {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 4px;
+    animation: ds-spin 0.8s linear infinite;
+}
+@keyframes ds-spin { to { transform: rotate(360deg); } }
+
+/* ─────────────────────────────────────────
+   페이지 고유 — 액션 컬럼 버튼 간격
+   ───────────────────────────────────────── */
+.ds-deploy-history__row td:last-child > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* ─────────────────────────────────────────
+   페이지 고유 — 배포 상세 모달 (와이어프레임 §14-a-3)
+   ───────────────────────────────────────── */
+.ds-deploy-history__detail-loading {
+    font-size: 13px;
+    color: var(--gray-400);
+    padding: var(--spacing-s) 0;
+}
+
+.ds-deploy-history__detail-dl { margin: 0; padding: 0; }
+
+.ds-deploy-history__detail-row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-s);
+    padding: 6px 0;
+}
+
+.ds-deploy-history__detail-row dt {
+    font-size: 13px;
+    color: var(--gray-500);
+    min-width: 60px;
+    flex-shrink: 0;
+}
+
+.ds-deploy-history__detail-row dd {
+    font-size: 13px;
+    color: var(--gray-700);
+    margin: 0;
+}
+
+.ds-deploy-history__detail-divider {
+    border: none;
+    border-top: 1px solid var(--gray-100);
+    margin-top: 17px;
+    margin-bottom: 17px;
+}
+
+#deployDetailModal .ncua-modal__actions {
+    justify-content: flex-end;
+}
+
+.ds-deploy-history__detail-file-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gray-700);
+    margin: 0 0 12px;
+}
+
+/* ─────────────────────────────────────────
+   페이지 고유 — 파일 변경 Badge (§8.5)
+   ───────────────────────────────────────── */
+.deploy-detail__badge--add,
+.deploy-detail__badge--mod,
+.deploy-detail__badge--del {
+    display: inline-flex;
+    align-items: center;
+    height: 18px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1;
+}
+.deploy-detail__badge--add { background: #D3F8DF; color: #087443; }
+.deploy-detail__badge--mod { background: #D1E9FF; color: #1849A9; }
+.deploy-detail__badge--del { background: #FFEAEE; color: #DC0A2B; }
+
+/* ─────────────────────────────────────────
+   페이지 고유 — 파일 그룹 / 파일 경로 (§8.5)
+   ───────────────────────────────────────── */
+.ds-deploy-history__group-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.ds-deploy-history__group { display: flex; flex-direction: column; }
+.ds-deploy-history__group-label { font-size: 13px; font-weight: 500; color: var(--gray-700); padding: 4px 0; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+.ds-deploy-history__file-list { list-style: none; margin: 0; padding: 0; }
+
+.deploy-detail__file-path {
+    font-size: 12px;
+    font-family: monospace;
+    font-weight: 400;
+    color: var(--gray-600);
+    line-height: 1.8;
+    padding-left: 16px;
+}
+
+.ds-deploy-history__file-empty {
+    font-size: 13px;
+    color: var(--gray-400);
+    margin: 0;
+}
+
+/* ─────────────────────────────────────────
+   페이지 고유 — 파일 목록 페이지네이션 (모달 내)
+   ───────────────────────────────────────── */
+.ds-deploy-history__file-pagination {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--gray-100);
+    justify-content: center;
+}
+
+/* ─────────────────────────────────────────
+   롤백 확인 모달 — alert.css top:180px 오버라이드
+   ───────────────────────────────────────── */
+.ncds-alert-modal .ncua-modal {
+    position: static !important;
+    top: auto !important;
+}

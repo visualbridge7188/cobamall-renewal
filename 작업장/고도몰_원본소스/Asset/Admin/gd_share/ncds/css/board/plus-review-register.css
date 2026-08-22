@@ -1,0 +1,9 @@
+.plus_review_register {
+    .ncua-select {
+        width: 94px;
+    }
+
+    .ncua-flex-column {
+        align-items: flex-start;
+    }
+}

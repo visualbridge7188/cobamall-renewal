@@ -1,0 +1,205 @@
+/* =============================== */
+/* radio 스타일 */
+/* =============================== */
+.ncua-radio-input [type="radio"] {
+    width: 16px;
+    height: 16px;
+    background-image: none;
+    border: 1px solid var(--gray-200, #d3d4d8);
+    border-radius: 50%;
+
+    &:checked {
+        background-image: none;
+    }
+
+    &:checked:not(:disabled) {
+        border-color: var(--gray-700);
+    }
+
+    &:checked:disabled {
+        background: var(--gray-100);
+    }
+}
+
+/* =============================== */
+/* C030 - Radio (image)*/
+/* =============================== */
+/* has-image가 있을 때만 카드 스타일 적용 */
+.ncua-image-radio-group {
+    gap: 16px;
+    display: flex;
+
+    &.ncua-radio-group--column {
+        flex-direction: column;
+    }
+    
+
+    .ncua-radio-field.has-image {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 8px;
+        background-color: var(--base-white);
+        transition: all 0.2s ease;
+        
+        .ncua-radio-field__header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .ncua-radio-field__input {
+            margin: 0;
+        }
+        
+        &.has-text {
+            .ncua-radio-field__image {
+                width: 100%;
+                text-align: center;
+                
+                img {
+                    max-width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    }
+}
+
+
+/* checkbox 스타일 */
+/* =============================== */
+.ncua-checkbox-input [type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    background-image: none;
+    border-radius: 4px;
+    border: 1px solid var(--gray-200);
+}
+
+.ncua-checkbox-input [type="checkbox"]:checked {
+    background-color: var(--gray-50);
+    background-image: none;
+    border: 1px solid var(--gray-700);
+}
+
+.ncua-checkbox-input.destructive [type="checkbox"] {
+    border-color: var(--primary-red-600);
+}
+
+.ncua-checkbox-input input[type="checkbox"]:disabled {
+    background: none;  /* gd5-style 상쇄 */
+    border-color: var(--gray-200);
+    background-color: var(--gray-100);
+}
+
+/* =============================== */
+/* text - input - unit 스타일 */
+/* =============================== */
+.ncua-text-input-unit {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+
+    .ncua-input-text {
+        font-size: var(--font-size-xs);
+    }
+}
+
+/* =============================== */
+/* input 스타일 */
+/* =============================== */
+.ncua-input-full-width {
+    width: 100%;
+}
+
+.ncua-input-width-520{
+    width: 520px;
+}
+
+.ncua-input-width-320{
+    width: 320px;
+}
+
+.ncua-input-width-150{
+  width: 150px;
+}
+
+.ncua-input-width-120{
+  width: 120px;
+}
+
+.ncua-input-width-100 {
+  width: 100px;
+}
+
+.ncua-input-width-80 {
+  width: 80px;
+}
+
+/* bootstrap style : output 태그 스타일 상쇄 */
+.ncua-input .ncua-input__field-text-count-current {
+    display: inline;
+}
+
+.ncua-input.destructive .ncua-input__field-text-count-current {
+    color: var(--primary-red-600, #dc0a2b);
+}
+
+.ncua-input__wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.ncua-input__wrapper .ncua-input__content {
+    flex: 1;
+}
+
+
+/* =============================== */
+/* password-input 스타일 */
+/* =============================== */
+.ncua-input--sm.ncua-input-password .ncua-input__icon-wrap img {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* =============================== */
+/* textarea 스타일 */
+/* =============================== */
+
+.ncua-input--textarea textarea[readonly] {
+    background-color: var(--gray-50);
+    border-color: var(--gray-200);
+    white-space: pre-wrap;
+    color: var(--gray-300);
+}
+
+/* =============================== */
+/* input + 글자수 (100% 너비로 채우는 스타일) */
+/* =============================== */
+.ncua-input--full-width-with-count {
+    width: 100%;
+
+    .ncua-input__content-wrap {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .ncua-input__content {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .ncua-input__field {
+        width: 100%;
+    }
+
+    .ncua-input__field-text-count {
+        flex-shrink: 0;
+        min-width: 50px;
+        text-align: right;
+        white-space: nowrap;
+    }
+}

@@ -1,0 +1,680 @@
+/**
+ * 커스터마이징 현황 페이지 스타일
+ * Story 2B.1 — NCDS 디자인 토큰 사용, BEM prefix: ds-customization
+ */
+
+/* 에러 배너 wrapper (Story 7.2 — UX스펙 §2, DES-SPEC-027 §5.6) */
+.error-banner-wrapper {
+    cursor: pointer;
+    margin-bottom: var(--block-gap, 16px);
+    border: 1px solid var(--primary-red-300, #FF9FA5);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* NCDS 컴포넌트 자체 border 제거 — wrapper에서 통합 관리 (M1 이중 border 방지) */
+.error-banner-wrapper .ncua-message-notification {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* 스펙 Padding: 16px 16px 16px 24px (UX스펙 §2, H3) */
+.error-banner-wrapper .ncua-message-notification__container {
+    padding: 16px 16px 16px 24px;
+}
+
+/* 3열 그리드 — summary-grid */
+.ds-customization__summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 16px 24px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* insight-frame 래퍼 */
+.ds-customization__insight-frame {
+    border-radius: 12px;
+    border: 1px solid var(--gray-100);
+    background: var(--base-white);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-self: stretch;
+    margin-bottom: var(--block-gap, 16px);
+    overflow: visible;
+}
+
+.ds-customization__frame-header {
+    padding: 10px 24px;
+    width: 100%;
+    border-bottom: 1px solid var(--gray-100);
+    box-sizing: border-box;
+}
+
+.ds-customization__frame-title {
+    color: var(--gray-700);
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.ds-customization__frame-body {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 카드 공통 */
+.ds-customization__card {
+    display: flex;
+    flex-direction: column;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: 8px;
+    padding: 16px 24px;
+    min-height: 217px;
+    position: relative; /* Badge 절대 위치 기준 */
+}
+
+/* Badge: 카드 우측 상단 고정 (UX스펙 §3-3, DES-SPEC-033) */
+.ds-customization__badge-top-right {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+}
+
+/* 카드 헤더: label + tooltip + tag */
+.ds-customization__card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs, 4px);
+    margin-bottom: var(--spacing-s, 8px);
+}
+
+.ds-customization__card-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-600);
+}
+
+.ds-customization__card-header .ncua-tooltip {
+    display: flex;
+    align-items: center;
+}
+
+/* KPI 숫자 */
+.ds-customization__kpi-number {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* 카드 바디 */
+.ds-customization__card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s, 8px);
+}
+
+/* 스테이징 카드: callout 있을 때만 flex 여유 제거 — 생성중(callout 없음)은 flex:1 유지 */
+#cardStaging:has(.pw-staging-extend-notice) .ds-customization__card-body,
+#cardStaging:has(.ds-customization__callout-info) .ds-customization__card-body {
+    flex: none;
+}
+
+/* 카드 하단: border-top 실선 */
+.ds-customization__card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--spacing-s, 8px);
+    padding: 16px 0px 0px 0px;
+    border-top: 1px solid var(--gray-100);
+    min-height: 40px;
+    box-sizing: border-box;
+}
+
+/* 집계 주기 안내 문구 */
+.ds-customization__schedule-info {
+    color: var(--gray-400);
+    font-size: var(--font-size-xs, 12px);
+    margin-right: auto;
+}
+
+/* 서브 아이템 3분할 */
+.ds-customization__sub-items {
+    display: flex;
+    padding: 8px 12px;
+    background: var(--base-white);
+    border: 1px solid var(--gray-100);
+    border-radius: 6px;
+    height: 60px;
+    box-sizing: border-box;
+    margin-top: auto;
+    margin-bottom: 16px;
+}
+
+.ds-customization__sub-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs, 4px);
+    padding: 0;
+}
+
+.ds-customization__sub-item + .ds-customization__sub-item {
+    border-left: 1px solid var(--gray-100);
+}
+
+.ds-customization__sub-label {
+    font-size: 13px;
+    color: var(--gray-500);
+}
+
+.ds-customization__sub-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gray-700);
+}
+
+/* 버전 상태 */
+.ds-customization__version-status {
+    font-size: 13px;
+}
+
+.ds-customization__version-status--up-to-date {
+    color: var(--gray-500);
+}
+
+.ds-customization__version-status--needs-update {
+    color: var(--orange-600);
+}
+
+/* 스테이징 유효기간 */
+.ds-customization__staging-expiry {
+    font-size: 13px;
+    color: var(--gray-500);
+}
+
+.ds-customization__staging-expiry--warn {
+    color: var(--primary-red-600);
+}
+
+/* Story 1.1 — D-7 만료 임박 강조 BEM (UX Design Specification §BEM 클래스 명세) */
+.pw-staging-expire {
+    font-size: 13px;
+    color: var(--gray-500);
+    font-family: 'CommerceSans', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+}
+
+.pw-staging-expire--imminent {
+    color: var(--primary-red-600);
+}
+
+.pw-staging-expire--expired {
+    color: var(--gray-400);
+}
+
+/* 스테이징 안내 callout */
+.ds-customization__callout-info {
+    font-size: 13px;
+    color: var(--gray-400);
+    padding: var(--spacing-s, 8px);
+    background: var(--gray-50);
+    border-radius: 4px;
+    margin-top: auto;
+    margin-bottom: 16px;
+}
+
+/* 사용 중 callout — 위 gap(8)+margin(8)=16px, 아래 16px */
+.pw-staging-extend-notice {
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+/* 배포 현황 — 마지막 단계 */
+.ds-customization__deploy-last-step {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs, 4px);
+    font-size: 13px;
+    color: var(--gray-500);
+}
+
+/* step-icon: NCDS Dot 컴포넌트 사용 (ncua-dot--success / ncua-dot--error) */
+
+.ds-customization__step-label {
+    color: var(--gray-600);
+}
+
+.ds-customization__step-time {
+    color: var(--gray-400);
+    margin-left: auto;
+}
+
+/* 배포 prompt 텍스트 */
+.ds-customization__deploy-prompt {
+    font-size: 13px;
+    margin-right: auto;
+}
+
+/* 스피너: NCDS Spinner 컴포넌트 사용 (ncua-spinner--xs) */
+
+
+/* ============================================================
+ * Story 2B.4: 업데이트 영역 + 맞춤 지원 서비스
+ * ============================================================ */
+
+/* 업데이트 영역 — 단일 전체 너비 블록 (업데이트 1개만 존재) */
+.ds-customization__update-blocks {
+    display: block;
+    margin-bottom: var(--block-gap, 16px);
+}
+
+/* margin 없는 insight-frame (update-blocks 내부 — 외부 gap으로 간격 처리) */
+.ds-customization__insight-frame--no-margin {
+    margin-bottom: 0;
+}
+
+/* frame-header — action 버튼 포함 시 flex 레이아웃 */
+.ds-customization__frame-header--action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* 업데이트 Block 내부 frame-body 패딩 */
+.ds-customization__frame-body--padded {
+    padding: 8px 24px;
+}
+
+/* 업데이트 리스트 */
+.ds-customization__update-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.ds-customization__update-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-s, 8px);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.ds-customization__update-item:last-child {
+    border-bottom: none;
+}
+
+.ds-customization__update-title-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs, 4px);
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.ds-customization__update-title {
+    font-size: 13px;
+    color: var(--gray-700);
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ds-customization__update-title:hover {
+    color: var(--gray-700);
+    text-decoration: underline;
+    text-decoration-color: var(--gray-700);
+}
+
+.ds-customization__update-date {
+    font-size: var(--font-size-xs, 12px);
+    color: var(--gray-400);
+}
+
+/* 맞춤 지원 서비스 5열 그리드 */
+.ds-customization__support-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+/* 지원 카드 */
+.ds-customization__support-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    padding: 20px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--gray-100);
+    background: var(--base-white);
+    text-decoration: none;
+    cursor: pointer;
+    transition: box-shadow 0.15s, border-color 0.15s;
+    box-shadow: var(--shadow-xs);
+}
+
+.ds-customization__support-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--gray-300);
+    text-decoration: none;
+}
+
+.ds-customization__support-card-title {
+    font-size: var(--font-size-s, 14px);
+    font-weight: 700;
+    color: var(--gray-700);
+}
+
+.ds-customization__support-card-desc {
+    font-size: var(--font-size-xs, 12px);
+    color: var(--gray-400);
+}
+
+.ds-customization__support-card-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+/* -------------------------------------------------------------------------
+ * 스테이징 서버 신청 모달 (Story 1B.3) — 커스텀 콘텐츠 영역만
+ * 모달 컨테이너/오버레이/헤더/푸터는 NCDS Modal 컴포넌트 사용
+ * ------------------------------------------------------------------------- */
+
+/* 오류 모달 본문 */
+.ds-stg-modal__error-body {
+    font-size: var(--font-size-s, 14px);
+    color: var(--gray-600);
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* 4D/4E 사유/참고 테이블 */
+.ds-stg-modal__reason {
+    text-align: left;
+    background: var(--gray-50, #F9FAFB);
+    border-radius: 6px;
+    padding: var(--spacing-s, 8px) var(--spacing-m, 16px);
+    font-size: var(--font-size-xs, 12px);
+    color: var(--gray-600, #4B5563);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ds-stg-modal__reason-row {
+    display: flex;
+    gap: var(--spacing-s, 8px);
+}
+
+.ds-stg-modal__reason-label {
+    font-weight: 600;
+    flex-shrink: 0;
+    min-width: 72px;
+}
+
+/* 신청 모달 내부 콘텐츠 래퍼 (ncua-modal__content 내부) */
+.ds-stg-modal__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-m, 16px);
+}
+
+/* 3열 그리드 안내 */
+.ds-stg-modal__guide-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-m, 16px);
+}
+
+.ds-stg-modal__guide-card {
+    background: var(--blue-100, #DBE9FE);
+    border: 1px solid var(--blue-200, #BFDBFE);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ds-stg-modal__guide-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1849A9;
+}
+
+.ds-stg-modal__guide-desc {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--gray-700, #374151);
+    line-height: 1.7;
+}
+
+/* 유효기간 정책 — Informational §1.1 인라인 안내 (Gray/400 + ㆍ 블릿) */
+.ds-stg-modal__bottom-notice {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--gray-400);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.ds-stg-modal__bottom-notice strong {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gray-700);
+}
+.ds-stg-modal__bottom-notice ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.ds-stg-modal__bottom-notice li {
+    position: relative;
+    padding-left: 12px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--gray-400);
+    line-height: 1.7;
+}
+.ds-stg-modal__bottom-notice li::before {
+    content: "ㆍ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--gray-400);
+}
+
+/* 유효기간 정책 */
+.ds-stg-modal__policy {
+    font-size: var(--font-size-s, 14px);
+    color: var(--gray-700, #374151);
+}
+
+.ds-stg-modal__policy-title {
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs, 4px);
+}
+
+.ds-stg-modal__policy-list {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* 사용 전 안내 스크롤 영역 */
+.ds-stg-modal__terms-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s, 8px);
+}
+
+.stg-apply__terms-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gray-700);
+    margin-bottom: 8px;
+}
+
+.ds-stg-modal__terms-scroll {
+    max-height: 120px;
+    overflow-y: auto;
+    border: 1px solid var(--gray-200, #E5E7EB);
+    border-radius: 6px;
+    padding: var(--spacing-s, 8px) var(--spacing-m, 16px);
+    font-size: var(--font-size-xs, 12px);
+    color: var(--gray-700, #374151);
+    line-height: 1.7;
+    background: var(--gray-50, #F9FAFB);
+}
+
+/* 동의 체크박스 */
+.ds-stg-modal__agree {
+    padding-top: var(--spacing-xs, 4px);
+}
+
+.ds-stg-modal__agree-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs, 4px);
+    cursor: pointer;
+    font-size: var(--font-size-s, 14px);
+    color: var(--gray-700);
+}
+
+.ds-stg-modal__agree-required {
+    color: var(--primary-red-500);
+    font-weight: 600;
+}
+
+/* ncds-callout (공통CSS §5) */
+.ncds-callout { width: 100%; padding: 8px 12px; border-radius: 6px; font-size: 13px; font-weight: 400; line-height: 1.385em; }
+.ncds-callout--info { background: #F5FAFF; border: 1px solid #B2DDFF; color: #1849A9; }
+
+/* 스테이징 신청 모달 TOBE 가이드 카드 (일러스트 + 텍스트) */
+.staging-tobe__guide-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.staging-tobe__guide-image {
+    background: var(--blue-100);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.staging-tobe__guide-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.staging-tobe__guide-body {
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.staging-tobe__guide-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gray-700);
+    line-height: 22px;
+}
+
+.staging-tobe__guide-desc {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--gray-400);
+    line-height: 18px;
+}
+
+/* 스테이징 신청 모달 TOBE 사용 전 안내 + 유효기간 통합 영역 */
+.staging-tobe__notice-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.staging-tobe__notice-subheading {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gray-700);
+    line-height: 22px;
+    margin: 0;
+}
+
+.staging-tobe__notice-textarea {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 12px 14px;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+    font-size: 13px;
+    color: var(--gray-400);
+    line-height: 18px;
+    height: 120px;
+    overflow-y: auto;
+}
+
+.staging-tobe__notice-textarea strong {
+    font-weight: 700;
+    display: block;
+    margin: 0;
+}
+
+.staging-tobe__notice-textarea ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.staging-tobe__notice-textarea p {
+    margin: 0;
+}
+
+.staging-tobe__notice-textarea .spacer {
+    height: 18px;
+}
+
+/* CDN에 ncua-modal__actions--end 모디파이어가 없어 우측정렬 직접 지정 */
+#modalStagingApply .ncua-modal__actions {
+    justify-content: flex-end;
+}

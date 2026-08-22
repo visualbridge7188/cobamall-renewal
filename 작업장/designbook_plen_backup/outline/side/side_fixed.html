@@ -1,0 +1,84 @@
+{*** 우측 고정 바 | main/index.php ***}
+<link type="text/css" rel="stylesheet" href="../../_dbook/css/side_fixed.css" />
+<script type="text/javascript" src="../../_dbook/js/side_fixed.js"></script>
+
+<!-- 우측 고정 바 -->
+<div class="side-fixed">
+	<div>
+		<!--{ @dataBanner('3448901275') }-->{.tag}<!--{ / }-->
+	</div>
+	<ul class="side-menu">
+		<li><a href="../board/list.php?bdId=event">이벤트</a></li>
+		<li><a href="../mypage/index.php">마이페이지</a></li>
+		<li><a href="../board/list.php?bdId=notice">공지사항</a></li>
+		<li><a href="../mypage/order_list.php">주문/배송</a></li>
+		<li><a href="../board/list.php?bdId=qa">문의하기</a></li>
+		<li><a href="../order/cart.php">장바구니</a></li>
+		<li><a href="../board/list.php?bdId=goodsreview">상품후기</a></li>
+		<li><a href="../mypage/wish_list.php">관심상품</a></li>
+		<li><a href="../service/index.php">고객센터</a></li>
+		<li><a href="../mypage/index.php">최근본상품</a></li>
+	</ul>
+	<div class="side-info">
+		<div module="Layout_Info">
+			<h3>친절한 상담전화</h3>
+			<strong>{gMall.centerPhone}</strong>
+			<p>{=nl2br(gMall.centerHours)}</p>
+		</div>
+		<div>
+			<h3>무통장입금계좌</h3>
+			<p>신한은행</p>
+			<strong>012-3456-78910</strong>
+			<p>국민은행</p>
+			<strong>012-3456-78910</strong>
+			<p>{=__('예금주')} : 디자인교과서</p>
+		</div>
+	</div>
+	<ul class="side-control">
+		<li class="side-home">
+			<span class="name slowTsn">홈으로</span>
+			<a href="/"><img src="../../_dbook/img/common/quick_btn_home.png" alt=""/></a>
+		</li>
+		<li>
+			<span class="name slowTsn">위로</span>
+			<p class="top-btn"><img src="../../_dbook/img/common/quick_btn_top.gif" alt=""/></p>
+		</li>
+		<li>
+			<span class="name slowTsn">아래로</span>
+			<p class="down-btn"><img src="../../_dbook/img/common/quick_btn_down.gif" alt=""/></p>
+		</li>
+		<li>
+			<span class="name slowTsn">마이페이지</span>
+			<a href="../mypage/index.php"><img src="../../_dbook/img/common/quick_menu1.gif" alt=""/></a>
+		</li>
+		<li>
+			<span class="name slowTsn">즐겨찾기</span>
+			<a href="javascript:bookmarksite('디자인교과서','http://design-book.co.kr');"><img src="../../_dbook/img/common/quick_menu2.gif" alt="즐겨찾기"></a>
+		</li>
+		<li>
+			<span class="name slowTsn">장바구니</span>
+			<a href="../order/cart.php"><img src="../../_dbook/img/common/quick_menu3.gif" alt=""/></a>
+		</li>
+		<li>
+			<span class="name slowTsn">페이스북</span>
+			<a href="https://www.facebook.com/" target="_blank"><img src="../../_dbook/img/common/quick_sns1.gif" alt=""/></a>
+		</li>
+		<li>
+			<span class="name slowTsn">인스타그램</span>
+			<a href="https://www.instagram.com" target="_blank"><img src="../../_dbook/img/common/quick_sns2.gif" alt=""/></a>
+		</li>
+		<li>
+			<span class="name slowTsn">카카오스토리</span>
+			<a href="https://accounts.kakao.com/login/kakaostory" target="_blank"><img src="../../_dbook/img/common/quick_sns3.gif" alt=""/></a>
+		</li>
+		<li>
+			<span class="name slowTsn">트위터</span>
+			<a href="https://twitter.com" target="_blank"><img src="../../_dbook/img/common/quick_sns4.gif" alt=""/></a>
+		</li>
+		<li>
+			<span class="name slowTsn">퀵메뉴</span>
+			<p class="side-btn-close"><img src="../../_dbook/img/common/quick_btn_close.gif" alt="" /></p>
+		</li>		
+	</ul>	
+</div>
+<!--// 우측 고정 바 -->

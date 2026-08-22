@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+}
+
+.present-expired {
+    padding-block-start: 60px;
+    min-height: calc(100vh - 60px);
+    background-color: #f7f7f7;
+}
+
+.present-expired-content {
+    margin: 0 auto 60px;
+    width: 627px;
+    text-align: center;
+    font-family: pretendard, sans-serif;
+}
+
+.present-expired-content-text {
+    margin-block-end: 20px;
+    padding-block: 140px 30px;
+    padding-inline: 74px;
+    background: #fff url(../../img/present/lock.png) no-repeat center 30px / 90px 90px;
+    color: #333;
+    font-size: 18px;
+}
+
+.present-expired-content-text p {
+    margin: 0;
+}
+
+.present-expired-content-text p:first-child {
+    margin-block-end: 5px;
+    padding-block-start: 20px;
+    border-block-start: 1px solid #eaeaea;
+    font-weight: bold;
+}
+
+.present-expired-link {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    font-family: inherit;
+    padding-block: 14px;
+    background-color: #3e3d3c;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* ===================== */
+/* 반응형 (768px 이하) */
+/* ===================== */
+@media (max-width: 768px) {
+    .present-expired { padding-inline: 15px; height: calc(100vh - 60px); }
+    .present-expired-content { width: 100%; margin: 0; box-sizing: border-box; }
+    .present-expired-content-text { margin-block-end: 30px; padding-block: 140px 30px; padding-inline: 15px; font-size: 14px; }
+    .present-expired-content-text p { font-size: 14px; }
+    .present-expired-content-text p:first-child { font-size: 15px; }
+    .present-expired-link { font-size: 14px; padding-block: 10px; }
+}

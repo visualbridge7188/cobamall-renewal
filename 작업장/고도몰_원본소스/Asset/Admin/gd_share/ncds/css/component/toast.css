@@ -1,0 +1,36 @@
+/* =============================== */
+/* NCDS Toast */
+/* =============================== */
+#ncds-toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    pointer-events: none;
+}
+
+#ncds-toast-container > * {
+    pointer-events: auto;
+    position: relative;
+}
+
+/* Toast 살짝 겹치기 */
+#ncds-toast-container > * + * {
+    margin-top: -12px;
+}
+
+/* 최근 Toast가 위에 보이도록 z-index 설정 */
+#ncds-toast-container > *:nth-child(1) { z-index: 100; }
+#ncds-toast-container > *:nth-child(2) { z-index: 99; }
+#ncds-toast-container > *:nth-child(3) { z-index: 98; }
+#ncds-toast-container > *:nth-child(4) { z-index: 97; }
+#ncds-toast-container > *:nth-child(5) { z-index: 96; }
+#ncds-toast-container > *:nth-child(6) { z-index: 95; }
+#ncds-toast-container > *:nth-child(7) { z-index: 94; }
+#ncds-toast-container > *:nth-child(8) { z-index: 93; }
+#ncds-toast-container > *:nth-child(9) { z-index: 92; }
+#ncds-toast-container > *:nth-child(10) { z-index: 91; }
+

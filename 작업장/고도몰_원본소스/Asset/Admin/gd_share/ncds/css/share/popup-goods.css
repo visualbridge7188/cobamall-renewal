@@ -1,0 +1,311 @@
+
+/* =============================== */
+/* 상품 선택, 등록 상품 리스트 wrapper 스타일 */
+/* =============================== */
+.ncua-popup-goods {
+    padding: 24px 24px 106px;
+}
+
+.ncua-popup-goods__content {
+    display: flex;
+    gap: 40px;
+}
+
+
+/* =============================== */
+/* 상품 좌우 이동 액션 */
+/* =============================== */
+.ncua-popup-goods__select-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+
+    .ncua-btn {
+        overflow: hidden;
+        width: 56px;
+        background: #fff url('../../image/chevron-right.png') no-repeat center center / 20px 20px;
+        text-indent: -9999em;
+    }
+
+    li:last-child .ncua-btn {
+        transform: rotate(180deg);
+    }
+}
+
+.ncua-popup-goods__footer {
+    position: fixed;
+    z-index: 5;
+    inset: auto 0 0; 
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 16px 20px;
+    border-block-start: 1px solid var(--gray-100);
+    background-color: var(--base-white);
+}
+
+.ncua-popup-goods__title {
+    margin-block: 0 8px;
+    font-weight: var(--font-weights-commerce-sans-1);
+    font-size: var(--font-size-md);
+    line-height: var(--line-heights-md);
+}
+
+.ncua-goods-select,
+.ncua-add-goods {
+    width: clamp(574px, 100%, 868px);
+    flex: 1 1 auto; 
+    min-width: 574px;
+}
+
+/* =============================== */
+/* 상품 선택 스타일 */
+/* =============================== */
+.ncua-goods-select .ncua-table--vertical th {
+    width: 144px;
+}
+
+.ncua-goods-select .ncua-table th > div,
+.ncua-goods-select .ncua-table td > div {
+    flex-wrap: wrap;
+}
+
+.ncua-goods-select .ncua-search-result .ncua-table td > div {
+    gap: 4px;
+}
+
+.ncua-goods-select-supplies-container {
+    align-items: flex-start !important;
+    gap: 8px;
+}
+
+.ncua-goods-select-supplies-choice {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.ncua-goods-select-supplies-choice .ncua-combobox {
+    flex: 1;
+    min-width: auto;
+    max-width: 320px;
+    width: 100%;
+}
+
+.ncua-goods-select-supplies {
+    flex: none;
+    display: flex;
+}
+
+.ncua-goods-select .ncua-btn-group {
+    position: relative;
+    margin-block-start: 8px;
+}
+
+.ncua-goods-select-keyword {
+    flex-wrap: nowrap !important;
+    gap: 4px;
+}
+
+.ncua-goods-select-keyword .ncua-input {
+    width: 100%;
+    max-width: 320px;
+}
+
+.ncua-goods-select .ncua-table--vertical:has(tbody[style="display: table-row-group;"]) tbody:first-child tr:last-child th {
+    border-bottom-left-radius: 0;
+}
+
+.ncua-goods-select .ncua-table--vertical tbody[style] th,
+.ncua-goods-select .ncua-table--vertical tbody[style] td {
+    border-block-start: 1px solid var(--gray-100);
+}
+
+.ncua-goods-select .ncua-table--vertical:has(tbody[style="display: table-row-group;"]) tbody:last-child tr:first-child th {
+    border-top-left-radius: 0;
+}
+
+.ncua-goods-select .ncua-goods-select-category,
+.ncua-goods-select .ncua-goods-select-brand {
+    gap: 16px;
+}
+
+.ncua-goods-select-groups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.ncua-goods-select-date {
+    gap: 12px;
+}
+
+.ncua-goods-select-price {
+    gap: 8px;
+
+    .ncua-input__content {
+        align-items: center;
+        gap: 8px;
+        color: var(--gray-700);
+    }
+
+    .ncua-input__field {
+        width: 80px;
+    }
+}
+
+/* 상세 검색 펼침 */
+.ncua-goods-select .ncua-btn-group .ncua-btn--toggle {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* 검색 결과 */
+.ncua-goods-select .ncua-search-result__actions {
+    justify-content: flex-end;
+    gap: 4px;
+} 
+
+.ncua-goods-select .ncua-search-result__actions select {
+    border: none;
+}
+
+.ncua-goods-select-product-name {
+    justify-content: flex-start !important;
+}
+
+.ncua-goods-select-product-name a {
+    text-decoration: underline;
+}
+
+/* =============================== */
+/* 상품 선택 모달만 떴을 때 window 스타일 */
+/* =============================== */
+.ncds.article-write .modal #content {
+    margin: 0;
+    border-left: none;
+}
+
+.ncds.share.popup-goods #content > .col-xs-12 {
+    padding: 0;
+}
+
+
+.ncds.article-write .modal [name="ifrmProcess"],
+.ncds.share.popup-goods [name="ifrmProcess"] {
+    display: none !important;
+}
+
+.ncds.article-write .modal .ncua-popup-goods__footer {
+    position: absolute;
+}
+
+
+/* =============================== */
+/* 등록 상품 스타일 */
+/* =============================== */
+.ncua-add-goods {
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.ncua-add-goods .ncua-search-result {
+    margin-block-start: 0;
+    height: 100%;
+}
+
+.ncua-add-goods .ncua-search-result__content {
+    height: 100%;
+}
+
+
+.ncua-add-goods-form {
+    height: calc(100% - 88px); /* 100% - 상단 하단 action 버튼 영역 높이 */
+}
+
+.ncua-add-goods .ncua-table #tbl_add_goods_result td:nth-child(4) {
+    text-align: center;
+}
+
+/* 위치 이동 버튼 스타일 */
+/* 다른 곳에서도 사용시 component/ 로 옮기기 */
+.ncua-sequence-btns {
+    .ncua-button-group__item {
+        overflow: hidden;
+        width: 28px;
+        height: 28px;
+        text-indent: -9999em;
+        
+        &::before {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            content: '';
+            width: 16px;
+            height: 16px;
+            background-repeat: no-repeat;
+            background-size: 16px 16px;
+            background-position: center center;
+            background-color: transparent;
+        }
+    }
+
+    .ncua-button-group__item:first-child::before {
+        background-image: url('../../image/chevron-down-double.png');
+    }
+    .ncua-button-group__item:nth-child(2)::before {
+        background-image: url('../../image/chevron-up-gray.png');
+    }
+    .ncua-button-group__item:nth-child(3)::before {
+        background-image: url('../../image/chevron-up-gray.png');
+    }
+    .ncua-button-group__item:last-child::before {
+        background-image: url('../../image/chevron-down-double.png');
+    }
+
+
+    .ncua-button-group__item:nth-child(2)::before,
+    .ncua-button-group__item:last-child::before {
+        transform: translate(-50%, -50%) rotate(180deg);
+    }
+}
+
+.ncua-add-goods__sequence-actions {
+    display: flex;
+    align-items: center;
+    
+    .ncua-input {
+        width: 80px;
+        margin-inline: 8px;
+    }
+
+    .ncua-btn:first-of-type {
+        margin-inline: 8px;
+    }
+
+}
+
+/* =============================== */
+/* 테이블 스타일 (상품 선택, 등록 상품 리스트) */
+/* =============================== */
+.ncua-goods-select .ncua-table #goodsRegisteredTrArea th,
+.ncua-goods-select .ncua-table #goodsRegisteredTrArea td,
+.ncua-add-goods .ncua-table #goodsRegisteredTrArea th {
+    width: auto;
+}
+
+.ncua-goods-select .ncua-table #goodsRegisteredTrArea th:first-child,
+.ncua-goods-select .ncua-table #goodsRegisteredTrArea td:first-child,
+.ncua-add-goods .ncua-table #goodsRegisteredTrArea th:first-child {
+    width: 56px;
+}
+
+.ncua-goods-select .ncua-table #goodsRegisteredTrArea th:nth-child(2),
+.ncua-goods-select .ncua-table #goodsRegisteredTrArea td:nth-child(2),
+.ncua-add-goods .ncua-table #goodsRegisteredTrArea th:nth-child(2) {
+    text-align: center;
+}

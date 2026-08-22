@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* CSS Document */
+/**
+ * custom css 입니다. 추가적인 css 는 여기에 작성을 해주세요.
+ */
+
+/* iOS Safari workaround: background-attachment: fixed 대체 구현
+ * iOS Safari는 background-attachment: fixed를 의도적으로 비활성화 (WebKit Bug #275247)
+ * position: fixed + clip-path: inset(0) 조합으로 동일한 시각 효과 구현
+ * !important: main.css가 unlayered, custom.css가 layer(vendors)로 로드되어 cascade 우선순위 역전 보정 */
+.nde-o-section--container:has(.nde-c-section-bg--fixed) {
+  clip-path: inset(0) !important;
+}
+.nde-c-section-bg--fixed {
+  background-attachment: scroll !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100svh !important;
+  z-index: 0 !important;
+}
+/* clip-path가 생성하는 stacking context로 인해 document order 상
+ * 뒤에 위치하는 body 섹션이 header 위에 그려지는 문제 방지
+ * 공지 배너 섹션에 별도 stacking context 부여 */
+.nde-o-section:has(.nde-o-section-announcement) {
+  position: relative !important;
+  z-index: 1 !important;
+}
+

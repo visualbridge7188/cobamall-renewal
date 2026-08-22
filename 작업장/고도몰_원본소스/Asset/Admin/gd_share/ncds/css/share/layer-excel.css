@@ -1,0 +1,117 @@
+.ncds .layer-excel,
+.ncds .download-reason {
+    .notice-list li {
+        position: relative;
+        padding-left: 16px;
+        color: var(--gray-400);
+        font-size: var(--font-size-xs);
+
+        &::before {
+            content: '\2022';
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        a, button {
+            color: var(--blue-500);
+            font-weight: var(--font-weights-commerce-sans-1);
+            text-decoration: none;
+            background-color: transparent;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .notice-list li.caution {
+        color: var(--primary-red-500);
+    }
+
+    .notice-list li + li {
+        margin-top: 5px;
+    }
+}
+
+.ncds .layer-excel {
+    .radio-group,
+    .select-group {
+        width: 100%;
+        display: flex;
+    }
+
+    .excel-file-count-wrap,
+    .password-use-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .excel-file-count-wrap .ncua-input__content + div {
+        font-size: var(--font-size-xs);
+    }
+
+    .table-bottom-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 8px 0 24px;
+    }
+
+    .js-layer-tooltip {
+        background-color: transparent;
+    }
+
+    .ncua-table--horizontal tbody tr td {
+        text-align: center;
+    }
+}
+
+.ncds .excel-download-guide {
+    .modal-body {
+        padding: 20px;
+        border-top: 1px solid var(--gray-100);
+    }
+
+    .bootstrap-dialog-footer-buttons {
+        text-align: right;
+    }
+
+    .btn-black {
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weights-commerce-sans-2);
+        border-radius: 6px;
+        height: var(--button-height-sm);
+        line-height: var(--line-heights-sm);
+        padding: 7px 14px;
+        background-color: var(--base-white);
+        border: 1px solid var(--gray-200);
+        box-shadow: var(--shadow-xs);
+        color: var(--gray-700);
+    }
+}
+
+.ncds .download-reason {
+    .ncua-table + .notice-list {
+        margin-top: 16px;
+    }
+
+    .bootstrap-dialog-footer-buttons {
+        text-align: right;
+    }
+
+    .btn-black {
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weights-commerce-sans-2);
+        border-radius: 6px;
+        height: var(--button-height-sm);
+        line-height: var(--line-heights-sm);
+        padding: 7px 14px;
+        background-color: var(--primary-red-450);
+        border: 1px solid var(--primary-red-500);
+        box-shadow: var(--shadow-xs);
+        color: var(--base-white);
+    }
+}

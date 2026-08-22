@@ -1,0 +1,26 @@
+.ncua-file-tags {
+    padding: 12px 8px;
+    margin-block-start: 6px;
+    width: 100%;
+    background-color: var(--gray-50);
+
+    &:empty {
+        display: none;
+    }
+
+    .ncua-file-tags__content + .ncua-file-tags__content {
+        margin-block-start: 6px;
+    }
+}
+
+.ncua-file-tags__content {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ncua-file-tags img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+}

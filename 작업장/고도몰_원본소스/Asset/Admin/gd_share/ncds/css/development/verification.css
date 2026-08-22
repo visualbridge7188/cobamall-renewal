@@ -1,0 +1,412 @@
+/**
+ * 소스 검증 페이지 스타일 — Story 1B.1
+ * BEM prefix: ds-ver (dev-source verification)
+ * NCDS 컴포넌트: button, badge, modal, spinner, empty-state, notification, featured-icon
+ * 커스텀 영역: block-container, stat-grid, accordion — NCDS 토큰 사용
+ * Story 1B.3: ds-stg-modal 클래스는 customizing_info.css에서 정의됨 (verification.php에서 로드)
+ *
+ * Spacing fallback: CDN 1.5 토큰명(--spacing-md 등)과 CDN 1.6 토큰명(--spacing-m 등)이
+ * 다르므로 var(1.6, var(1.5, px)) 형태로 호환 처리
+ */
+@import url('../../css/development/customizing_info.css');
+
+/* 페이지 타이틀 + 헤더 액션 (DES-SPEC-053 Action Hierarchy) */
+.ds-ver__page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-m, var(--spacing-xl, 16px));
+}
+
+.ds-ver__page-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gray-700);
+    margin: 0;
+}
+
+.ds-ver__header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-s, var(--spacing-md, 8px));
+}
+
+/* 파일 단위 오류 리스트 */
+.ds-ver__list {
+    border: 1px solid var(--gray-100);
+    border-radius: 8px;
+    background: var(--base-white);
+    overflow: hidden;
+}
+
+.ds-ver__list-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-s, var(--spacing-md, 8px));
+    padding: 12px var(--spacing-l, 24px);
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.ds-ver__list-item:last-child {
+    border-bottom: none;
+}
+
+.ds-ver__file-path {
+    flex: 1;
+    font-size: 13px;
+    color: var(--gray-700);
+    font-family: monospace;
+}
+
+.ds-ver__error-count {
+    font-size: 12px;
+    color: var(--gray-400);
+    white-space: nowrap;
+}
+
+.ds-ver__empty {
+    padding: var(--spacing-l, 24px);
+    font-size: 13px;
+    color: var(--gray-400);
+    text-align: center;
+}
+
+.ds-ver__verify-spinner {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs, 4px);
+    font-size: 12px;
+    color: var(--gray-400);
+}
+
+
+/* 검증 완료 안내 텍스트 (스테이징 전용, 헤더 버튼 영역 인라인 표시) */
+.ds-ver__deploy-prompt {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs, 4px);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green-700);
+}
+
+/* 검증 상세 모달 부제 (NCDS modal 내부 커스텀 영역) */
+.ds-ver__modal-subtitle {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-top: 2px;
+}
+
+/* 오류 모달 본문 */
+.ds-ver__error-body {
+    font-size: 14px;
+    color: var(--gray-500);
+    text-align: left;
+}
+
+/* 상세 테이블 (NCDS에 table 컴포넌트 없으므로 커스텀, 토큰 사용) */
+.ds-ver__detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.ds-ver__detail-table th {
+    text-align: left;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--gray-400);
+    background: var(--gray-50);
+    padding: 10px var(--spacing-m, var(--spacing-xl, 16px));
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.ds-ver__detail-table td {
+    padding: 12px var(--spacing-m, var(--spacing-xl, 16px));
+    border-bottom: 1px solid var(--gray-100);
+    color: var(--gray-700);
+    vertical-align: top;
+}
+
+.ds-ver__detail-table tr:last-child td {
+    border-bottom: none;
+}
+
+.ds-ver__td-line {
+    width: 60px;
+    font-weight: 600;
+    color: var(--gray-500);
+    white-space: nowrap;
+}
+
+.ds-ver__td-name {
+    width: 200px;
+    font-weight: 600;
+    font-family: monospace;
+    word-break: break-all;
+}
+
+.ds-ver__td-msg {
+    color: var(--gray-600);
+}
+
+/* ── 블록 컨테이너 (검증 현황, 검증 결과) ── */
+.ds-ver__block {
+    border: 1px solid var(--gray-100);
+    border-radius: 12px;
+    background: var(--base-white);
+    overflow: hidden;
+}
+
+.ds-ver__block--container {
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+}
+
+.ds-ver__block-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 24px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gray-700);
+    line-height: 24px;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.ds-ver__block-body {
+    padding: var(--spacing-m, var(--spacing-xl, 16px)) var(--spacing-l, 24px);
+}
+
+.ds-ver__block-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gray-700);
+    line-height: 24px;
+}
+
+.ds-ver__block-subtitle {
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    color: var(--gray-400);
+    margin-top: 2px;
+}
+
+.ds-ver__block-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-s, var(--spacing-md, 8px));
+}
+
+/* ── 통계 그리드 (파일 수 / 함수 수 / 클래스 수) ── */
+.ds-ver__stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-m, var(--spacing-xl, 16px));
+}
+
+.ds-ver__stat-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: 8px;
+    padding: var(--spacing-m, var(--spacing-xl, 16px));
+    text-align: left;
+}
+
+.ds-ver__stat-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray-400);
+    margin-bottom: var(--spacing-xs, 4px);
+}
+
+.ds-ver__stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gray-700);
+    line-height: 32px;
+}
+
+.ds-ver__stat-info {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-top: var(--spacing-s, var(--spacing-md, 8px));
+}
+
+/* ── 아코디언 (파일 단위 오류 리스트) ── */
+.ds-ver__accordion {
+    /* 컨테이너 */
+}
+
+.ds-ver__accordion-item {
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.ds-ver__accordion-item:last-child {
+    border-bottom: none;
+}
+
+.ds-ver__accordion-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-s, var(--spacing-md, 8px));
+    padding: 12px var(--spacing-l, 24px);
+}
+
+/* ── 안내 블록 (하단 4개 항목) ── */
+.ds-ver__info-block {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: var(--spacing-m, var(--spacing-xl, 16px)) var(--spacing-l, 24px);
+}
+
+.ds-ver__info-line {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-xs, 4px);
+    font-size: 13px;
+    color: var(--gray-500);
+    line-height: 1.6;
+}
+
+.ds-ver__info-line + .ds-ver__info-line {
+    margin-top: var(--spacing-xs, 4px);
+}
+
+.ds-ver__info-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    color: var(--gray-400);
+    margin-top: 2px;
+}
+
+/* ── DataGrid 검증 결과 테이블 (DES-SPEC-046) ── */
+.ds-ver__search-summary {
+    font-size: 13px;
+    color: var(--gray-500);
+    margin-bottom: 8px;
+}
+
+.ds-ver__search-summary strong {
+    font-weight: 700;
+    color: #EC1D31;
+}
+
+.table-outer {
+    border: 1px solid var(--gray-100);
+    border-radius: 8px;
+    box-shadow: var(--shadow-xs);
+    overflow: hidden;
+}
+
+.verify-grid {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13px;
+}
+
+.verify-grid thead tr {
+    background: var(--gray-100);
+}
+
+.verify-grid thead th {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray-500);
+    padding: 10px 16px;
+    text-align: center;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.verify-grid thead th:not(:last-child) {
+    border-right: 1px solid var(--gray-200);
+}
+
+.verify-grid tbody td {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--gray-700);
+    padding: 12px 16px;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.verify-grid tbody td:not(:last-child) {
+    border-right: 1px solid var(--gray-100);
+}
+
+.verify-grid tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.verify-grid tbody tr:hover td {
+    background: var(--gray-50);
+}
+
+/* ── 배포 유도 문구 블록 (스테이징 전용, DES-SPEC-003) ── */
+.verify-deploy-prompt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 16px 24px;
+    background: var(--base-white);
+    border: 1px solid var(--gray-100);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--green-700);
+}
+
+.verify-deploy-prompt__icon {
+    flex-shrink: 0;
+    color: var(--green-500);
+}
+
+#verificationDetailModal {
+    justify-content: flex-end;
+}
+
+/* 하단 안내 */
+.bottom-guide {
+    margin-top: 16px;
+}
+
+.bottom-guide__header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.bottom-guide__header-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    background: url(../../image/annotation-info.svg) no-repeat center;
+    background-size: contain;
+}
+
+.bottom-guide__header-title {
+    font-weight: var(--font-weights-commerce-sans-2, 700);
+}
+
+.bottom-guide__item-body {
+    font-size: var(--font-size-xxs, 12px);
+    line-height: var(--line-height-xxs, 16px);
+}
+
+/* outline destructive 버튼 — NCUA에 없는 variant를 secondary-gray 기반으로 구현 */
+.src-viewer__btn--destructive-outline {
+    border-color: var(--primary-red-600) !important;
+    color: var(--primary-red-600) !important;
+}
+.src-viewer__btn--destructive-outline:hover {
+    background: var(--primary-red-50) !important;
+}
+

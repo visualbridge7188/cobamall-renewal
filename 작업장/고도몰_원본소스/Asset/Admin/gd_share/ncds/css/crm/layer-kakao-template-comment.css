@@ -1,0 +1,17 @@
+/* 카카오 알림톡 템플릿 검수 답변 */
+.modal-dialog {
+    width: 760px;
+}
+
+.layer_kakao_template_comment {
+    background-color: var(--gray-50);
+
+    .ncua-input--textarea textarea[readonly] {     
+        background-color: var(--base-white);
+        color: var(--gray-700);
+        resize: none;
+        min-height: 0 !important;
+        overflow-y: auto;
+        box-sizing: border-box;
+    }
+}

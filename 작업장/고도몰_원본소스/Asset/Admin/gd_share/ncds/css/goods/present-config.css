@@ -1,0 +1,98 @@
+.present-config {
+    #content {
+        background-color: var(--gray-50);
+    }
+    .present-config__gift-card-table .ncua-table {
+        max-height: 565px;
+        overflow-y: auto;
+
+        thead {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        thead > tr > th {
+            border-block-end: 0 ;
+            border-inline-start: 0;
+            box-shadow: 
+            inset 1px 0px 0px 0px var(--gray-200, #d3d4d8),
+            inset 0px -1px 0 0 var(--gray-200, #d3d4d8);
+        }
+
+        thead > tr > th:first-child {
+            box-shadow: inset 0px -1px 0 0 var(--gray-200, #d3d4d8);
+        }
+
+        tr:first-child td {
+            border-block-start: 0;
+        }
+    }
+    
+    .present-config__gift-card-message {
+        .ncua-input:has(.destructive) {
+            align-items: flex-start;
+        }
+    }
+
+    .present-config__goods-config .ncua-card__body {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .present-config__goods-config-td {
+        .ncua-flex-column {
+            align-items: flex-start;
+        }
+
+        .ncua-search-result {
+            margin-block-start : 0;
+        }
+
+        .present-config__goods-config-category {
+            padding-block-start: 6px;
+
+        }
+    }
+
+    .display-none {
+        display: none;
+    }
+
+    .present-config__goods-config-radio-group {
+        display: flex;
+        gap: 16px;
+    }
+
+    .present-config__gift-card-config {
+        .ncua-search-result {
+            margin-block-start : 16px;
+        }
+    }
+
+    .present-config__goods-exception-config {
+        .ncua-search-result {
+            margin-block-start : 12px;
+        }
+        .ncua-pagination {
+            word-break: normal;
+        }
+    }
+
+    .present-config__goods-config-selected {
+        .ncua-pagination {
+            word-break: normal;
+        }
+    }
+
+    .ncua-search-result .ncua-table--horizontal {
+        th:first-child {
+            border-top-left-radius: 5px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 5px;
+        }
+    }
+}

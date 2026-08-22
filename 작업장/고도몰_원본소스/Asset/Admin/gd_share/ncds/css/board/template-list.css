@@ -1,0 +1,34 @@
+.board-template-list .ncua-search-keyword {
+    gap: 4px;
+}
+
+.board-template-list .ncua-btn-group {
+    margin-block-start: 8px;
+}
+
+.board-template-list-title {
+    justify-content: flex-start !important;
+
+    a {
+       display: inline-flex;
+       align-items: center;
+       gap: 4px;
+       color: var(--blue-500);
+       text-decoration: underline;
+    }
+}
+
+/* 등록일/수정일 */
+.board-template-list td:nth-child(5) div {
+    text-align: center;
+}
+
+/* 등록 완료 dialog modal */
+/* layer_popup()과 같은 dialog modal을 사용하고 있어서 컨텐츠의 padding이 사라져 overriding */
+.ncds .bootstrap-dialog .modal-dialog:has(.subject) {
+    width: 600px;
+}
+
+.ncds .bootstrap-dialog .bootstrap-dialog-message:has(.subject) {
+    padding: 20px;
+}
