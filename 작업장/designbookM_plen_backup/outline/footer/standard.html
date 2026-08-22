@@ -92,8 +92,8 @@
 		<div class="foot_certify">
 			<!--{? gFairTrade['logoFl'] == 'default'}-->
 			<span><a href="https://www.ftc.go.kr/www/cop/bbs/selectBoardList.do?key=201&bbsId=BBSMSTR_000000002320&bbsTyCode=BBST01" target="_blank"><img alt="{=__('공정거래위원회')}" src="../../img/certify/logo_kftc.png"></a></span>
-			<!--{: gFairTrade['logoFl'] == 'upload'}-->gFairTrade
-			<span><img alt="{=__('공정거래위원회')}" src="{=['uploadLogoPath']}"></span>
+			<!--{: gFairTrade['logoFl'] == 'upload'}-->
+			<span><img alt="{=__('공정거래위원회')}" src="{=gFairTrade['uploadLogoPath']}"></span>
 			<!--{/}-->
 			<span>{=displaySSLSeal}</span>
 			<span>{=dataEggBanner()}</span>

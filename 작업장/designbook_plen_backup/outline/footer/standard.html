@@ -18,17 +18,19 @@
 					<dl>
 						<dt>상호 :</dt><dd>{=gMall.companyNm}</dd>
 						<dt>{=__('대표자')} :</dt><dd>{=gMall.ceoNm}</dd>
-						<dt>{=__('EMAIL')} :</dt><dd><a href="mailto:{=gMall.email}" class="btn_email">{=gMall.email}</a></dd>
 						<dt>{=__('대표번호')} :</dt><dd>{=gMall.phone}</dd>
 						<!--{ ? gMall.fax }--><dt>{=__('팩스')} :</dt><dd>{=gMall.fax}</dd><!--{ / }-->
 					</dl>
 					<dl>
+						<dt>{=__('EMAIL')} :</dt><dd><a href="mailto:{=gMall.email}" class="btn_email">{=gMall.email}</a></dd>
 						<dt>{=__('통신판매업신고번호')} :</dt><dd>{=gMall.onlineOrderSerial}</dd>
 						<dt>{=__('사업자등록번호')} :</dt><dd>{=gMall.businessNo} <a href="#" class="btn_licensee_info" onclick="gd_popup_bizInfo('{=str_replace('-', '', gMall.businessNo)}'); return false;">[{=__('사업자정보확인')}]</a></dd>
 					</dl>
 					<dl>
-						<dt>{=__('개인정보관리자')} :</dt><dd>{=gMall.privateNm}</dd>
 						<dt>{=__('주소')} :</dt><dd>{=gMall.address} {=gMall.addressSub}</dd>
+					</dl>
+					<dl>
+						<dt>{=__('개인정보관리자')} :</dt><dd>{=gMall.privateNm}</dd>
 						<dt>호스팅제공 :</dt><dd>엔에이치엔고도(주)</dd>
 					</dl>
 				</div>
