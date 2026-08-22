@@ -190,7 +190,10 @@
 										<span class="attach w100"><img src="{=stripslashes(str_replace(array('/thumb','/t'), '', .attachImageSrc))}" alt="첨부이미지" /></span>
 										<!--{ / }-->
 									</div>
-									<div class="tit"><h5>{.subject}</h5></div>
+									<div class="tit">
+										<h5>{.subject}</h5>
+										<!--{ ? .regDate }--><span class="date">{.regDate}</span><!--{ / }-->
+									</div>
 								</a>
 							</li>
 							<!--{ / }-->
