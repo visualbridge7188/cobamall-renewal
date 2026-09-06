@@ -71,6 +71,13 @@ NHN커머스 고객센터는 글로벌 기능을 쓰려면 디자인 관리의 �
 - PC 수정 시 모바일 대응 화면을 항상 확인한다.
 - PC/모바일 스킨 내부 연결값(`sno`, bannerCode, widget ID 등)은 각자의 기존 값을 보존한다.
 
+### 신규 배너 매핑 (2차 리뉴얼 기준)
+- 메인 슬라이더 (4종): 떡국, 멸치 쌀국수, 냉면, 서천 김 (위젯: PC `511517418`, 모바일 `3606671697`)
+- 와이드 배너 1: 함초 배너 (main-box2, 위젯: PC `3414171578`, 모바일 `4252770060`, 곡률: PC 20px / 모바일 12px)
+- 와이드 배너 2: 코스메틱 배너 (main-box7, 위젯: PC `2570777611`, 모바일 `2805788834`, 곡률: PC 20px / 모바일 12px)
+- 내장 에셋: `_dbook/img/Favicon.svg`, `_dbook/img/코바코스메틱 Favicon.webp`, `_dbook/img/banner/` (Artboard 1~4, 함초배너.png, 코스메틱 배너.png)
+- 배포 패키지: `dist/designbook_plen_renewal.zip` (PC), `dist/designbookM_plen_renewal.zip` (모바일)
+
 ## 출처
 
 - [NHN 서비스 안내 — godomall](https://nhn.com/services?tab=commerce)
