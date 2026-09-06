@@ -75,7 +75,9 @@ NHN커머스 고객센터는 글로벌 기능을 쓰려면 디자인 관리의 �
 - 메인 슬라이더 (4종): 떡국, 멸치 쌀국수, 냉면, 서천 김 (위젯: PC `511517418`, 모바일 `3606671697`)
 - 와이드 배너 1: 함초 배너 (main-box2, 위젯: PC `3414171578`, 모바일 `4252770060`, 곡률: PC 20px / 모바일 12px)
 - 와이드 배너 2: 코스메틱 배너 (main-box7, 위젯: PC `2570777611`, 모바일 `2805788834`, 곡률: PC 20px / 모바일 12px)
-- 내장 에셋: `_dbook/img/Favicon.svg`, `_dbook/img/코바코스메틱 Favicon.webp`, `_dbook/img/banner/` (Artboard 1~4, 함초배너.png, 코스메틱 배너.png)
+- 에셋 업로드 정책:
+  - **WebFTP (아이콘/파비콘)**: 한글/공백/WebP/SVG 차단 대응 -> 순수 영문 PNG (`webftp_upload/favicon.png`, `webftp_upload/favicon_cosmetic.png`)를 `_dbook/img/`에 업로드
+  - **배너 관리 (고도몰 관리자)**: WebP 정상 지원 -> `banner_upload/` 내 WebP 6종(`Artboard 1~4.webp`, `banner_hamcho.webp`, `banner_cosmetic.webp`) 직접 등록
 - 배포 패키지: `dist/designbook_plen_renewal.zip` (PC), `dist/designbookM_plen_renewal.zip` (모바일)
 
 ## 출처
