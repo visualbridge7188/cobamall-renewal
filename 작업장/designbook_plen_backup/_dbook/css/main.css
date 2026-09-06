@@ -80,11 +80,13 @@
 .main-quick-menu ul li:nth-child(1)::before { content:"추천"; display:inline-block; position:absolute; right:0; top:0; padding:10px; color:#FFF; font-size:13px; font-weight:600; line-height:1; text-align:center; border-radius:500px; background:#D66F3B; box-sizing:border-box; }
 
 /* 와이드배너 */
-.wide-bn { position:relative; }
-.wide-bn .bn-txt { position:absolute; left:146px; top:53px; color:#fff; line-height:1.2; }
-.wide-bn .bn-txt h3 { margin:0 0 18px; font-size:26px; font-weight:700; }
-.wide-bn .bn-txt p { font-size:14px; }
-.wide-bn .bn-txt2 { left:103px; color:var(--basic-color); }
+.wide-bn { position:relative; border-radius:20px; overflow:hidden; }
+.wide-bn img { width:100%; display:block; border-radius:20px; }
+.wide-bn .bn-txt { position:absolute; left:80px; top:50%; transform:translateY(-50%); color:#222; line-height:1.4; }
+.wide-bn .bn-txt h3 { margin:0 0 12px; font-size:24px; font-weight:700; color:#111; word-break:keep-all; }
+.wide-bn .bn-txt p { font-size:15px; color:#444; line-height:1.5; word-break:keep-all; }
+.wide-bn .bn-txt2 { left:80px; }
+.wide-bn .ico-cosmetic-fav { display:inline-block; vertical-align:middle; width:26px; height:26px; margin-right:6px; margin-top:-3px; }
 
 /* 유튜브 영상 */
 .main-video a { display:block; width:100%; height:auto;  }
