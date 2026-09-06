@@ -28,8 +28,10 @@
 .main-visual .visual-title > * { overflow:hidden; }
 .main-visual .visual-title strong { display:block; margin:0 0 18px; color:var(--basic-color); font-size:18px; font-weight:500; line-height:1; }
 .main-visual .visual-title h3 { margin:0 0 18px; color:var(--basic-color); font-size:44px; font-weight:700; line-height:1.36; }
+.main-visual .visual-title h3 .ico-fav { display:inline-block; vertical-align:middle; width:26px; height:26px; margin-left:6px; margin-top:-4px; }
 .main-visual .visual-title p { color:#616161; font-size:16px; font-weight:300; line-height:1.4; /* 22.4px */ }
-.main-visual .visual-title i { display:inline-block; min-width:120px; height:40px; line-height:40px; margin:35px 0 0; color:#FFF; font-size:14px; font-weight:300; text-align:center; font-style:normal; }
+.main-visual .visual-title i { display:inline-block; min-width:120px; height:40px; line-height:40px; margin:35px 0 0; color:#FFF; font-size:14px; font-weight:300; text-align:center; font-style:normal; pointer-events:auto; }
+.main-visual .visual-title i a { display:block; color:inherit; text-decoration:none; }
 .main-visual .visual-title i span { display:block; padding:0 10px; box-sizing:border-box; border-radius:500px; background:var(--basic-color); }
 
 /* 비주얼 타이틀 모션 */
