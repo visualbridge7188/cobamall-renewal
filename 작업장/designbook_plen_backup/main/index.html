@@ -3,19 +3,23 @@
 <link type="text/css" rel="stylesheet" href="{=setBrowserCache('../_dbook/css/main.css')}" />
 <script type="text/javascript" src="{=setBrowserCache('../_dbook/js/main.js')}"></script>
 <style type="text/css">
-/* 코바몰 2차 배너 리뉴얼 스타일 */
-.main-visual .visual-title h3 { word-break:keep-all; }
-.main-visual .visual-title h3 .ico-fav { display:inline-block; vertical-align:middle; width:26px; height:26px; margin-left:6px; margin-top:-4px; }
-.main-visual .visual-title i { pointer-events:auto; cursor:pointer; }
+/* 코바몰 2차 배너 리뉴얼 스타일 (텍스트 확대, 파비콘 크기 보정, 배너 곡률 분리) */
+.main-visual .visual-title > * { max-width:580px; }
+.main-visual .visual-title strong { font-size:20px; font-weight:600; margin-bottom:16px; letter-spacing:1px; }
+.main-visual .visual-title h3 { font-size:54px; font-weight:800; line-height:1.25; margin-bottom:20px; word-break:keep-all; letter-spacing:-0.5px; }
+.main-visual .visual-title h3 .ico-fav { display:inline-block; vertical-align:-6px; width:48px; height:48px; margin-left:10px; border-radius:0 !important; }
+.main-visual .visual-title p { font-size:19px; font-weight:400; line-height:1.6; color:#4a4a4a; word-break:keep-all; }
+.main-visual .visual-title i { display:inline-block; min-width:150px; height:50px; line-height:50px; margin:35px 0 0; font-size:16px; font-weight:600; pointer-events:auto; cursor:pointer; }
 .main-visual .visual-title i a { display:block; width:100%; height:100%; color:#FFF; text-decoration:none; }
-.main-visual .visual-title i span { height:40px; line-height:40px; padding:0 18px; }
+.main-visual .visual-title i span { display:block; height:50px; line-height:50px; padding:0 30px; box-sizing:border-box; border-radius:500px; background:var(--basic-color); font-size:16px; font-weight:600; letter-spacing:0.5px; }
 .wide-bn { position:relative; border-radius:20px; overflow:hidden; }
-.wide-bn img { width:100%; display:block; border-radius:20px; }
+.wide-bn > a > span > img,
+.wide-bn .w100 img { width:100%; display:block; border-radius:20px; }
 .wide-bn .bn-txt { position:absolute; left:80px; top:42px; color:#222; line-height:1.4; }
 .wide-bn .bn-txt h3 { margin:0 0 12px; font-size:24px; font-weight:700; color:#111; word-break:keep-all; }
 .wide-bn .bn-txt p { font-size:15px; color:#444; line-height:1.5; word-break:keep-all; }
 .wide-bn .bn-txt2 { left:80px; }
-.wide-bn .ico-cosmetic-fav { display:inline-block; vertical-align:middle; width:26px; height:26px; margin-right:6px; margin-top:-3px; }
+.wide-bn .ico-cosmetic-fav { display:inline-block; vertical-align:middle; width:34px; height:34px; border-radius:0 !important; margin-right:8px; margin-top:-4px; }
 </style>
 
 <div id="main">
@@ -31,7 +35,7 @@
 				<div class="visual-title">
 					<strong><span>BEST</span></strong>		
 					<h3><span>즉석 쌀떡국 <img class="ico-fav" src="../_dbook/img/Favicon.png" alt="코바" /></span></h3>
-					<p><span>진한 사골국물과 갓 찧은 햅쌀 사용으로 더욱 쫄깃한 떡국입니다.</span></p>
+					<p><span>진한 사골국물과 갓 찧은 햅쌀 사용으로<br />더욱 쫄깃하고 든든한 떡국입니다.</span></p>
 					<i><a href="https://www.korvamall.com/goods/goods_list.php?cateCd=003001"><span>자세히 보기</span></a></i>
 				</div>
 			</li>
@@ -40,7 +44,7 @@
 				<div class="visual-title">
 					<strong><span>BEST</span></strong>		
 					<h3><span>즉석 멸치 쌀국수 <img class="ico-fav" src="../_dbook/img/Favicon.png" alt="코바" /></span></h3>
-					<p><span>기름에 튀기지 않은 쫄깃한 면발과 시원한 멸치국물로 우려낸 코바 대표 상품입니다.</span></p>
+					<p><span>기름에 튀기지 않은 쫄깃한 면발과<br />시원한 멸치국물로 우려낸 코바 대표 상품입니다.</span></p>
 					<i><a href="https://www.korvamall.com/goods/goods_list.php?cateCd=003002"><span>자세히 보기</span></a></i>
 				</div>
 			</li>
@@ -49,7 +53,7 @@
 				<div class="visual-title">
 					<strong><span>NEW</span></strong>		
 					<h3><span>코바 냉면 출시 <img class="ico-fav" src="../_dbook/img/Favicon.png" alt="코바" /></span></h3>
-					<p><span>함초자염이 들어간 깔끔한 맛의 육수와 비빔장! 쌀이 함유된 부드러운 면발!</span></p>
+					<p><span>함초자염이 들어간 깔끔한 육수와 비빔장!<br />쌀이 함유된 부드러운 면발을 즐겨보세요.</span></p>
 					<i><a href="https://www.korvamall.com/goods/goods_list.php?cateCd=003004"><span>자세히 보기</span></a></i>
 				</div>
 			</li>
@@ -57,8 +61,8 @@
 			<li>
 				<div class="visual-title">
 					<strong><span>PROMOTION</span></strong>		
-					<h3><span>서천 바다 100% 국내산 원초의 담백한 맛 그대로</span></h3>
-					<p><span>기름을 바르지 않고 자연 그대로 살짝 갓 구워 원초의 향과 풍미 그대로를 담았습니다.</span></p>
+					<h3><span>서천 바다 100%<br />국내산 원초의 맛 그대로</span></h3>
+					<p><span>기름을 바르지 않고 자연 그대로 살짝 구워<br />원초의 깊은 향과 풍미를 가득 담았습니다.</span></p>
 					<i><a href="https://www.korvamall.com/goods/goods_list.php?cateCd=003003"><span>자세히 보기</span></a></i>
 				</div>
 			</li>
