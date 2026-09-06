@@ -28,6 +28,7 @@
 .main-visual .visual-title > * { overflow:hidden; }
 .main-visual .visual-title strong { display:block; margin:0 0 6px; color:var(--basic-color); font-size:16px; font-weight:500; line-height:1; }
 .main-visual .visual-title h3 { margin:0 0 8px; color:var(--basic-color); font-size:25px; font-weight:700; line-height:1.36; }
+.main-visual .visual-title h3 .ico-fav { display:inline-block; vertical-align:middle; width:18px; height:18px; margin-left:4px; margin-top:-2px; }
 .main-visual .visual-title p { color:#616161; font-size:12px; font-weight:300; line-height:1.4;  }
 
 /* 비주얼 타이틀 모션 */
